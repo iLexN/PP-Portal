@@ -34,11 +34,10 @@ $container['notFoundHandler'] = function (\Slim\Container $c) {
         ];
         $c->logger->info('404', $logInfo);
 
-        return $c['response']->withStatus(404)
-                ->write(json_encode(['error'=>[
+        return $c['view']->render($request, $response, ['error'=>[
                     'status'=>404,
                     'title'=>'not found'
-                ]]));
+                ]])->withStatus(404);
     };
 };
 
@@ -47,11 +46,10 @@ if ( !$container['settings']['displayErrorDetails']){
         return function (\Slim\Http\Request $request, \Slim\Http\Response $response, \Exception $exception) use ($c) {
             $c['logger']->error('e',(array)$exception);
 
-            return $c['response']->withStatus(500)
-                    ->write(json_encode(['error'=>[
+            return $c['view']->render($request, $response, ['error'=>[
                     'status'=>500,
-                    'title'=>'Error'
-                ]]));
+                    'title'=>'error happen'
+                ]])->withStatus(500);
         };
     };
 }
