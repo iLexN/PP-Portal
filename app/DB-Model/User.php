@@ -28,4 +28,13 @@ class User extends \Model
 
         $this->tokenExpireDatetime = date('Y-m-d H:i:s', strtotime('+1 hours'));
     }
+
+    public function verifyPassword($password){
+        
+        if ( password_verify($password,$this->password) ){
+            return true;
+        }
+        
+        return false;
+    }
 }

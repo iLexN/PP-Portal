@@ -41,15 +41,7 @@ class Login
         }
 
         if ( $this->isUserExist($data)){
-            $user = $this->c['UserModule']->user;
-            $resource = new Collection($user, function ($user) {
-                return [
-                        'uid' => $user->id,
-                        'token' => $user->token,
-                        'tokenExpireDatetime'=>$user->tokenExpireDatetime,
-                    ];
-            });
-            return $this->c['view']->render($request, $response, $this->c['dataManager']->createData($resource)->toArray());
+            return $this->c['view']->render($request, $response, $this->success() );
         }
 
         return $this->c['view']->render($request, $response, ['errors'=>[
@@ -67,8 +59,27 @@ class Login
      */
     private function isUserExist($data)
     {
-        return $this->c['UserModule']->isUserExist($data);
+        return $this->c['UserModule']->isUserExistByEmail($data['email']) &&
+                $this->c['UserModule']->user->verifyPassword($data['password']);
     }
+
+    private function success(){
+        /* @var $user \PP\Portal\dbModel\User */
+        $user = $this->c['UserModule']->user;
+        $user->genToken();
+        $user->save();
+
+        $resource = new Collection($user, function ($user) {
+            return [
+                    'uid' => $user->id,
+                    'token' => $user->token,
+                    'tokenExpireDatetime'=>$user->tokenExpireDatetime,
+                ];
+        });
+
+        return $this->c['dataManager']->createData($resource)->toArray();
+    }
+    
 
     private function missField($field)
     {
