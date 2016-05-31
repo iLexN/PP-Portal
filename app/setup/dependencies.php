@@ -25,6 +25,18 @@ $container['pool'] = function (\Slim\Container $c) {
     return new \Stash\Pool($driver);
 };
 
+// Twig
+$container['twigView'] = function (\Slim\Container $c) {
+    $settings = $c->get('twigConfig');
+    $view = new \Slim\Views\Twig($settings['template_path'], $settings['twig']);
+    // Add extensions
+    //$basePath = rtrim(str_ireplace('index.php', '', $c['request']->getUri()->getBasePath()), '/');
+    //$view->addExtension(new Slim\Views\TwigExtension($c['router'], $basePath));
+    //$view->addExtension(new Slim\Views\TwigExtension($c->get('router'), $c->get('request')->getUri()));
+
+    return $view;
+};
+
 // rount handloer
 $container['notFoundHandler'] = function (\Slim\Container $c) {
     return function (\Slim\Http\Request $request, \Slim\Http\Response  $response) use ($c) {

@@ -35,7 +35,7 @@ class Router
         //exclude route
         $router->removeNamedRoute('helperRouter');
 
-        return $this->c['view']->render($response, 'helper/router.html.twig', [
+        return $this->c['twigView']->render($response, 'helper/router.html.twig', [
             'router' => $router,
         ]);
     }

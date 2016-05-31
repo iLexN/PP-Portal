@@ -18,6 +18,7 @@
         "ramsey/uuid" : "3.4.1",
         "tedivm/stash": "0.14.*",
         "league/fractal":"0.13.0",
-        "akrabat/rka-content-type-renderer":"0.4.0"
+        "akrabat/rka-content-type-renderer":"0.4.0",
+        "slim/twig-view": "2.1.1"
     }
 }
