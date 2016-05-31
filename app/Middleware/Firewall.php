@@ -33,9 +33,6 @@ class Firewall {
         $clientIP = $this->getClientIP($request);
         $allowIP = $this->c->get('firewallConfig')['allow'];
 
-        $this->c->logger->info('$clientIP::'.$clientIP);
-        $this->c->logger->info('$allowIP::',$allowIP);
-
         if ( !in_array($clientIP, $allowIP)) {
             return $this->c['view']->render($request, $response, [
                 'error'=>[
