@@ -30,11 +30,7 @@ class CheckToken {
     public function __invoke($request, $response, $next)
     {
         if ( !$request->hasHeader('PP-Portal-Token') ){
-            return $this->c['view']->render($request, $response, ['errors'=>[
-                        'status'=>401,
-                        'title'=>'Need Authenticate'
-                    ]])->withHeader('WWW-Authenticate','Basic realm="Protected Area"')
-                    ->withStatus(401);
+            return $this->returnResponse($request,$response);
         }
 
         $token = $request->getHeaderLine('PP-Portal-Token');
@@ -44,17 +40,21 @@ class CheckToken {
         /* @var $userModule \PP\Module\UserModule */
         $userModule = $this->c['UserModule'];
         if ( !$userModule->verifyToken($token) ) {
-            return $this->c['view']->render($request, $response, ['errors'=>[
-                        'status'=>401,
-                        'title'=>'Need Authenticate'
-                    ]])->withHeader('WWW-Authenticate','Basic realm="Protected Area"')
-                    ->withStatus(401);
+            return $this->returnResponse($request,$response);
         }
 
 
         $this->c['user'] = $userModule->user;
 
         return $next($request, $response);
+    }
+
+    private function returnResponse($request,$response){
+        return $this->c['view']->render($request, $response, ['errors'=>[
+                        'status'=>401,
+                        'title'=>'Need Authenticate Token'
+                    ]])->withHeader('WWW-Authenticate','Basic realm="Protected Area"')
+                    ->withStatus(401);
     }
     
 }
