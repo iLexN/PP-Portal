@@ -29,7 +29,9 @@ $container['pool'] = function (\Slim\Container $c) {
 $container['twigView'] = function (\Slim\Container $c) {
     $settings = $c->get('twigConfig');
     $view = new \Slim\Views\Twig($settings['template_path'], $settings['twig']);
-    $view->addExtension(new Twig_Extension_Debug());
+    if ( !$c['settings']['displayErrorDetails']){
+        $view->addExtension(new Twig_Extension_Debug());
+    }
     return $view;
 };
 
