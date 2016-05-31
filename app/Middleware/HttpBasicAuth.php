@@ -26,11 +26,11 @@ class HttpBasicAuth {
      */
     protected $c;
     
-    public function __construct(\Slim\Container $container ,$username, $password, $realm = 'Protected Area')
+    public function __construct(\Slim\Container $container , $realm = 'Protected Area')
     {
         $this->c = $container;
-        $this->username = $username;
-        $this->password = $password;
+        $this->username = $container->get('firewallConfig')['username'];
+        $this->password = $container->get('firewallConfig')['password'];
         $this->realm = $realm;
     }
     
