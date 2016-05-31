@@ -31,7 +31,6 @@ class Firewall {
     public function __invoke($request, $response, $next)
     {
         $clientIP = $this->getClientIP($request);
-
         $allowIP = $this->c->get('firewallConfig')['allow'];
 
         $this->c->logger->info('$clientIP::'.$clientIP);
@@ -54,6 +53,7 @@ class Firewall {
         if (isset($serverParams['REMOTE_ADDR'])) {
             return  $serverParams['REMOTE_ADDR'];
         }
+        
         return '';
     }
 }
