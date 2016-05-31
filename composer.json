@@ -1,0 +1,23 @@
+{
+    "name": "pp-portal/pp-portal",
+    "description": "pp-portal",
+    "authors": [
+        {
+            "name": "iLexN",
+            "email": "ilex.job@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "slim/slim": "3.*",
+        "j4mie/paris": "v1.5.4",
+        "j4mie/idiorm": "v1.5.1",
+        "hassankhan/config": "0.10.0",
+        "monolog/monolog": "1.19.0",
+        "phpmailer/phpmailer" : "v5.2.15",
+        "ramsey/uuid" : "3.4.1",
+        "tedivm/stash": "0.14.*",
+        "league/fractal":"0.13.0",
+        "akrabat/rka-content-type-renderer":"0.4.0"
+    }
+}
