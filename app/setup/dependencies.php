@@ -37,6 +37,18 @@ $container['notFoundHandler'] = function (\Slim\Container $c) {
     };
 };
 
+if ( !$container['settings']['displayErrorDetails']){
+    $container['errorHandler'] = function (\Slim\Container $c) {
+        return function (\Slim\Http\Request $request, \Slim\Http\Response $response, \Exception $exception) use ($c) {
+            $c['logger']->error('e',(array)$exception);
+
+            return $c['response']->withStatus(500)
+                                 ->withHeader('Content-Type', 'text/html')
+                                 ->write('Something went wrong!');
+        };
+    };
+}
+
 $container['dataManager'] = function (){
     return new \League\Fractal\Manager();
 };
