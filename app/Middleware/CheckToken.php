@@ -34,7 +34,6 @@ class CheckToken {
         }
 
         $token = $request->getHeaderLine('PP-Portal-Token');
-
         $this->c->logger->info('token',[$token]);
 
         /* @var $userModule \PP\Module\UserModule */
@@ -42,7 +41,6 @@ class CheckToken {
         if ( !$userModule->verifyToken($token) ) {
             return $this->returnResponse($request,$response);
         }
-
 
         $this->c['user'] = $userModule->user;
 

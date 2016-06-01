@@ -29,7 +29,7 @@ class Token
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        return $response->write('do');
+        return $response->write('user id ::'.$this->c['user']->id);
     }
 
 }
