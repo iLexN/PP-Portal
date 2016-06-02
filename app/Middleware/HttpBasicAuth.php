@@ -36,6 +36,8 @@ class HttpBasicAuth {
     
     public function __invoke($request, $response, $next)
     {
+        $this->c->logger->info('Middleware HttpBasicAuth');
+        
         $authUser = $request->getHeaderLine('PHP_AUTH_USER');
         $authPass = $request->getHeaderLine('PHP_AUTH_PW');
 

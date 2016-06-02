@@ -30,6 +30,8 @@ class Firewall {
      */
     public function __invoke($request, $response, $next)
     {
+        $this->c->logger->info('Middleware Firewall');
+
         $clientIP = $this->getClientIP($request);
         $allowIP = $this->c->get('firewallConfig')['allow'];
 

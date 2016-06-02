@@ -29,6 +29,8 @@ class CheckToken {
      */
     public function __invoke($request, $response, $next)
     {
+        $this->c->logger->info('Middleware CheckToken');
+        
         if ( !$request->hasHeader('PP-Portal-Token') ){
             return $this->returnResponse($request,$response);
         }

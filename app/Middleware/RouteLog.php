@@ -30,17 +30,11 @@ class RouteLog
      */
     public function __invoke($request, $response, $next)
     {
-        if ($request->hasHeader('PP-Portal-Platform')) {
-            $platform = $request->getHeaderLine('PP-Portal-Platform');
-            $route = $request->getAttribute('route');
-            $this->logRoute($platform, $route);
-        }
+        $this->c->logger->info('Middleware RouteLog');
 
-        return $next($request, $response);
-    }
+        $platform = $this->c['platform'];
+        $route = $request->getAttribute('route');
 
-    private function logRoute($platform, \Slim\Route $route)
-    {
         /* @var $routelog \PP\Portal\dbModel\RouteLog */
         $routelog = \PP\Portal\dbModel\RouteLog::create();
         $routelog->date = date("Y-m-d");
@@ -50,5 +44,7 @@ class RouteLog
         $routelog->methods = json_encode($route->getMethods());
         $routelog->arguments = json_encode($route->getArguments());
         $routelog->save();
+
+        return $next($request, $response);
     }
 }
