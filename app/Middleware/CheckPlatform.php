@@ -35,7 +35,7 @@ class CheckPlatform
         $result = false;
         if ($request->hasHeader('PP-Portal-Platform')) {
             $platform = $request->getHeaderLine('PP-Portal-Platform');
-            $result =  $this->logRoute($platform);
+            $result =  $this->checkPlatform($platform);
         } else {
             $result = false;
         }
@@ -50,7 +50,7 @@ class CheckPlatform
         return $next($request, $response);
     }
 
-    private function logRoute($platform)
+    private function checkPlatform($platform)
     {
         $allowPlatform = ['Web','iOS', 'Android'];
         if ( !in_array($platform, $allowPlatform)) {
