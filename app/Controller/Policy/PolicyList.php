@@ -36,7 +36,9 @@ class PolicyList
             $client = $this->c['UserModule']->client;
 
             /* @var $client \PP\Portal\dbModel\Policies */
-            $policyList = $client->policies()->find_many();
+            $policyList = $client->policies()
+                    ->order_by_desc('Policy_ID')
+                    ->find_many();
 
             $resource = new Collection($policyList, function(\PP\Portal\dbModel\Policies $policy) {
                 return $policy->as_array();
