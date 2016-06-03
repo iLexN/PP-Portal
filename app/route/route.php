@@ -6,6 +6,8 @@ $app->post('/login', 'PP\Portal\Controller\User\Login')
         ->setName('UserLogin');
 $app->get('/user/{id}', 'PP\Portal\Controller\User\Info')
         ->setName('UserInfo');
+$app->get('/user/{id}/policy/', 'PP\Portal\Controller\Policy\PolicyList')
+        ->setName('PolicyList');
 
 
 $app->post('/test/upload', 'PP\Portal\Controller\Test\UploadAction');

@@ -24,4 +24,8 @@ class Client extends \Model
         return false;
     }
 
+    public function policies() {
+        return $this->has_many(__NAMESPACE__ . '\Policies','Client_NO');
+    }
+
 }
