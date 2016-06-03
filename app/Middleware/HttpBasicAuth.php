@@ -1,6 +1,9 @@
 <?php
 namespace PP\Middleware;
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
 /**
  * Description of HttpBasicAuthMiddleWare
  *
@@ -33,8 +36,17 @@ class HttpBasicAuth {
         $this->password = $container->get('firewallConfig')['password'];
         $this->realm = $realm;
     }
-    
-    public function __invoke($request, $response, $next)
+
+    /**
+     * logRoute app setting determineRouteBeforeAppMiddleware = true
+     *
+     * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
+     * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response
+     * @param callable                                 $next     Next middleware
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
     {
         $this->c->logger->info('Middleware HttpBasicAuth');
         

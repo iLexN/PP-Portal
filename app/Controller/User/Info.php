@@ -4,7 +4,6 @@ namespace PP\Portal\Controller\User;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use \League\Fractal\Resource\Collection;
 
 class Info
 {

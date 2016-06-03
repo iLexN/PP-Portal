@@ -2,6 +2,9 @@
 
 namespace PP\Middleware;
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
 /**
  * Description of Firewall
  *
@@ -28,7 +31,7 @@ class Firewall {
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function __invoke($request, $response, $next)
+    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
     {
         $this->c->logger->info('Middleware Firewall');
 
@@ -47,7 +50,7 @@ class Firewall {
         return $next($request, $response);
     }
 
-    private function getClientIP($request){
+    private function getClientIP(ServerRequestInterface $request){
         $serverParams = $request->getServerParams();
         if (isset($serverParams['REMOTE_ADDR'])) {
             return  $serverParams['REMOTE_ADDR'];

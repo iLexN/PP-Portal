@@ -44,7 +44,7 @@ class Signup
             //create User
             $user = $this->c['UserModule']->create($data);
 
-            $resource = new Collection($user, function ($user) {
+            $resource = new Collection($user, function ( \PP\Portal\dbModel\User $user) {
                 return [
                         'uid' => $user->id,
                         'token' => $user->token,
