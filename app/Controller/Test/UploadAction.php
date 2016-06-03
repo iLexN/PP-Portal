@@ -30,25 +30,23 @@ class UploadAction
     {
         $files = $request->getUploadedFiles();
 
-        if (empty($files['newfile'])) {
-            throw new \Exception('Expected a newfile');
-        }
+        if (!empty($files['newfile'])) {
+            $newfile = $this->handerFile($files['newfile']);
 
-        $newfile = $this->handerFile($files['newfile']);
+            if ($newfile->isValid()) {
+                $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename());
 
-        if ($newfile->isValid()) {
-            $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename());
+                return $this->c['view']->render($request, $response, [
+                    'data'=>[
+                        'filename' => $newfile->getClientFilename(),
+                    ]
+                ]);
+            }
 
             return $this->c['view']->render($request, $response, [
-                'data'=>[
-                    'filename' => $newfile->getClientFilename(),
-                ]
-            ]);
+                    'errors'=>$newfile->getValidationMsg(),
+                ]);
         }
-        
-        return $this->c['view']->render($request, $response, [
-                'errors'=>$newfile->getValidationMsg(),
-            ]);
     }
 
     /**

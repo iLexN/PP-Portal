@@ -29,9 +29,7 @@ class PolicyList
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $id = $args['id'];
-
-        if ( $this->isUserExist($id)){
+        if ( $this->isUserExist($args['id'])){
             /* @var $client \PP\Portal\dbModel\Client */
             $client = $this->c['UserModule']->client;
 
@@ -43,10 +41,8 @@ class PolicyList
             $resource = new Collection($policyList, function(\PP\Portal\dbModel\Policies $policy) {
                 return $policy->as_array();
             });
-
-            $out = $this->c['dataManager']->createData($resource)->toArray();
-
-            return $this->c['view']->render($request, $response, $out);
+            return $this->c['view']->render($request, $response,
+                    $this->c['dataManager']->createData($resource)->toArray());
         }
 
         return $this->c['view']->render($request, $response, ['errors'=>[

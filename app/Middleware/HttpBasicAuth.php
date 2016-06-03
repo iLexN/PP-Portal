@@ -53,7 +53,7 @@ class HttpBasicAuth {
         $authUser = $request->getHeaderLine('PHP_AUTH_USER');
         $authPass = $request->getHeaderLine('PHP_AUTH_PW');
 
-        if ($authUser && $authPass && $authUser === $this->username && $authPass === $this->password) {
+        if ( $authUser === $this->username && $authPass === $this->password) {
             return $next($request, $response);
         } else {
             return $this->c['view']->render($request, $response, ['errors'=>[
