@@ -42,12 +42,12 @@ class CheckToken {
         $this->c->logger->info('token',[$token]);
 
         /* @var $userModule \PP\Module\UserModule */
-        $userModule = $this->c['UserModule'];
+//        $userModule = $this->c['UserModule'];
 //        if ( !$userModule->verifyToken($token) ) {
 //            return $this->returnResponse($request,$response);
 //        }
 
-        $this->c['user'] = $userModule->user;
+        $this->c['user'] = $userModule->client;
 
         return $next($request, $response);
     }

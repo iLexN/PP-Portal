@@ -35,7 +35,6 @@ class CheckPlatform
     {
         $this->c->logger->info('Middleware CheckPlatform');
 
-        $result = false;
         if ($request->hasHeader('PP-Portal-Platform')) {
             $platform = $request->getHeaderLine('PP-Portal-Platform');
             $result =  $this->checkPlatform($platform);
