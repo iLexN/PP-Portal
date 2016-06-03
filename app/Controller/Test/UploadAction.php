@@ -49,7 +49,7 @@ class UploadAction
         //var_dump($newfile->getValidationMsg());
         
         return $this->c['view']->render($request, $response, [
-                'error'=>$newfile->getValidationMsg(),
+                'errors'=>$newfile->getValidationMsg(),
             ]);
     }
 

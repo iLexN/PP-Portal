@@ -4,6 +4,8 @@ $app->post('/signup', 'PP\Portal\Controller\User\Signup')
         ->setName('UserSignUp');
 $app->post('/login', 'PP\Portal\Controller\User\Login')
         ->setName('UserLogin');
+$app->get('/user/{id}', 'PP\Portal\Controller\User\Info')
+        ->setName('UserInfo');
 
 
 $app->post('/test/upload', 'PP\Portal\Controller\Test\UploadAction');

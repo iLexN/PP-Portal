@@ -32,8 +32,8 @@ class Login
         $data = $request->getParsedBody();
         $this->c['logger']->info('post data', $data);
 
-        if (!isset($data['email'])) {
-            return $this->c['view']->render($request, $response, $this->missField('email'));
+        if (!isset($data['clientID'])) {
+            return $this->c['view']->render($request, $response, $this->missField('clientID'));
         }
 
         if (!isset($data['password'])) {
@@ -59,25 +59,17 @@ class Login
      */
     private function isUserExist($data)
     {
-        return $this->c['UserModule']->isUserExistByEmail($data['email']) &&
-                $this->c['UserModule']->user->verifyPassword($data['password']);
+        return $this->c['UserModule']->isUserExistByID($data['clientID']) &&
+                $this->c['UserModule']->client->verifyPassword($data['password']);
     }
 
     private function success(){
-        /* @var $user \PP\Portal\dbModel\User */
-        $user = $this->c['UserModule']->user;
-        $user->genToken();
-        $user->save();
-
-        $resource = new Collection($user, function ($user) {
-            return [
-                    'uid' => $user->id,
-                    'token' => $user->token,
-                    'tokenExpireDatetime'=>$user->tokenExpireDatetime,
-                ];
-        });
-
-        return $this->c['dataManager']->createData($resource)->toArray();
+        /* @var $user \PP\Portal\dbModel\Client */
+        $client = $this->c['UserModule']->client;
+        
+        return ['data'=>[
+                'id'=>$client->Client_NO
+                ]];
     }
     
 
