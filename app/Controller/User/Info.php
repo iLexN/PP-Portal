@@ -30,21 +30,20 @@ class Info
     {
         $id = $args['id'];
 
-        if ( $this->isUserExist($id)){
+        if ($this->isUserExist($id)) {
             /* @var $client \PP\Portal\dbModel\Client */
             $client = $this->c['UserModule']->client;
-            
-            $out = ['data'=>$client->as_array()];
+
+            $out = ['data' => $client->as_array()];
 
             $this->c->logger->info('here output');
 
             return $this->c['view']->render($request, $response, $out);
         }
 
-        return $this->c['view']->render($request, $response, ['errors'=>[
-            'title'=>'User Info Not Found'
+        return $this->c['view']->render($request, $response, ['errors' => [
+            'title' => 'User Info Not Found',
         ]]);
-        
     }
 
     /**

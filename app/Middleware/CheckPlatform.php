@@ -1,29 +1,29 @@
 <?php
+
 namespace PP\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Description of HttpBasicAuthMiddleWare
+ * Description of HttpBasicAuthMiddleWare.
  *
  * @author user
  */
 class CheckPlatform
 {
-    
     /**
      * @var \Slim\Container
      */
     protected $c;
-    
+
     public function __construct(\Slim\Container $container)
     {
         $this->c = $container;
     }
 
     /**
-     * logRoute app setting determineRouteBeforeAppMiddleware = true
+     * logRoute app setting determineRouteBeforeAppMiddleware = true.
      *
      * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
      * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response
@@ -37,15 +37,15 @@ class CheckPlatform
 
         if ($request->hasHeader('PP-Portal-Platform')) {
             $platform = $request->getHeaderLine('PP-Portal-Platform');
-            $result =  $this->checkPlatform($platform);
+            $result = $this->checkPlatform($platform);
         } else {
             $result = false;
         }
 
-        if ( !$result ) {
-            return $this->c['view']->render($request, $response, ['errors'=>[
-                        'status'=>403,
-                        'title'=>'Platform Header Missing'
+        if (!$result) {
+            return $this->c['view']->render($request, $response, ['errors' => [
+                        'status' => 403,
+                        'title'  => 'Platform Header Missing',
                     ]])->withStatus(403);
         }
 
@@ -54,8 +54,8 @@ class CheckPlatform
 
     private function checkPlatform($platform)
     {
-        $allowPlatform = ['Web','iOS', 'Android'];
-        if ( !in_array($platform, $allowPlatform)) {
+        $allowPlatform = ['Web', 'iOS', 'Android'];
+        if (!in_array($platform, $allowPlatform)) {
             return false;
         }
 

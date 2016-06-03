@@ -2,9 +2,9 @@
 
 namespace PP\Portal\Controller\Policy;
 
+use League\Fractal\Resource\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use League\Fractal\Resource\Collection;
 
 class PolicyList
 {
@@ -29,7 +29,7 @@ class PolicyList
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        if ( $this->isUserExist($args['id'])){
+        if ($this->isUserExist($args['id'])) {
             /* @var $client \PP\Portal\dbModel\Client */
             $client = $this->c['UserModule']->client;
 
@@ -38,17 +38,17 @@ class PolicyList
                     ->order_by_desc('Policy_ID')
                     ->find_many();
 
-            $resource = new Collection($policyList, function(\PP\Portal\dbModel\Policies $policy) {
+            $resource = new Collection($policyList, function (\PP\Portal\dbModel\Policies $policy) {
                 return $policy->as_array();
             });
+
             return $this->c['view']->render($request, $response,
                     $this->c['dataManager']->createData($resource)->toArray());
         }
 
-        return $this->c['view']->render($request, $response, ['errors'=>[
-            'title'=>'User Info Not Found'
+        return $this->c['view']->render($request, $response, ['errors' => [
+            'title' => 'User Info Not Found',
         ]]);
-        
     }
 
     /**

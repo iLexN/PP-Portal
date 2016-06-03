@@ -1,4 +1,5 @@
 <?php
+
 namespace PP\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
@@ -6,19 +7,18 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class RouteLog
 {
-    
     /**
      * @var \Slim\Container
      */
     protected $c;
-    
+
     public function __construct(\Slim\Container $container)
     {
         $this->c = $container;
     }
 
     /**
-     * logRoute app setting determineRouteBeforeAppMiddleware = true
+     * logRoute app setting determineRouteBeforeAppMiddleware = true.
      *
      * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
      * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response
@@ -35,7 +35,7 @@ class RouteLog
 
         /* @var $routelog \PP\Portal\dbModel\RouteLog */
         $routelog = \PP\Portal\dbModel\RouteLog::create();
-        $routelog->date = date("Y-m-d");
+        $routelog->date = date('Y-m-d');
         $routelog->platform = $platform;
         $routelog->name = json_encode($route->getName());
         $routelog->groups = json_encode($route->getGroups());
