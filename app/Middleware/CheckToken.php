@@ -43,9 +43,9 @@ class CheckToken {
 
         /* @var $userModule \PP\Module\UserModule */
         $userModule = $this->c['UserModule'];
-        if ( !$userModule->verifyToken($token) ) {
-            return $this->returnResponse($request,$response);
-        }
+//        if ( !$userModule->verifyToken($token) ) {
+//            return $this->returnResponse($request,$response);
+//        }
 
         $this->c['user'] = $userModule->user;
 

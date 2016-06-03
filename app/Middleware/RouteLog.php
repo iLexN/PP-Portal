@@ -5,9 +5,12 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Description of HttpBasicAuthMiddleWare
- *
- * @author user
+ * @property string $date
+ * @property string $platform
+ * @property string $name
+ * @property string $groups
+ * @property string $methods
+ * @property string $arguments
  */
 class RouteLog
 {

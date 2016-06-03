@@ -28,7 +28,7 @@ class Login
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $data = $request->getParsedBody();
+        $data = (array)$request->getParsedBody();
         $this->c['logger']->info('post data', $data);
 
         if (!isset($data['clientID'])) {

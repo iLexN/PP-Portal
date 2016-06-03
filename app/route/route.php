@@ -9,9 +9,9 @@ $app->get('/user/{id}', 'PP\Portal\Controller\User\Info')
 
 
 $app->post('/test/upload', 'PP\Portal\Controller\Test\UploadAction');
-$app->get('/test/token', 'PP\Portal\Controller\Test\Token')
-        ->setName('TestToken')
-        ->add($checkToken);
+//$app->get('/test/token', 'PP\Portal\Controller\Test\Token')
+//        ->setName('TestToken')
+//        ->add($checkToken);
 
 
 //helper for development

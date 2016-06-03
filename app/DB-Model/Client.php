@@ -2,6 +2,9 @@
 
 namespace PP\Portal\dbModel;
 
+/**
+  * @property string $password
+  */
 class Client extends \Model
 {
     public static $_table = 'client';

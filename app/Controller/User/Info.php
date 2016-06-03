@@ -50,7 +50,7 @@ class Info
     /**
      * check email in db or not(already user?).
      *
-     * @param array $data
+     * @param int $id
      *
      * @return bool
      */
