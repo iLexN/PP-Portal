@@ -31,12 +31,10 @@ class Login
         $data = (array)$request->getParsedBody();
         $this->c['logger']->info('post data', $data);
 
-        if (!isset($data['clientID'])) {
-            return $this->c['view']->render($request, $response, $this->missField('clientID'));
-        }
-
-        if (!isset($data['password'])) {
-            return $this->c['view']->render($request, $response, $this->missField('password'));
+        if (!isset($data['clientID']) || !isset($data['password'])) {
+            return $this->c['view']->render($request, $response, ['errors'=>[
+                'title'=>'Missing field(s)'
+            ]]);
         }
 
         if ( $this->isUserExist($data)){
@@ -69,13 +67,5 @@ class Login
         return ['data'=>[
                 'id'=>$client->Client_NO
                 ]];
-    }
-    
-
-    private function missField($field)
-    {
-        return ['errors'=>[
-                'title'=>'Missing ' . $field
-            ]];
     }
 }
