@@ -35,7 +35,7 @@ class PolicyList
             /* @var $client \PP\Portal\dbModel\Client */
             $client = $this->c['UserModule']->client;
 
-            /* @var $client \PP\Portal\dbModel\Policies */
+            /* @var $policyList \PP\Portal\dbModel\Policies */
             $policyList = $client->policies()
                     ->order_by_desc('Policy_ID')
                     ->find_many();
