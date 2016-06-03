@@ -4,14 +4,6 @@ namespace PP\Middleware;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-/**
- * @property string $date
- * @property string $platform
- * @property string $name
- * @property string $groups
- * @property string $methods
- * @property string $arguments
- */
 class RouteLog
 {
     
