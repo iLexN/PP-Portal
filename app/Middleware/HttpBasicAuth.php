@@ -1,16 +1,17 @@
 <?php
+
 namespace PP\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Description of HttpBasicAuthMiddleWare
+ * Description of HttpBasicAuthMiddleWare.
  *
  * @author user
  */
-class HttpBasicAuth {
-    
+class HttpBasicAuth
+{
     /**
      * @var string
      */
@@ -28,8 +29,8 @@ class HttpBasicAuth {
      * @var \Slim\Container
      */
     protected $c;
-    
-    public function __construct(\Slim\Container $container , $realm = 'Protected Area')
+
+    public function __construct(\Slim\Container $container, $realm = 'Protected Area')
     {
         $this->c = $container;
         $this->username = $container->get('firewallConfig')['username'];
@@ -38,7 +39,7 @@ class HttpBasicAuth {
     }
 
     /**
-     * logRoute app setting determineRouteBeforeAppMiddleware = true
+     * logRoute app setting determineRouteBeforeAppMiddleware = true.
      *
      * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
      * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response
@@ -49,20 +50,18 @@ class HttpBasicAuth {
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
     {
         $this->c->logger->info('Middleware HttpBasicAuth');
-        
+
         $authUser = $request->getHeaderLine('PHP_AUTH_USER');
         $authPass = $request->getHeaderLine('PHP_AUTH_PW');
 
-        if ( $authUser === $this->username && $authPass === $this->password) {
+        if ($authUser === $this->username && $authPass === $this->password) {
             return $next($request, $response);
         } else {
-            return $this->c['view']->render($request, $response, ['errors'=>[
-                        'status'=>401,
-                        'title'=>'Need Authenticate'
-                    ]])->withHeader('WWW-Authenticate',sprintf('Basic realm="%s"', $this->realm))
+            return $this->c['view']->render($request, $response, ['errors' => [
+                        'status' => 401,
+                        'title'  => 'Need Authenticate',
+                    ]])->withHeader('WWW-Authenticate', sprintf('Basic realm="%s"', $this->realm))
                     ->withStatus(401);
         }
-        
     }
-    
 }

@@ -28,23 +28,22 @@ class Login
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $data = (array)$request->getParsedBody();
+        $data = (array) $request->getParsedBody();
         $this->c['logger']->info('post data', $data);
 
         if (!isset($data['clientID']) || !isset($data['password'])) {
-            return $this->c['view']->render($request, $response, ['errors'=>[
-                'title'=>'Missing field(s)'
+            return $this->c['view']->render($request, $response, ['errors' => [
+                'title' => 'Missing field(s)',
             ]]);
         }
 
-        if ( $this->isUserExist($data)){
-            return $this->c['view']->render($request, $response, $this->success() );
+        if ($this->isUserExist($data)) {
+            return $this->c['view']->render($request, $response, $this->success());
         }
 
-        return $this->c['view']->render($request, $response, ['errors'=>[
-            'title'=>'Login User Not Found'
+        return $this->c['view']->render($request, $response, ['errors' => [
+            'title' => 'Login User Not Found',
         ]]);
-        
     }
 
     /**
@@ -60,12 +59,13 @@ class Login
                 $this->c['UserModule']->client->verifyPassword($data['password']);
     }
 
-    private function success(){
+    private function success()
+    {
         /* @var $user \PP\Portal\dbModel\Client */
         $client = $this->c['UserModule']->client;
-        
-        return ['data'=>[
-                'id'=>$client->Client_NO
+
+        return ['data' => [
+                'id' => $client->Client_NO,
                 ]];
     }
 }

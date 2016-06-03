@@ -37,14 +37,14 @@ class UploadAction
                 $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename());
 
                 return $this->c['view']->render($request, $response, [
-                    'data'=>[
+                    'data' => [
                         'filename' => $newfile->getClientFilename(),
-                    ]
+                    ],
                 ]);
             }
 
             return $this->c['view']->render($request, $response, [
-                    'errors'=>$newfile->getValidationMsg(),
+                    'errors' => $newfile->getValidationMsg(),
                 ]);
         }
     }

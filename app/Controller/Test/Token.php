@@ -5,7 +5,6 @@ namespace PP\Portal\Controller\Test;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-
 class Token
 {
     /**
@@ -31,5 +30,4 @@ class Token
     {
         return $response->write('user id ::'.$this->c['user']->id);
     }
-
 }

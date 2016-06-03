@@ -11,13 +11,12 @@ namespace PP\Module;
 use PP\Portal\dbModel\Client;
 
 /**
- * Description of UserModule
+ * Description of UserModule.
  *
  * @author user
  */
 class UserModule
 {
-
     /**
      * @var \Slim\Container
      */
@@ -59,7 +58,7 @@ class UserModule
     public function isUserExistByID($id)
     {
         $item = $this->c['pool']->getItem('Client/'.$id.'/info');
-        
+
         /* @var $user Client */
         $client = $item->get();
 
@@ -70,9 +69,10 @@ class UserModule
                     ->findOne($id);
             $this->c['pool']->save($item->set($client));
         }
-        
+
         if ($client) {
             $this->client = $client;
+
             return true;
         }
 
