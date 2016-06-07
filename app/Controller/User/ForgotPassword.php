@@ -70,16 +70,14 @@ class ForgotPassword
         /* @var $client \PP\Portal\dbModel\Client */
         $client = $this->c['UserModule']->client;
 
-        $mailBody = $this->c['twigView']->fetch('email/forgot-password.twig', [
-                'Client' => $client,
-            ]);
-
         /* @var $mail \PHPMailer */
         $mail = $this->c['mailer'];
         $mail->setFrom('info@pacificprime.com', 'Pacific Prime');
         $mail->addAddress('alex@kwiksure.com', $client->First_Name.' '.$client->Surname);
         $mail->Subject = 'Forgot password test';
-        $mail->msgHTML($mailBody);
+        $mail->msgHTML($this->c['twigView']->fetch('email/forgot-password.twig', [
+                'Client' => $client,
+            ]));
         if (!$mail->send()) {
             $this->c->logger->error('forgot password mail send fail'.$mail->ErrorInfo);
         } else {
