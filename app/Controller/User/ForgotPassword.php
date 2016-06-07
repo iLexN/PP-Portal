@@ -31,7 +31,7 @@ class ForgotPassword
         $data = (array) $request->getParsedBody();
         // id - clientID
 
-        if (!isset($data['clientID']) ) {
+        if (!isset($data['clientID'])) {
             return $this->c['view']->render($request, $response, ['errors' => [
                 'title' => 'Missing field(s)',
             ]]);
@@ -39,9 +39,10 @@ class ForgotPassword
 
         if ($this->isUserExist($data)) {
             $this->sendForgotPasswordEmail();
-            return $this->c['view']->render($request, $response,['data' => [
+
+            return $this->c['view']->render($request, $response, ['data' => [
                 'title' => 'true',
-            ]] );
+            ]]);
         }
 
         return $this->c['view']->render($request, $response, ['errors' => [
@@ -58,11 +59,11 @@ class ForgotPassword
      */
     private function isUserExist($data)
     {
-        return $this->c['UserModule']->isUserExistByID($data['clientID']) ;
+        return $this->c['UserModule']->isUserExistByID($data['clientID']);
     }
 
     /**
-     * send email
+     * send email.
      */
     private function sendForgotPasswordEmail()
     {
@@ -72,21 +73,20 @@ class ForgotPassword
         /* @var $client \PP\Portal\dbModel\Client */
         $client = $this->c['UserModule']->client;
 
-        $mailBody = $twigView->fetch('email/forgot-password.twig', array(
+        $mailBody = $twigView->fetch('email/forgot-password.twig', [
                 'Client' => $client,
-            ));
+            ]);
 
         /* @var $mail \PHPMailer */
         $mail = $this->c['mailer'];
         $mail->setFrom('info@pacificprime.com', 'Pacific Prime');
-        $mail->addAddress('alex@kwiksure.com', $client->First_Name . ' ' . $client->Surname);
+        $mail->addAddress('alex@kwiksure.com', $client->First_Name.' '.$client->Surname);
         $mail->Subject = 'Forgot password test';
         $mail->msgHTML($mailBody);
         if (!$mail->send()) {
-            $this->c->logger->error('forgot password mail send fail' . $mail->ErrorInfo);
+            $this->c->logger->error('forgot password mail send fail'.$mail->ErrorInfo);
         } else {
             $this->c->logger->info('forgot password mail send');
         }
     }
-        
 }

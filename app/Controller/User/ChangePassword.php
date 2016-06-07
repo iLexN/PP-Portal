@@ -62,7 +62,7 @@ class ChangePassword
     }
 
     /**
-     * check is user exist
+     * check is user exist.
      *
      * @param int $id
      *
@@ -70,19 +70,20 @@ class ChangePassword
      */
     private function isUserExist($id)
     {
-        return  $this->c['UserModule']->isUserExistByID($id)  ;
+        return  $this->c['UserModule']->isUserExistByID($id);
     }
 
     /**
-     * check passwrod strength
+     * check passwrod strength.
      *
      * @param string $value
+     *
      * @return bool
      */
     private function checkPasswordstrength($value)
     {
         return $this->c['PasswordModule']->checkPasswordstrength($value, [
-            'letters','numbers','length'
+            'letters', 'numbers', 'length',
         ]);
     }
 }
