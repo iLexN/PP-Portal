@@ -37,7 +37,7 @@ class ForgotPassword
             ]]);
         }
 
-        if ($this->isUserExist($data)) {
+        if ($this->c['UserModule']->isUserExistByID($data['clientID'])) {
             $this->sendForgotPasswordEmail();
 
             return $this->c['view']->render($request, $response, ['data' => [
@@ -48,18 +48,6 @@ class ForgotPassword
         return $this->c['view']->render($request, $response, ['errors' => [
             'title' => 'Login User Not Found',
         ]]);
-    }
-
-    /**
-     * check email in db or not(already user?).
-     *
-     * @param array $data
-     *
-     * @return bool
-     */
-    private function isUserExist($data)
-    {
-        return $this->c['UserModule']->isUserExistByID($data['clientID']);
     }
 
     /**

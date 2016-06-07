@@ -29,21 +29,19 @@ class ChangePassword
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $data = (array) $request->getParsedBody();
-        // old_password , new_password
-
         $this->c['logger']->info('change password data', $data);
 
-        if (!isset($data['old_password']) || !isset($data['new_password'])) {
+        if ($this->checkRequiredData($data)) {
             return $this->c['view']->render($request, $response, ['errors' => [
                 'title' => 'Missing field(s)',
             ]]);
         }
 
-        if ($this->isUserExist($args['id'])) {
+        if ($this->c['UserModule']->isUserExistByID($args['id'])) {
             //todo check old password is same as now
 
             //check new password strength
-            return $this->c['view']->render($request, $response, $this->action($data));
+            return $this->c['view']->render($request, $response, $this->passwordstrengthOutput($data));
         }
 
         return $this->c['view']->render($request, $response, ['errors' => [
@@ -51,15 +49,15 @@ class ChangePassword
         ]]);
     }
 
-    private function action($data)
+    private function passwordstrengthOutput($data)
     {
         //check new password strength
-            if ($this->checkPasswordstrength($data['new_password'])) {
-                //todo save new password
-                return ['data' => [
-                    'title' => true,
-                ]];
-            }
+        if ($this->checkPasswordstrength($data['new_password'])) {
+            //todo save new password
+            return ['data' => [
+                'title' => true,
+            ]];
+        }
 
         return ['errors' => [
                 'title' => 'Password not strong enough',
@@ -67,15 +65,12 @@ class ChangePassword
     }
 
     /**
-     * check is user exist.
      *
-     * @param int $id
-     *
+     * @param array $data
      * @return bool
      */
-    private function isUserExist($id)
-    {
-        return  $this->c['UserModule']->isUserExistByID($id);
+    private function checkRequiredData($data){
+        return !isset($data['old_password']) || !isset($data['new_password']);
     }
 
     /**

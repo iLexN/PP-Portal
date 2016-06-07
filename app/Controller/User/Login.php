@@ -30,7 +30,7 @@ class Login
     {
         $data = (array) $request->getParsedBody();
 
-        if (!isset($data['clientID']) || !isset($data['password'])) {
+        if ( $this->checkRequiredData($data) ) {
             return $this->c['view']->render($request, $response, ['errors' => [
                 'title' => 'Missing field(s)',
             ]]);
@@ -43,6 +43,15 @@ class Login
         return $this->c['view']->render($request, $response, ['errors' => [
             'title' => 'Login User Not Found',
         ]]);
+    }
+
+    /**
+     *
+     * @param array $data
+     * @return bool
+     */
+    private function checkRequiredData($data){
+        return !isset($data['clientID']) || !isset($data['password']);
     }
 
     /**
