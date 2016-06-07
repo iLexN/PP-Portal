@@ -61,6 +61,9 @@ class ForgotPassword
         return $this->c['UserModule']->isUserExistByID($data['clientID']) ;
     }
 
+    /**
+     * send email
+     */
     private function sendForgotPasswordEmail()
     {
         /* @var $twigView \Slim\Views */

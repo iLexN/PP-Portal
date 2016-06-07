@@ -24,6 +24,12 @@ class PasswordModule
         $this->c = $container;
     }
 
+    /**
+     * pass the password value to check by rules
+     * @param string $value password
+     * @param array $rules
+     * @return boolean
+     */
     public function checkPasswordstrength($value,$rules = []){
         $error = [];
 
@@ -40,6 +46,12 @@ class PasswordModule
         return true;
     }
 
+    /**
+     * check by rule
+     * @param string $value
+     * @param string $rule
+     * @return boolean
+     */
     private function checkPasswordRule($value,$rule){
         switch ($rule) {
             case 'letters':
@@ -57,25 +69,50 @@ class PasswordModule
         }
     }
 
+    /**
+     * check min length
+     * @param string $value
+     * @return bool
+     */
     private function validateLength($value){
         return strlen($value) > 6;
     }
 
+    /**
+     * need have char
+     * @param string $value
+     * @return bool
+     */
     private function validateLetters($value)
     {
         return preg_match('/\pL/', $value);
     }
 
+    /**
+     * need have number
+     * @param string $value
+     * @return bool
+     */
     private function validateNumbers($value)
     {
         return preg_match('/\pN/', $value);
     }
 
+    /**
+     * need have diff case ie lowercase and uppercase
+     * @param string $value
+     * @return bool
+     */
     private function validateCaseDiff($value)
     {
         return preg_match('/(\p{Ll}+.*\p{Lu})|(\p{Lu}+.*\p{Ll})/u', $value);
     }
-    
+
+    /**
+     * need have Symbols
+     * @param string $value
+     * @return bool
+     */
     private function validateSymbols($value)
     {
         return preg_match('/[!@#$%^&*?()\-_=+{};:,<.>]/', $value);

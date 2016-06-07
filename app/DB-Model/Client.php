@@ -23,6 +23,7 @@ namespace PP\Portal\dbModel;
  * @property string $Home_Address_3
  * @property string $Home_Address_4
  * @property string $Home_Address_5
+ * @property string $password
  */
 class Client extends \Model
 {
