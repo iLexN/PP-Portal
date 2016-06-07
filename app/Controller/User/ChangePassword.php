@@ -40,25 +40,30 @@ class ChangePassword
         }
 
         if ($this->isUserExist($args['id'])) {
-
             //todo check old password is same as now
 
             //check new password strength
-            if ($this->checkPasswordstrength($data['new_password'])) {
-                //todo save new password
-                return $this->c['view']->render($request, $response, ['data' => [
-                    'title' => true,
-                ]]);
-            }
-
-            return $this->c['view']->render($request, $response, ['errors' => [
-                'title' => 'Password not strong enough',
-            ]]);
+            return $this->c['view']->render($request, $response, $this->action($data));
         }
 
         return $this->c['view']->render($request, $response, ['errors' => [
             'title' => 'User Not Found',
         ]]);
+    }
+
+    private function action($data)
+    {
+        //check new password strength
+            if ($this->checkPasswordstrength($data['new_password'])) {
+                //todo save new password
+                return ['data' => [
+                    'title' => true,
+                ]];
+            }
+
+        return ['errors' => [
+                'title' => 'Password not strong enough',
+            ]];
     }
 
     /**
