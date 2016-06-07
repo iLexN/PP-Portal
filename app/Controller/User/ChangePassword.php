@@ -87,8 +87,10 @@ class ChangePassword
      */
     private function checkPasswordstrength($value)
     {
-        return $this->c['PasswordModule']->checkPasswordstrength($value, [
-            'letters', 'numbers', 'length',
-        ]);
+        /* @var $passwrodModule \PP\Module\PasswordModule */
+        $passwrodModule = $this->c['PasswordModule'];
+        return $passwrodModule->validateLength($value, 6) &&
+                $passwrodModule->validateLetters($value) &&
+                $passwrodModule->validateNumbers($value);
     }
 }
