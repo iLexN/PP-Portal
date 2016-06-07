@@ -64,6 +64,9 @@ if (!$container['settings']['displayErrorDetails']) {
         };
     };
 }
+$container['mailer'] = function () {
+    return new \PHPMailer();
+};
 
 $container['dataManager'] = function () {
     return new \League\Fractal\Manager();

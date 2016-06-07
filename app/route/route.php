@@ -5,6 +5,9 @@ $app->post('/signup', 'PP\Portal\Controller\User\Signup')
 
 $app->post('/login', 'PP\Portal\Controller\User\Login')
         ->setName('UserLogin');
+$app->post('/forgot-passowrd', 'PP\Portal\Controller\User\ForgotPassword')
+        ->setName('UserChangePassword');
+
 $app->get('/user/{id}', 'PP\Portal\Controller\User\Info')
         ->setName('UserInfo');
 $app->get('/user/{id}/policy', 'PP\Portal\Controller\Policy\PolicyList')
