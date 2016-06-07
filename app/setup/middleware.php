@@ -1,7 +1,7 @@
 <?php
 
 //by route
-$checkToken = new \PP\Middleware\CheckToken($container);
+//$checkToken = new \PP\Middleware\CheckToken($container);
 
 //all app
 //$app->add(new \PP\Middleware\RouteLog($container));
