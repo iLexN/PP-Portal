@@ -25,19 +25,22 @@ class PasswordModule
     }
 
     /**
-     * pass the password value to check by rules
+     * pass the password value to check by rules.
+     *
      * @param string $value password
-     * @param array $rules
-     * @return boolean
+     * @param array  $rules
+     *
+     * @return bool
      */
-    public function checkPasswordstrength($value,$rules = []){
+    public function checkPasswordstrength($value, $rules = [])
+    {
         $error = [];
 
-        foreach ( $rules as $rule ){
-            $error[] = $this->checkPasswordRule($value,$rule);
+        foreach ($rules as $rule) {
+            $error[] = $this->checkPasswordRule($value, $rule);
         }
 
-        $this->c->logger->info('checkPasswordstrength',$error);
+        $this->c->logger->info('checkPasswordstrength', $error);
 
         if (in_array(false, $error)) {
             return false;
@@ -47,12 +50,15 @@ class PasswordModule
     }
 
     /**
-     * check by rule
+     * check by rule.
+     *
      * @param string $value
      * @param string $rule
-     * @return boolean
+     *
+     * @return bool
      */
-    private function checkPasswordRule($value,$rule){
+    private function checkPasswordRule($value, $rule)
+    {
         switch ($rule) {
             case 'letters':
                 return $this->validateLetters($value);
@@ -70,17 +76,22 @@ class PasswordModule
     }
 
     /**
-     * check min length
+     * check min length.
+     *
      * @param string $value
+     *
      * @return bool
      */
-    private function validateLength($value){
+    private function validateLength($value)
+    {
         return strlen($value) > 6;
     }
 
     /**
-     * need have char
+     * need have char.
+     *
      * @param string $value
+     *
      * @return bool
      */
     private function validateLetters($value)
@@ -89,8 +100,10 @@ class PasswordModule
     }
 
     /**
-     * need have number
+     * need have number.
+     *
      * @param string $value
+     *
      * @return bool
      */
     private function validateNumbers($value)
@@ -99,8 +112,10 @@ class PasswordModule
     }
 
     /**
-     * need have diff case ie lowercase and uppercase
+     * need have diff case ie lowercase and uppercase.
+     *
      * @param string $value
+     *
      * @return bool
      */
     private function validateCaseDiff($value)
@@ -109,8 +124,10 @@ class PasswordModule
     }
 
     /**
-     * need have Symbols
+     * need have Symbols.
+     *
      * @param string $value
+     *
      * @return bool
      */
     private function validateSymbols($value)
