@@ -63,7 +63,7 @@ class ForgotPassword
 
     private function sendForgotPasswordEmail()
     {
-        /* @var $twigView \Twig_Environment */
+        /* @var $twigView \Slim\Views */
         $twigView = $this->c['twigView'];
 
         /* @var $client \PP\Portal\dbModel\Client */

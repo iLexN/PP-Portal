@@ -3,7 +3,26 @@
 namespace PP\Portal\dbModel;
 
 /**
- * @property string $password
+ * @property string $Client_NO
+ * @property string $Title
+ * @property string $First_Name
+ * @property string $Middle_Name
+ * @property string $Surname
+ * @property string $Company_Name
+ * @property string $Mobile_One
+ * @property string $Mobile_Two
+ * @property string $Home_Phone
+ * @property string $Business_Phone
+ * @property string $Home_Fax
+ * @property string $Business_Fax
+ * @property string $Email
+ * @property string $Second_Email
+ * @property string $Person_One_Skype
+ * @property string $Home_Address_1
+ * @property string $Home_Address_2
+ * @property string $Home_Address_3
+ * @property string $Home_Address_4
+ * @property string $Home_Address_5
  */
 class Client extends \Model
 {
