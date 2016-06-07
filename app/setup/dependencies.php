@@ -76,3 +76,7 @@ $container['view'] = function () {
 $container['UserModule'] = function (\Slim\Container $c) {
     return new \PP\Module\UserModule($c);
 };
+
+$container['PasswordModule'] = function (\Slim\Container $c) {
+    return new \PP\Module\PasswordModule($c);
+};
