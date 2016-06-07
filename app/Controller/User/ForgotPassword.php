@@ -67,13 +67,10 @@ class ForgotPassword
      */
     private function sendForgotPasswordEmail()
     {
-        /* @var $twigView \Slim\Views */
-        $twigView = $this->c['twigView'];
-
         /* @var $client \PP\Portal\dbModel\Client */
         $client = $this->c['UserModule']->client;
 
-        $mailBody = $twigView->fetch('email/forgot-password.twig', [
+        $mailBody = $this->c['twigView']->fetch('email/forgot-password.twig', [
                 'Client' => $client,
             ]);
 
