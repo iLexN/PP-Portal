@@ -29,7 +29,7 @@ class PolicyList
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        if ($this->isUserExist($args['id'])) {
+        if ($this->c['UserModule']->isUserExistByID($args['id'])) {
             /* @var $client \PP\Portal\dbModel\Client */
             $client = $this->c['UserModule']->client;
 
@@ -49,17 +49,5 @@ class PolicyList
         return $this->c['view']->render($request, $response, ['errors' => [
             'title' => 'User Info Not Found',
         ]]);
-    }
-
-    /**
-     * check email in db or not(already user?).
-     *
-     * @param int $id
-     *
-     * @return bool
-     */
-    private function isUserExist($id)
-    {
-        return $this->c['UserModule']->isUserExistByID($id);
     }
 }
