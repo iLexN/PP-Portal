@@ -45,7 +45,7 @@ $container['notFoundHandler'] = function (\Slim\Container $c) {
         ];
         $c->logger->info('404', $logInfo);
 
-        return $c['view']->render($request, $response, ['error' => [
+        return $c['view']->render($request, $response, ['errors' => [
                     'status' => 404,
                     'title'  => 'not found',
                 ]])->withStatus(404);
@@ -57,7 +57,7 @@ if (!$container['settings']['displayErrorDetails']) {
         return function (\Slim\Http\Request $request, \Slim\Http\Response $response, \Exception $exception) use ($c) {
             $c['logger']->error('e', (array) $exception);
 
-            return $c['view']->render($request, $response, ['error' => [
+            return $c['view']->render($request, $response, ['errors' => [
                     'status' => 500,
                     'title'  => 'error happen',
                 ]])->withStatus(500);

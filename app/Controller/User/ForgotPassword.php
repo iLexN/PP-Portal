@@ -41,7 +41,7 @@ class ForgotPassword
             $this->sendForgotPasswordEmail();
 
             return $this->c['view']->render($request, $response, ['data' => [
-                'title' => 'true',
+                'title' => true,
             ]]);
         }
 
