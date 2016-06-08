@@ -38,8 +38,8 @@ class InfoUpdate
             $client->set($data);
             $client->save();
 
-            return $this->c['view']->render($request, $response, ['data'=>[
-                'title'=>'User Info Updated',
+            return $this->c['view']->render($request, $response, ['data' => [
+                'title' => 'User Info Updated',
                 ]]);
         }
 

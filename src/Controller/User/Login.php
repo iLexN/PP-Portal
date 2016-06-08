@@ -30,7 +30,7 @@ class Login
     {
         $data = (array) $request->getParsedBody();
 
-        if ( $this->checkRequiredData($data) ) {
+        if ($this->checkRequiredData($data)) {
             return $this->c['view']->render($request, $response, ['errors' => [
                 'title' => 'Missing field(s)',
             ]]);
@@ -46,11 +46,12 @@ class Login
     }
 
     /**
-     *
      * @param array $data
+     *
      * @return bool
      */
-    private function checkRequiredData($data){
+    private function checkRequiredData($data)
+    {
         return !isset($data['clientID']) || !isset($data['password']);
     }
 
