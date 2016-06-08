@@ -3,10 +3,10 @@
 session_start();
 
 $autoloader = require '../vendor/autoload.php';
-$autoloader->addPsr4('PP\Portal\Controller\\', __DIR__.'/../app/Controller');
-$autoloader->addPsr4('PP\Portal\dbModel\\', __DIR__.'/../app/DB-Model');
-$autoloader->addPsr4('PP\Module\\', __DIR__.'/../app/Module');
-$autoloader->addPsr4('PP\Middleware\\', __DIR__.'/../app/Middleware');
+$autoloader->addPsr4('PP\Portal\Controller\\', __DIR__.'/../src/Controller');
+$autoloader->addPsr4('PP\Portal\dbModel\\', __DIR__.'/../src/DB-Model');
+$autoloader->addPsr4('PP\Module\\', __DIR__.'/../src/Module');
+$autoloader->addPsr4('PP\Middleware\\', __DIR__.'/../src/Middleware');
 
 date_default_timezone_set('Asia/Hong_Kong');
 
