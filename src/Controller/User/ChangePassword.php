@@ -65,11 +65,12 @@ class ChangePassword
     }
 
     /**
-     *
      * @param array $data
+     *
      * @return bool
      */
-    private function checkRequiredData($data){
+    private function checkRequiredData($data)
+    {
         return !isset($data['old_password']) || !isset($data['new_password']);
     }
 
@@ -84,6 +85,7 @@ class ChangePassword
     {
         /* @var $passwrodModule \PP\Module\PasswordModule */
         $passwrodModule = $this->c['PasswordModule'];
+
         return $passwrodModule->validateLength($value, 6) &&
                 $passwrodModule->validateLetters($value) &&
                 $passwrodModule->validateNumbers($value);

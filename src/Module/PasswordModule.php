@@ -28,7 +28,7 @@ class PasswordModule
      * check min length.
      *
      * @param string $value
-     * @param int $length
+     * @param int    $length
      *
      * @return bool
      */
