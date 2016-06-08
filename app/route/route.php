@@ -10,6 +10,8 @@ $app->post('/forgot-passowrd', 'PP\Portal\Controller\User\ForgotPassword')
 
 $app->get('/user/{id}', 'PP\Portal\Controller\User\Info')
         ->setName('UserInfo');
+$app->post('/user/{id}', 'PP\Portal\Controller\User\InfoUpdate');
+
 $app->get('/user/{id}/policy', 'PP\Portal\Controller\Policy\PolicyList')
         ->setName('PolicyList');
 $app->post('/user/{id}/change-passowrd', 'PP\Portal\Controller\User\ChangePassword')
