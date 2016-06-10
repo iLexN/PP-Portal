@@ -35,16 +35,16 @@ class PolicyList
             /* @var $policyList \PP\Portal\dbModel\Policies */
             $policyList = $client->policies()
                     //->order_by_desc('Policy_ID')
-                    ->orderBy('Policy_ID','desc')
+                    ->orderBy('Policy_ID', 'desc')
                     ->get();
                     //->find_many();
 
-            return $this->c['ViewHelper']->toJson($response,[
-                        'data' => $policyList->toArray()
+            return $this->c['ViewHelper']->toJson($response, [
+                        'data' => $policyList->toArray(),
                     ]);
         }
 
-        return $this->c['ViewHelper']->toJson($response,['errors' => [
+        return $this->c['ViewHelper']->toJson($response, ['errors' => [
             'title' => 'User Info Not Found',
         ]]);
     }

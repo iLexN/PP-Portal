@@ -31,16 +31,16 @@ class Login
         $data = (array) $request->getParsedBody();
 
         if ($this->checkRequiredData($data)) {
-            return $this->c['ViewHelper']->toJson($response,['errors' => [
+            return $this->c['ViewHelper']->toJson($response, ['errors' => [
                 'title' => 'Missing field(s)',
             ]]);
         }
 
         if ($this->isUserExist($data)) {
-            return $this->c['ViewHelper']->toJson($response,$this->success());
+            return $this->c['ViewHelper']->toJson($response, $this->success());
         }
 
-        return $this->c['ViewHelper']->toJson($response,['errors' => [
+        return $this->c['ViewHelper']->toJson($response, ['errors' => [
             'title' => 'Login User Not Found',
         ]]);
     }

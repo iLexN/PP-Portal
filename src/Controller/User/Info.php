@@ -37,10 +37,10 @@ class Info
             //$out = ['data' => $client->as_array()];
             $out = ['data' => $client->toArray()];
 
-            return $this->c['ViewHelper']->toJson($response,$out);
+            return $this->c['ViewHelper']->toJson($response, $out);
         }
 
-        return $this->c['ViewHelper']->toJson($response,['errors' => [
+        return $this->c['ViewHelper']->toJson($response, ['errors' => [
             'title' => 'User Info Not Found',
         ]]);
     }
