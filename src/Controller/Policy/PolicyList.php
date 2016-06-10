@@ -2,7 +2,6 @@
 
 namespace PP\Portal\Controller\Policy;
 
-use League\Fractal\Resource\Collection;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
