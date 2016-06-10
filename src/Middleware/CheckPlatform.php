@@ -41,7 +41,7 @@ class CheckPlatform
         }
 
         if (!$result) {
-            return $this->c['ViewHelper']->toJson($response,['errors' => [
+            return $this->c['ViewHelper']->toJson($response, ['errors' => [
                         'status' => 403,
                         'title'  => 'Platform Header Missing',
                     ]])->withStatus(403);

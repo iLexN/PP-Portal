@@ -31,7 +31,7 @@ class ChangePassword
         $data = (array) $request->getParsedBody();
 
         if ($this->checkRequiredData($data)) {
-            return $this->c['ViewHelper']->toJson($response,['errors' => [
+            return $this->c['ViewHelper']->toJson($response, ['errors' => [
                 'title' => 'Missing field(s)',
             ]]);
         }
@@ -40,10 +40,10 @@ class ChangePassword
             //todo check old password is same as now
 
             //check new password strength
-            return $this->c['ViewHelper']->toJson($response,$this->passwordstrengthOutput($data));
+            return $this->c['ViewHelper']->toJson($response, $this->passwordstrengthOutput($data));
         }
 
-        return $this->c['ViewHelper']->toJson($response,['errors' => [
+        return $this->c['ViewHelper']->toJson($response, ['errors' => [
             'title' => 'User Not Found',
         ]]);
     }

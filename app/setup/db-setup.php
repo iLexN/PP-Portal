@@ -22,11 +22,11 @@ $dbSetting = $settings['dbConfig'];
 //ORM::configure('create_cache_key', [$dbCache, 'genKey']);
 
 $db = [
-        'driver' => 'mysql',
-        'host' => $dbSetting['host'],
-        'database' => $dbSetting['database'],
-        'username' => $dbSetting['user'],
-        'password' => $dbSetting['password'],
+        'driver'    => 'mysql',
+        'host'      => $dbSetting['host'],
+        'database'  => $dbSetting['database'],
+        'username'  => $dbSetting['user'],
+        'password'  => $dbSetting['password'],
         'charset'   => 'utf8',
         'collation' => 'utf8_general_ci',
         'prefix'    => '',
@@ -36,6 +36,6 @@ $capsule->addConnection($db);
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
-if ($dbSetting['logging'] ){
+if ($dbSetting['logging']) {
     $capsule->getConnection()->enableQueryLog();
 }

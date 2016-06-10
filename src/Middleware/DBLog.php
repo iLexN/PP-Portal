@@ -2,9 +2,10 @@
 
 namespace PP\Middleware;
 
+use Illuminate\Database\Capsule\Manager as Capsule;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Illuminate\Database\Capsule\Manager as Capsule;
+
 /**
  * Description of HttpBasicAuthMiddleWare.
  *
@@ -18,7 +19,6 @@ class DBLog
     protected $c;
 
     /**
-     *
      * @var Capsule
      */
     protected $capsule;
@@ -42,7 +42,7 @@ class DBLog
     {
         $response = $next($request, $response);
         $query = $this->capsule->getConnection()->getQueryLog();
-        $this->c->logger->info('query',$query);
+        $this->c->logger->info('query', $query);
 
         return $response;
     }

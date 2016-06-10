@@ -38,12 +38,12 @@ class InfoUpdate
             $client->update($data);
             //$client->save();
 
-            return $this->c['ViewHelper']->toJson($response,['data' => [
+            return $this->c['ViewHelper']->toJson($response, ['data' => [
                 'title' => 'User Info Updated',
                 ]]);
         }
 
-        return $this->c['ViewHelper']->toJson($response,['errors' => [
+        return $this->c['ViewHelper']->toJson($response, ['errors' => [
             'title' => 'User Info Not Found',
         ]]);
     }
