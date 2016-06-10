@@ -8,13 +8,13 @@ $app->post('/login', 'PP\Portal\Controller\User\Login')
 $app->post('/forgot-passowrd', 'PP\Portal\Controller\User\ForgotPassword')
         ->setName('UserChangePassword');
 
-$app->get('/user/{id}', 'PP\Portal\Controller\User\Info')
+$app->get('/user/{id:\d+}', 'PP\Portal\Controller\User\Info')
         ->setName('UserInfo');
-$app->post('/user/{id}', 'PP\Portal\Controller\User\InfoUpdate');
+$app->post('/user/{id:\d+}', 'PP\Portal\Controller\User\InfoUpdate');
 
-$app->get('/user/{id}/policy', 'PP\Portal\Controller\Policy\PolicyList')
+$app->get('/user/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyList')
         ->setName('PolicyList');
-$app->post('/user/{id}/change-passowrd', 'PP\Portal\Controller\User\ChangePassword')
+$app->post('/user/{id:\d+}/change-passowrd', 'PP\Portal\Controller\User\ChangePassword')
         ->setName('UserChangePassword');
 
 
