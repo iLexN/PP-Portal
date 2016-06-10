@@ -2,6 +2,7 @@
 
 //by route
 //$checkToken = new \PP\Middleware\CheckToken($container);
+$checkUserExist = new \PP\Middleware\CheckUserExist($container);
 
 //all app
 if ($dbSetting['logging']) {

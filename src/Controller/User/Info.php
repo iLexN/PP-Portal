@@ -28,20 +28,13 @@ class Info
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $id = $args['id'];
+        /* @var $client \PP\Portal\dbModel\Client */
+        $client = $this->c['UserModule']->client;
 
-        if ($this->c['UserModule']->isUserExistByID($id)) {
-            /* @var $client \PP\Portal\dbModel\Client */
-            $client = $this->c['UserModule']->client;
+        //$out = ['data' => $client->as_array()];
+        $out = ['data' => $client->toArray()];
 
-            //$out = ['data' => $client->as_array()];
-            $out = ['data' => $client->toArray()];
+        return $this->c['ViewHelper']->toJson($response, $out);
 
-            return $this->c['ViewHelper']->toJson($response, $out);
-        }
-
-        return $this->c['ViewHelper']->toJson($response, ['errors' => [
-            'title' => 'User Info Not Found',
-        ]]);
     }
 }

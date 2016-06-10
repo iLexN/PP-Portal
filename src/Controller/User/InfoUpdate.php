@@ -28,23 +28,16 @@ class InfoUpdate
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $id = $args['id'];
         $data = (array) $request->getParsedBody();
 
-        if ($this->c['UserModule']->isUserExistByID($id)) {
-            /* @var $client \PP\Portal\dbModel\Client */
-            $client = $this->c['UserModule']->client;
+        /* @var $client \PP\Portal\dbModel\Client */
+        $client = $this->c['UserModule']->client;
 
-            $client->update($data);
-            //$client->save();
+        $client->update($data);
+        //$client->save();
 
-            return $this->c['ViewHelper']->toJson($response, ['data' => [
-                'title' => 'User Info Updated',
-                ]]);
-        }
-
-        return $this->c['ViewHelper']->toJson($response, ['errors' => [
-            'title' => 'User Info Not Found',
-        ]]);
+        return $this->c['ViewHelper']->toJson($response, ['data' => [
+            'title' => 'User Info Updated',
+            ]]);
     }
 }

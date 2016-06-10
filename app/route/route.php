@@ -9,13 +9,17 @@ $app->post('/forgot-passowrd', 'PP\Portal\Controller\User\ForgotPassword')
         ->setName('UserChangePassword');
 
 $app->get('/user/{id:\d+}', 'PP\Portal\Controller\User\Info')
-        ->setName('UserInfo');
-$app->post('/user/{id:\d+}', 'PP\Portal\Controller\User\InfoUpdate');
+        ->setName('UserInfo')
+        ->add($checkUserExist);
+$app->post('/user/{id:\d+}', 'PP\Portal\Controller\User\InfoUpdate')
+        ->add($checkUserExist);
 
 $app->get('/user/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyList')
-        ->setName('PolicyList');
+        ->setName('PolicyList')
+        ->add($checkUserExist);
 $app->post('/user/{id:\d+}/change-passowrd', 'PP\Portal\Controller\User\ChangePassword')
-        ->setName('UserChangePassword');
+        ->setName('UserChangePassword')
+        ->add($checkUserExist);
 
 
 $app->post('/test/upload', 'PP\Portal\Controller\Test\UploadAction');

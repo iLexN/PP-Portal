@@ -36,16 +36,10 @@ class ChangePassword
             ]]);
         }
 
-        if ($this->c['UserModule']->isUserExistByID($args['id'])) {
-            //todo check old password is same as now
+        //todo check old password is same as now
 
-            //check new password strength
-            return $this->c['ViewHelper']->toJson($response, $this->passwordstrengthOutput($data));
-        }
-
-        return $this->c['ViewHelper']->toJson($response, ['errors' => [
-            'title' => 'User Not Found',
-        ]]);
+        //check new password strength
+        return $this->c['ViewHelper']->toJson($response, $this->passwordstrengthOutput($data));
     }
 
     private function passwordstrengthOutput($data)
@@ -57,7 +51,7 @@ class ChangePassword
                 'title' => true,
             ]];
         }
-
+        
         return ['errors' => [
                 'title' => 'Password not strong enough',
             ]];

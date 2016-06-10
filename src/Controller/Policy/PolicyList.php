@@ -28,24 +28,16 @@ class PolicyList
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        if ($this->c['UserModule']->isUserExistByID($args['id'])) {
-            /* @var $client \PP\Portal\dbModel\Client */
-            $client = $this->c['UserModule']->client;
+        /* @var $client \PP\Portal\dbModel\Client */
+        $client = $this->c['UserModule']->client;
 
-            /* @var $policyList \PP\Portal\dbModel\Policies */
-            $policyList = $client->policies()
-                    //->order_by_desc('Policy_ID')
-                    ->orderBy('Policy_ID', 'desc')
-                    ->get();
-                    //->find_many();
+        /* @var $policyList \PP\Portal\dbModel\Policies */
+        $policyList = $client->policies()
+                ->orderBy('Policy_ID', 'desc')
+                ->get();
 
-            return $this->c['ViewHelper']->toJson($response, [
-                        'data' => $policyList->toArray(),
-                    ]);
-        }
-
-        return $this->c['ViewHelper']->toJson($response, ['errors' => [
-            'title' => 'User Info Not Found',
-        ]]);
+        return $this->c['ViewHelper']->toJson($response, [
+                    'data' => $policyList->toArray(),
+                ]);
     }
 }
