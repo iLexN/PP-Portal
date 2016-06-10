@@ -41,7 +41,7 @@ class DBLog
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
     {
         $response = $next($request, $response);
-        $query = $capsule->getConnection()->getQueryLog();
+        $query = $this->capsule->getConnection()->getQueryLog();
         $this->c->logger->info('query',$query);
 
         return $response;
