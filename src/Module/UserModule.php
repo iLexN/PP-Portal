@@ -66,7 +66,8 @@ class UserModule
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             $client = Client::select($this->fields)
-                    ->findOne($id);
+                    ->find($id);
+                    //->findOne($id);
             $this->c['pool']->save($item->set($client));
         }
 

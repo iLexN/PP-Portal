@@ -35,15 +35,15 @@ class InfoUpdate
             /* @var $client \PP\Portal\dbModel\Client */
             $client = $this->c['UserModule']->client;
 
-            $client->set($data);
-            $client->save();
+            $client->update($data);
+            //$client->save();
 
-            return $this->c['view']->render($request, $response, ['data' => [
+            return $this->c['ViewHelper']->toJson($response,['data' => [
                 'title' => 'User Info Updated',
                 ]]);
         }
 
-        return $this->c['view']->render($request, $response, ['errors' => [
+        return $this->c['ViewHelper']->toJson($response,['errors' => [
             'title' => 'User Info Not Found',
         ]]);
     }

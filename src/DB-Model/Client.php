@@ -2,6 +2,8 @@
 
 namespace PP\Portal\dbModel;
 
+use Illuminate\Database\Eloquent\Model as Model;
+
 /**
  * @property string $Client_NO
  * @property string $Title
@@ -25,11 +27,14 @@ namespace PP\Portal\dbModel;
  * @property string $Home_Address_5
  * @property string $password
  */
-class Client extends \Model
+class Client extends Model
 {
-    public static $_table = 'client';
+    protected $table = 'client';
+    protected $primaryKey = 'Client_NO';
 
-    public static $_id_column = 'Client_NO';
+    public $timestamps = false;
+
+    protected $guarded = [];
 
     public function verifyPassword($password)
     {
@@ -37,7 +42,8 @@ class Client extends \Model
             return true;
         }
 
-        if (password_verify($password, $this->password)) {
+        //if (password_verify($password, $this->password)) {
+        if (password_verify($password, $this->attributes['password'])) {
             return true;
         }
 
@@ -46,6 +52,6 @@ class Client extends \Model
 
     public function policies()
     {
-        return $this->has_many(__NAMESPACE__.'\Policies', 'Client_NO');
+        return $this->hasMany(__NAMESPACE__.'\Policies', 'Client_NO');
     }
 }

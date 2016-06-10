@@ -34,12 +34,13 @@ class Info
             /* @var $client \PP\Portal\dbModel\Client */
             $client = $this->c['UserModule']->client;
 
-            $out = ['data' => $client->as_array()];
+            //$out = ['data' => $client->as_array()];
+            $out = ['data' => $client->toArray()];
 
-            return $this->c['view']->render($request, $response, $out);
+            return $this->c['ViewHelper']->toJson($response,$out);
         }
 
-        return $this->c['view']->render($request, $response, ['errors' => [
+        return $this->c['ViewHelper']->toJson($response,['errors' => [
             'title' => 'User Info Not Found',
         ]]);
     }

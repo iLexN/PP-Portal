@@ -36,14 +36,14 @@ class UploadAction
             if ($newfile->isValid()) {
                 $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename());
 
-                return $this->c['view']->render($request, $response, [
+                return $this->c['ViewHelper']->toJson($response,[
                     'data' => [
                         'filename' => $newfile->getClientFilename(),
                     ],
                 ]);
             }
 
-            return $this->c['view']->render($request, $response, [
+            return $this->c['ViewHelper']->toJson($response,[
                     'errors' => $newfile->getValidationMsg(),
                 ]);
         }

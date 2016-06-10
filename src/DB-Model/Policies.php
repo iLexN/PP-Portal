@@ -2,14 +2,18 @@
 
 namespace PP\Portal\dbModel;
 
-class Policies extends \Model
-{
-    public static $_table = 'policies';
+use Illuminate\Database\Eloquent\Model as Model;
 
-    public static $_id_column = 'Policy_ID';
+class Policies extends Model
+{
+    protected $table = 'policies';
+
+    protected $primaryKey = 'Policy_ID';
+
+    protected $visible = ['Client_NO','Sale_Date','New_Or_Renew','Policy_Type','Policy_Details','Insurance_Company','Distributing_Agent','Responsibility','Position','Status','Policy_Issue_Date','Issue_Responsibility','Policy_Number','Renewal_Status'];
 
     public function posts()
     {
-        return $this->belongs_to(__NAMESPACE__.'\Client', 'Client_NO');
+        return $this->belongsTo(__NAMESPACE__.'\Client', 'Client_NO');
     }
 }

@@ -32,7 +32,7 @@ class ForgotPassword
         // id - clientID
 
         if (!isset($data['clientID'])) {
-            return $this->c['view']->render($request, $response, ['errors' => [
+            return $this->c['ViewHelper']->toJson($response,['errors' => [
                 'title' => 'Missing field(s)',
             ]]);
         }
@@ -40,12 +40,12 @@ class ForgotPassword
         if ($this->c['UserModule']->isUserExistByID($data['clientID'])) {
             $this->sendForgotPasswordEmail();
 
-            return $this->c['view']->render($request, $response, ['data' => [
+            return $this->c['ViewHelper']->toJson($response,['data' => [
                 'title' => true,
             ]]);
         }
 
-        return $this->c['view']->render($request, $response, ['errors' => [
+        return $this->c['ViewHelper']->toJson($response,['errors' => [
             'title' => 'Login User Not Found',
         ]]);
     }

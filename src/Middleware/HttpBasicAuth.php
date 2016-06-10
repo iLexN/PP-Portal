@@ -49,15 +49,13 @@ class HttpBasicAuth
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
     {
-        $this->c->logger->info('Middleware HttpBasicAuth');
-
         $authUser = $request->getHeaderLine('PHP_AUTH_USER');
         $authPass = $request->getHeaderLine('PHP_AUTH_PW');
 
         if ($authUser === $this->username && $authPass === $this->password) {
             return $next($request, $response);
         } else {
-            return $this->c['view']->render($request, $response, ['errors' => [
+            return $this->c['ViewHelper']->toJson($response,['errors' => [
                         'status' => 401,
                         'title'  => 'Need Authenticate',
                     ]])->withHeader('WWW-Authenticate', sprintf('Basic realm="%s"', $this->realm))

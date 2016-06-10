@@ -29,10 +29,9 @@ class ChangePassword
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $data = (array) $request->getParsedBody();
-        $this->c['logger']->info('change password data', $data);
 
         if ($this->checkRequiredData($data)) {
-            return $this->c['view']->render($request, $response, ['errors' => [
+            return $this->c['ViewHelper']->toJson($response,['errors' => [
                 'title' => 'Missing field(s)',
             ]]);
         }
@@ -41,10 +40,10 @@ class ChangePassword
             //todo check old password is same as now
 
             //check new password strength
-            return $this->c['view']->render($request, $response, $this->passwordstrengthOutput($data));
+            return $this->c['ViewHelper']->toJson($response,$this->passwordstrengthOutput($data));
         }
 
-        return $this->c['view']->render($request, $response, ['errors' => [
+        return $this->c['ViewHelper']->toJson($response,['errors' => [
             'title' => 'User Not Found',
         ]]);
     }

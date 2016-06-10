@@ -33,8 +33,6 @@ class CheckPlatform
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
     {
-        $this->c->logger->info('Middleware CheckPlatform');
-
         if ($request->hasHeader('PP-Portal-Platform')) {
             $platform = $request->getHeaderLine('PP-Portal-Platform');
             $result = $this->checkPlatform($platform);
@@ -43,7 +41,7 @@ class CheckPlatform
         }
 
         if (!$result) {
-            return $this->c['view']->render($request, $response, ['errors' => [
+            return $this->c['ViewHelper']->toJson($response,['errors' => [
                         'status' => 403,
                         'title'  => 'Platform Header Missing',
                     ]])->withStatus(403);
