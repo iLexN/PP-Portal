@@ -36,12 +36,12 @@ class CheckUserExist
         $route = $request->getAttribute('route');
         $arguments = $route->getArguments();
 
-        if ( !$this->c['UserModule']->isUserExistByID($arguments['id']) ){
+        if (!$this->c['UserModule']->isUserExistByID($arguments['id'])) {
             return $this->c['ViewHelper']->toJson($response, ['errors' => [
                 'title' => 'User Not Found',
             ]]);
         }
-        
+
         return $next($request, $response);
     }
 }

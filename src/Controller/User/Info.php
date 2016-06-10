@@ -35,6 +35,5 @@ class Info
         $out = ['data' => $client->toArray()];
 
         return $this->c['ViewHelper']->toJson($response, $out);
-
     }
 }

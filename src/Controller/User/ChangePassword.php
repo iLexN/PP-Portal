@@ -51,7 +51,7 @@ class ChangePassword
                 'title' => true,
             ]];
         }
-        
+
         return ['errors' => [
                 'title' => 'Password not strong enough',
             ]];
