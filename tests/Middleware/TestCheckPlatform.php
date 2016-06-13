@@ -55,12 +55,36 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
         return  \Slim\Http\Request::createFromEnvironment($environment);
     }
 
+    public function testCheckPlatformMiss()
+    {
+        $action = new \PP\Middleware\CheckPlatform($this->setUpContainer());
+
+        $request = $this->setUpRequest();
+
+        $request = $request->withHeader('miss', 'k');
+
+        $response = new \Slim\Http\Response();
+
+        $response = $action($request, $response, function ($request, $response) {
+            return $response->write(json_encode(['success'=>true]));
+        });
+
+        $this->assertJsonStringEqualsJsonString(
+            json_encode(['errors' => [
+                        'status' => 403,
+                        'title'  => 'Platform Header Missing',
+                    ]]),
+                    json_encode(json_decode((string)$response->getBody()))
+        );
+    }
+
     public function setUpContainer()
     {
         $app = new \Slim\App();
         $c = $app->getContainer();
 
         $c['jsonConfig'] = ['prettyPrint'=>false];
+
         $c['ViewHelper'] = function ($c) {
             return new \PP\Module\Helper\View($c);
         };
