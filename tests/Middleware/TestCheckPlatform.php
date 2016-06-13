@@ -61,7 +61,6 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
         $c = $app->getContainer();
 
         $c['jsonConfig'] = ['prettyPrint'=>false];
-
         $c['ViewHelper'] = function ($c) {
             return new \PP\Module\Helper\View($c);
         };
