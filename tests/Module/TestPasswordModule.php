@@ -73,7 +73,7 @@ class TestPasswordModule extends \PHPUnit_Framework_TestCase
         $pass = 'aa12bdck';
 
         $this->assertTrue($p->validateNumbers($pass) &&
-                $p->testValidateLength($pass,6) &&
+                $p->validateLength($pass,6) &&
                 $p->validateLetters($pass) );
         
     }
