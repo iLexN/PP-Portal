@@ -46,7 +46,7 @@ class PasswordModule
      */
     public function validateLetters($value)
     {
-        return preg_match('/\pL/', $value);
+        return (bool)preg_match('/\pL/', $value);
     }
 
     /**
@@ -58,7 +58,7 @@ class PasswordModule
      */
     public function validateNumbers($value)
     {
-        return preg_match('/\pN/', $value);
+        return (bool)preg_match('/\pN/', $value);
     }
 
     /**
@@ -70,7 +70,7 @@ class PasswordModule
      */
     public function validateCaseDiff($value)
     {
-        return preg_match('/(\p{Ll}+.*\p{Lu})|(\p{Lu}+.*\p{Ll})/u', $value);
+        return (bool)preg_match('/(\p{Ll}+.*\p{Lu})|(\p{Lu}+.*\p{Ll})/u', $value);
     }
 
     /**
@@ -82,6 +82,6 @@ class PasswordModule
      */
     public function validateSymbols($value)
     {
-        return preg_match('/[!@#$%^&*?()\-_=+{};:,<.>]/', $value);
+        return (bool)preg_match('/[!@#$%^&*?()\-_=+{};:,<.>]/', $value);
     }
 }
