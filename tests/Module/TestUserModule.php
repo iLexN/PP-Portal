@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class TestView extends \PHPUnit_Framework_TestCase
+class TestUserModule extends \PHPUnit_Framework_TestCase
 {
     private $c;
     
