@@ -9,4 +9,3 @@
 /claims/cache/route.cache
 /upload/*
 /app/config/
-/src/DB-Model/*.bak
