@@ -13,21 +13,8 @@ class TestUserModule extends \PHPUnit_Framework_TestCase
         $this->assertTrue($userModule->isUserExistByID(1));
 
         $this->assertEquals(1,$userModule->client->Client_NO);
-
     }
-
-    public function testIsUserExistByIDWithCache()
-    {
-        $userModule = new \PP\Module\UserModule($this->setUpContainer());
-
-        
-
-        $this->assertTrue($userModule->isUserExistByID(1));
-
-        $this->assertEquals(1,$userModule->client->Client_NO);
-
-    }
-
+    
     public function testIsUserNotFind()
     {
         $userModule = new \PP\Module\UserModule($this->setUpContainer());
