@@ -5,7 +5,7 @@ namespace PP\Test;
 class TestCheckPlatform extends \PHPUnit_Framework_TestCase
 {
     private $c;
-    
+
     public function testCheckPlatformError()
     {
         $action = new \PP\Portal\Middleware\CheckPlatform($this->setUpContainer());
@@ -17,7 +17,7 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
         $response = new \Slim\Http\Response();
 
         $response = $action($request, $response, function ($request, $response) {
-            return $response->write(json_encode(['success'=>true]));
+            return $response->write(json_encode(['success' => true]));
         });
 
         $this->assertJsonStringEqualsJsonString(
@@ -25,11 +25,12 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
                         'status' => 403,
                         'title'  => 'Platform Header Missing',
                     ]]),
-                    json_encode(json_decode((string)$response->getBody()))
+                    json_encode(json_decode((string) $response->getBody()))
         );
     }
 
-    function testWeb(){
+    public function testWeb()
+    {
         $action = new \PP\Portal\Middleware\CheckPlatform($this->setUpContainer());
 
         $request = $this->setUpRequest();
@@ -39,17 +40,17 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
         $response = new \Slim\Http\Response();
 
         $response = $action($request, $response, function ($request, $response) {
-            return $response->write(json_encode(['success'=>true]));
+            return $response->write(json_encode(['success' => true]));
         });
 
         $this->assertJsonStringEqualsJsonString(
-            json_encode(['success'=>true]),
-            json_encode(json_decode((string)$response->getBody()))
+            json_encode(['success' => true]),
+            json_encode(json_decode((string) $response->getBody()))
         );
     }
 
-
-    public function setUpRequest(){
+    public function setUpRequest()
+    {
         $environment = \Slim\Http\Environment::mock([]);
 
         return  \Slim\Http\Request::createFromEnvironment($environment);
@@ -66,7 +67,7 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
         $response = new \Slim\Http\Response();
 
         $response = $action($request, $response, function ($request, $response) {
-            return $response->write(json_encode(['success'=>true]));
+            return $response->write(json_encode(['success' => true]));
         });
 
         $this->assertJsonStringEqualsJsonString(
@@ -74,7 +75,7 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
                         'status' => 403,
                         'title'  => 'Platform Header Missing',
                     ]]),
-                    json_encode(json_decode((string)$response->getBody()))
+                    json_encode(json_decode((string) $response->getBody()))
         );
     }
 
@@ -83,15 +84,12 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
         $app = new \Slim\App();
         $c = $app->getContainer();
 
-        $c['jsonConfig'] = ['prettyPrint'=>false];
+        $c['jsonConfig'] = ['prettyPrint' => false];
 
         $c['ViewHelper'] = function ($c) {
             return new \PP\Portal\Module\Helper\View($c);
         };
 
         return $c;
-
     }
-    
-
 }

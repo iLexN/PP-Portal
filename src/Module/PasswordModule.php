@@ -38,7 +38,7 @@ class PasswordModule extends AbstractContainer
      */
     public function validateLetters($value)
     {
-        return (bool)preg_match('/\pL/', $value);
+        return (bool) preg_match('/\pL/', $value);
     }
 
     /**
@@ -50,7 +50,7 @@ class PasswordModule extends AbstractContainer
      */
     public function validateNumbers($value)
     {
-        return (bool)preg_match('/\pN/', $value);
+        return (bool) preg_match('/\pN/', $value);
     }
 
     /**
@@ -62,7 +62,7 @@ class PasswordModule extends AbstractContainer
      */
     public function validateCaseDiff($value)
     {
-        return (bool)preg_match('/(\p{Ll}+.*\p{Lu})|(\p{Lu}+.*\p{Ll})/u', $value);
+        return (bool) preg_match('/(\p{Ll}+.*\p{Lu})|(\p{Lu}+.*\p{Ll})/u', $value);
     }
 
     /**
@@ -74,6 +74,6 @@ class PasswordModule extends AbstractContainer
      */
     public function validateSymbols($value)
     {
-        return (bool)preg_match('/[!@#$%^&*?()\-_=+{};:,<.>]/', $value);
+        return (bool) preg_match('/[!@#$%^&*?()\-_=+{};:,<.>]/', $value);
     }
 }

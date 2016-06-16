@@ -2,8 +2,8 @@
 
 namespace PP\Portal\Module;
 
-use PP\Portal\DbModel\Client;
 use PP\Portal\AbstractClass\AbstractContainer;
+use PP\Portal\DbModel\Client;
 
 /**
  * Description of UserModule.
