@@ -18,7 +18,6 @@ class TestClient extends \PHPUnit_Framework_TestCase
     {
         $client = \PP\Portal\DbModel\Client::find(10000);
         $this->assertNull($client);
-        $this->assertNull($client->Client_NO);
     }
 
 }
