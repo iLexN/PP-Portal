@@ -21,7 +21,7 @@ class TestCheckUserExist extends \PHPUnit_Framework_TestCase
             return $userModule;
         };
 
-        $action = new \PP\Middleware\CheckUserExist($c);
+        $action = new \PP\Portal\Middleware\CheckUserExist($c);
 
         $route = $this->getMockBuilder(Route::class)
                 ->setMethods(['getArguments'])
@@ -59,7 +59,7 @@ class TestCheckUserExist extends \PHPUnit_Framework_TestCase
             return $userModule;
         };
 
-        $action = new \PP\Middleware\CheckUserExist($c);
+        $action = new \PP\Portal\Middleware\CheckUserExist($c);
 
         $route = $this->getMockBuilder(Route::class)
                 ->setMethods(['getArguments'])
@@ -98,7 +98,7 @@ class TestCheckUserExist extends \PHPUnit_Framework_TestCase
         $c['jsonConfig'] = ['prettyPrint'=>false];
 
         $c['ViewHelper'] = function ($c) {
-            return new \PP\Module\Helper\View($c);
+            return new \PP\Portal\Module\Helper\View($c);
         };
 
         return $c;

@@ -8,7 +8,7 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
     
     public function testCheckPlatformError()
     {
-        $action = new \PP\Middleware\CheckPlatform($this->setUpContainer());
+        $action = new \PP\Portal\Middleware\CheckPlatform($this->setUpContainer());
 
         $request = $this->setUpRequest();
 
@@ -30,7 +30,7 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
     }
 
     function testWeb(){
-        $action = new \PP\Middleware\CheckPlatform($this->setUpContainer());
+        $action = new \PP\Portal\Middleware\CheckPlatform($this->setUpContainer());
 
         $request = $this->setUpRequest();
 
@@ -57,7 +57,7 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
 
     public function testCheckPlatformMiss()
     {
-        $action = new \PP\Middleware\CheckPlatform($this->setUpContainer());
+        $action = new \PP\Portal\Middleware\CheckPlatform($this->setUpContainer());
 
         $request = $this->setUpRequest();
 
@@ -86,7 +86,7 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
         $c['jsonConfig'] = ['prettyPrint'=>false];
 
         $c['ViewHelper'] = function ($c) {
-            return new \PP\Module\Helper\View($c);
+            return new \PP\Portal\Module\Helper\View($c);
         };
 
         return $c;

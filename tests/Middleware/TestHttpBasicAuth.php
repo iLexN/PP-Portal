@@ -8,7 +8,7 @@ class TestHttpBasicAuth extends \PHPUnit_Framework_TestCase
     
     public function testCheckPlatformSuccess()
     {
-        $action = new \PP\Middleware\HttpBasicAuth($this->setUpContainer());
+        $action = new \PP\Portal\Middleware\HttpBasicAuth($this->setUpContainer());
 
         $_SERVER['PHP_AUTH_USER'] = 'user';
         $_SERVER['PHP_AUTH_PW'] = 'pass';
@@ -30,7 +30,7 @@ class TestHttpBasicAuth extends \PHPUnit_Framework_TestCase
 
     public function testCheckPlatformError()
     {
-        $action = new \PP\Middleware\HttpBasicAuth($this->setUpContainer());
+        $action = new \PP\Portal\Middleware\HttpBasicAuth($this->setUpContainer());
 
         $_SERVER['PHP_AUTH_USER'] = 'user111';
         $_SERVER['PHP_AUTH_PW'] = 'pass222';
@@ -70,7 +70,7 @@ class TestHttpBasicAuth extends \PHPUnit_Framework_TestCase
         $c['jsonConfig'] = ['prettyPrint'=>false];
 
         $c['ViewHelper'] = function ($c) {
-            return new \PP\Module\Helper\View($c);
+            return new \PP\Portal\Module\Helper\View($c);
         };
 
         return $c;
