@@ -4,13 +4,12 @@ namespace PP\Test;
 
 class TestPasswordModule extends \PHPUnit_Framework_TestCase
 {
-
     public function testValidateLength()
     {
         $p = $this->setUpPasswordModule();
 
-        $this->assertTrue($p->validateLength('123456',6));
-        $this->assertFalse($p->validateLength('12345',6));
+        $this->assertTrue($p->validateLength('123456', 6));
+        $this->assertFalse($p->validateLength('12345', 6));
     }
 
     public function testValidateLetters()
@@ -61,9 +60,9 @@ class TestPasswordModule extends \PHPUnit_Framework_TestCase
     {
         $p = $this->setUpPasswordModule();
 
-        $this->assertTrue($p->validateCaseDiff('1a2A3') && $p->validateLength('123456',6));
-        $this->assertFalse($p->validateCaseDiff('1A2A3') && $p->validateLength('123456',6));
-        $this->assertFalse($p->validateCaseDiff('1a2A3') && $p->validateLength('1256',6));
+        $this->assertTrue($p->validateCaseDiff('1a2A3') && $p->validateLength('123456', 6));
+        $this->assertFalse($p->validateCaseDiff('1A2A3') && $p->validateLength('123456', 6));
+        $this->assertFalse($p->validateCaseDiff('1a2A3') && $p->validateLength('1256', 6));
     }
 
     public function testC2()
@@ -73,20 +72,17 @@ class TestPasswordModule extends \PHPUnit_Framework_TestCase
         $pass = 'aa12bdck';
 
         $this->assertTrue($p->validateNumbers($pass) &&
-                $p->validateLength($pass,6) &&
-                $p->validateLetters($pass) );
-        
+                $p->validateLength($pass, 6) &&
+                $p->validateLetters($pass));
     }
-     
+
     public function setUpPasswordModule()
     {
         $app = new \Slim\App();
         $c = $app->getContainer();
 
         $p = new \PP\Portal\Module\PasswordModule($c);
+
         return $p;
-
     }
-    
-
 }

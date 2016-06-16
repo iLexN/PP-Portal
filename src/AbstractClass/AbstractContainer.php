@@ -1,7 +1,9 @@
 <?php
+
 namespace PP\Portal\AbstractClass;
 
-abstract class AbstractContainer {
+abstract class AbstractContainer
+{
     /**
      * @var \Slim\Container
      */

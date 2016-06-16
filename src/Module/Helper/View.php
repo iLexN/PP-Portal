@@ -2,8 +2,8 @@
 
 namespace PP\Portal\Module\Helper;
 
-use Psr\Http\Message\ResponseInterface;
 use PP\Portal\AbstractClass\AbstractContainer;
+use Psr\Http\Message\ResponseInterface;
 
 class View extends AbstractContainer
 {

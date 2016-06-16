@@ -2,9 +2,9 @@
 
 namespace PP\Portal\Controller\User;
 
+use PP\Portal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use PP\Portal\AbstractClass\AbstractContainer;
 
 class ChangePassword extends AbstractContainer
 {
