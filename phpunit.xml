@@ -20,7 +20,6 @@
         <exclude>
           <directory suffix=".php">./src/Controller/Helper/</directory>
           <directory suffix=".php">./src/Controller/Test/</directory>
-          <directory suffix=".php">./src/DB-Model/</directory>
           <file>./src/Middleware/DBLog.php</file>
         </exclude>
     </whitelist>
