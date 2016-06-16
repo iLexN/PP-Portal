@@ -12,7 +12,7 @@ class TestView extends \PHPUnit_Framework_TestCase
         
         $c['jsonConfig'] = ['prettyPrint'=>false];
 
-        $view = new \PP\Module\Helper\View($c);
+        $view = new \PP\Portal\Module\Helper\View($c);
 
         $response = new \Slim\Http\Response();
 
@@ -36,7 +36,7 @@ class TestView extends \PHPUnit_Framework_TestCase
 
         $c['jsonConfig'] = ['prettyPrint'=>true];
 
-        $view = new \PP\Module\Helper\View($c);
+        $view = new \PP\Portal\Module\Helper\View($c);
 
         $response = new \Slim\Http\Response();
 

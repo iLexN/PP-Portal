@@ -3,19 +3,15 @@
 namespace PP\Portal\Module;
 
 use PP\Portal\DbModel\Client;
+use PP\Portal\AbstractClass\AbstractContainer;
 
 /**
  * Description of UserModule.
  *
  * @author user
  */
-class UserModule
+class UserModule extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
     /**
      * @var Client
      */
@@ -43,11 +39,6 @@ class UserModule
         'Home_Address_4',
         'Home_Address_5',
     ];
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
 
     public function isUserExistByID($id)
     {

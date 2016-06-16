@@ -3,19 +3,10 @@
 namespace PP\Portal\Module\Helper;
 
 use Psr\Http\Message\ResponseInterface;
+use PP\Portal\AbstractClass\AbstractContainer;
 
-class View
+class View extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     public function toJson(ResponseInterface $response, $array)
     {
         if ($this->c->get('jsonConfig')['prettyPrint']) {

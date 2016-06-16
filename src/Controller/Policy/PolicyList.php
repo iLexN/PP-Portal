@@ -4,19 +4,10 @@ namespace PP\Portal\Controller\Policy;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use PP\Portal\AbstractClass\AbstractContainer;
 
-class PolicyList
+class PolicyList extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     /**
      * Login Post action.
      *

@@ -4,19 +4,10 @@ namespace PP\Portal\Controller\Test;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use PP\Portal\AbstractClass\AbstractContainer;
 
-class UploadAction
+class UploadAction extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     /**
      * Email Auth Check action.
      *

@@ -4,24 +4,15 @@ namespace PP\Portal\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use PP\Portal\AbstractClass\AbstractContainer;
 
 /**
  * Description of HttpBasicAuthMiddleWare.
  *
  * @author user
  */
-class CheckUserExist
+class CheckUserExist extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     /**
      * logRoute app setting determineRouteBeforeAppMiddleware = true.
      *

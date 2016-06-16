@@ -4,19 +4,10 @@ namespace PP\Portal\Controller\User;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use PP\Portal\AbstractClass\AbstractContainer;
 
-class ForgotPassword
+class ForgotPassword extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
-
     /**
      * Login Post action.
      *

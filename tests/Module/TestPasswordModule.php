@@ -83,7 +83,7 @@ class TestPasswordModule extends \PHPUnit_Framework_TestCase
         $app = new \Slim\App();
         $c = $app->getContainer();
 
-        $p = new \PP\Module\PasswordModule($c);
+        $p = new \PP\Portal\Module\PasswordModule($c);
         return $p;
 
     }

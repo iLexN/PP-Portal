@@ -2,27 +2,19 @@
 
 namespace PP\Portal\Module;
 
+use PP\Portal\AbstractClass\AbstractContainer;
+
 /**
  * Description of UserModule.
  *
  * @author user
  */
-class PasswordModule
+class PasswordModule extends AbstractContainer
 {
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
     /**
      * @var Client
      */
     public $client;
-
-    public function __construct(\Slim\Container $container)
-    {
-        $this->c = $container;
-    }
 
     /**
      * check min length.
