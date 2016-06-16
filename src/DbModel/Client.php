@@ -1,6 +1,6 @@
 <?php
 
-namespace PP\Portal\dbModel;
+namespace PP\Portal\DbModel;
 
 use Illuminate\Database\Eloquent\Model as Model;
 

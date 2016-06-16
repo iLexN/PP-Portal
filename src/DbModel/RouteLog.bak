@@ -1,6 +1,6 @@
 <?php
 
-namespace PP\Portal\dbModel;
+namespace PP\Portal\DbModel;
 
 /**
  * @property string $date

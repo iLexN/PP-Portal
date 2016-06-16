@@ -2,9 +2,6 @@
 
 $container = $app->getContainer();
 
-
-
-
 // monolog
 $container['logger'] = function (\Slim\Container $c) {
     $settings = $c->get('logConfig');
@@ -45,7 +42,7 @@ $container['notFoundHandler'] = function (\Slim\Container $c) {
         ];
         $c->logger->info('404', $logInfo);
 
-        return $c['view']->render($request, $response, ['errors' => [
+        return $c['ViewHelper']->toJson($response, ['errors' => [
                     'status' => 404,
                     'title'  => 'not found',
                 ]])->withStatus(404);
@@ -57,7 +54,7 @@ if (!$container['settings']['displayErrorDetails']) {
         return function (\Slim\Http\Request $request, \Slim\Http\Response $response, \Exception $exception) use ($c) {
             $c['logger']->error('e', (array) $exception);
 
-            return $c['view']->render($request, $response, ['errors' => [
+            return $c['ViewHelper']->toJson($response, ['errors' => [
                     'status' => 500,
                     'title'  => 'error happen',
                 ]])->withStatus(500);
@@ -68,22 +65,14 @@ $container['mailer'] = function () {
     return new \PHPMailer();
 };
 
-$container['dataManager'] = function () {
-    return new \League\Fractal\Manager();
-};
-
-$container['view'] = function () {
-    return new RKA\ContentTypeRenderer\Renderer();
-};
-
 $container['UserModule'] = function (\Slim\Container $c) {
-    return new \PP\Module\UserModule($c);
+    return new \PP\Portal\Module\UserModule($c);
 };
 
 $container['PasswordModule'] = function (\Slim\Container $c) {
-    return new \PP\Module\PasswordModule($c);
+    return new \PP\Portal\Module\PasswordModule($c);
 };
 
 $container['ViewHelper'] = function (\Slim\Container $c) {
-    return new \PP\Module\Helper\View($c);
+    return new \PP\Portal\Module\Helper\View($c);
 };

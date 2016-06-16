@@ -1,14 +1,8 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace PP\Portal\Module;
 
-namespace PP\Module;
-
-use PP\Portal\dbModel\Client;
+use PP\Portal\DbModel\Client;
 
 /**
  * Description of UserModule.

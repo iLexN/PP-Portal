@@ -1,6 +1,6 @@
 <?php
 
-namespace PP\Module\Helper;
+namespace PP\Portal\Module\Helper;
 
 use Psr\Http\Message\ResponseInterface;
 

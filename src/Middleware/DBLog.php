@@ -1,6 +1,6 @@
 <?php
 
-namespace PP\Middleware;
+namespace PP\Portal\Middleware;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Psr\Http\Message\ResponseInterface;

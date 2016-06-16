@@ -1,6 +1,6 @@
 <?php
 
-namespace PP\Module;
+namespace PP\Portal\Module;
 
 use Slim\Http\UploadedFile;
 
