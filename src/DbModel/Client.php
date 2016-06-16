@@ -43,9 +43,10 @@ class Client extends Model
         }
 
         //if (password_verify($password, $this->password)) {
+        /*
         if (password_verify($password, $this->attributes['password'])) {
             return true;
-        }
+        }*/
 
         return false;
     }
