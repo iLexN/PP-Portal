@@ -26,7 +26,7 @@ class CheckPlatform extends AbstractContainer
     {
         if ($request->hasHeader('PP-Portal-Platform')) {
             $platform = $request->getHeaderLine('PP-Portal-Platform');
-            $result = $this->checkPlatform($platform);
+            $result = $this->checkPlatformValue($platform);
         } else {
             $result = false;
         }
@@ -41,7 +41,7 @@ class CheckPlatform extends AbstractContainer
         return $next($request, $response);
     }
 
-    private function checkPlatform($platform)
+    private function checkPlatformValue($platform)
     {
         $allowPlatform = ['Web', 'iOS', 'Android'];
         if (!in_array($platform, $allowPlatform)) {
