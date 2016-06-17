@@ -60,14 +60,14 @@ class TestLogin extends \PHPUnit_Framework_TestCase
     {
         $action = new \PP\Portal\Controller\User\Login($this->setUpContainer());
 
-        
+        $_POST = [];
         
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD' => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;'
             ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
-        
+        unset($_POST);
 
         $response = new \Slim\Http\Response();
 
