@@ -13,8 +13,8 @@ class TestLogin extends \PHPUnit_Framework_TestCase
         $_POST['clientID'] = '1';
         $_POST['password'] = 'alex';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD' => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;'
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
             ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
@@ -38,8 +38,8 @@ class TestLogin extends \PHPUnit_Framework_TestCase
         $_POST['clientID'] = '10000000';
         $_POST['password'] = 'alex';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD' => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;'
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
             ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
@@ -61,10 +61,10 @@ class TestLogin extends \PHPUnit_Framework_TestCase
         $action = new \PP\Portal\Controller\User\Login($this->setUpContainer());
 
         $_POST = [];
-        
+
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD' => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;'
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
             ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
@@ -80,7 +80,6 @@ class TestLogin extends \PHPUnit_Framework_TestCase
                     json_encode(json_decode((string) $response->getBody()))
         );
     }
-    
 
     public function setUpContainer()
     {
@@ -92,7 +91,7 @@ class TestLogin extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\Helper\View($c);
         };
 
-        $c['UserModule'] = function($c){
+        $c['UserModule'] = function ($c) {
             return new \PP\Portal\Module\UserModule($c);
         };
 

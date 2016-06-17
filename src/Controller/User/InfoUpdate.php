@@ -31,11 +31,11 @@ class InfoUpdate extends AbstractContainer
                 'title' => 'User Info Updated',
             ]]);
         } catch (\Illuminate\Database\QueryException $e) {
-            $this->c['logger']->error('sql error InfoUpdate',$e->errorInfo);
+            $this->c['logger']->error('sql error InfoUpdate', $e->errorInfo);
+
             return $this->c['ViewHelper']->toJson($response, ['errors' => [
                 'title' => 'Field(s) not match',
             ]]);
         }
-        
     }
 }

@@ -10,7 +10,7 @@ class TestClient extends \PHPUnit_Framework_TestCase
     {
         $client = \PP\Portal\DbModel\Client::find(1);
 
-        if ( $client ) {
+        if ($client) {
             $this->assertTrue(true);
         } else {
             $this->assertTrue(false);
@@ -25,7 +25,7 @@ class TestClient extends \PHPUnit_Framework_TestCase
     {
         $client = \PP\Portal\DbModel\Client::find(10000);
         $this->assertNull($client);
-        if ( $client ) {
+        if ($client) {
             $this->assertTrue(false);
         } else {
             $this->assertTrue(true);
