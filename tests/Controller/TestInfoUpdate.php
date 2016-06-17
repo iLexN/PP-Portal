@@ -12,10 +12,10 @@ class TestInfoUpdate extends \PHPUnit_Framework_TestCase
 
         $action = new \PP\Portal\Controller\User\InfoUpdate($c);
 
-        $_POST = ['aa'=>'aa'];
+        $_POST = ['aa' => 'aa'];
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD' => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;'
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
             ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
@@ -24,13 +24,12 @@ class TestInfoUpdate extends \PHPUnit_Framework_TestCase
 
         $response = $action($request, $response, []);
 
-         $this->assertJsonStringEqualsJsonString(
+        $this->assertJsonStringEqualsJsonString(
             json_encode(['errors' => [
                 'title' => 'Field(s) not match',
             ]]),
                     json_encode(json_decode((string) $response->getBody()))
         );
-
     }
 
     public function testInofUpdate()
@@ -39,10 +38,10 @@ class TestInfoUpdate extends \PHPUnit_Framework_TestCase
 
         $action = new \PP\Portal\Controller\User\InfoUpdate($c);
 
-        $_POST = ['Home_Address_2'=>'Home_Address_2'];
+        $_POST = ['Home_Address_2' => 'Home_Address_2'];
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD' => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;'
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
             ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
@@ -51,17 +50,15 @@ class TestInfoUpdate extends \PHPUnit_Framework_TestCase
 
         $response = $action($request, $response, []);
 
-         $this->assertJsonStringEqualsJsonString(
+        $this->assertJsonStringEqualsJsonString(
             json_encode(['data' => [
                 'title' => 'User Info Updated',
             ]]),
                     json_encode(json_decode((string) $response->getBody()))
         );
-         
-        $this->assertEquals($c['UserModule']->client->Home_Address_2, 'Home_Address_2');
 
+        $this->assertEquals($c['UserModule']->client->Home_Address_2, 'Home_Address_2');
     }
-    
 
     public function setUpContainer()
     {
@@ -73,7 +70,7 @@ class TestInfoUpdate extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\Helper\View($c);
         };
 
-        $c['UserModule'] = function($c){
+        $c['UserModule'] = function ($c) {
             return new \PP\Portal\Module\UserModule($c);
         };
 
@@ -88,11 +85,12 @@ class TestInfoUpdate extends \PHPUnit_Framework_TestCase
 
         $c['dataCacheConfig'] = ['expiresAfter' => 3600];
 
-        $c['logger'] = function($c) {
+        $c['logger'] = function ($c) {
             $logger = $this->getMockBuilder(\Monolog\Logger::class)
                     ->setMethods(['error'])
                     ->disableOriginalConstructor()
                     ->getMock();
+
             return $logger;
         };
 

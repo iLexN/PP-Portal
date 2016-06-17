@@ -6,7 +6,7 @@ class TestFileUploadModule extends \PHPUnit_Framework_TestCase
 {
     public function testConstruct()
     {
-       $attr = [
+        $attr = [
             'tmp_name' => '.abc123',
             'name'     => 'my-avatar.txt',
             'size'     => 8,
@@ -28,8 +28,5 @@ class TestFileUploadModule extends \PHPUnit_Framework_TestCase
         //$this->assertEquals($attr['type'], $uploadModule->getClientMediaType());
         //$this->assertEquals($attr['size'], $uploadModule->getSize());
         $this->assertEquals($attr['error'], $uploadModule->getError());
-
     }
-
-    
 }
