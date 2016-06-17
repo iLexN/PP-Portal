@@ -52,6 +52,7 @@ class TestFileUploadModule extends \PHPUnit_Framework_TestCase
 
         $uploadModule->setAllowFilesize('2M');
         $this->assertTrue($uploadModule->isValid());
+        $this->assertEmpty($uploadModule->getValidationMsg());
     }
 
     public function testFilesizeFail()
@@ -76,6 +77,7 @@ class TestFileUploadModule extends \PHPUnit_Framework_TestCase
 
         $uploadModule->setAllowFilesize('2M');
         $this->assertFalse($uploadModule->isValid());
+        $this->assertNotEmpty($uploadModule->getValidationMsg());
     }
 
     public function testMimeTypeSuccess()
@@ -100,6 +102,7 @@ class TestFileUploadModule extends \PHPUnit_Framework_TestCase
 
         $uploadModule->setAllowMimetype(['text/plain', 'image/gif']);
         $this->assertTrue($uploadModule->isValid());
+        $this->assertEmpty($uploadModule->getValidationMsg());
     }
 
     public function testMimeTypeFail()
@@ -124,5 +127,30 @@ class TestFileUploadModule extends \PHPUnit_Framework_TestCase
 
         $uploadModule->setAllowMimetype(['image/png', 'image/gif']);
         $this->assertFalse($uploadModule->isValid());
+        $this->assertNotEmpty($uploadModule->getValidationMsg());
+    }
+
+    public function testUploadError()
+    {
+        $attr = [
+            'tmp_name' => '.abc123',
+            'name'     => 'my-avatar.txt',
+            'size'     => 8,
+            'type'     => 'text/plain',
+            'error'    => 1,
+        ];
+        $uploadedFile = new \Slim\Http\UploadedFile(
+            $attr['tmp_name'],
+            $attr['name'],
+            $attr['type'],
+            $attr['size'],
+            $attr['error'],
+            false
+        );
+
+        $uploadModule = new \PP\Portal\Module\FileUploadModule($uploadedFile);
+
+        $this->assertFalse($uploadModule->isValid());
+        $this->assertNotEmpty($uploadModule->getValidationMsg());
     }
 }
