@@ -114,7 +114,7 @@ class FileUploadModule
      *
      * @return int
      */
-    public static function humanReadableToBytes($input)
+    private function humanReadableToBytes($input)
     {
         $number = (int) $input;
         $units = [
