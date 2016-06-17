@@ -78,8 +78,7 @@ class TestPasswordModule extends \PHPUnit_Framework_TestCase
 
     public function setUpPasswordModule()
     {
-        $app = new \Slim\App();
-        $c = $app->getContainer();
+        $c = new \Slim\Container();
 
         $p = new \PP\Portal\Module\PasswordModule($c);
 

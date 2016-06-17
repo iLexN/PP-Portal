@@ -95,8 +95,7 @@ class TestCheckUserExist extends \PHPUnit_Framework_TestCase
 
     public function setUpContainer()
     {
-        $app = new \Slim\App();
-        $c = $app->getContainer();
+        $c = new \Slim\Container();
 
         $c['jsonConfig'] = ['prettyPrint' => false];
 
