@@ -25,7 +25,7 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
                         'status' => 403,
                         'title'  => 'Platform Header Missing',
                     ]]),
-                    json_encode(json_decode((string) $response->getBody()))
+            json_encode(json_decode((string) $response->getBody()))
         );
     }
 
@@ -75,7 +75,7 @@ class TestCheckPlatform extends \PHPUnit_Framework_TestCase
                         'status' => 403,
                         'title'  => 'Platform Header Missing',
                     ]]),
-                    json_encode(json_decode((string) $response->getBody()))
+            json_encode(json_decode((string) $response->getBody()))
         );
     }
 

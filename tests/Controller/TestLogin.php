@@ -27,7 +27,7 @@ class TestLogin extends \PHPUnit_Framework_TestCase
             json_encode(['data' => [
                 'id' => 1,
                 ]]),
-                    json_encode(json_decode((string) $response->getBody()))
+            json_encode(json_decode((string) $response->getBody()))
         );
     }
 
@@ -50,9 +50,9 @@ class TestLogin extends \PHPUnit_Framework_TestCase
 
         $this->assertJsonStringEqualsJsonString(
             json_encode(['errors' => [
-            'title' => 'Login User Not Found',
-        ]]),
-                    json_encode(json_decode((string) $response->getBody()))
+                'title' => 'Login User Not Found',
+            ]]),
+            json_encode(json_decode((string) $response->getBody()))
         );
     }
 
@@ -77,7 +77,7 @@ class TestLogin extends \PHPUnit_Framework_TestCase
             json_encode(['errors' => [
                 'title' => 'Missing field(s)',
             ]]),
-                    json_encode(json_decode((string) $response->getBody()))
+            json_encode(json_decode((string) $response->getBody()))
         );
     }
 
@@ -95,7 +95,7 @@ class TestLogin extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\UserModule($c);
         };
 
-        $c['pool'] = function ($c) {
+        $c['pool'] = function () {
             $settings = [
                 'path' => __DIR__.'/../cache/data',
             ];

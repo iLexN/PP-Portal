@@ -28,7 +28,7 @@ class TestInfoUpdate extends \PHPUnit_Framework_TestCase
             json_encode(['errors' => [
                 'title' => 'Field(s) not match',
             ]]),
-                    json_encode(json_decode((string) $response->getBody()))
+            json_encode(json_decode((string) $response->getBody()))
         );
     }
 
@@ -54,7 +54,7 @@ class TestInfoUpdate extends \PHPUnit_Framework_TestCase
             json_encode(['data' => [
                 'title' => 'User Info Updated',
             ]]),
-                    json_encode(json_decode((string) $response->getBody()))
+            json_encode(json_decode((string) $response->getBody()))
         );
 
         $this->assertEquals($c['UserModule']->client->Home_Address_2, 'Home_Address_2');
@@ -74,7 +74,7 @@ class TestInfoUpdate extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\UserModule($c);
         };
 
-        $c['pool'] = function ($c) {
+        $c['pool'] = function () {
             $settings = [
                 'path' => __DIR__.'/../cache/data',
             ];
@@ -85,7 +85,7 @@ class TestInfoUpdate extends \PHPUnit_Framework_TestCase
 
         $c['dataCacheConfig'] = ['expiresAfter' => 3600];
 
-        $c['logger'] = function ($c) {
+        $c['logger'] = function () {
             $logger = $this->getMockBuilder(\Monolog\Logger::class)
                     ->setMethods(['error'])
                     ->disableOriginalConstructor()
