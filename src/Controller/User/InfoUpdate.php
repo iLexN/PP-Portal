@@ -24,11 +24,18 @@ class InfoUpdate extends AbstractContainer
         /* @var $client \PP\Portal\dbModel\Client */
         $client = $this->c['UserModule']->client;
 
-        $client->update($data);
-        //$client->save();
-
-        return $this->c['ViewHelper']->toJson($response, ['data' => [
-            'title' => 'User Info Updated',
+        try {
+            $client->update($data);
+            //$client->save();
+            return $this->c['ViewHelper']->toJson($response, ['data' => [
+                'title' => 'User Info Updated',
             ]]);
+        } catch (\Illuminate\Database\QueryException $e) {
+            $this->c['logger']->error('sql error InfoUpdate',$e->errorInfo);
+            return $this->c['ViewHelper']->toJson($response, ['errors' => [
+                'title' => 'Field(s) not match',
+            ]]);
+        }
+        
     }
 }
