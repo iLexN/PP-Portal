@@ -33,6 +33,10 @@ $container['twigView'] = function (\Slim\Container $c) {
     return $view;
 };
 
+$container['httpClient'] = function () {
+    return new \GuzzleHttp\Client();
+};
+
 // rount handloer
 $container['notFoundHandler'] = function (\Slim\Container $c) {
     return function (\Slim\Http\Request $request, \Slim\Http\Response  $response) use ($c) {

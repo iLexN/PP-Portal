@@ -34,14 +34,14 @@ class RouteLog
         $route = $request->getAttribute('route');
 
         /* @var $routelog \PP\Portal\dbModel\RouteLog */
-        $routelog = \PP\Portal\dbModel\RouteLog::create();
-        $routelog->date = date('Y-m-d');
-        $routelog->platform = $platform;
-        $routelog->name = json_encode($route->getName());
-        $routelog->groups = json_encode($route->getGroups());
-        $routelog->methods = json_encode($route->getMethods());
-        $routelog->arguments = json_encode($route->getArguments());
-        $routelog->save();
+//        $routelog = \PP\Portal\dbModel\RouteLog::create();
+//        $routelog->date = date('Y-m-d');
+//        $routelog->platform = $platform;
+//        $routelog->name = json_encode($route->getName());
+//        $routelog->groups = json_encode($route->getGroups());
+//        $routelog->methods = json_encode($route->getMethods());
+//        $routelog->arguments = json_encode($route->getArguments());
+//        $routelog->save();
 
         return $next($request, $response);
     }
