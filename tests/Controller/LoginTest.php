@@ -2,43 +2,16 @@
 
 namespace PP\Test;
 
-class TestInfoUpdate extends \PHPUnit_Framework_TestCase
+class LoginTest extends \PHPUnit_Framework_TestCase
 {
     private $c;
 
-    public function testFieldnotMatch()
+    public function testUserFound()
     {
-        $c = $this->setUpContainer();
+        $action = new \PP\Portal\Controller\User\Login($this->setUpContainer());
 
-        $action = new \PP\Portal\Controller\User\InfoUpdate($c);
-
-        $_POST = ['aa' => 'aa'];
-        $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
-        $request = \Slim\Http\Request::createFromEnvironment($environment);
-        unset($_POST);
-
-        $response = new \Slim\Http\Response();
-
-        $response = $action($request, $response, []);
-
-        $this->assertJsonStringEqualsJsonString(
-            json_encode(['errors' => [
-                'title' => 'Field(s) not match',
-            ]]),
-            json_encode(json_decode((string) $response->getBody()))
-        );
-    }
-
-    public function testInofUpdate()
-    {
-        $c = $this->setUpContainer();
-
-        $action = new \PP\Portal\Controller\User\InfoUpdate($c);
-
-        $_POST = ['Home_Address_2' => 'Home_Address_2'];
+        $_POST['clientID'] = '1';
+        $_POST['password'] = 'alex';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -52,12 +25,60 @@ class TestInfoUpdate extends \PHPUnit_Framework_TestCase
 
         $this->assertJsonStringEqualsJsonString(
             json_encode(['data' => [
-                'title' => 'User Info Updated',
+                'id' => 1,
+                ]]),
+            json_encode(json_decode((string) $response->getBody()))
+        );
+    }
+
+    public function testUserNotFound()
+    {
+        $action = new \PP\Portal\Controller\User\Login($this->setUpContainer());
+
+        $_POST['clientID'] = '10000000';
+        $_POST['password'] = 'alex';
+        $environment = \Slim\Http\Environment::mock([
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+            ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = new \Slim\Http\Response();
+
+        $response = $action($request, $response, []);
+
+        $this->assertJsonStringEqualsJsonString(
+            json_encode(['errors' => [
+                'title' => 'Login User Not Found',
             ]]),
             json_encode(json_decode((string) $response->getBody()))
         );
+    }
 
-        $this->assertEquals($c['UserModule']->client->Home_Address_2, 'Home_Address_2');
+    public function testMissFields()
+    {
+        $action = new \PP\Portal\Controller\User\Login($this->setUpContainer());
+
+        $_POST = [];
+
+        $environment = \Slim\Http\Environment::mock([
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+            ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = new \Slim\Http\Response();
+
+        $response = $action($request, $response, []);
+
+        $this->assertJsonStringEqualsJsonString(
+            json_encode(['errors' => [
+                'title' => 'Missing field(s)',
+            ]]),
+            json_encode(json_decode((string) $response->getBody()))
+        );
     }
 
     public function setUpContainer()
@@ -78,23 +99,13 @@ class TestInfoUpdate extends \PHPUnit_Framework_TestCase
             $settings = [
                 'path' => __DIR__.'/../cache/data',
             ];
+
             $driver = new \Stash\Driver\FileSystem($settings);
 
             return new \Stash\Pool($driver);
         };
 
         $c['dataCacheConfig'] = ['expiresAfter' => 3600];
-
-        $c['logger'] = function () {
-            $logger = $this->getMockBuilder(\Monolog\Logger::class)
-                    ->setMethods(['error'])
-                    ->disableOriginalConstructor()
-                    ->getMock();
-
-            return $logger;
-        };
-
-        $c['UserModule']->isUserExistByID(1);
 
         return $c;
     }

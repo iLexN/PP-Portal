@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class TestCheckPlatform extends \PHPUnit_Framework_TestCase
+class CheckPlatformTest extends \PHPUnit_Framework_TestCase
 {
     private $c;
 

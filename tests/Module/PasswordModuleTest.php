@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class TestPasswordModule extends \PHPUnit_Framework_TestCase
+class PasswordModuleTest extends \PHPUnit_Framework_TestCase
 {
     public function testValidateLength()
     {

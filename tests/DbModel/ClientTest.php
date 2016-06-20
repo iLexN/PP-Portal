@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class TestClient extends \PHPUnit_Framework_TestCase
+class ClientTest extends \PHPUnit_Framework_TestCase
 {
     private $c;
 

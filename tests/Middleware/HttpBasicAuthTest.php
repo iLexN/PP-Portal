@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class TestHttpBasicAuth extends \PHPUnit_Framework_TestCase
+class HttpBasicAuthTest extends \PHPUnit_Framework_TestCase
 {
     private $c;
 
