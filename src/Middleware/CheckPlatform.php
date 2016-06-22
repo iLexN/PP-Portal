@@ -52,7 +52,7 @@ class CheckPlatform extends AbstractContainer
 
         return true;
     }
-
+/*
     private function sendGaEvent()
     {
         $httpClient = $this->c['httpClient'];
@@ -64,5 +64,5 @@ class CheckPlatform extends AbstractContainer
                 'body'          => (string) $response->getBody(),
             ];
         $this->c->logger->info('post file response', $log);
-    }
+    }*/
 }

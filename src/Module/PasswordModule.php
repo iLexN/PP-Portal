@@ -12,11 +12,6 @@ use PP\Portal\AbstractClass\AbstractContainer;
 class PasswordModule extends AbstractContainer
 {
     /**
-     * @var Client
-     */
-    public $client;
-
-    /**
      * check min length.
      *
      * @param string $value

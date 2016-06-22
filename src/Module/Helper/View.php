@@ -3,11 +3,11 @@
 namespace PP\Portal\Module\Helper;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Response;
 
 class View extends AbstractContainer
 {
-    public function toJson(ResponseInterface $response, $array)
+    public function toJson(Response $response, $array)
     {
         if ($this->c->get('jsonConfig')['prettyPrint']) {
             return $response->withHeader('Content-type', 'application/json')
