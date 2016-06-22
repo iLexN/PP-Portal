@@ -52,6 +52,7 @@ class CheckPlatform extends AbstractContainer
 
         return true;
     }
+
 /*
     private function sendGaEvent()
     {
