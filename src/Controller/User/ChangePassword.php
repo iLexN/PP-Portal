@@ -20,11 +20,11 @@ class ChangePassword extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $data = (array) $request->getParsedBody();
-        
+
         $v = new \Valitron\Validator($data);
         $v->rule('required', ['old_password', 'new_password']);
 
-        if(!$v->validate()) {
+        if (!$v->validate()) {
             return $this->c['ViewHelper']->toJson($response, ['errors' => [
                 'title' => 'Missing field(s)',
             ]]);

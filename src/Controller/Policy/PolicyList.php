@@ -22,7 +22,7 @@ class PolicyList extends AbstractContainer
         /* @var $client \PP\Portal\dbModel\Client */
         $client = $this->c['UserModule']->client;
 
-        /* @var $policyList \PP\Portal\dbModel\Policies */
+        /* @var $policyList \PP\Portal\DbModel\Policies */
         $policyList = $client->policies()
                 ->orderBy('Policy_ID', 'desc')
                 ->get();

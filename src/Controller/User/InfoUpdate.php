@@ -22,20 +22,11 @@ class InfoUpdate extends AbstractContainer
         /* @var $client \PP\Portal\DbModel\Client */
         $client = $this->c['UserModule']->client;
 
-        $v = new \Valitron\Validator((array) $request->getParsedBody(),$client->getVisible());
+        $v = new \Valitron\Validator((array) $request->getParsedBody(), $client->getVisible());
 
-        try {
-            $client->update($v->data());
-            //$client->save();
-            return $this->c['ViewHelper']->toJson($response, ['data' => [
-                'title' => 'User Info Updated',
-            ]]);
-        } catch (\Illuminate\Database\QueryException $e) {
-            $this->c['logger']->error('sql error InfoUpdate', $e->errorInfo);
-
-            return $this->c['ViewHelper']->toJson($response, ['errors' => [
-                'title' => 'Field(s) not match',
-            ]]);
-        }
+        $client->update($v->data());
+        return $this->c['ViewHelper']->toJson($response, ['data' => [
+            'title' => 'User Info Updated',
+        ]]);
     }
 }

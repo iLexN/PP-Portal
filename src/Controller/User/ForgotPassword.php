@@ -24,7 +24,7 @@ class ForgotPassword extends AbstractContainer
         $v = new \Valitron\Validator($data);
         $v->rule('required', ['clientID']);
 
-        if(!$v->validate()) {
+        if (!$v->validate()) {
             return $this->c['ViewHelper']->toJson($response, ['errors' => [
                 'title' => 'Missing field(s)',
             ]]);
