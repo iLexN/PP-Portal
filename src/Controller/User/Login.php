@@ -20,8 +20,11 @@ class Login extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $data = (array) $request->getParsedBody();
+        
+        $v = new \Valitron\Validator($data);
+        $v->rule('required', ['clientID', 'password']);
 
-        if ($this->checkRequiredData($data)) {
+        if(!$v->validate()) {
             return $this->c['ViewHelper']->toJson($response, ['errors' => [
                 'title' => 'Missing field(s)',
             ]]);
@@ -34,16 +37,6 @@ class Login extends AbstractContainer
         return $this->c['ViewHelper']->toJson($response, ['errors' => [
             'title' => 'Login User Not Found',
         ]]);
-    }
-
-    /**
-     * @param array $data
-     *
-     * @return bool
-     */
-    private function checkRequiredData($data)
-    {
-        return !isset($data['clientID']) || !isset($data['password']);
     }
 
     /**

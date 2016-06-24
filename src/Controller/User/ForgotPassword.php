@@ -20,9 +20,11 @@ class ForgotPassword extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $data = (array) $request->getParsedBody();
-        // id - clientID
 
-        if (!isset($data['clientID'])) {
+        $v = new \Valitron\Validator($data);
+        $v->rule('required', ['clientID']);
+
+        if(!$v->validate()) {
             return $this->c['ViewHelper']->toJson($response, ['errors' => [
                 'title' => 'Missing field(s)',
             ]]);

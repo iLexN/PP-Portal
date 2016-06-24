@@ -3,6 +3,7 @@
 namespace PP\Portal\Module;
 
 use Slim\Http\UploadedFile;
+use Valitron\Validator;
 
 /**
  * handle of fileUploadModule from Slim3.
