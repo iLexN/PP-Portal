@@ -19,13 +19,16 @@ class InfoUpdate extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $data = (array) $request->getParsedBody();
-
         /* @var $client \PP\Portal\dbModel\Client */
         $client = $this->c['UserModule']->client;
 
+        $v = new \Valitron\Validator((array) $request->getParsedBody(),[
+            'Home_Address_1','Home_Address_2',
+            'Home_Address_3','Home_Address_4','Home_Address_5',
+        ]);
+
         try {
-            $client->update($data);
+            $client->update($v->data());
             //$client->save();
             return $this->c['ViewHelper']->toJson($response, ['data' => [
                 'title' => 'User Info Updated',

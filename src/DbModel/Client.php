@@ -34,7 +34,7 @@ class Client extends Model
 
     public $timestamps = false;
 
-    protected $guarded = [];
+    protected $guarded = ['Client_NO'];
 
     public function verifyPassword($password)
     {
