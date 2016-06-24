@@ -34,6 +34,29 @@ class Client extends Model
 
     public $timestamps = false;
 
+    protected $visible = [
+        'Client_NO',
+        'Title',
+        'First_Name',
+        'Middle_Name',
+        'Surname',
+        'Company_Name',
+        'Mobile_One',
+        'Mobile_Two',
+        'Home_Phone',
+        'Business_Phone',
+        'Home_Fax',
+        'Business_Fax',
+        'Email',
+        'Second_Email',
+        'Person_One_Skype',
+        'Home_Address_1',
+        'Home_Address_2',
+        'Home_Address_3',
+        'Home_Address_4',
+        'Home_Address_5',
+    ];
+
     protected $guarded = ['Client_NO'];
 
     public function verifyPassword($password)

@@ -17,6 +17,7 @@ class UserModule extends AbstractContainer
      */
     public $client;
 
+    /*
     protected $fields = [
         'Client_NO',
         'Title',
@@ -38,7 +39,7 @@ class UserModule extends AbstractContainer
         'Home_Address_3',
         'Home_Address_4',
         'Home_Address_5',
-    ];
+    ];*/
 
     public function isUserExistByID($id)
     {
@@ -50,7 +51,8 @@ class UserModule extends AbstractContainer
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $client = Client::select($this->fields)->find($id);
+            //$client = Client::select($this->fields)->find($id);
+            $client = Client::find($id);
             $this->c['pool']->save($item->set($client));
         }
 
