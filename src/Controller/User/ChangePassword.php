@@ -52,16 +52,6 @@ class ChangePassword extends AbstractContainer
     }
 
     /**
-     * @param array $data
-     *
-     * @return bool
-     */
-    private function checkRequiredData($data)
-    {
-        return !isset($data['old_password']) || !isset($data['new_password']);
-    }
-
-    /**
      * check passwrod strength.
      *
      * @param string $value
