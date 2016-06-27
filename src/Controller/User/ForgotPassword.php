@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 class ForgotPassword extends AbstractContainer
 {
     /**
-     * Login Post action.
+     * forgot passwrod.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response

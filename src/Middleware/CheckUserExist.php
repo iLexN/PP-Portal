@@ -7,15 +7,13 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Description of HttpBasicAuthMiddleWare.
+ * check the url part with the id is client or not.
  *
  * @author user
  */
 class CheckUserExist extends AbstractContainer
 {
     /**
-     * logRoute app setting determineRouteBeforeAppMiddleware = true.
-     *
      * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
      * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response
      * @param callable                                 $next     Next middleware

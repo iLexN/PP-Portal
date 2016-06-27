@@ -5,7 +5,7 @@ namespace PP\Portal\Module;
 use PP\Portal\AbstractClass\AbstractContainer;
 
 /**
- * Description of UserModule.
+ * handle the password.
  *
  * @author user
  */

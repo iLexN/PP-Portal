@@ -9,8 +9,6 @@ use Psr\Http\Message\ServerRequestInterface;
 class Info extends AbstractContainer
 {
     /**
-     * Login Post action.
-     *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response
      * @param array                  $args

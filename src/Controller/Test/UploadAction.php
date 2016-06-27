@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 class UploadAction extends AbstractContainer
 {
     /**
-     * Email Auth Check action.
+     * upload file action.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response

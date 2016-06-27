@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 class PolicyList extends AbstractContainer
 {
     /**
-     * Login Post action.
+     * List Policy by client id.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response

@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 class ChangePassword extends AbstractContainer
 {
     /**
-     * Login Post action.
+     * change password.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response

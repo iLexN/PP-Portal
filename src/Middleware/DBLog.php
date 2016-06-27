@@ -7,9 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * Description of HttpBasicAuthMiddleWare.
- *
- * @author user
+ * logs sql.
  */
 class DBLog
 {

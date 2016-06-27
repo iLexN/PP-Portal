@@ -9,7 +9,7 @@ use Psr\Http\Message\ServerRequestInterface;
 class Router extends AbstractContainer
 {
     /**
-     * Login Post action.
+     * Router helper.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response
