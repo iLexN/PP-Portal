@@ -93,7 +93,7 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
                 ->method('isUserExistByID')
                 ->willReturn(true);
             $client = $this->getMockBuilder(\PP\Portal\DbModel\Client::class)
-                    ->setMethods(['First_Name','Surname']);
+                    ->setMethods(['First_Name', 'Surname']);
             $client->First_Name = 'First_Name';
             $client->Surname = 'Surname';
             $userModule->client = $client;
@@ -102,7 +102,7 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
         };
         $c['mailer'] = function () {
             $mailer = $this->getMockBuilder(PHPMailer::class)
-                ->setMethods(['send','setFrom','addAddress','Subject','msgHTML'])
+                ->setMethods(['send', 'setFrom', 'addAddress', 'Subject', 'msgHTML'])
                 ->disableOriginalConstructor()
                 ->getMock();
             $mailer->expects($this->once())
@@ -114,7 +114,7 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
 
         $c['logger'] = function () {
             $logger = $this->getMockBuilder(\Monolog\Logger::class)
-                    ->setMethods(['error','info'])
+                    ->setMethods(['error', 'info'])
                     ->disableOriginalConstructor()
                     ->getMock();
             $logger->expects($this->once())
@@ -158,7 +158,7 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
                 ->method('isUserExistByID')
                 ->willReturn(true);
             $client = $this->getMockBuilder(\PP\Portal\DbModel\Client::class)
-                    ->setMethods(['First_Name','Surname']);
+                    ->setMethods(['First_Name', 'Surname']);
             $client->First_Name = 'First_Name';
             $client->Surname = 'Surname';
             $userModule->client = $client;
@@ -167,7 +167,7 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
         };
         $c['mailer'] = function () {
             $mailer = $this->getMockBuilder(PHPMailer::class)
-                ->setMethods(['send','setFrom','addAddress','Subject','msgHTML'])
+                ->setMethods(['send', 'setFrom', 'addAddress', 'Subject', 'msgHTML'])
                 ->disableOriginalConstructor()
                 ->getMock();
             $mailer->expects($this->once())
@@ -180,7 +180,7 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
 
         $c['logger'] = function () {
             $logger = $this->getMockBuilder(\Monolog\Logger::class)
-                    ->setMethods(['error','info'])
+                    ->setMethods(['error', 'info'])
                     ->disableOriginalConstructor()
                     ->getMock();
             $logger->expects($this->once())
@@ -232,14 +232,15 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
 
         $c['dataCacheConfig'] = ['expiresAfter' => 3600];
 
-        $c['twigView'] = function(){
-           $twig = $this->getMockBuilder(\Slim\Views\Twig::class)
+        $c['twigView'] = function () {
+            $twig = $this->getMockBuilder(\Slim\Views\Twig::class)
                 ->setMethods(['fetch'])
                 ->disableOriginalConstructor()
                 ->getMock();
-           return $twig;
+
+            return $twig;
         };
-        
+
         return $c;
     }
 }
