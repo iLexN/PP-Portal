@@ -19,9 +19,7 @@ class ForgotPassword extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $data = (array) $request->getParsedBody();
-
-        $v = new \Valitron\Validator($data);
+        $v = new \Valitron\Validator((array) $request->getParsedBody());
         $v->rule('required', ['clientID']);
 
         if (!$v->validate()) {
@@ -30,7 +28,7 @@ class ForgotPassword extends AbstractContainer
             ]]);
         }
 
-        if ($this->c['UserModule']->isUserExistByID($data['clientID'])) {
+        if ($this->c['UserModule']->isUserExistByID($v->data())) {
             $this->sendForgotPasswordEmail();
 
             return $this->c['ViewHelper']->toJson($response, ['data' => [
