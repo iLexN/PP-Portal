@@ -167,12 +167,13 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
         };
         $c['mailer'] = function () {
             $mailer = $this->getMockBuilder(PHPMailer::class)
-                ->setMethods(['send','setFrom','addAddress','Subject','msgHTML','ErrorInfo'])
+                ->setMethods(['send','setFrom','addAddress','Subject','msgHTML'])
                 ->disableOriginalConstructor()
                 ->getMock();
             $mailer->expects($this->once())
                 ->method('send')
                 ->willReturn(false);
+            $mailer->ErrorInfo = 'error';
 
             return $mailer;
         };

@@ -19,9 +19,7 @@ class ChangePassword extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $data = (array) $request->getParsedBody();
-
-        $v = new \Valitron\Validator($data);
+        $v = new \Valitron\Validator((array) $request->getParsedBody());
         $v->rule('required', ['old_password', 'new_password']);
 
         if (!$v->validate()) {
@@ -33,7 +31,7 @@ class ChangePassword extends AbstractContainer
         //todo check old password is same as now
 
         //check new password strength
-        return $this->c['ViewHelper']->toJson($response, $this->passwordstrengthOutput($data));
+        return $this->c['ViewHelper']->toJson($response, $this->passwordstrengthOutput($v->data()));
     }
 
     private function passwordstrengthOutput($data)

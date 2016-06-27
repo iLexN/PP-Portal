@@ -19,9 +19,7 @@ class Login extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $data = (array) $request->getParsedBody();
-        
-        $v = new \Valitron\Validator($data);
+        $v = new \Valitron\Validator((array) $request->getParsedBody());
         $v->rule('required', ['clientID', 'password']);
 
         if (!$v->validate()) {
@@ -30,7 +28,7 @@ class Login extends AbstractContainer
             ]]);
         }
 
-        if ($this->isUserExist($data)) {
+        if ($this->isUserExist($v->data())) {
             return $this->c['ViewHelper']->toJson($response, $this->success());
         }
 
