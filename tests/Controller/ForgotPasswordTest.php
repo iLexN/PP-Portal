@@ -153,6 +153,12 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
                 ->method('isUserExistByID')
                 ->willReturn(true);
 
+            $client = $this->getMockBuilder(\PP\Portal\DbModel\Client::class)
+                    ->setMethods(['First_Name','Surname']);
+            $userModule->expects($this->once())
+                ->method('client')
+                ->willReturn($client);
+
             return $userModule;
         };
         $c['mailer'] = function () {
