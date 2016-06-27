@@ -23,6 +23,7 @@ class InfoUpdate extends AbstractContainer
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $client->getVisible());
 
         $client->update($v->data());
+
         return $this->c['ViewHelper']->toJson($response, ['data' => [
             'title' => 'User Info Updated',
         ]]);
