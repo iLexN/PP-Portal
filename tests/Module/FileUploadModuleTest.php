@@ -156,8 +156,8 @@ class FileUploadModuleTest extends \PHPUnit_Framework_TestCase
 
     public function testUploadMove()
     {
-        $uploadedFile =  $this->getMockBuilder(\Slim\Http\UploadedFile::class)
-                ->setMethods(['moveTo','getError'])
+        $uploadedFile = $this->getMockBuilder(\Slim\Http\UploadedFile::class)
+                ->setMethods(['moveTo', 'getError'])
                 ->disableOriginalConstructor()
                 ->getMock();
         $uploadedFile->expects($this->once())

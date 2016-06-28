@@ -75,17 +75,17 @@ class FileUploadModule
             return false;
         }
 
-        $v = new Validator(array(
-                'size' => $this->file->getSize() ,
-                'type' => $this->file->getClientMediaType()
-            ));
+        $v = new Validator([
+               'size' => $this->file->getSize(),
+               'type' => $this->file->getClientMediaType(),
+           ]);
         $v->rules($this->validationRule);
 
-        if ( $v->validate()){
+        if ($v->validate()) {
             return true;
         }
 
-        $this->validationMsg = (array)$v->errors();
+        $this->validationMsg = (array) $v->errors();
         return false;
     }
 
