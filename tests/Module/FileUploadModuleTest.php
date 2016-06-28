@@ -153,4 +153,19 @@ class FileUploadModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($uploadModule->isValid());
         $this->assertNotEmpty($uploadModule->getValidationMsg());
     }
+
+    public function testUploadMove()
+    {
+        $uploadedFile =  $this->getMockBuilder(\Slim\Http\UploadedFile::class)
+                ->setMethods(['move','getError'])
+                ->disableOriginalConstructor()
+                ->getMock();
+        $uploadedFile->expects($this->once())
+                ->method('moveTo')
+                ->willReturn(true);
+
+        $uploadModule = new \PP\Portal\Module\FileUploadModule($uploadedFile);
+
+        $uploadModule->moveTo();
+    }
 }

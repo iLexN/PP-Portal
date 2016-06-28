@@ -33,7 +33,7 @@ class FileUploadModule
     public function setAllowMimetype($array)
     {
         $this->validationRule['in'] = [
-                ['type', $array]
+                ['type', $array],
             ];
     }
 
@@ -45,7 +45,7 @@ class FileUploadModule
     public function setAllowFilesize($size)
     {
         $this->validationRule['max'] = [
-                ['size', $this->humanReadableToBytes($size)]
+                ['size', $this->humanReadableToBytes($size)],
             ];
     }
 
