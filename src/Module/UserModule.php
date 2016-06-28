@@ -45,13 +45,12 @@ class UserModule extends AbstractContainer
     {
         $item = $this->c['pool']->getItem('Client/'.$id.'/info');
 
-        /* @var $user Client */
+        /* @var $client Client */
         $client = $item->get();
 
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            //$client = Client::select($this->fields)->find($id);
             $client = Client::find($id);
             $this->c['pool']->save($item->set($client));
         }
