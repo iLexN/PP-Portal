@@ -3,6 +3,7 @@
 namespace PP\Portal\Module;
 
 use Slim\Http\UploadedFile;
+use Valitron\Validator as Validator;
 
 /**
  * handle of fileUploadModule from Slim3.
@@ -14,14 +15,7 @@ class FileUploadModule
      */
     public $file;
 
-    private $validation = [];
-
-    private $validationFunction = [];
-
-    /**
-     * @var bool
-     */
-    public $hasValidationError = false;
+    private $validationRule = [];
 
     public $validationMsg = [];
 
@@ -38,8 +32,9 @@ class FileUploadModule
      */
     public function setAllowMimetype($array)
     {
-        $this->validation['mimetype'] = $array;
-        $this->validationFunction[] = 'validationMimetype';
+        $this->validationRule['in'] = [
+                ['type', $array]
+            ];
     }
 
     /**
@@ -49,8 +44,9 @@ class FileUploadModule
      */
     public function setAllowFilesize($size)
     {
-        $this->validation['filesize'] = $this->humanReadableToBytes($size);
-        $this->validationFunction[] = 'validationFilesize';
+        $this->validationRule['max'] = [
+                ['size', $this->humanReadableToBytes($size)]
+            ];
     }
 
     public function getError()
@@ -79,32 +75,23 @@ class FileUploadModule
             return false;
         }
 
-        foreach ($this->validationFunction as $function) {
-            $this->$function();
+        $v = new Validator(array(
+                'size' => $this->file->getSize() ,
+                'type' => $this->file->getClientMediaType()
+            ));
+        $v->rules($this->validationRule);
+
+        if ( $v->validate()){
+            return true;
         }
 
-        return !$this->hasValidationError;
+        $this->validationMsg = $v->errors();
+        return false;
     }
 
     public function getValidationMsg()
     {
         return $this->validationMsg;
-    }
-
-    private function validationMimetype()
-    {
-        if (in_array($this->file->getClientMediaType(), $this->validation['mimetype']) === false) {
-            $this->hasValidationError = true;
-            $this->validationMsg[] = 'Mimetype error:'.$this->file->getClientMediaType().' allow '.print_r($this->validation['mimetype'], 1);
-        }
-    }
-
-    private function validationFilesize()
-    {
-        if ($this->file->getSize() > $this->validation['filesize']) {
-            $this->hasValidationError = true;
-            $this->validationMsg[] = 'Filesize error:'.$this->file->getSize().' > '.$this->validation['filesize'];
-        }
     }
 
     /**
