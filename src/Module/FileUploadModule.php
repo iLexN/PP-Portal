@@ -85,7 +85,7 @@ class FileUploadModule
             return true;
         }
 
-        $this->validationMsg = $v->errors();
+        $this->validationMsg = (array)$v->errors();
         return false;
     }
 
