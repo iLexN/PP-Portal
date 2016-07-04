@@ -47,8 +47,8 @@ class UploadAction extends AbstractContainer
      */
     private function handerFile($file)
     {
-        /* @var $newfile \PP\Module\FileUploadModule */
-        $newfile = new \PP\Module\FileUploadModule($file);
+        /* @var $newfile \PP\Portal\Module\FileUploadModule */
+        $newfile = new \PP\Portal\Module\FileUploadModule($file);
         $newfile->setAllowFilesize('2M');
         $newfile->setAllowMimetype(['image/png', 'image/gif']);
 
