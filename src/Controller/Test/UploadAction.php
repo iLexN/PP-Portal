@@ -43,7 +43,7 @@ class UploadAction extends AbstractContainer
     /**
      * @param \Slim\Http\UploadedFile $file
      *
-     * @return \PP\Module\FileUploadModule
+     * @return \PP\Portal\Module\FileUploadModule
      */
     private function handerFile($file)
     {
