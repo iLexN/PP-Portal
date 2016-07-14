@@ -41,6 +41,11 @@ class UserModule extends AbstractContainer
         'Home_Address_5',
     ];*/
 
+    /**
+     * check user exist by id.
+     * @param int $id
+     * @return boolean
+     */
     public function isUserExistByID($id)
     {
         $item = $this->c['pool']->getItem('Client/'.$id.'/info');

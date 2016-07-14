@@ -24,8 +24,8 @@ class InfoUpdate extends AbstractContainer
 
         $client->update($v->data());
 
-        return $this->c['ViewHelper']->toJson($response, ['data' => [
-            'title' => 'User Info Updated',
-        ]]);
+        return $this->c['ViewHelper']->toJson($response, ['data' => 
+            $this->c['msgCode'][2020]
+        ]);
     }
 }

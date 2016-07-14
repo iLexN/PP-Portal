@@ -71,4 +71,16 @@ class PasswordModule extends AbstractContainer
     {
         return (bool) preg_match('/[!@#$%^&*?()\-_=+{};:,<.>]/', $value);
     }
+
+    /**
+     * default Passwordstrength check
+     * 
+     * @param string $value
+     * @return bool
+     */
+    public function isStrongPassword($value){
+        return $this->validateLength($value, 8) &&
+                $this->validateLetters($value) &&
+                $this->validateNumbers($value);
+    }
 }

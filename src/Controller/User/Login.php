@@ -23,18 +23,18 @@ class Login extends AbstractContainer
         $v->rule('required', ['clientID', 'password']);
 
         if (!$v->validate()) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => [
-                'title' => 'Missing field(s)',
-            ]]);
+            return $this->c['ViewHelper']->toJson($response, ['errors' => 
+                $this->c['msgCode'][1010]
+            ]);
         }
 
         if ($this->isUserExist($v->data())) {
             return $this->c['ViewHelper']->toJson($response, $this->success());
         }
 
-        return $this->c['ViewHelper']->toJson($response, ['errors' => [
-            'title' => 'Login User Not Found',
-        ]]);
+        return $this->c['ViewHelper']->toJson($response, ['errors' => 
+            $this->c['msgCode'][2010]
+        ]);
     }
 
     /**

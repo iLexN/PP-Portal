@@ -46,10 +46,9 @@ $container['notFoundHandler'] = function (\Slim\Container $c) {
         ];
         $c->logger->info('404', $logInfo);
 
-        return $c['ViewHelper']->toJson($response, ['errors' => [
-                    'status' => 404,
-                    'title'  => 'not found',
-                ]])->withStatus(404);
+        return $c['ViewHelper']->toJson($response, ['errors' => 
+                    $c['msgCode'][1510]
+                ])->withStatus(404);
     };
 };
 
@@ -58,10 +57,9 @@ if (!$container['settings']['displayErrorDetails']) {
         return function (\Slim\Http\Request $request, \Slim\Http\Response $response, \Exception $exception) use ($c) {
             $c['logger']->error('e', (array) $exception);
 
-            return $c['ViewHelper']->toJson($response, ['errors' => [
-                    'status' => 500,
-                    'title'  => 'error happen',
-                ]])->withStatus(500);
+            return $c['ViewHelper']->toJson($response, ['errors' => 
+                    $c['msgCode'][1520]
+                ])->withStatus(500);
         };
     };
 }
@@ -79,4 +77,8 @@ $container['PasswordModule'] = function (\Slim\Container $c) {
 
 $container['ViewHelper'] = function (\Slim\Container $c) {
     return new \PP\Portal\Module\Helper\View($c);
+};
+
+$container['msgCode'] = function (\Slim\Container $c) {
+    return require $c['settings']['systemMessage'] . 'en.php';
 };

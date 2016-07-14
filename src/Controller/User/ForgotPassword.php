@@ -23,22 +23,22 @@ class ForgotPassword extends AbstractContainer
         $v->rule('required', ['clientID']);
 
         if (!$v->validate()) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => [
-                'title' => 'Missing field(s)',
-            ]]);
+            return $this->c['ViewHelper']->toJson($response, ['errors' => 
+                $this->c['msgCode'][1010]
+            ]);
         }
 
-        if ($this->c['UserModule']->isUserExistByID($v->data())) {
+        if ($this->c['UserModule']->isUserExistByID($v->data()['clientID'])) {
             $this->sendForgotPasswordEmail();
 
-            return $this->c['ViewHelper']->toJson($response, ['data' => [
-                'title' => true,
-            ]]);
+            return $this->c['ViewHelper']->toJson($response, ['data' => 
+                $this->c['msgCode'][2540]
+            ]);
         }
 
-        return $this->c['ViewHelper']->toJson($response, ['errors' => [
-            'title' => 'Login User Not Found',
-        ]]);
+        return $this->c['ViewHelper']->toJson($response, ['errors' => 
+            $this->c['msgCode'][2010]
+        ]);
     }
 
     /**

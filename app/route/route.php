@@ -1,7 +1,7 @@
 <?php
 
-$app->post('/signup', 'PP\Portal\Controller\User\Signup')
-        ->setName('UserSignUp');
+$app->post('/verify', 'PP\Portal\Controller\User\Verify')
+        ->setName('UserVerify');
 
 $app->post('/login', 'PP\Portal\Controller\User\Login')
         ->setName('UserLogin');
@@ -12,6 +12,10 @@ $app->get('/user/{id:\d+}', 'PP\Portal\Controller\User\Info')
         ->setName('UserInfo')
         ->add($checkUserExist);
 $app->post('/user/{id:\d+}', 'PP\Portal\Controller\User\InfoUpdate')
+        ->add($checkUserExist);
+
+$app->post('/user/{id:\d+}/signup', 'PP\Portal\Controller\User\Signup')
+        ->setName('UserSignUp')
         ->add($checkUserExist);
 
 $app->get('/user/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyList')
