@@ -28,24 +28,28 @@ class ChangePassword extends AbstractContainer
             ]);
         }
 
-        //todo check old password is same as now
+        $data = $v->data();
 
-        //check new password strength
-        return $this->c['ViewHelper']->toJson($response, $this->passwordstrengthOutput($v->data()));
-    }
-
-    private function passwordstrengthOutput($data)
-    {
-        //check new password strength
-        if ($this->c['PasswordModule']->isStrongPassword($data['new_password'])) {
-            //todo save new password
-            return ['data' => 
-                $this->c['msgCode'][2530]
-            ];
+        if (!$this->c['PasswordModule']->isStrongPassword($data['new_password'])) {
+            return $this->c['ViewHelper']->toJson($response, ['errors' =>
+                $this->c['msgCode'][2510]
+            ]);
+        }
+        
+        /* @var $user \PP\Portal\DbModel\User */
+        $user = $this->c['UserModule']->user;
+        
+        if ( !$user->passwordVerify($data['old_password'])){
+            return $this->c['ViewHelper']->toJson($response, ['errors' =>
+                $this->c['msgCode'][2520]
+            ]);
         }
 
-        return ['errors' => 
-                $this->c['msgCode'][2510]
-            ];
+        $user->password = $this->c['PasswordModule']->passwordHash($data['new_password']);
+        $user->save();
+
+        return $this->c['ViewHelper']->toJson($response, ['data' =>
+                $this->c['msgCode'][2530]
+            ]);
     }
 }

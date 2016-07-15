@@ -3,7 +3,7 @@
 namespace PP\Portal\Module;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use PP\Portal\DbModel\Client;
+use PP\Portal\DbModel\User;
 
 /**
  * Description of UserModule.
@@ -13,33 +13,32 @@ use PP\Portal\DbModel\Client;
 class UserModule extends AbstractContainer
 {
     /**
-     * @var Client
+     * @var User
      */
-    public $client;
+    public $user;
 
-    /*
-    protected $fields = [
-        'Client_NO',
-        'Title',
-        'First_Name',
-        'Middle_Name',
-        'Surname',
-        'Company_Name',
-        'Mobile_One',
-        'Mobile_Two',
-        'Home_Phone',
-        'Business_Phone',
-        'Home_Fax',
-        'Business_Fax',
-        'Email',
-        'Second_Email',
-        'Person_One_Skype',
-        'Home_Address_1',
-        'Home_Address_2',
-        'Home_Address_3',
-        'Home_Address_4',
-        'Home_Address_5',
-    ];*/
+    public function verifyUser($ar){
+        $user = User::where('ppmid',$ar['ppmid'])
+                    ->where('date_of_birth',$ar['date_of_birth'])
+                    ->first();
+
+        
+        if ( $user ) {
+            return $user;
+        }
+
+        return false;
+    }
+    
+    public function isUserNameExist($user_name){
+        $count = User::where('user_name',$user_name)->count();
+
+        if ($count === 0 ) {
+            return true;
+        }
+        
+        return false;
+    }
 
     /**
      * check user exist by id.
@@ -48,24 +47,34 @@ class UserModule extends AbstractContainer
      */
     public function isUserExistByID($id)
     {
-        $item = $this->c['pool']->getItem('Client/'.$id.'/info');
+        $item = $this->c['pool']->getItem('User/'.$id.'/info');
 
         /* @var $client Client */
-        $client = $item->get();
+        $user = $item->get();
 
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $client = Client::find($id);
-            $this->c['pool']->save($item->set($client));
+            $user = User::find($id);
+            $this->c['pool']->save($item->set($user));
         }
 
-        if ($client) {
-            $this->client = $client;
+        if ($user) {
+            $this->user = $user;
 
             return true;
         }
 
         return false;
     }
+
+    public function isUserExistByUsername($username){
+        $user = User::where('user_name',$username)->first();
+        if ( $user ){
+            $this->user = $user;
+            return true;
+        }
+        return false;
+    }
+    
 }

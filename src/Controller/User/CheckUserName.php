@@ -6,7 +6,7 @@ use PP\Portal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class Info extends AbstractContainer
+class CheckUserName extends AbstractContainer
 {
     /**
      * @param ServerRequestInterface $request
@@ -17,12 +17,19 @@ class Info extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        /* @var $client \PP\Portal\DbModel\User */
-        $user = $this->c['UserModule']->user;
+        
 
-        //$out = ['data' => $client->as_array()];
-        $out = ['data' => $user->toArray()];
+        if ( $this->c['UserModule']->isUserNameExist($args['user_name'])){
+            return $this->c['ViewHelper']->toJson($response, ['data' =>
+                $this->c['msgCode'][2060]
+            ]);
+        }
 
-        return $this->c['ViewHelper']->toJson($response, $out);
+        return $this->c['ViewHelper']->toJson($response, ['data' =>
+                $this->c['msgCode'][2070]
+            ]);
+        
+
+        
     }
 }

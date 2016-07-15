@@ -30,10 +30,9 @@ class CheckPlatform extends AbstractContainer
         }
 
         if (!$result) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => [
-                        'status' => 403,
-                        'title'  => 'Platform Header Missing',
-                    ]])->withStatus(403);
+            return $this->c['ViewHelper']->toJson($response, ['errors' =>
+                        $this->c['msgCode'][4010]
+                    ])->withStatus(403);
         }
 
         return $next($request, $response);

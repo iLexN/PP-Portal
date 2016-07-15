@@ -20,7 +20,7 @@ class Login extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $v = new \Valitron\Validator((array) $request->getParsedBody());
-        $v->rule('required', ['clientID', 'password']);
+        $v->rule('required', ['user_name', 'password']);
 
         if (!$v->validate()) {
             return $this->c['ViewHelper']->toJson($response, ['errors' => 
@@ -33,7 +33,7 @@ class Login extends AbstractContainer
         }
 
         return $this->c['ViewHelper']->toJson($response, ['errors' => 
-            $this->c['msgCode'][2010]
+            $this->c['msgCode'][2080]
         ]);
     }
 
@@ -46,17 +46,24 @@ class Login extends AbstractContainer
      */
     private function isUserExist($data)
     {
-        return $this->c['UserModule']->isUserExistByID($data['clientID']) &&
-                $this->c['UserModule']->client->verifyPassword($data['password']);
+        if ( !$this->c['UserModule']->isUserExistByUsername($data['user_name']) ) {
+            return false;
+        }
+
+        if ( !$this->c['UserModule']->user->passwordVerify($data['password']) ){
+            return false;
+        }
+
+        return true;
     }
 
     private function success()
     {
-        /* @var $user \PP\Portal\dbModel\Client */
-        $client = $this->c['UserModule']->client;
+        /* @var $user \PP\Portal\DbModel\User */
+        $user = $this->c['UserModule']->user;
 
         return ['data' => [
-                'id' => $client->Client_NO,
+                'id' => $user->ppmid,
                 ]];
     }
 }

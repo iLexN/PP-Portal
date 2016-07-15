@@ -55,10 +55,9 @@ class HttpBasicAuth
         if ($authUser === $this->username && $authPass === $this->password) {
             return $next($request, $response);
         } else {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => [
-                        'status' => 401,
-                        'title'  => 'Need Authenticate',
-                    ]])->withHeader('WWW-Authenticate', sprintf('Basic realm="%s"', $this->realm))
+            return $this->c['ViewHelper']->toJson($response, ['errors' =>
+                        $this->c['msgCode'][4010]
+                    ])->withHeader('WWW-Authenticate', sprintf('Basic realm="%s"', $this->realm))
                     ->withStatus(401);
         }
     }

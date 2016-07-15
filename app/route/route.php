@@ -2,6 +2,8 @@
 
 $app->post('/verify', 'PP\Portal\Controller\User\Verify')
         ->setName('UserVerify');
+$app->get('/check-username/{user_name}', 'PP\Portal\Controller\User\CheckUserName')
+        ->setName('CheckUserName');
 
 $app->post('/login', 'PP\Portal\Controller\User\Login')
         ->setName('UserLogin');

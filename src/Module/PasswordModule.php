@@ -83,4 +83,8 @@ class PasswordModule extends AbstractContainer
                 $this->validateLetters($value) &&
                 $this->validateNumbers($value);
     }
+
+    public function passwordHash($pass){
+        return password_hash($pass, PASSWORD_DEFAULT);
+    }
 }

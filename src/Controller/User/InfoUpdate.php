@@ -17,12 +17,35 @@ class InfoUpdate extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        /* @var $client \PP\Portal\DbModel\Client */
-        $client = $this->c['UserModule']->client;
+        
 
-        $v = new \Valitron\Validator((array) $request->getParsedBody(), $client->getVisible());
+        /* @var $newInfo \PP\Portal\DbModel\UserInfoReNew */
+        $newInfo = $this->c['UserModule']->user->reNewInfo()->where('status','Pending')->first();
 
-        $client->update($v->data());
+        
+
+        if ( $newInfo ){
+            //todo alrady exist
+        } else {
+            $newInfo = new \PP\Portal\DbModel\UserInfoReNew();
+            $newInfo->ppmid = $this->c['UserModule']->user->ppmid;
+            $newInfo->status = 'Pending';
+        }
+
+        $v = new \Valitron\Validator((array) $request->getParsedBody(), $newInfo->getVisible());
+        $v->rule('dateFormat', ['date_of_birth'] , 'Y-m-d');
+
+        if(!$v->validate()) {
+            return $this->c['ViewHelper']->toJson($response, ['errors' =>
+                        $this->c['msgCode'][1020]
+                    ]);
+        }
+
+        foreach  ( $v->data() as $k => $v ){
+            $newInfo->{$k} = $v;
+        }
+
+        $newInfo->save();
 
         return $this->c['ViewHelper']->toJson($response, ['data' => 
             $this->c['msgCode'][2020]

@@ -6,6 +6,10 @@ return [
         'code'=>1010,
         'title'=> 'Missing field(s)',
     ],
+    '1020'=> [
+        'code'=>1020,
+        'title'=> 'field validate fail',
+    ],
     '1510'=> [
         'code'=>1510,
         'title'=> 'file not not',
@@ -23,7 +27,7 @@ return [
     ],
     '2020' => [
         'code'=>2020,
-        'title'=> 'User Info Updated',
+        'title'=> 'New User Info Create',
     ],
     '2030' => [
         'code'=>2030,
@@ -31,15 +35,23 @@ return [
     ],
     '2040' => [
         'code'=>2040,
-        'title'=> 'User Verify is true',
+        'title'=> 'User Verify is true and already Register',
     ],
     '2050' => [
         'code'=>2050,
-        'title'=> 'User Verify is true, can go to signup',
+        'title'=> 'User Verify is true, not Register yet',
     ],
     '2060' => [
-        'code'=>2050,
-        'title'=> 'User Verify Fail',
+        'code'=>2060,
+        'title'=> 'User can use',
+    ],
+    '2070' => [
+        'code'=>2070,
+        'title'=> 'User already used',
+    ],
+    '2080' => [
+        'code'=>2080,
+        'title'=> 'Login Fail',
     ],
 
     // User password
@@ -48,8 +60,8 @@ return [
         'title'=> 'Password not strong enough',
     ],
     '2520' => [
-        'code'=>'2520',
-        'title'=> 'New Password / Old password not same',
+        'code'=>2520,
+        'title'=> 'Old password not same as before',
     ],
     '2530' => [
         'code'=>2530,
