@@ -15,10 +15,8 @@ use Illuminate\Database\Eloquent\Model as Model;
 class Policy extends Model
 {
     protected $table = 'member_portal_policy';
+
     protected $primaryKey = 'policy_id';
-
-    //protected $hidden = ['pivot'];
-
 
     public $timestamps = false;
 
@@ -32,6 +30,7 @@ class Policy extends Model
         
         $dateObj = Carbon::createFromFormat('Y-m-d', $this->attributes['end_date']);
         $dateObj->addDay();
+        
         return $dateObj->toDateString();
     }
 

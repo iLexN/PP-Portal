@@ -29,7 +29,7 @@ class PolicyModule extends AbstractContainer
         }
 
         /* @var $item \PP\Portal\DbModel\Policy */
-        $out = $policy->map(function ($item) {
+        $out = $policy->map(function (Policy $item) {
             return [
                 'policy_id' => $item->policy_id,
                 'insurer' => $item->insurer,
