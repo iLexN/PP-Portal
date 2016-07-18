@@ -48,5 +48,10 @@ class User extends Model
     {
         return $this->hasMany(__NAMESPACE__.'\UserInfoReNew', 'ppmid');
     }
+
+    public function userPolicy(){
+        return $this->belongsToMany(__NAMESPACE__.'\Policy', 'member_portal_user_policy', 'ppmid', 'policy_id')
+                ->withPivot('id');
+    }
     
 }

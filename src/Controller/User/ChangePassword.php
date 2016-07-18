@@ -45,8 +45,7 @@ class ChangePassword extends AbstractContainer
             ]);
         }
 
-        $user->password = $this->c['PasswordModule']->passwordHash($data['new_password']);
-        $user->save();
+        $this->c['UserModule']->savePassword($this->c['PasswordModule']->passwordHash($data['new_password']));
 
         return $this->c['ViewHelper']->toJson($response, ['data' =>
                 $this->c['msgCode'][2530]

@@ -1,5 +1,9 @@
 <?php
 
+//General
+$app->get('/office-info', 'PP\Portal\Controller\General\OfficeInfo')
+        ->setName('OfficeInfo');
+
 $app->post('/verify', 'PP\Portal\Controller\User\Verify')
         ->setName('UserVerify');
 $app->get('/check-username/{user_name}', 'PP\Portal\Controller\User\CheckUserName')
@@ -10,6 +14,7 @@ $app->post('/login', 'PP\Portal\Controller\User\Login')
 $app->post('/forgot-passowrd', 'PP\Portal\Controller\User\ForgotPassword')
         ->setName('UserChangePassword');
 
+//User
 $app->get('/user/{id:\d+}', 'PP\Portal\Controller\User\Info')
         ->setName('UserInfo')
         ->add($checkUserExist);
@@ -27,6 +32,13 @@ $app->post('/user/{id:\d+}/change-passowrd', 'PP\Portal\Controller\User\ChangePa
         ->setName('UserChangePassword')
         ->add($checkUserExist);
 
+//Policy
+$app->get('/policy/{id:\d+}', 'PP\Portal\Controller\Policy\PolicyInfo')
+        ->setName('Policy');
+
+//Claims
+$app->post('/claim', 'PP\Portal\Controller\Claim\ClaimCreate')
+        ->setName('ClaimCreate');
 
 $app->post('/test/upload', 'PP\Portal\Controller\Test\UploadAction');
 //$app->get('/test/token', 'PP\Portal\Controller\Test\Token')
@@ -37,3 +49,5 @@ $app->post('/test/upload', 'PP\Portal\Controller\Test\UploadAction');
 //helper for development
 $app->get('/helper/router', 'PP\Portal\Controller\Helper\Router')
         ->setName('helperRouter');
+$app->get('/helper/code', 'PP\Portal\Controller\Helper\Code')
+        ->setName('helperCode');

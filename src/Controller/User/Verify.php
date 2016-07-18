@@ -35,7 +35,7 @@ class Verify extends AbstractContainer
         $user = $this->c['UserModule']->verifyUser($data);
         if ( !$user ) {
             return $this->c['ViewHelper']->toJson($response, ['errors' =>
-                $this->c['msgCode'][2010]
+                $this->c['msgCode'][2051]
             ]);
         }
 

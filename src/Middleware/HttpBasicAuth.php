@@ -56,7 +56,7 @@ class HttpBasicAuth
             return $next($request, $response);
         } else {
             return $this->c['ViewHelper']->toJson($response, ['errors' =>
-                        $this->c['msgCode'][4010]
+                        $this->c['msgCode'][4020]
                     ])->withHeader('WWW-Authenticate', sprintf('Basic realm="%s"', $this->realm))
                     ->withStatus(401);
         }

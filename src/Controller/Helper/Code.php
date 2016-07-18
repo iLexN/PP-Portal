@@ -1,15 +1,15 @@
 <?php
 
-namespace PP\Portal\Controller\Policy;
+namespace PP\Portal\Controller\Helper;
 
 use PP\Portal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class PolicyList extends AbstractContainer
+class Code extends AbstractContainer
 {
     /**
-     * List Policy by client id.
+     * Router helper.
      *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response
@@ -19,10 +19,13 @@ class PolicyList extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $out = $this->c['PolicyModule']->getPolicyList();
 
-        return $this->c['ViewHelper']->toJson($response, [
-                    'data' => $out->toArray(),
-                ]);
+        $ar = $this->c['msgCode'];
+
+        foreach ( $ar as $k ) {
+            echo( '<string name="erro_code_'.$k['code'].'">'.$k['title'].'</string>' ."\n");
+        }
+
+        
     }
 }

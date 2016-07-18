@@ -54,7 +54,8 @@ class UserModule extends AbstractContainer
 
         if ($item->isMiss()) {
             $item->lock();
-            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            //$item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $item->expiresAfter(3600*12);
             $user = User::find($id);
             $this->c['pool']->save($item->set($user));
         }
@@ -75,6 +76,16 @@ class UserModule extends AbstractContainer
             return true;
         }
         return false;
+    }
+
+    public function savePassword($pass){
+        $this->user->password = $pass;
+        $this->user->save();
+        $this->clearUserCache();
+    }
+
+    private function clearUserCache(){
+        $this->c['pool']->deleteItem('User/'.$this->user->ppmid.'/info');
     }
     
 }

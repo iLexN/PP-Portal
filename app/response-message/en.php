@@ -1,4 +1,5 @@
 <?php
+// 2016-07-15
 
 return [
      // general 1xxx
@@ -12,11 +13,15 @@ return [
     ],
     '1510'=> [
         'code'=>1510,
-        'title'=> 'file not not',
+        'title'=> 'file not found',
     ],
     '1520'=> [
         'code'=>1520,
         'title'=> 'System Error',
+    ],
+    '1530'=> [
+        'code'=>1530,
+        'title'=> 'OK',
     ],
 
 
@@ -40,6 +45,10 @@ return [
     '2050' => [
         'code'=>2050,
         'title'=> 'User Verify is true, not Register yet',
+    ],
+    '2051' => [
+        'code'=>2051,
+        'title'=> 'User Verify fail',
     ],
     '2060' => [
         'code'=>2060,
@@ -71,6 +80,19 @@ return [
         'code'=>2540,
         'title'=> 'Forgot password mail sent',
     ],
+
+    //Policy
+    '3010' => [
+        'code'=>3010,
+        'title'=> 'Policy not found',
+    ],
+
+    //Claim
+    '5010' => [
+        'code'=>5010,
+        'title'=> 'Claim Create',
+    ],
+
 
     // using api fail 4xxxx
     '4010' => [

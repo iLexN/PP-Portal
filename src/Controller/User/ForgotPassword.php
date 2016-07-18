@@ -20,7 +20,7 @@ class ForgotPassword extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         $v = new \Valitron\Validator((array) $request->getParsedBody());
-        $v->rule('required', ['clientID']);
+        $v->rule('required', ['user_name']);
 
         if (!$v->validate()) {
             return $this->c['ViewHelper']->toJson($response, ['errors' => 
@@ -28,7 +28,7 @@ class ForgotPassword extends AbstractContainer
             ]);
         }
 
-        if ($this->c['UserModule']->isUserExistByID($v->data()['clientID'])) {
+        if ($this->c['UserModule']->isUserExistByUsername($v->data()['user_name'])) {
             $this->sendForgotPasswordEmail();
 
             return $this->c['ViewHelper']->toJson($response, ['data' => 
@@ -46,16 +46,16 @@ class ForgotPassword extends AbstractContainer
      */
     private function sendForgotPasswordEmail()
     {
-        /* @var $client \PP\Portal\dbModel\Client */
-        $client = $this->c['UserModule']->client;
+        /* @var $user \PP\Portal\DbModel\User */
+        $user = $this->c['UserModule']->user;
 
         /* @var $mail \PHPMailer */
         $mail = $this->c['mailer'];
         $mail->setFrom('info@pacificprime.com', 'Pacific Prime');
-        $mail->addAddress('alex@kwiksure.com', $client->First_Name.' '.$client->Surname);
-        $mail->Subject = 'Forgot password test';
+        $mail->addAddress('alex@kwiksure.com', $user->first_name.' '.$user->last_name);
+        $mail->Subject = 'forgotpassword';
         $mail->msgHTML($this->c['twigView']->fetch('email/forgot-password.twig', [
-                'Client' => $client,
+                'User' => $user,
             ]));
         if (!$mail->send()) {
             $this->c->logger->error('forgot password mail send fail'.$mail->ErrorInfo);

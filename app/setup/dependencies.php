@@ -70,6 +70,12 @@ $container['mailer'] = function () {
 $container['UserModule'] = function (\Slim\Container $c) {
     return new \PP\Portal\Module\UserModule($c);
 };
+$container['PolicyModule'] = function (\Slim\Container $c) {
+    return new \PP\Portal\Module\PolicyModule($c);
+};
+$container['ClaimModule'] = function (\Slim\Container $c) {
+    return new \PP\Portal\Module\ClaimModule($c);
+};
 
 $container['PasswordModule'] = function (\Slim\Container $c) {
     return new \PP\Portal\Module\PasswordModule($c);

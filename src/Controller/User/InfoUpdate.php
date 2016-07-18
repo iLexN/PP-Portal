@@ -17,12 +17,9 @@ class InfoUpdate extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        
 
         /* @var $newInfo \PP\Portal\DbModel\UserInfoReNew */
         $newInfo = $this->c['UserModule']->user->reNewInfo()->where('status','Pending')->first();
-
-        
 
         if ( $newInfo ){
             //todo alrady exist
