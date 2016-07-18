@@ -46,8 +46,7 @@ $container['notFoundHandler'] = function (\Slim\Container $c) {
         ];
         $c->logger->info('404', $logInfo);
 
-        return $c['ViewHelper']->toJson($response, ['errors' => 
-                    $c['msgCode'][1510]
+        return $c['ViewHelper']->toJson($response, ['errors' => $c['msgCode'][1510],
                 ])->withStatus(404);
     };
 };
@@ -57,8 +56,7 @@ if (!$container['settings']['displayErrorDetails']) {
         return function (\Slim\Http\Request $request, \Slim\Http\Response $response, \Exception $exception) use ($c) {
             $c['logger']->error('e', (array) $exception);
 
-            return $c['ViewHelper']->toJson($response, ['errors' => 
-                    $c['msgCode'][1520]
+            return $c['ViewHelper']->toJson($response, ['errors' => $c['msgCode'][1520],
                 ])->withStatus(500);
         };
     };
@@ -86,5 +84,5 @@ $container['ViewHelper'] = function (\Slim\Container $c) {
 };
 
 $container['msgCode'] = function (\Slim\Container $c) {
-    return require $c['settings']['systemMessage'] . 'en.php';
+    return require $c['settings']['systemMessage'].'en.php';
 };

@@ -19,31 +19,29 @@ class InfoUpdate extends AbstractContainer
     {
 
         /* @var $newInfo \PP\Portal\DbModel\UserInfoReNew */
-        $newInfo = $this->c['UserModule']->user->reNewInfo()->where('status','Pending')->first();
+        $newInfo = $this->c['UserModule']->user->reNewInfo()->where('status', 'Pending')->first();
 
-        if ( !$newInfo ){
+        if (!$newInfo) {
             $newInfo = new \PP\Portal\DbModel\UserInfoReNew();
             $newInfo->ppmid = $this->c['UserModule']->user->ppmid;
             $newInfo->status = 'Pending';
         }
 
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $newInfo->getVisible());
-        $v->rule('dateFormat', ['date_of_birth'] , 'Y-m-d');
+        $v->rule('dateFormat', ['date_of_birth'], 'Y-m-d');
 
-        if(!$v->validate()) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' =>
-                        $this->c['msgCode'][1020]
+        if (!$v->validate()) {
+            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][1020],
                     ]);
         }
 
-        foreach  ( $v->data() as $k => $v ){
+        foreach ($v->data() as $k => $v) {
             $newInfo->{$k} = $v;
         }
 
         $newInfo->save();
 
-        return $this->c['ViewHelper']->toJson($response, ['data' => 
-            $this->c['msgCode'][2020]
+        return $this->c['ViewHelper']->toJson($response, ['data' => $this->c['msgCode'][2020],
         ]);
     }
 }

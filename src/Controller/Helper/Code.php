@@ -19,13 +19,10 @@ class Code extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-
         $ar = $this->c['msgCode'];
 
-        foreach ( $ar as $k ) {
-            echo( '<string name="erro_code_'.$k['code'].'">'.$k['title'].'</string>' ."\n");
+        foreach ($ar as $k) {
+            echo  '<string name="erro_code_'.$k['code'].'">'.$k['title'].'</string>'."\n";
         }
-
-        
     }
 }

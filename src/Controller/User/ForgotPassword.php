@@ -23,21 +23,18 @@ class ForgotPassword extends AbstractContainer
         $v->rule('required', ['user_name']);
 
         if (!$v->validate()) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => 
-                $this->c['msgCode'][1010]
+            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][1010],
             ]);
         }
 
         if ($this->c['UserModule']->isUserExistByUsername($v->data()['user_name'])) {
             $this->sendForgotPasswordEmail();
 
-            return $this->c['ViewHelper']->toJson($response, ['data' => 
-                $this->c['msgCode'][2540]
+            return $this->c['ViewHelper']->toJson($response, ['data' => $this->c['msgCode'][2540],
             ]);
         }
 
-        return $this->c['ViewHelper']->toJson($response, ['errors' => 
-            $this->c['msgCode'][2010]
+        return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][2010],
         ]);
     }
 

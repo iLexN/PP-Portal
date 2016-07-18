@@ -24,10 +24,9 @@ class CheckUserExist extends AbstractContainer
     {
         $route = $request->getAttribute('route');
         $arguments = $route->getArguments();
-        
+
         if (!$this->c['UserModule']->isUserExistByID($arguments['id'])) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => 
-                $this->c['msgCode'][2010]
+            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][2010],
             ]);
         }
 

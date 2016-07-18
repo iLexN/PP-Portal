@@ -29,19 +29,19 @@ class User extends Model
 
     public $timestamps = false;
 
-    protected $guarded = ['ppmid','user_name','password'];
+    protected $guarded = ['ppmid', 'user_name', 'password'];
 
-    protected $hidden = ['password','user_name'];
+    protected $hidden = ['password', 'user_name'];
 
-
-    public function isRegister(){
-
+    public function isRegister()
+    {
         return $this->attributes['user_name'] === null &&
                $this->attributes['password'] === null;
     }
 
-    public function passwordVerify($password){
-        return password_verify ( $password ,  $this->attributes['password'] );
+    public function passwordVerify($password)
+    {
+        return password_verify($password, $this->attributes['password']);
     }
 
     public function reNewInfo()
@@ -49,9 +49,9 @@ class User extends Model
         return $this->hasMany(__NAMESPACE__.'\UserInfoReNew', 'ppmid');
     }
 
-    public function userPolicy(){
+    public function userPolicy()
+    {
         return $this->belongsToMany(__NAMESPACE__.'\Policy', 'member_portal_user_policy', 'ppmid', 'policy_id')
                 ->withPivot('id');
     }
-    
 }

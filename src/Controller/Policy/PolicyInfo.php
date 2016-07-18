@@ -22,9 +22,8 @@ class PolicyInfo extends AbstractContainer
         /* @var $policy \PP\Portal\DbModel\Policy */
         $policy = $this->c['PolicyModule']->policyInfo($args['id']);
 
-        if ( !$policy ) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' =>
-                $this->c['msgCode'][3010]
+        if (!$policy) {
+            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][3010],
             ]);
         }
 

@@ -20,14 +20,16 @@ class View extends AbstractContainer
                    ->write(json_encode($array, JSON_UNESCAPED_SLASHES));
     }
 
-    private function appendStatus($array){
-        if ( isset($array['data']['code'])) {
+    private function appendStatus($array)
+    {
+        if (isset($array['data']['code'])) {
             $array['status_code'] = $array['data']['code'];
-        } else if ( isset($array['errors']['code'])) {
+        } elseif (isset($array['errors']['code'])) {
             $array['status_code'] = $array['errors']['code'];
-        } else if ( !isset($array['status_code'])) {
+        } elseif (!isset($array['status_code'])) {
             $array['status_code'] = $this->c['msgCode'][1530]['code'];
         }
+
         return $array;
     }
 }
