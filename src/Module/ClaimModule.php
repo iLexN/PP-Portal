@@ -12,7 +12,8 @@ use PP\Portal\DbModel\Claim;
  */
 class ClaimModule extends AbstractContainer
 {
-    public function newClaims(){
+    public function newClaims()
+    {
         return new Claim();
     }
 }

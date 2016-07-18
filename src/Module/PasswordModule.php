@@ -73,18 +73,21 @@ class PasswordModule extends AbstractContainer
     }
 
     /**
-     * default Passwordstrength check
-     * 
+     * default Passwordstrength check.
+     *
      * @param string $value
+     *
      * @return bool
      */
-    public function isStrongPassword($value){
+    public function isStrongPassword($value)
+    {
         return $this->validateLength($value, 8) &&
                 $this->validateLetters($value) &&
                 $this->validateNumbers($value);
     }
 
-    public function passwordHash($pass){
+    public function passwordHash($pass)
+    {
         return password_hash($pass, PASSWORD_DEFAULT);
     }
 }

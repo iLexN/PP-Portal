@@ -52,6 +52,7 @@ class Signup extends AbstractContainer
         return $this->c['ViewHelper']->toJson($response, ['data' => $this->c['msgCode'][2030],
         ]);
     }
+
     /**
      * send email.
      */

@@ -23,18 +23,17 @@ class ClaimCreate extends AbstractContainer
         $claim = $this->c['ClaimModule']->newClaims();
 
         //var_dump($claim->getFillable());
-        
+
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $claim->getVisible());
         $v->rule('required', ['user_policy_id']);
-        $v->rule('dateFormat', ['date_of_treatment'] , 'Y-m-d');
+        $v->rule('dateFormat', ['date_of_treatment'], 'Y-m-d');
         $v->rule('integer', ['user_policy_id']);
 
-        if(!$v->validate()) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' =>
-                        $this->c['msgCode'][1020]
+        if (!$v->validate()) {
+            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][1020],
                     ]);
         }
-        
+
 
         return $this->c['ViewHelper']->toJson($response, [
                     'data' => $this->c['msgCode'][5010],

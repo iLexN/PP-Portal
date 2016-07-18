@@ -30,7 +30,5 @@ class UserInfoReNew extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['title','middle_name','first_name','last_name','date_of_birth','nationality','phone_1','phone_2','address_line_2','address_line_3','address_line_4','address_line_5',];
-
-
+    protected $fillable = ['title', 'middle_name', 'first_name', 'last_name', 'date_of_birth', 'nationality', 'phone_1', 'phone_2', 'address_line_2', 'address_line_3', 'address_line_4', 'address_line_5'];
 }

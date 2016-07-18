@@ -10,5 +10,4 @@ class OfficeInfo extends Model
     protected $primaryKey = 'contact_details_id';
 
     public $timestamps = false;
-
 }

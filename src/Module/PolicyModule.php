@@ -12,7 +12,8 @@ use PP\Portal\DbModel\Policy;
  */
 class PolicyModule extends AbstractContainer
 {
-    public function getPolicyList(){
+    public function getPolicyList()
+    {
         /* @var $user \PP\Portal\DbModel\User */
         $user = $this->c['UserModule']->user;
 
@@ -31,17 +32,19 @@ class PolicyModule extends AbstractContainer
         /* @var $item \PP\Portal\DbModel\Policy */
         $out = $policy->map(function (Policy $item) {
             return [
-                'policy_id' => $item->policy_id,
-                'insurer' => $item->insurer,
-                'plan_name' => $item->plan_name,
-                'responsibility_id'=>$item->responsibility_id,
-                'user_policy_id'=> $item->pivot->id,
+                'policy_id'         => $item->policy_id,
+                'insurer'           => $item->insurer,
+                'plan_name'         => $item->plan_name,
+                'responsibility_id' => $item->responsibility_id,
+                'user_policy_id'    => $item->pivot->id,
             ];
         });
+
         return $out;
     }
 
-    public function policyInfo($id){
+    public function policyInfo($id)
+    {
 
         /* @var $policy \PP\Portal\DbModel\Policy */
         $item = $this->c['pool']->getItem('Policy/'.$id);
@@ -54,6 +57,7 @@ class PolicyModule extends AbstractContainer
             $policy = Policy::find($id);
             $this->c['pool']->save($item->set($policy));
         }
+
         return $policy;
     }
 }

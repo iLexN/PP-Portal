@@ -15,6 +15,5 @@ class Claim extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['user_policy_id','currency','amount','date_of_treatment','diagnosis','payment_method','issue_to_whom','issue_address','currency_receive'];
-
+    protected $fillable = ['user_policy_id', 'currency', 'amount', 'date_of_treatment', 'diagnosis', 'payment_method', 'issue_to_whom', 'issue_address', 'currency_receive'];
 }

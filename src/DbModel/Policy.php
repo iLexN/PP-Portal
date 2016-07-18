@@ -22,17 +22,15 @@ class Policy extends Model
 
     protected $appends = ['renew_date'];
 
-    public function getRenewDateAttribute(){
-        
-        if ( $this->attributes['end_date'] === null ) {
-            return null;
+    public function getRenewDateAttribute()
+    {
+        if ($this->attributes['end_date'] === null) {
+            return;
         }
-        
+
         $dateObj = Carbon::createFromFormat('Y-m-d', $this->attributes['end_date']);
         $dateObj->addDay();
-        
+
         return $dateObj->toDateString();
     }
-
-
 }

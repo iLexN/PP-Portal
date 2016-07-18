@@ -23,8 +23,7 @@ class Login extends AbstractContainer
         $v->rule('required', ['user_name', 'password']);
 
         if (!$v->validate()) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => 
-                $this->c['msgCode'][1010]
+            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][1010],
             ]);
         }
 
@@ -32,8 +31,7 @@ class Login extends AbstractContainer
             return $this->c['ViewHelper']->toJson($response, $this->success());
         }
 
-        return $this->c['ViewHelper']->toJson($response, ['errors' => 
-            $this->c['msgCode'][2080]
+        return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][2080],
         ]);
     }
 
@@ -46,11 +44,11 @@ class Login extends AbstractContainer
      */
     private function isUserExist($data)
     {
-        if ( !$this->c['UserModule']->isUserExistByUsername($data['user_name']) ) {
+        if (!$this->c['UserModule']->isUserExistByUsername($data['user_name'])) {
             return false;
         }
 
-        if ( !$this->c['UserModule']->user->passwordVerify($data['password']) ){
+        if (!$this->c['UserModule']->user->passwordVerify($data['password'])) {
             return false;
         }
 
