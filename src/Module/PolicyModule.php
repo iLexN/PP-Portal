@@ -28,8 +28,8 @@ class PolicyModule extends AbstractContainer
             $this->c['pool']->save($item->set($policy));
         }
 
+        /* @var $item \PP\Portal\DbModel\Policy */
         $out = $policy->map(function ($item) {
-            /* @var $item \PP\Portal\DbModel\Policy */
             return [
                 'policy_id' => $item->policy_id,
                 'insurer' => $item->insurer,

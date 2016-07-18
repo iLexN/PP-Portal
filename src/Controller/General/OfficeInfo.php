@@ -19,7 +19,7 @@ class OfficeInfo extends AbstractContainer
     {
         
         $item = $this->c['pool']->getItem('OfficeInfo');
-        $out = $user = $item->get();
+        $out = $item->get();
 
         if ($item->isMiss()) {
             $item->lock();

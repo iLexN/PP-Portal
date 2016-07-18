@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property string $address_line_3
  * @property string $address_line_4
  * @property string $address_line_5
+ * @property string $status
  */
 class UserInfoReNew extends Model
 {

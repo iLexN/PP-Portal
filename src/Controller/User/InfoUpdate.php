@@ -21,9 +21,7 @@ class InfoUpdate extends AbstractContainer
         /* @var $newInfo \PP\Portal\DbModel\UserInfoReNew */
         $newInfo = $this->c['UserModule']->user->reNewInfo()->where('status','Pending')->first();
 
-        if ( $newInfo ){
-            //todo alrady exist
-        } else {
+        if ( !$newInfo ){
             $newInfo = new \PP\Portal\DbModel\UserInfoReNew();
             $newInfo->ppmid = $this->c['UserModule']->user->ppmid;
             $newInfo->status = 'Pending';

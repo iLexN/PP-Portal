@@ -5,6 +5,13 @@ namespace PP\Portal\DbModel;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model as Model;
 
+/**
+ * @property int $policy_id
+ * @property string $insurer
+ * @property string $plan_name
+ * @property string $responsibility_id
+ * @property array $pivot
+ */
 class Policy extends Model
 {
     protected $table = 'member_portal_policy';
