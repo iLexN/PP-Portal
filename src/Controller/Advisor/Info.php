@@ -17,7 +17,7 @@ class Info extends AbstractContainer
         if ( $advisor ) {
             $out = ['data' => $advisor->toArray()];
 
-            return $this->ViewHelper->toJson($response, $out);
+            return $this->ViewHelper->successView($response, $out,5040 );
         }
 
         return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[3510],

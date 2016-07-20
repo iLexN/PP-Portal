@@ -40,7 +40,7 @@ class ClaimModule extends AbstractContainer
 
     /**
      *
-     * @param UserPolicy $id user_policy_id
+     * @param UserPolicy $userPolicy
      * @return type
      */
     public function getClaimList(UserPolicy $userPolicy)

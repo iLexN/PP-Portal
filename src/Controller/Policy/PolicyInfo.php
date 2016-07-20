@@ -18,8 +18,8 @@ class PolicyInfo extends AbstractContainer
             ]);
         }
 
-        return $this->ViewHelper->toJson($response, [
+        return $this->ViewHelper->successView($response, [
                     'data' => $policy->toArray(),
-                ]);
+                ],3030);
     }
 }

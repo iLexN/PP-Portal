@@ -12,8 +12,8 @@ class PolicyList extends AbstractContainer
     {
         $out = $this->PolicyModule->getPolicyList();
 
-        return $this->ViewHelper->toJson($response, [
+        return $this->ViewHelper->successView($response, [
                     'data' => $out->toArray(),
-                ]);
+                ],3020);
     }
 }

@@ -24,6 +24,10 @@ return [
         'code'  => 1530,
         'title' => 'OK',
     ],
+    '1540' => [
+        'code'  => 1540,
+        'title' => 'get office info success',
+    ],
 
 
     // user 2xxx
@@ -34,6 +38,10 @@ return [
     '2020' => [
         'code'  => 2020,
         'title' => 'New User Info Create',
+    ],
+    '2021' => [
+        'code'  => 2021,
+        'title' => 'get userinfo success',
     ],
     '2030' => [
         'code'  => 2030,
@@ -63,6 +71,10 @@ return [
         'code'  => 2080,
         'title' => 'Login Fail',
     ],
+    '2081' => [
+        'code'  => 2081,
+        'title' => 'login sucess',
+    ],
 
     // User password
     '2510' => [
@@ -87,6 +99,14 @@ return [
         'code'  => 3010,
         'title' => 'Policy not found',
     ],
+    '3020' => [
+        'code'  => 3020,
+        'title' => 'get policy list success',
+    ],
+    '3030' => [
+        'code'  => 3030,
+        'title' => 'get policy success',
+    ],
     '3510' => [
         'code'  => 3510,
         'title' => 'Advisor not found',
@@ -104,6 +124,10 @@ return [
     '5030' => [
         'code'  => 5030,
         'title' => 'Claims list',
+    ],
+    '5040' => [
+        'code'  => 5040,
+        'title' => 'get advisor info success',
     ],
 
 

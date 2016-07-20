@@ -4,6 +4,9 @@ namespace PP\Portal\DbModel;
 
 use Illuminate\Database\Eloquent\Model as Model;
 
+/**
+ * @property int $id
+ */
 class UserPolicy extends Model
 {
     protected $table = 'member_portal_user_policy';

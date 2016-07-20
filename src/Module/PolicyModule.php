@@ -32,7 +32,7 @@ class PolicyModule extends AbstractContainer
         $out = $policy->map(function (Policy $item) {
             return [
                 'policy_id'         => $item->policy_id,
-                'insurer'           => $item->payment_method,
+                'insurer'           => $item->insurer,
                 'plan_name'         => $item->plan_name,
                 'responsibility_id' => $item->responsibility_id,
                 'user_policy_id'    => $item->pivot->id,

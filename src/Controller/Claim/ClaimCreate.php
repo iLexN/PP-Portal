@@ -21,7 +21,7 @@ class ClaimCreate extends AbstractContainer
         $claim = $this->ClaimModule->newClaim($args['id']);
 
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $claim->getVisible());
-        $v->rule('required', ['user_policy_id']);
+        //$v->rule('required', ['user_policy_id']);
         $v->rule('dateFormat', ['date_of_treatment'], 'Y-m-d');
 
         if (!$v->validate()) {

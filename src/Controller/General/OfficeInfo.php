@@ -20,7 +20,7 @@ class OfficeInfo extends AbstractContainer
             $this->pool->save($item->set($out));
         }
 
-        return $this->ViewHelper->toJson($response, ['data' => $out]);
+        return $this->ViewHelper->successView($response, ['data' => $out], 1540);
     }
 
     private function dataFromDB()
