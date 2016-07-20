@@ -3,7 +3,7 @@
 namespace PP\Portal\Middleware;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -34,16 +34,7 @@ class HttpBasicAuth extends AbstractContainer
         $this->realm = 'Protected Area';
     }
 
-    /**
-     * logRoute app setting determineRouteBeforeAppMiddleware = true.
-     *
-     * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
-     * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response
-     * @param callable                                 $next     Next middleware
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
+    public function __invoke(ServerRequestInterface $request, Response $response, $next)
     {
         $authUser = $request->getHeaderLine('PHP_AUTH_USER');
         $authPass = $request->getHeaderLine('PHP_AUTH_PW');

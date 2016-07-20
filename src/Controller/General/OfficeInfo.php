@@ -3,19 +3,12 @@
 namespace PP\Portal\Controller\General;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
 
 class OfficeInfo extends AbstractContainer
 {
-    /**
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface      $response
-     * @param array                  $args
-     *
-     * @return ResponseInterface
-     */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         $item = $this->pool->getItem('OfficeInfo');
         $out = $item->get();

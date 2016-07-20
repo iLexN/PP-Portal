@@ -3,21 +3,12 @@
 namespace PP\Portal\Controller\Claim;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
 
 class ClaimCreate extends AbstractContainer
 {
-    /**
-     * List Policy by client id.
-     *
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface      $response
-     * @param array                  $args
-     *
-     * @return ResponseInterface
-     */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         /* @var $claim \PP\Portal\DbModel\Claim */
         $claim = $this->ClaimModule->newClaim();

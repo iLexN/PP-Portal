@@ -3,21 +3,12 @@
 namespace PP\Portal\Controller\Policy;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
 
 class PolicyInfo extends AbstractContainer
 {
-    /**
-     * List Policy by client id.
-     *
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface      $response
-     * @param array                  $args
-     *
-     * @return ResponseInterface
-     */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         /* @var $policy \PP\Portal\DbModel\Policy */
         $policy = $this->PolicyModule->policyInfo($args['id']);

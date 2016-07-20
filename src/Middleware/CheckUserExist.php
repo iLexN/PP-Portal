@@ -3,7 +3,7 @@
 namespace PP\Portal\Middleware;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -13,14 +13,7 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class CheckUserExist extends AbstractContainer
 {
-    /**
-     * @param \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
-     * @param \Psr\Http\Message\ResponseInterface      $response PSR7 response
-     * @param callable                                 $next     Next middleware
-     *
-     * @return \Psr\Http\Message\ResponseInterface
-     */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, $next)
+    public function __invoke(ServerRequestInterface $request, Response $response, $next)
     {
         $route = $request->getAttribute('route');
         $arguments = $route->getArguments();

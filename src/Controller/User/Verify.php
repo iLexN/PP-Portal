@@ -3,7 +3,7 @@
 namespace PP\Portal\Controller\User;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
 
 class Verify extends AbstractContainer
@@ -15,7 +15,7 @@ class Verify extends AbstractContainer
      *
      * @return ResponseInterface
      */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         $v = new \Valitron\Validator((array) $request->getParsedBody());
         $v->rule('required', ['ppmid', 'date_of_birth']);

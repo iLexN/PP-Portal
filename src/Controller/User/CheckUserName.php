@@ -3,7 +3,7 @@
 namespace PP\Portal\Controller\User;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ResponseInterface;
+use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
 
 class CheckUserName extends AbstractContainer
@@ -15,7 +15,7 @@ class CheckUserName extends AbstractContainer
      *
      * @return ResponseInterface
      */
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         if ($this->UserModule->isUserNameExist($args['user_name'])) {
             return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2060],
