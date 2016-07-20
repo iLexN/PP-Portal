@@ -92,10 +92,18 @@ return [
         'title' => 'Advisor not found',
     ],
 
-    //Claim
+    //UserPolicy
     '5010' => [
         'code'  => 5010,
         'title' => 'Claim Create',
+    ],
+    '5020' => [
+        'code'  => 5020,
+        'title' => 'User Policy not found',
+    ],
+    '5030' => [
+        'code'  => 5030,
+        'title' => 'Claims list',
     ],
 
 

@@ -10,15 +10,19 @@ class ClaimCreate extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        /* @var $claim \PP\Portal\DbModel\Claim */
-        $claim = $this->ClaimModule->newClaim();
+        $userPolicy = $this->UserPolicyModule->getClaimList($args['id']);
 
-        //var_dump($claim->getFillable());
+        if ( !$userPolicy ) {
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[5020],
+            ]);
+        }
+
+        /* @var $claim \PP\Portal\DbModel\Claim */
+        $claim = $this->ClaimModule->newClaim($args['id']);
 
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $claim->getVisible());
         $v->rule('required', ['user_policy_id']);
         $v->rule('dateFormat', ['date_of_treatment'], 'Y-m-d');
-        $v->rule('integer', ['user_policy_id']);
 
         if (!$v->validate()) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020],

@@ -37,9 +37,10 @@ $app->get('/policy/{id:\d+}', 'PP\Portal\Controller\Policy\PolicyInfo')
         ->setName('Policy');
 $app->get('/advisor/{id:\d+}', 'PP\Portal\Controller\Advisor\Info')
         ->setName('AdvisorInfo');
-
-//Claims
-$app->post('/claim', 'PP\Portal\Controller\Claim\ClaimCreate')
+//UserPolicy
+$app->get('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimList')
+        ->setName('ClaimList');
+$app->post('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimCreate')
         ->setName('ClaimCreate');
 
 $app->post('/test/upload', 'PP\Portal\Controller\Test\UploadAction');

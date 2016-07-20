@@ -9,6 +9,7 @@ namespace PP\Portal\AbstractClass;
  * @property \PHPMailer $mailer
  * @property \PP\Portal\Module\UserModule $UserModule
  * @property \PP\Portal\Module\PolicyModule $PolicyModule
+ * @property \PP\Portal\Module\UserPolicyModule $UserPolicyModule
  * @property \PP\Portal\Module\ClaimModule $ClaimModule
  * @property \PP\Portal\Module\PasswordModule $PasswordModule
  * @property \PP\Portal\Module\Helper\View $ViewHelper

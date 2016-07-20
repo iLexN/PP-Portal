@@ -32,7 +32,7 @@ class PolicyModule extends AbstractContainer
         $out = $policy->map(function (Policy $item) {
             return [
                 'policy_id'         => $item->policy_id,
-                'insurer'           => $item->insurer,
+                'insurer'           => $item->payment_method,
                 'plan_name'         => $item->plan_name,
                 'responsibility_id' => $item->responsibility_id,
                 'user_policy_id'    => $item->pivot->id,
@@ -42,6 +42,11 @@ class PolicyModule extends AbstractContainer
         return $out;
     }
 
+    /**
+     * get PolicyInfo by id
+     * @param int $id
+     * @return \PP\Portal\DbModel\Policy
+     */
     public function policyInfo($id)
     {
 
