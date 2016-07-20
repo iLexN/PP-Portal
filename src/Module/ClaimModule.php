@@ -45,7 +45,6 @@ class ClaimModule extends AbstractContainer
      */
     public function getClaimList(UserPolicy $userPolicy)
     {
-        
         $item = $this->pool->getItem('UserPolicy/'.$userPolicy->id.'/claim/list');
 
         $claim = $item->get();
