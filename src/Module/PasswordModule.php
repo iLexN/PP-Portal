@@ -28,7 +28,8 @@ class PasswordModule extends AbstractContainer
      * check length.
      *
      * @param string $value
-     * @param int    $length
+     * @param int    $min
+     * @param int    $max
      *
      * @return bool
      */

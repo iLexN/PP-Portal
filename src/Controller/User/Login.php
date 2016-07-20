@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 class Login extends AbstractContainer
 {
-    public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
+    public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         $v = new \Valitron\Validator((array) $request->getParsedBody());
         $v->rule('required', ['user_name', 'password']);
