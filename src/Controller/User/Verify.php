@@ -24,25 +24,25 @@ class Verify extends AbstractContainer
 
 
         if (!$v->validate()) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][1020],
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020],
             ]);
         }
 
         $data = $v->data();
 
         /* @var $user \PP\Portal\DbModel\User */
-        $user = $this->c['UserModule']->verifyUser($data);
+        $user = $this->UserModule->verifyUser($data);
         if (!$user) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][2051],
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2051],
             ]);
         }
 
         if ($user->isRegister()) {
-            return $this->c['ViewHelper']->toJson($response, ['data' => $this->c['msgCode'][2050],
+            return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2050],
             ]);
         }
 
-        return $this->c['ViewHelper']->toJson($response, ['data' => $this->c['msgCode'][2040],
+        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2040],
         ]);
     }
 }

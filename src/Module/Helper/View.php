@@ -7,6 +7,12 @@ use Slim\Http\Response;
 
 class View extends AbstractContainer
 {
+    public function successView(Response $response, $ar , $code) {
+        $ar['status_code'] = $this->msgCode[$code]['code'];
+
+        return $this->toJson($response, $ar);
+    }
+
     public function toJson(Response $response, $ar)
     {
         $array = $this->appendStatus($ar);
@@ -27,7 +33,7 @@ class View extends AbstractContainer
         } elseif (isset($array['errors']['code'])) {
             $array['status_code'] = $array['errors']['code'];
         } elseif (!isset($array['status_code'])) {
-            $array['status_code'] = $this->c['msgCode'][1530]['code'];
+            $array['status_code'] = $this->msgCode[1530]['code'];
         }
 
         return $array;

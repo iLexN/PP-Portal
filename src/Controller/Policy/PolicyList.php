@@ -19,9 +19,9 @@ class PolicyList extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
-        $out = $this->c['PolicyModule']->getPolicyList();
+        $out = $this->PolicyModule->getPolicyList();
 
-        return $this->c['ViewHelper']->toJson($response, [
+        return $this->ViewHelper->toJson($response, [
                     'data' => $out->toArray(),
                 ]);
     }

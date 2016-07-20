@@ -4,6 +4,7 @@ namespace PP\Portal\Module;
 
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\User;
+use PP\Portal\DbModel\UserInfoReNew;
 
 /**
  * Description of UserModule.
@@ -51,17 +52,17 @@ class UserModule extends AbstractContainer
      */
     public function isUserExistByID($id)
     {
-        $item = $this->c['pool']->getItem('User/'.$id.'/info');
+        $item = $this->pool->getItem('User/'.$id.'/info');
 
-        /* @var $client Client */
+        /* @var $user User */
         $user = $item->get();
-
+        
         if ($item->isMiss()) {
             $item->lock();
-            //$item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $item->expiresAfter(3600 * 12);
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            //$item->expiresAfter(3600 * 12);
             $user = User::find($id);
-            $this->c['pool']->save($item->set($user));
+            $this->pool->save($item->set($user));
         }
 
         if ($user) {
@@ -94,6 +95,28 @@ class UserModule extends AbstractContainer
 
     private function clearUserCache()
     {
-        $this->c['pool']->deleteItem('User/'.$this->user->ppmid.'/info');
+        $this->pool->deleteItem('User/'.$this->user->ppmid.'/info');
+    }
+
+
+    public function newInfoReNew(){
+        $newInfo = new UserInfoReNew();
+        $newInfo->ppmid = $this->user->ppmid;
+        $newInfo->status = 'Pending';
+        return $newInfo;
+    }
+
+    public function saveInfoReNew(UserInfoReNew $newInfo,$ar){
+        foreach ($ar as $k => $v) {
+            $newInfo->{$k} = $v;
+        }
+
+        $newInfo->save();
+    }
+
+    public function saveSignUp($data){
+        $this->user->user_name = $data['user_name'];
+        $this->user->password = $this->PasswordModule->passwordHash($data['password']);
+        $this->user->save();
     }
 }

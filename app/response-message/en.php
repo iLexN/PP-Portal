@@ -87,6 +87,10 @@ return [
         'code'  => 3010,
         'title' => 'Policy not found',
     ],
+    '3510' => [
+        'code'  => 3510,
+        'title' => 'Advisor not found',
+    ],
 
     //Claim
     '5010' => [

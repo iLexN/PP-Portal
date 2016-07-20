@@ -19,29 +19,23 @@ class InfoUpdate extends AbstractContainer
     {
 
         /* @var $newInfo \PP\Portal\DbModel\UserInfoReNew */
-        $newInfo = $this->c['UserModule']->user->reNewInfo()->where('status', 'Pending')->first();
+        $newInfo = $this->UserModule->user->reNewInfo()->where('status', 'Pending')->first();
 
         if (!$newInfo) {
-            $newInfo = new \PP\Portal\DbModel\UserInfoReNew();
-            $newInfo->ppmid = $this->c['UserModule']->user->ppmid;
-            $newInfo->status = 'Pending';
+            $newInfo = $this->UserModule->newInfoReNew();
         }
 
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $newInfo->getVisible());
         $v->rule('dateFormat', ['date_of_birth'], 'Y-m-d');
 
         if (!$v->validate()) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][1020],
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020],
                     ]);
         }
 
-        foreach ($v->data() as $k => $v) {
-            $newInfo->{$k} = $v;
-        }
+        $this->UserModule->saveInfoReNew($newInfo , $v->data());
 
-        $newInfo->save();
-
-        return $this->c['ViewHelper']->toJson($response, ['data' => $this->c['msgCode'][2020],
+        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2020],
         ]);
     }
 }

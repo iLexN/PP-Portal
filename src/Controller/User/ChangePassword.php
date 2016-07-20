@@ -23,28 +23,28 @@ class ChangePassword extends AbstractContainer
         $v->rule('required', ['old_password', 'new_password']);
 
         if (!$v->validate()) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][1010],
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1010],
             ]);
         }
 
         $data = $v->data();
 
-        if (!$this->c['PasswordModule']->isStrongPassword($data['new_password'])) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][2510],
+        if (!$this->PasswordModule->isStrongPassword($data['new_password'])) {
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2510],
             ]);
         }
 
         /* @var $user \PP\Portal\DbModel\User */
-        $user = $this->c['UserModule']->user;
+        $user = $this->UserModule->user;
 
         if (!$user->passwordVerify($data['old_password'])) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][2520],
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2520],
             ]);
         }
 
-        $this->c['UserModule']->savePassword($this->c['PasswordModule']->passwordHash($data['new_password']));
+        $this->UserModule->savePassword($this->PasswordModule->passwordHash($data['new_password']));
 
-        return $this->c['ViewHelper']->toJson($response, ['data' => $this->c['msgCode'][2530],
+        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2530],
             ]);
     }
 }

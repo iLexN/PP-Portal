@@ -1,16 +1,14 @@
 <?php
 
-namespace PP\Portal\Controller\Helper;
+namespace PP\Portal\Controller\Advisor;
 
 use PP\Portal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class Router extends AbstractContainer
+class Info extends AbstractContainer
 {
     /**
-     * Router helper.
-     *
      * @param ServerRequestInterface $request
      * @param ResponseInterface      $response
      * @param array                  $args
@@ -20,14 +18,16 @@ class Router extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
 
-        /* @var $router \Slim\Router */
-        $router = $this->c->router;
+        //todo add cache
+        $advisor = \PP\Portal\DbModel\Advisor::find($args['id']);
 
-        //exclude route
-        $router->removeNamedRoute('helperRouter');
+        if ( $advisor ) {
+            $out = ['data' => $advisor->toArray()];
 
-        return $this->twigView->render($response, 'helper/router.html.twig', [
-            'router' => $router,
-        ]);
+            return $this->ViewHelper->toJson($response, $out);
+        }
+
+        return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[3510],
+            ]);
     }
 }

@@ -20,7 +20,7 @@ class ClaimCreate extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, array $args)
     {
         /* @var $claim \PP\Portal\DbModel\Claim */
-        $claim = $this->c['ClaimModule']->newClaims();
+        $claim = $this->ClaimModule->newClaim();
 
         //var_dump($claim->getFillable());
 
@@ -30,13 +30,14 @@ class ClaimCreate extends AbstractContainer
         $v->rule('integer', ['user_policy_id']);
 
         if (!$v->validate()) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][1020],
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020],
                     ]);
         }
 
-
-        return $this->c['ViewHelper']->toJson($response, [
-                    'data' => $this->c['msgCode'][5010],
-                ]);
+        $this->ClaimModule->saveClaim($v->data());
+        
+        return $this->ViewHelper->successView($response, [
+                    'data' => ['id'=>$claim->claim_id]
+                ],5010);
     }
 }

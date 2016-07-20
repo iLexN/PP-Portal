@@ -23,18 +23,18 @@ class ForgotPassword extends AbstractContainer
         $v->rule('required', ['user_name']);
 
         if (!$v->validate()) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][1010],
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1010],
             ]);
         }
 
-        if ($this->c['UserModule']->isUserExistByUsername($v->data()['user_name'])) {
+        if ($this->UserModule->isUserExistByUsername($v->data()['user_name'])) {
             $this->sendForgotPasswordEmail();
 
-            return $this->c['ViewHelper']->toJson($response, ['data' => $this->c['msgCode'][2540],
+            return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2540],
             ]);
         }
 
-        return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][2010],
+        return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010],
         ]);
     }
 
@@ -44,20 +44,20 @@ class ForgotPassword extends AbstractContainer
     private function sendForgotPasswordEmail()
     {
         /* @var $user \PP\Portal\DbModel\User */
-        $user = $this->c['UserModule']->user;
+        $user = $this->UserModule->user;
 
         /* @var $mail \PHPMailer */
-        $mail = $this->c['mailer'];
+        $mail = $this->mailer;
         $mail->setFrom('info@pacificprime.com', 'Pacific Prime');
         $mail->addAddress('alex@kwiksure.com', $user->first_name.' '.$user->last_name);
         $mail->Subject = 'forgotpassword';
-        $mail->msgHTML($this->c['twigView']->fetch('email/forgot-password.twig', [
+        $mail->msgHTML($this->twigView->fetch('email/forgot-password.twig', [
                 'User' => $user,
             ]));
         if (!$mail->send()) {
-            $this->c->logger->error('forgot password mail send fail'.$mail->ErrorInfo);
+            $this->logger->error('forgot password mail send fail'.$mail->ErrorInfo);
         } else {
-            $this->c->logger->info('forgot password mail send');
+            $this->logger->info('forgot password mail send');
         }
     }
 }

@@ -14,10 +14,9 @@ class PolicyModule extends AbstractContainer
 {
     public function getPolicyList()
     {
-        /* @var $user \PP\Portal\DbModel\User */
-        $user = $this->c['UserModule']->user;
+        $user = $this->UserModule->user;
 
-        $item = $this->c['pool']->getItem('User/'.$user->ppmid.'/policy/list');
+        $item = $this->pool->getItem('User/'.$user->ppmid.'/policy/list');
 
         $policy = $item->get();
 
@@ -26,7 +25,7 @@ class PolicyModule extends AbstractContainer
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             //$item->expiresAfter(3600/4);
             $policy = $user->userPolicy()->get();
-            $this->c['pool']->save($item->set($policy));
+            $this->pool->save($item->set($policy));
         }
 
         /* @var $item \PP\Portal\DbModel\Policy */
@@ -47,7 +46,7 @@ class PolicyModule extends AbstractContainer
     {
 
         /* @var $policy \PP\Portal\DbModel\Policy */
-        $item = $this->c['pool']->getItem('Policy/'.$id);
+        $item = $this->pool->getItem('Policy/'.$id);
         $policy = $item->get();
 
         if ($item->isMiss()) {
@@ -55,7 +54,7 @@ class PolicyModule extends AbstractContainer
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             //$item->expiresAfter(3600/4);
             $policy = Policy::find($id);
-            $this->c['pool']->save($item->set($policy));
+            $this->pool->save($item->set($policy));
         }
 
         return $policy;

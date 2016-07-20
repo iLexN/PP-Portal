@@ -12,8 +12,22 @@ use PP\Portal\DbModel\Claim;
  */
 class ClaimModule extends AbstractContainer
 {
-    public function newClaims()
+    /**
+     * @var \PP\Portal\DbModel\Claim
+     */
+    public $claim;
+
+    public function newClaim()
     {
-        return new Claim();
+        $this->claim = new Claim();
+        return $this->claim;
+    }
+
+    public function saveClaim($data){
+        foreach ($data as $k => $v) {
+            $this->claim->{$k} = $v;
+        }
+
+        $this->claim->save();
     }
 }

@@ -35,6 +35,8 @@ $app->post('/user/{id:\d+}/change-passowrd', 'PP\Portal\Controller\User\ChangePa
 //Policy
 $app->get('/policy/{id:\d+}', 'PP\Portal\Controller\Policy\PolicyInfo')
         ->setName('Policy');
+$app->get('/advisor/{id:\d+}', 'PP\Portal\Controller\Advisor\Info')
+        ->setName('AdvisorInfo');
 
 //Claims
 $app->post('/claim', 'PP\Portal\Controller\Claim\ClaimCreate')

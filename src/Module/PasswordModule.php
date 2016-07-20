@@ -25,6 +25,20 @@ class PasswordModule extends AbstractContainer
     }
 
     /**
+     * check length.
+     *
+     * @param string $value
+     * @param int    $length
+     *
+     * @return bool
+     */
+    public function validateLengthBetween($value, $min , $max)
+    {
+        $length = strlen($value);
+        return $length >= $min && $length <= $max;
+    }
+
+    /**
      * need have char.
      *
      * @param string $value
@@ -81,7 +95,7 @@ class PasswordModule extends AbstractContainer
      */
     public function isStrongPassword($value)
     {
-        return $this->validateLength($value, 8) &&
+        return $this->validateLengthBetween($value, 8,16) &&
                 $this->validateLetters($value) &&
                 $this->validateNumbers($value);
     }

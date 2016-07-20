@@ -23,15 +23,15 @@ class Login extends AbstractContainer
         $v->rule('required', ['user_name', 'password']);
 
         if (!$v->validate()) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][1010],
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1010],
             ]);
         }
 
         if ($this->isUserExist($v->data())) {
-            return $this->c['ViewHelper']->toJson($response, $this->success());
+            return $this->ViewHelper->toJson($response, $this->success());
         }
 
-        return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][2080],
+        return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2080],
         ]);
     }
 
@@ -44,11 +44,11 @@ class Login extends AbstractContainer
      */
     private function isUserExist($data)
     {
-        if (!$this->c['UserModule']->isUserExistByUsername($data['user_name'])) {
+        if (!$this->UserModule->isUserExistByUsername($data['user_name'])) {
             return false;
         }
 
-        if (!$this->c['UserModule']->user->passwordVerify($data['password'])) {
+        if (!$this->UserModule->user->passwordVerify($data['password'])) {
             return false;
         }
 
@@ -58,7 +58,7 @@ class Login extends AbstractContainer
     private function success()
     {
         /* @var $user \PP\Portal\DbModel\User */
-        $user = $this->c['UserModule']->user;
+        $user = $this->UserModule->user;
 
         return ['data' => [
                 'id' => $user->ppmid,

@@ -2,6 +2,7 @@
 
 namespace PP\Portal\Middleware;
 
+use PP\Portal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -10,7 +11,7 @@ use Psr\Http\Message\ServerRequestInterface;
  *
  * @author user
  */
-class HttpBasicAuth
+class HttpBasicAuth extends AbstractContainer
 {
     /**
      * @var string
@@ -25,17 +26,12 @@ class HttpBasicAuth
      */
     protected $password;
 
-    /**
-     * @var \Slim\Container
-     */
-    protected $c;
-
-    public function __construct(\Slim\Container $container, $realm = 'Protected Area')
+    public function __construct(\Slim\Container $container  )
     {
-        $this->c = $container;
+        parent::__construct($container);
         $this->username = $container->get('firewallConfig')['username'];
         $this->password = $container->get('firewallConfig')['password'];
-        $this->realm = $realm;
+        $this->realm = 'Protected Area';
     }
 
     /**
@@ -55,7 +51,7 @@ class HttpBasicAuth
         if ($authUser === $this->username && $authPass === $this->password) {
             return $next($request, $response);
         } else {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][4020],
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[4020],
                     ])->withHeader('WWW-Authenticate', sprintf('Basic realm="%s"', $this->realm))
                     ->withStatus(401);
         }
