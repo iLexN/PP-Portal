@@ -5,19 +5,21 @@ namespace PP\Portal\Module;
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\UserPolicy;
 
-/**
- * Description of UserModule.
- *
- * @author user
- */
+
 class UserPolicyModule extends AbstractContainer
 {
+    /**
+     *
+     * @var UserPolicy
+     */
+    public $userPolicy;
+
     /**
      *
      * @param int $id user_policy_id
      * @return type
      */
-    public function getClaimList($id)
+    public function getUerPolicy($id)
     {
         
         $item = $this->pool->getItem('UserPolicy/'.$id);
@@ -31,7 +33,13 @@ class UserPolicyModule extends AbstractContainer
             $userPolicy = UserPolicy::find($id);
             $this->pool->save($item->set($userPolicy));
         }
+
+        if ( $userPolicy ) {
+            $this->userPolicy = $userPolicy;
+            
+            return true;
+        }
         
-        return $userPolicy;
+        return false;
     }
 }

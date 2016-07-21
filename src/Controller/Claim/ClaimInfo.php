@@ -6,14 +6,14 @@ use PP\Portal\AbstractClass\AbstractContainer;
 use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
 
-class ClaimList extends AbstractContainer
+class ClaimInfo extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        $claims = $this->ClaimModule->getClaimList($this->UserPolicyModule->userPolicy);
+        $claimInfo = $this->ClaimModule->claim;
 
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $claims->toArray()
-                ],5030);
+                    'data' => $claimInfo->toArray()
+                ],6020);
     }
 }

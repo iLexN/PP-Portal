@@ -27,6 +27,7 @@ class ClaimModule extends AbstractContainer
     {
         $this->claim = new Claim();
         $this->claim->user_policy_id = $id;
+        $this->claim->status = 'Pending';
         return $this->claim;
     }
 
@@ -59,5 +60,23 @@ class ClaimModule extends AbstractContainer
         }
         
         return $claim;
+    }
+
+    public function geInfoById($id){
+        $item = $this->pool->getItem('Claim/'.$id);
+        $claim = $item->get();
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            //$item->expiresAfter(3600/4);
+            $claim = Claim::find($id);
+            $this->pool->save($item->set($claim));
+        }
+        if ( $claim ){
+            $this->claim = $claim;
+
+            return true;
+        }
+        return false;
     }
 }

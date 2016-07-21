@@ -31,6 +31,9 @@ $app->get('/user/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyList')
 $app->post('/user/{id:\d+}/change-passowrd', 'PP\Portal\Controller\User\ChangePassword')
         ->setName('UserChangePassword')
         ->add($checkUserExist);
+$app->post('/user/{id:\d+}/bank-account', 'PP\Portal\Controller\User\BankAccAction')
+        ->setName('BankAccAction')
+        ->add($checkUserExist);
 
 //Policy
 $app->get('/policy/{id:\d+}', 'PP\Portal\Controller\Policy\PolicyInfo')
@@ -39,9 +42,18 @@ $app->get('/advisor/{id:\d+}', 'PP\Portal\Controller\Advisor\Info')
         ->setName('AdvisorInfo');
 //UserPolicy
 $app->get('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimList')
-        ->setName('ClaimList');
+        ->setName('ClaimList')
+        ->add($checkUsePolicyrExist);
 $app->post('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimCreate')
-        ->setName('ClaimCreate');
+        ->setName('ClaimCreate')
+        ->add($checkUsePolicyrExist);
+//Claim
+$app->get('/claim/{id:\d+}', 'PP\Portal\Controller\Claim\ClaimInfo')
+        ->setName('ClaimInfo')
+        ->add($checkClaimExist);
+$app->post('/claim/{id:\d+}/attachment', 'PP\Portal\Controller\Claim\ClaimAttachment')
+        ->setName('ClaimAttachment')
+        ->add($checkClaimExist);
 
 $app->post('/test/upload', 'PP\Portal\Controller\Test\UploadAction');
 //$app->get('/test/token', 'PP\Portal\Controller\Test\Token')

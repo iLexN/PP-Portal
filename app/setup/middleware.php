@@ -5,6 +5,8 @@
 //by route
 //$checkToken = new \PP\Middleware\CheckToken($container);
 $checkUserExist = new \PP\Portal\Middleware\CheckUserExist($container);
+$checkUsePolicyrExist = new \PP\Portal\Middleware\CheckUsePolicyrExist($container);
+$checkClaimExist = new \PP\Portal\Middleware\CheckClaimExist($container);
 
 //all app
 if ($dbSetting['logging']) {

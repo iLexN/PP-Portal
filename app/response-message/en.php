@@ -128,6 +128,11 @@ return [
         'code'  => 3510,
         'title' => 'Advisor not found',
     ],
+    '3610' => [
+        'code'  => 3610,
+        'title' => 'bank a/c save',
+    ],
+
 
     //UserPolicy
     '5010' => [
@@ -146,6 +151,17 @@ return [
         'code'  => 5040,
         'title' => 'get advisor info success',
     ],
+    
+    //Claim
+    '6010' => [
+        'code'  => 6010,
+        'title' => 'claim not exist',
+    ],
+    '6020' => [
+        'code'  => 6020,
+        'title' => 'claim info success',
+    ],
+    
 
 
 
