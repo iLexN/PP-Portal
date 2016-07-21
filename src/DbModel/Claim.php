@@ -21,4 +21,7 @@ class Claim extends Model
     public function fileAttachments() {
         return $this->hasMany(__NAMESPACE__.'\ClaimFile', 'claim_id');
     }
+    public function bankInfo() {
+        return $this->hasOne(__NAMESPACE__.'\ClaimBankAcc', 'claim_id');
+    }
 }

@@ -16,7 +16,7 @@ class BankAccAction extends AbstractContainer
             $acc = $this->UserBankAccModule->newBlankAcc($args['id']);
         }
 
-        $v = new \Valitron\Validator((array) $request->getParsedBody(), $acc->getVisible());
+        $v = new \Valitron\Validator((array) $request->getParsedBody(), $acc->getFillable());
         $v->rule('required', ['iban', 'bank_swift_code']);
 
         if (!$v->validate()) {

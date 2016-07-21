@@ -5,6 +5,7 @@ namespace PP\Portal\Module;
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\Claim;
 use PP\Portal\DbModel\UserPolicy;
+use PP\Portal\DbModel\ClaimBankAcc;
 
 /**
  * Description of UserModule.
@@ -17,6 +18,12 @@ class ClaimModule extends AbstractContainer
      * @var \PP\Portal\DbModel\Claim
      */
     public $claim;
+
+    /**
+     *
+     * @var \PP\Portal\DbModel\ClaimBankAcc
+     */
+    public $bankInfo;
 
     /**
      *
@@ -70,7 +77,7 @@ class ClaimModule extends AbstractContainer
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             //$item->expiresAfter(3600/4);
-            $claim = Claim::with('fileAttachments')->find($id);
+            $claim = Claim::with('fileAttachments','bankInfo')->find($id);
             $this->pool->save($item->set($claim));
         }
         if ( $claim ){
@@ -79,6 +86,19 @@ class ClaimModule extends AbstractContainer
             return true;
         }
         return false;
+    }
+
+    public function newBankAcc() {
+        $this->bankInfo = new ClaimBankAcc();
+        return $this->bankInfo;
+    }
+
+    public function saveBank($data){
+        foreach ($data as $k => $v) {
+            $this->bankInfo->{$k} = $v;
+        }
+
+        $this->bankInfo->save();
     }
 
     private function clearCache()
