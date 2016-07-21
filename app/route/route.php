@@ -31,6 +31,9 @@ $app->get('/user/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyList')
 $app->post('/user/{id:\d+}/change-passowrd', 'PP\Portal\Controller\User\ChangePassword')
         ->setName('UserChangePassword')
         ->add($checkUserExist);
+$app->get('/user/{id:\d+}/bank-account', 'PP\Portal\Controller\User\BankAccInfo')
+        ->setName('BankAccInfo')
+        ->add($checkUserExist);
 $app->post('/user/{id:\d+}/bank-account', 'PP\Portal\Controller\User\BankAccAction')
         ->setName('BankAccAction')
         ->add($checkUserExist);

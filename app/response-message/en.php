@@ -132,6 +132,14 @@ return [
         'code'  => 3610,
         'title' => 'bank a/c save',
     ],
+    '3620' => [
+        'code'  => 3620,
+        'title' => 'no bank a/c info',
+    ],
+    '3630' => [
+        'code'  => 3630,
+        'title' => 'bank a/c info success',
+    ],
 
 
     //UserPolicy
