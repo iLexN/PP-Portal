@@ -37,6 +37,7 @@ class ClaimModule extends AbstractContainer
         }
 
         $this->claim->save();
+        $this->clearCache();
     }
 
     /**
@@ -78,5 +79,11 @@ class ClaimModule extends AbstractContainer
             return true;
         }
         return false;
+    }
+
+    private function clearCache()
+    {
+        $this->pool->deleteItem('UserPolicy/'.$this->claim->user_policy_id.'/claim/list');
+        $this->pool->deleteItem('Claim/'.$this->claim->claim_id);
     }
 }
