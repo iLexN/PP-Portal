@@ -76,7 +76,9 @@ $container['UserPolicyModule'] = function (\Slim\Container $c) {
 $container['ClaimModule'] = function (\Slim\Container $c) {
     return new \PP\Portal\Module\ClaimModule($c);
 };
-
+$container['ClaimFileModule'] = function (\Slim\Container $c) {
+    return new \PP\Portal\Module\ClaimFileModule($c);
+};
 $container['PasswordModule'] = function (\Slim\Container $c) {
     return new \PP\Portal\Module\PasswordModule($c);
 };

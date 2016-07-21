@@ -5,8 +5,6 @@ namespace PP\Portal\Controller\Claim;
 use PP\Portal\AbstractClass\AbstractContainer;
 use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
-use League\Flysystem\Filesystem;
-use League\Flysystem\Adapter\Local;
 
 class ClaimAttachment extends AbstractContainer
 {
@@ -36,11 +34,7 @@ class ClaimAttachment extends AbstractContainer
             ],1820);
         }
 
-        $adapter = new Local($this->c->get('uploadConfig')['path']);
-        $filesystem = new Filesystem($adapter);
-        $filesystem->createDir($args['id']);
-
-        $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$args['id'].'/'.$newfile->getClientFilename());
+        $this->ClaimFileModule->newClaimFile($newfile);
 
         return $this->ViewHelper->withStatusCode($response, [
                 'data' => [
