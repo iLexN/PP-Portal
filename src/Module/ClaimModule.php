@@ -69,7 +69,7 @@ class ClaimModule extends AbstractContainer
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             //$item->expiresAfter(3600/4);
-            $claim = Claim::find($id);
+            $claim = Claim::with('fileAttachments')->find($id);
             $this->pool->save($item->set($claim));
         }
         if ( $claim ){
