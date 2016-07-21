@@ -67,14 +67,18 @@ class FileUploadModule
         $this->file->moveTo($path);
     }
 
-    public function isValid()
-    {
+    public function isUploadSuccess(){
         if ($this->file->getError() !== UPLOAD_ERR_OK) {
             $this->validationMsg[] = $this->file->getError();
 
             return false;
         }
 
+        return true;
+    }
+
+    public function isValid()
+    {
         $v = new Validator([
                'size' => $this->file->getSize(),
                'type' => $this->file->getClientMediaType(),

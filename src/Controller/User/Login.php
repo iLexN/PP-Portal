@@ -19,7 +19,7 @@ class Login extends AbstractContainer
         }
 
         if ($this->isUserExist($v->data())) {
-            return $this->ViewHelper->successView($response, $this->success(), 2081);
+            return $this->ViewHelper->withStatusCode($response, $this->success(), 2081);
         }
 
         return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2080],

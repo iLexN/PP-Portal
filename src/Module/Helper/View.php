@@ -7,7 +7,7 @@ use Slim\Http\Response;
 
 class View extends AbstractContainer
 {
-    public function successView(Response $response, $ar , $code) {
+    public function withStatusCode(Response $response, $ar , $code) {
         $ar['status_code'] = $this->msgCode[$code]['code'];
 
         return $this->toJson($response, $ar);

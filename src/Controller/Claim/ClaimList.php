@@ -20,7 +20,7 @@ class ClaimList extends AbstractContainer
 
         $claims = $this->ClaimModule->getClaimList($userPolicy);
 
-        return $this->ViewHelper->successView($response, [
+        return $this->ViewHelper->withStatusCode($response, [
                     'data' => $claims->toArray()
                 ],5030);
     }

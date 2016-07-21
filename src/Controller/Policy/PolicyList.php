@@ -12,7 +12,7 @@ class PolicyList extends AbstractContainer
     {
         $out = $this->PolicyModule->getPolicyList();
 
-        return $this->ViewHelper->successView($response, [
+        return $this->ViewHelper->withStatusCode($response, [
                     'data' => $out->toArray(),
                 ],3020);
     }

@@ -31,7 +31,7 @@ class ClaimCreate extends AbstractContainer
 
         $this->ClaimModule->saveClaim($v->data());
         
-        return $this->ViewHelper->successView($response, [
+        return $this->ViewHelper->withStatusCode($response, [
                     'data' => ['id'=>$claim->claim_id]
                 ],5010);
     }

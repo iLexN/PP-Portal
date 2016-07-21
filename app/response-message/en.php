@@ -28,6 +28,23 @@ return [
         'code'  => 1540,
         'title' => 'get office info success',
     ],
+    //file handle
+    '1810' => [
+        'code'  => 1810,
+        'title' => 'no file upload',
+    ],
+    '1820' => [
+        'code'  => 1820,
+        'title' => 'upload file validate fail',
+    ],
+    '1830' => [
+        'code'  => 1830,
+        'title' => 'upload fail',
+    ],
+    '1840' => [
+        'code'  => 1840,
+        'title' => 'upload success',
+    ],
 
 
     // user 2xxx
@@ -129,6 +146,7 @@ return [
         'code'  => 5040,
         'title' => 'get advisor info success',
     ],
+
 
 
     // using api fail 4xxxx

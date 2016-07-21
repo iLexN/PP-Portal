@@ -18,7 +18,7 @@ class PolicyInfo extends AbstractContainer
             ]);
         }
 
-        return $this->ViewHelper->successView($response, [
+        return $this->ViewHelper->withStatusCode($response, [
                     'data' => $policy->toArray(),
                 ],3030);
     }

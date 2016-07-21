@@ -12,23 +12,35 @@ class UploadAction extends AbstractContainer
     {
         $files = $request->getUploadedFiles();
 
-        if (!empty($files['newfile'])) {
-            $newfile = $this->handerFile($files['newfile']);
-
-            if ($newfile->isValid()) {
-                $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename());
-
-                return $this->c['ViewHelper']->toJson($response, [
-                    'data' => [
-                        'filename' => $newfile->getClientFilename(),
-                    ],
-                ]);
-            }
-
-            return $this->c['ViewHelper']->toJson($response, [
-                    'errors' => $newfile->getValidationMsg(),
+        if (empty($files['newfile'])) {
+            return $this->ViewHelper->toJson($response, [
+                    'errors' => $this->msgCode['1810'],
                 ]);
         }
+
+        $newfile = $this->handerFile($files['newfile']);
+
+        if ( !$newfile->isUploadSuccess() ) {
+            return $this->ViewHelper->withStatusCode($response, [
+                'errors' => $newfile->getValidationMsg(),
+            ],1830);
+        }
+
+        if (!$newfile->isValid()) {
+            return $this->ViewHelper->withStatusCode($response, [
+                //'errors' => $newfile->getValidationMsg(),
+                'errors' => $this->msgCode['1820'],
+            ],1820);
+        }
+
+        $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$newfile->getClientFilename());
+
+        return $this->ViewHelper->withStatusCode($response, [
+                'data' => [
+                    'filename' => $newfile->getClientFilename(),
+                ],
+            ],1840);
+        
     }
 
     /**
@@ -41,7 +53,7 @@ class UploadAction extends AbstractContainer
         /* @var $newfile \PP\Portal\Module\FileUploadModule */
         $newfile = new \PP\Portal\Module\FileUploadModule($file);
         $newfile->setAllowFilesize('2M');
-        $newfile->setAllowMimetype(['image/png', 'image/gif']);
+        $newfile->setAllowMimetype(['image/png', 'image/jpeg','application/pdf']);
 
         return $newfile;
     }

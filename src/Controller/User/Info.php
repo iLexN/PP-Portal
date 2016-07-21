@@ -13,6 +13,6 @@ class Info extends AbstractContainer
         /* @var $client \PP\Portal\DbModel\User */
         $user = $this->UserModule->user;
 
-        return $this->ViewHelper->successView($response, ['data' => $user->toArray()], 2021 );
+        return $this->ViewHelper->withStatusCode($response, ['data' => $user->toArray()], 2021 );
     }
 }
