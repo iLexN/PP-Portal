@@ -31,8 +31,6 @@ class ClaimCreate extends AbstractContainer
                     ]);
         }
 
-        //var_dump($claim->getVisible());
-
         $this->ClaimModule->saveClaim($v->data());
 
         if ( isset($request->getParsedBody()['bank'])){
