@@ -38,7 +38,7 @@ class ClaimAttachment extends AbstractContainer
 
         return $this->ViewHelper->withStatusCode($response, [
                 'data' => [
-                    'filename' => $newfile->getClientFilename(),
+                    $this->msgCode[1840],
                 ],
             ],1840);
         

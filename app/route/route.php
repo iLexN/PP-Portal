@@ -57,6 +57,8 @@ $app->get('/claim/{id:\d+}', 'PP\Portal\Controller\Claim\ClaimInfo')
 $app->post('/claim/{id:\d+}/attachment', 'PP\Portal\Controller\Claim\ClaimAttachment')
         ->setName('ClaimAttachment')
         ->add($checkClaimExist);
+$app->get('/attachment/{id:\d+}', 'PP\Portal\Controller\Claim\AttachmentDownload')
+        ->setName('AttachmentDownload');
 
 $app->post('/test/upload', 'PP\Portal\Controller\Test\UploadAction');
 //$app->get('/test/token', 'PP\Portal\Controller\Test\Token')

@@ -10,6 +10,13 @@ use League\Flysystem\Adapter\Local;
 
 class ClaimFileModule extends AbstractContainer
 {
+    /**
+     *
+     * @var \PP\Portal\DbModel\ClaimFile
+     */
+    public $file;
+
+
     public function newClaimFile(FileUploadModule $newfile){
         $file = new ClaimFile();
         $file->claim_id = $this->ClaimModule->claim->claim_id;
@@ -32,4 +39,25 @@ class ClaimFileModule extends AbstractContainer
     private function clearCache($id){
         $this->pool->deleteItem('Claim/'.$id);
     }
+
+    public function getFile($id) {
+        $this->file = ClaimFile::find($id);
+        return $this->file;
+    }
+
+    public function getFilePath(){
+        $filePath = $this->c->get('uploadConfig')['path'] . '/'.
+                $this->file->claim_id . '/' . 
+                $this->file->id .'/' .
+                $this->file->filename;
+        
+        if (file_exists($filePath)) {
+            return $filePath;
+        } else {
+            return false;
+        }
+
+    }
+
+    
 }
