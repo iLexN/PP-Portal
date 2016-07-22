@@ -60,7 +60,7 @@ $app->post('/claim/{id:\d+}/attachment', 'PP\Portal\Controller\Claim\ClaimAttach
 $app->get('/attachment/{id:\d+}', 'PP\Portal\Controller\Claim\AttachmentDownload')
         ->setName('AttachmentDownload');
 
-$app->post('/test/upload', 'PP\Portal\Controller\Test\UploadAction');
+
 //$app->get('/test/token', 'PP\Portal\Controller\Test\Token')
 //        ->setName('TestToken')
 //        ->add($checkToken);

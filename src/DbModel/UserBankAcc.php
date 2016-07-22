@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model as Model;
 
 /**
  * @property int $banker_transfer_id
- * @property int claim_id
+ * @property int $ppmid
  */
 class UserBankAcc extends Model
 {

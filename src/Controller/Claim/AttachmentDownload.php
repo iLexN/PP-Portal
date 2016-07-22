@@ -18,7 +18,7 @@ class AttachmentDownload extends AbstractContainer
         }
 
         $path = $this->ClaimFileModule->getFilePath();
-        if ( !$path) {
+        if ( $path === false) {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 

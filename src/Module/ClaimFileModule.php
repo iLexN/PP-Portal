@@ -25,7 +25,7 @@ class ClaimFileModule extends AbstractContainer
 
         $id = $file->id;
         $this->moveFiles($id, $newfile);
-        $this->clearCache($file->claim_id);
+        $this->ClaimModule->clearCache();
     }
 
     private function moveFiles($id,FileUploadModule $newfile){
@@ -34,10 +34,6 @@ class ClaimFileModule extends AbstractContainer
         $dirPath = $this->ClaimModule->claim->claim_id . '/' . $id;
         $filesystem->createDir($dirPath);
         $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$dirPath.'/'.$newfile->getClientFilename());
-    }
-
-    private function clearCache($id){
-        $this->pool->deleteItem('Claim/'.$id);
     }
 
     public function getFile($id) {
