@@ -28,7 +28,7 @@ class UserInfoReNew extends Model
     protected $table = 'member_portal_user_renew';
     protected $primaryKey = 'renew_id';
 
-    public $timestamps = false;
+    //public $timestamps = false;
 
     protected $fillable = ['title', 'middle_name', 'first_name', 'last_name', 'date_of_birth', 'nationality', 'phone_1', 'phone_2', 'address_line_2', 'address_line_3', 'address_line_4', 'address_line_5'];
 }

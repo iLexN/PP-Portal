@@ -34,7 +34,7 @@ class ClaimModule extends AbstractContainer
     {
         $this->claim = new Claim();
         $this->claim->user_policy_id = $id;
-        $this->claim->status = 'Pending';
+        $this->claim->status = 'Save';
         return $this->claim;
     }
 
@@ -101,7 +101,7 @@ class ClaimModule extends AbstractContainer
         $this->bankInfo->save();
     }
 
-    private function clearCache()
+    public function clearCache()
     {
         $this->pool->deleteItem('UserPolicy/'.$this->claim->user_policy_id.'/claim/list');
         $this->pool->deleteItem('Claim/'.$this->claim->claim_id);
