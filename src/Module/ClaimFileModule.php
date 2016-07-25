@@ -6,7 +6,6 @@ use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\ClaimFile;
-use PP\Portal\Module\FileUploadModule;
 
 class ClaimFileModule extends AbstractContainer
 {
@@ -28,8 +27,7 @@ class ClaimFileModule extends AbstractContainer
     }
 
     /**
-     *
-     * @param int $id
+     * @param int              $id
      * @param FileUploadModule $newfile
      */
     private function moveFiles($id, FileUploadModule $newfile)

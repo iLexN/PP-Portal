@@ -44,8 +44,8 @@ class DBLog
 
         $route = $request->getAttribute('route');
         $this->c->logger->info('route method', $route->getMethods());
-        $this->c->logger->info('route name',[$route->getName()]);
-        
+        $this->c->logger->info('route name', [$route->getName()]);
+
         return $response;
     }
 }
