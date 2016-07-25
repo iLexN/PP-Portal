@@ -12,6 +12,11 @@ use PP\Portal\DbModel\Policy;
  */
 class PolicyModule extends AbstractContainer
 {
+    /**
+     * PolicyList with cache.
+     *
+     * @return array
+     */
     public function getPolicyList()
     {
         $user = $this->UserModule->user;

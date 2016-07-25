@@ -10,7 +10,7 @@ class Verify extends AbstractContainer
 {
     /**
      * @param ServerRequestInterface $request
-     * @param ResponseInterface      $response
+     * @param Response               $response
      * @param array                  $args
      *
      * @return ResponseInterface

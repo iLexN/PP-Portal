@@ -27,6 +27,11 @@ class ClaimFileModule extends AbstractContainer
         $this->ClaimModule->clearCache();
     }
 
+    /**
+     *
+     * @param int $id
+     * @param FileUploadModule $newfile
+     */
     private function moveFiles($id, FileUploadModule $newfile)
     {
         $adapter = new Local($this->c->get('uploadConfig')['path']);
