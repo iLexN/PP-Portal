@@ -159,7 +159,7 @@ return [
         'code'  => 5040,
         'title' => 'get advisor info success',
     ],
-    
+
     //Claim
     '6010' => [
         'code'  => 6010,
@@ -169,7 +169,7 @@ return [
         'code'  => 6020,
         'title' => 'claim info success',
     ],
-    
+
 
 
 

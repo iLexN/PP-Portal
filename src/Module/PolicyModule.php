@@ -43,8 +43,10 @@ class PolicyModule extends AbstractContainer
     }
 
     /**
-     * get PolicyInfo by id
+     * get PolicyInfo by id.
+     *
      * @param int $id
+     *
      * @return \PP\Portal\DbModel\Policy
      */
     public function policyInfo($id)

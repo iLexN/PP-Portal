@@ -3,8 +3,8 @@
 namespace PP\Portal\Controller\User;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 class InfoUpdate extends AbstractContainer
 {
@@ -26,7 +26,7 @@ class InfoUpdate extends AbstractContainer
                     ]);
         }
 
-        $this->UserModule->saveInfoReNew($newInfo , $v->data());
+        $this->UserModule->saveInfoReNew($newInfo, $v->data());
 
         return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2020],
         ]);

@@ -3,8 +3,8 @@
 namespace PP\Portal\Controller\Policy;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 class PolicyList extends AbstractContainer
 {
@@ -14,6 +14,6 @@ class PolicyList extends AbstractContainer
 
         return $this->ViewHelper->withStatusCode($response, [
                     'data' => $out->toArray(),
-                ],3020);
+                ], 3020);
     }
 }

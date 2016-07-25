@@ -5,23 +5,20 @@ namespace PP\Portal\Module;
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\UserPolicy;
 
-
 class UserPolicyModule extends AbstractContainer
 {
     /**
-     *
      * @var UserPolicy
      */
     public $userPolicy;
 
     /**
-     *
      * @param int $id user_policy_id
+     *
      * @return type
      */
     public function getUerPolicy($id)
     {
-        
         $item = $this->pool->getItem('UserPolicy/'.$id);
 
         $userPolicy = $item->get();
@@ -34,12 +31,12 @@ class UserPolicyModule extends AbstractContainer
             $this->pool->save($item->set($userPolicy));
         }
 
-        if ( $userPolicy ) {
+        if ($userPolicy) {
             $this->userPolicy = $userPolicy;
-            
+
             return true;
         }
-        
+
         return false;
     }
 }

@@ -3,8 +3,8 @@
 namespace PP\Portal\Controller\User;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 class Verify extends AbstractContainer
 {

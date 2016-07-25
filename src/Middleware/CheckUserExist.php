@@ -3,8 +3,8 @@
 namespace PP\Portal\Middleware;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 /**
  * check the url part with the id is client or not.

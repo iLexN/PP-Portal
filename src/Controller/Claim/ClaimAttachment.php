@@ -3,14 +3,13 @@
 namespace PP\Portal\Controller\Claim;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 class ClaimAttachment extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-
         $files = $request->getUploadedFiles();
 
         if (empty($files['newfile'])) {
@@ -21,17 +20,17 @@ class ClaimAttachment extends AbstractContainer
 
         $newfile = $this->handerFile($files['newfile']);
 
-        if ( !$newfile->isUploadSuccess() ) {
+        if (!$newfile->isUploadSuccess()) {
             return $this->ViewHelper->withStatusCode($response, [
                 'errors' => $newfile->getValidationMsg(),
-            ],1830);
+            ], 1830);
         }
 
         if (!$newfile->isValid()) {
             return $this->ViewHelper->withStatusCode($response, [
                 //'errors' => $newfile->getValidationMsg(),
                 'errors' => $this->msgCode['1820'],
-            ],1820);
+            ], 1820);
         }
 
         $this->ClaimFileModule->newClaimFile($newfile);
@@ -40,8 +39,7 @@ class ClaimAttachment extends AbstractContainer
                 'data' => [
                     $this->msgCode[1840],
                 ],
-            ],1840);
-        
+            ], 1840);
     }
 
     /**
@@ -54,7 +52,7 @@ class ClaimAttachment extends AbstractContainer
         /* @var $newfile \PP\Portal\Module\FileUploadModule */
         $newfile = new \PP\Portal\Module\FileUploadModule($file);
         $newfile->setAllowFilesize('2M');
-        $newfile->setAllowMimetype(['image/png', 'image/jpeg','application/pdf']);
+        $newfile->setAllowMimetype(['image/png', 'image/jpeg', 'application/pdf']);
 
         return $newfile;
     }

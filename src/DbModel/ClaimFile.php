@@ -12,9 +12,8 @@ use Illuminate\Database\Eloquent\Model as Model;
 class ClaimFile extends Model
 {
     protected $table = 'member_portal_claim_file';
-    
+
     public $timestamps = false;
 
     protected $hidden = ['claim_id'];
-
 }

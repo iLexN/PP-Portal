@@ -3,8 +3,8 @@
 namespace PP\Portal\Controller\Helper;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 class Code extends AbstractContainer
 {

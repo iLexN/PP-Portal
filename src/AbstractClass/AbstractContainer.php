@@ -29,7 +29,8 @@ abstract class AbstractContainer
         $this->c = $container;
     }
 
-    public function __get($name){
+    public function __get($name)
+    {
         return $this->c[$name];
     }
 }

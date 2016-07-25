@@ -14,7 +14,8 @@ class UserPolicy extends Model
 
     public $timestamps = false;
 
-    public function claims(){
+    public function claims()
+    {
         return $this->hasMany(__NAMESPACE__.'\Claim', 'user_policy_id');
     }
 }

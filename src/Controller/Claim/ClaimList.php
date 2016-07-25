@@ -3,8 +3,8 @@
 namespace PP\Portal\Controller\Claim;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 class ClaimList extends AbstractContainer
 {
@@ -13,7 +13,7 @@ class ClaimList extends AbstractContainer
         $claims = $this->ClaimModule->getClaimList($this->UserPolicyModule->userPolicy);
 
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $claims->toArray()
-                ],5030);
+                    'data' => $claims->toArray(),
+                ], 5030);
     }
 }

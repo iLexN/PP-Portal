@@ -3,8 +3,8 @@
 namespace PP\Portal\Middleware;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 /**
  * Description of HttpBasicAuthMiddleWare.
@@ -26,7 +26,7 @@ class HttpBasicAuth extends AbstractContainer
      */
     protected $password;
 
-    public function __construct(\Slim\Container $container  )
+    public function __construct(\Slim\Container $container)
     {
         parent::__construct($container);
         $this->username = $container->get('firewallConfig')['username'];

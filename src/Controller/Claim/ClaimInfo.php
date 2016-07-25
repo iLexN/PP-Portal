@@ -3,8 +3,8 @@
 namespace PP\Portal\Controller\Claim;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 class ClaimInfo extends AbstractContainer
 {
@@ -13,7 +13,7 @@ class ClaimInfo extends AbstractContainer
         $claimInfo = $this->ClaimModule->claim;
 
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $claimInfo->toArray()
-                ],6020);
+                    'data' => $claimInfo->toArray(),
+                ], 6020);
     }
 }

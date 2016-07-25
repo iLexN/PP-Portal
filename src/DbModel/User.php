@@ -49,7 +49,8 @@ class User extends Model
         return $this->hasMany(__NAMESPACE__.'\UserInfoReNew', 'ppmid');
     }
 
-    public function userAcc(){
+    public function userAcc()
+    {
         return $this->hasOne(__NAMESPACE__.'\UserBankAcc', 'ppmid');
     }
 
