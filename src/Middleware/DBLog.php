@@ -42,6 +42,10 @@ class DBLog
         $query = $this->capsule->getConnection()->getQueryLog();
         $this->c->logger->info('query', $query);
 
+        $route = $request->getAttribute('route');
+        $this->c->logger->info('route method', $route->getMethods());
+        $this->c->logger->info('route name',[$route->getName()]);
+        
         return $response;
     }
 }
