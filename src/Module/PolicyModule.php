@@ -15,7 +15,7 @@ class PolicyModule extends AbstractContainer
     /**
      * PolicyList with cache.
      *
-     * @return array
+     * @return \PP\Portal\DbModel\Policy
      */
     public function getPolicyList()
     {
