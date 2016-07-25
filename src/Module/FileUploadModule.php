@@ -67,7 +67,8 @@ class FileUploadModule
         $this->file->moveTo($path);
     }
 
-    public function isUploadSuccess(){
+    public function isUploadSuccess()
+    {
         if ($this->file->getError() !== UPLOAD_ERR_OK) {
             $this->validationMsg[] = $this->file->getError();
 

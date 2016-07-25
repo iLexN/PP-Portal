@@ -13,5 +13,4 @@ class Advisor extends Model
     protected $primaryKey = 'responsibility_id';
 
     public $timestamps = false;
-
 }

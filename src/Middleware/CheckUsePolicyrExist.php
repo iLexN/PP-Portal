@@ -3,8 +3,8 @@
 namespace PP\Portal\Middleware;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 /**
  * check the url part with the id is client or not.
@@ -18,7 +18,7 @@ class CheckUsePolicyrExist extends AbstractContainer
         $route = $request->getAttribute('route');
         $arguments = $route->getArguments();
 
-        if ( !$this->UserPolicyModule->getUerPolicy($arguments['id']) ) {
+        if (!$this->UserPolicyModule->getUerPolicy($arguments['id'])) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[5020],
             ]);
         }

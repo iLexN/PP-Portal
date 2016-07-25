@@ -56,7 +56,7 @@ class UserModule extends AbstractContainer
 
         /* @var $user User */
         $user = $item->get();
-        
+
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
@@ -98,15 +98,17 @@ class UserModule extends AbstractContainer
         $this->pool->deleteItem('User/'.$this->user->ppmid.'/info');
     }
 
-
-    public function newInfoReNew(){
+    public function newInfoReNew()
+    {
         $newInfo = new UserInfoReNew();
         $newInfo->ppmid = $this->user->ppmid;
         $newInfo->status = 'Pending';
+
         return $newInfo;
     }
 
-    public function saveInfoReNew(UserInfoReNew $newInfo,$ar){
+    public function saveInfoReNew(UserInfoReNew $newInfo, $ar)
+    {
         foreach ($ar as $k => $v) {
             $newInfo->{$k} = $v;
         }
@@ -114,7 +116,8 @@ class UserModule extends AbstractContainer
         $newInfo->save();
     }
 
-    public function saveSignUp($data){
+    public function saveSignUp($data)
+    {
         $this->user->user_name = $data['user_name'];
         $this->user->password = $this->PasswordModule->passwordHash($data['password']);
         $this->user->save();

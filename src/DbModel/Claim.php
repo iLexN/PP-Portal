@@ -16,12 +16,15 @@ class Claim extends Model
 
     //public $timestamps = false;
 
-    protected $fillable = ['user_policy_id', 'currency', 'amount', 'date_of_treatment', 'diagnosis', 'payment_method', 'issue_to_whom', 'issue_address', 'currency_receive','status'];
+    protected $fillable = ['user_policy_id', 'currency', 'amount', 'date_of_treatment', 'diagnosis', 'payment_method', 'issue_to_whom', 'issue_address', 'currency_receive', 'status'];
 
-    public function fileAttachments() {
+    public function fileAttachments()
+    {
         return $this->hasMany(__NAMESPACE__.'\ClaimFile', 'claim_id');
     }
-    public function bankInfo() {
+
+    public function bankInfo()
+    {
         return $this->hasOne(__NAMESPACE__.'\ClaimBankAcc', 'claim_id');
     }
 }

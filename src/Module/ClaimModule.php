@@ -4,8 +4,8 @@ namespace PP\Portal\Module;
 
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\Claim;
-use PP\Portal\DbModel\UserPolicy;
 use PP\Portal\DbModel\ClaimBankAcc;
+use PP\Portal\DbModel\UserPolicy;
 
 /**
  * Description of UserModule.
@@ -20,14 +20,13 @@ class ClaimModule extends AbstractContainer
     public $claim;
 
     /**
-     *
      * @var \PP\Portal\DbModel\ClaimBankAcc
      */
     public $bankInfo;
 
     /**
-     *
      * @param int $id user_policy_id
+     *
      * @return \PP\Portal\DbModel\Claim
      */
     public function newClaim($id)
@@ -35,10 +34,12 @@ class ClaimModule extends AbstractContainer
         $this->claim = new Claim();
         $this->claim->user_policy_id = $id;
         $this->claim->status = 'Save';
+
         return $this->claim;
     }
 
-    public function saveClaim($data){
+    public function saveClaim($data)
+    {
         foreach ($data as $k => $v) {
             $this->claim->{$k} = $v;
         }
@@ -48,8 +49,8 @@ class ClaimModule extends AbstractContainer
     }
 
     /**
-     *
      * @param UserPolicy $userPolicy
+     *
      * @return type
      */
     public function getClaimList(UserPolicy $userPolicy)
@@ -64,36 +65,40 @@ class ClaimModule extends AbstractContainer
             //$item->expiresAfter(3600/4);
             $claim = $userPolicy->claims()->get();
             $this->pool->save($item->set($claim));
-            
         }
-        
+
         return $claim;
     }
 
-    public function geInfoById($id){
+    public function geInfoById($id)
+    {
         $item = $this->pool->getItem('Claim/'.$id);
         $claim = $item->get();
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             //$item->expiresAfter(3600/4);
-            $claim = Claim::with('fileAttachments','bankInfo')->find($id);
+            $claim = Claim::with('fileAttachments', 'bankInfo')->find($id);
             $this->pool->save($item->set($claim));
         }
-        if ( $claim ){
+        if ($claim) {
             $this->claim = $claim;
 
             return true;
         }
+
         return false;
     }
 
-    public function newBankAcc() {
+    public function newBankAcc()
+    {
         $this->bankInfo = new ClaimBankAcc();
+
         return $this->bankInfo;
     }
 
-    public function saveBank($data){
+    public function saveBank($data)
+    {
         foreach ($data as $k => $v) {
             $this->bankInfo->{$k} = $v;
         }

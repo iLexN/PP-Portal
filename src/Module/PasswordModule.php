@@ -33,9 +33,10 @@ class PasswordModule extends AbstractContainer
      *
      * @return bool
      */
-    public function validateLengthBetween($value, $min , $max)
+    public function validateLengthBetween($value, $min, $max)
     {
         $length = strlen($value);
+
         return $length >= $min && $length <= $max;
     }
 
@@ -96,7 +97,7 @@ class PasswordModule extends AbstractContainer
      */
     public function isStrongPassword($value)
     {
-        return $this->validateLengthBetween($value, 8,16) &&
+        return $this->validateLengthBetween($value, 8, 16) &&
                 $this->validateLetters($value) &&
                 $this->validateNumbers($value);
     }

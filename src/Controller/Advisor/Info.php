@@ -3,8 +3,8 @@
 namespace PP\Portal\Controller\Advisor;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 class Info extends AbstractContainer
 {
@@ -14,10 +14,10 @@ class Info extends AbstractContainer
         //todo add cache
         $advisor = \PP\Portal\DbModel\Advisor::find($args['id']);
 
-        if ( $advisor ) {
+        if ($advisor) {
             $out = ['data' => $advisor->toArray()];
 
-            return $this->ViewHelper->withStatusCode($response, $out,5040 );
+            return $this->ViewHelper->withStatusCode($response, $out, 5040);
         }
 
         return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[3510],

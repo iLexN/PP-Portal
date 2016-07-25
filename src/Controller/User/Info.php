@@ -3,8 +3,8 @@
 namespace PP\Portal\Controller\User;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 class Info extends AbstractContainer
 {
@@ -13,6 +13,6 @@ class Info extends AbstractContainer
         /* @var $client \PP\Portal\DbModel\User */
         $user = $this->UserModule->user;
 
-        return $this->ViewHelper->withStatusCode($response, ['data' => $user->toArray()], 2021 );
+        return $this->ViewHelper->withStatusCode($response, ['data' => $user->toArray()], 2021);
     }
 }
