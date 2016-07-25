@@ -15,7 +15,7 @@ class UserPolicyModule extends AbstractContainer
     /**
      * @param int $id user_policy_id
      *
-     * @return boolean
+     * @return bool
      */
     public function getUerPolicy($id)
     {
