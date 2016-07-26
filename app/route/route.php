@@ -13,6 +13,10 @@ $app->post('/login', 'PP\Portal\Controller\User\Login')
         ->setName('UserLogin');
 $app->post('/forgot-passowrd', 'PP\Portal\Controller\User\ForgotPassword')
         ->setName('ForgotPassword');
+$app->get('/forgot-passowrd/{token}', 'PP\Portal\Controller\User\ForgotPasswordToken')
+        ->setName('ForgotPassword.Token');
+$app->post('/forgot-passowrd/{token}', 'PP\Portal\Controller\User\ForgotPasswordTokenUpdate')
+        ->setName('ForgotPassword.TokenUpdate');
 $app->post('/forgot-username', 'PP\Portal\Controller\User\ForgotUsername')
         ->setName('ForgotUsername');
 

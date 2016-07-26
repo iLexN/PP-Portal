@@ -16,7 +16,7 @@ class AttachmentDel extends AbstractContainer
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
-        $path = $this->ClaimFileModule->getFilePath();
+        //$path = $this->ClaimFileModule->getFilePath();
 
         // really del ?
         //$this->ClaimFileModule->deleteFile($path);

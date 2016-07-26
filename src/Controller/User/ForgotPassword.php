@@ -5,6 +5,8 @@ namespace PP\Portal\Controller\User;
 use PP\Portal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
+use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 class ForgotPassword extends AbstractContainer
 {
@@ -19,6 +21,10 @@ class ForgotPassword extends AbstractContainer
         }
 
         if ($this->UserModule->isUserExistByUsername($v->data()['user_name'])) {
+
+            $uuid4 = Uuid::uuid4();
+            $this->UserModule->saveForgot($uuid4->toString());
+
             $this->sendForgotPasswordEmail();
 
             return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2540],

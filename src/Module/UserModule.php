@@ -5,7 +5,8 @@ namespace PP\Portal\Module;
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\User;
 use PP\Portal\DbModel\UserInfoReNew;
-use \PP\Portal\DbModel\ForgotUsername;
+use PP\Portal\DbModel\ForgotUsername;
+use Carbon\Carbon;
 
 /**
  * Description of UserModule.
@@ -98,11 +99,33 @@ class UserModule extends AbstractContainer
         return false;
     }
 
+    public function isUserExistByForgotToken($token){
+        $user = User::where('forgot_str', $token)
+                ->where('forgot_expire','>',Carbon::now()->toDateTimeString())
+                ->first();
+        if ($user) {
+            $this->user = $user;
+
+            return true;
+        }
+
+        return false;
+    }
+
     public function savePassword($pass)
     {
         $this->user->password = $pass;
+        $this->user->forgot_expire = null;
+        $this->user->forgot_str = null;
         $this->user->save();
         $this->clearUserCache();
+    }
+
+    public function saveForgot($str){
+        $this->user->forgot_str = $str;
+        $this->user->forgot_expire = Carbon::now()->addHours(2)->toDateTimeString();
+        $this->user->save();
+        
     }
 
     private function clearUserCache()

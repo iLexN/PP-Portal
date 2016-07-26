@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property string $address_line_3
  * @property string $address_line_4
  * @property string $address_line_5
+ * @property string $forgot_str
+ * @property string $forgot_expire
  */
 class User extends Model
 {
@@ -31,7 +33,7 @@ class User extends Model
 
     protected $guarded = ['ppmid', 'user_name', 'password'];
 
-    protected $hidden = ['password', 'user_name'];
+    protected $hidden = ['password','forgot_str','forgot_expire'];
 
     public function isRegister()
     {

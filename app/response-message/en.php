@@ -118,6 +118,14 @@ return [
         'code'  => 2550,
         'title' => 'Forgot username success',
     ],
+    '2560' => [
+        'code'  => 2560,
+        'title' => 'Forgot password token find user',
+    ],
+    '2570' => [
+        'code'  => 2570,
+        'title' => 'Forgot password ,password updated',
+    ],
 
     //Policy
     '3010' => [
