@@ -57,6 +57,9 @@ $app->post('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimCreat
 $app->get('/claim/{id:\d+}', 'PP\Portal\Controller\Claim\ClaimInfo')
         ->setName('ClaimInfo')
         ->add($checkClaimExist);
+$app->post('/claim/{id:\d+}', 'PP\Portal\Controller\Claim\ClaimUpdate')
+        ->setName('ClaimUpdate')
+        ->add($checkClaimExist);
 $app->post('/claim/{id:\d+}/attachment', 'PP\Portal\Controller\Claim\ClaimAttachment')
         ->setName('ClaimAttachment')
         ->add($checkClaimExist);

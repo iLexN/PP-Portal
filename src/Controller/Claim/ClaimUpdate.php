@@ -6,19 +6,17 @@ use PP\Portal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
 
-class ClaimCreate extends AbstractContainer
+class ClaimUpdate extends AbstractContainer
 {
     
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        /* @var $claim \PP\Portal\DbModel\Claim */
-        $claim = $this->ClaimModule->newClaim($args['id']);
-
-        $v = new \Valitron\Validator((array) $request->getParsedBody(), $claim->getFillable());
+        
+        $v = new \Valitron\Validator((array) $request->getParsedBody(), $this->ClaimModule->claim->getFillable());
         $v->rule('dateFormat', ['date_of_treatment'], 'Y-m-d');
 
         if (isset($request->getParsedBody()['bank'])) {
-            $this->ClaimModule->newBankAcc($request->getParsedBody()['bank']);
+            $this->ClaimModule->getBankAcc($request->getParsedBody()['bank']);
         }
 
         if (!$v->validate() || !$this->ClaimModule->validateExtraClaimInfo()) {
@@ -30,8 +28,8 @@ class ClaimCreate extends AbstractContainer
         $this->ClaimModule->saveExtraClaimInfoloop();
 
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => ['id' => $claim->claim_id],
-                ], 5010);
+                    'data' => $this->msgCode[6020],
+                ], 6020);
     }
 
 }

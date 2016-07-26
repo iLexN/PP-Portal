@@ -24,6 +24,8 @@ class ClaimModule extends AbstractContainer
      */
     public $bankInfo;
 
+    public $claimExtraData = [];
+
     /**
      * @param int $id user_policy_id
      *
@@ -90,11 +92,24 @@ class ClaimModule extends AbstractContainer
         return false;
     }
 
-    public function newBankAcc()
+    public function newBankAcc($data)
     {
         $this->bankInfo = new ClaimBankAcc();
+        $this->validateBankInfo($data);
 
-        return $this->bankInfo;
+        //return $this->bankInfo;
+    }
+
+    public function getBankAcc($data){
+        $this->bankInfo = $this->claim->bankInfo()->first();
+        $this->validateBankInfo($data);
+        //return $this->bankInfo;
+    }
+
+    private function validateBankInfo($data){
+        $vb = new \Valitron\Validator($data, $this->bankInfo->getFillable());
+        $vb->rule('required', ['iban', 'bank_swift_code']);
+        $this->claimExtraData['bank'] = $vb;
     }
 
     public function saveBank($data)
@@ -118,8 +133,37 @@ class ClaimModule extends AbstractContainer
             $userBankAcc = $this->UserBankAccModule->newBlankAcc($userPolicy->ppmid);
             $this->UserBankAccModule->saveData($userBankAcc, $data);
         }
+    }
 
-        
+    public function validateExtraClaimInfo(){
+        foreach ($this->claimExtraData as $v) {
+            if (!$v->validate()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function saveExtraClaimInfoloop(){
+        foreach ($this->claimExtraData as $k => $v) {
+            $this->saveExtraClaimData($k, $v);
+        }
+    }
+
+    private function saveExtraClaimData($k,$v){
+        switch ($k) {
+            case 'bank':
+                $data = $v->data();
+                $this->saveBankToUserAccout($data);
+                $data['claim_id'] = $this->claim->claim_id;
+                $this->saveBank($data);
+
+                break;
+
+            default:
+                break;
+        }
     }
 
     public function clearCache()

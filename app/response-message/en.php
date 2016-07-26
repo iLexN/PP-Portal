@@ -177,6 +177,10 @@ return [
         'code'  => 6020,
         'title' => 'claim info success',
     ],
+    '6020' => [
+        'code'  => 6030,
+        'title' => 'claim info update',
+    ],
 
 
 
