@@ -19,7 +19,8 @@ class AttachmentDel extends AbstractContainer
         $path = $this->ClaimFileModule->getFilePath();
 
         // really del ?
-        $this->ClaimFileModule->deleteFile($path);
+        //$this->ClaimFileModule->deleteFile($path);
+        $this->ClaimFileModule->deleteFile();
 
         return $this->ViewHelper->withStatusCode($response, [
                     'data' => $this->msgCode[1850],

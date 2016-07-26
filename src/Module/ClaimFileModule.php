@@ -46,7 +46,7 @@ class ClaimFileModule extends AbstractContainer
         return $this->file;
     }
 
-    public function deleteFile($path)
+    public function deleteFile()
     {
         //$this->removeFile($path);
         $this->statusUpdate();
@@ -57,11 +57,12 @@ class ClaimFileModule extends AbstractContainer
         $this->file->save();
     }
 
+    /*
     private function removeFile($path){
         $filesystem = $this->getFileSystem();
         $filesystem->delete($path);
 
-    }
+    }*/
 
     public function getFilePath()
     {
