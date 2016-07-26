@@ -106,6 +106,22 @@ class ClaimModule extends AbstractContainer
         $this->bankInfo->save();
     }
 
+    public function saveBankToUserAccout($data){
+
+        /* @var $userPolicy \PP\Portal\DbModel\UserPolicy */
+        $userPolicy = $this->claim->userPolicy()->first();
+
+        /* @var $userBankAcc \PP\Portal\DbModel\UserBankAcc */
+        $userBankAcc = $userPolicy->userBankAcc()->first();
+
+        if ( !$userBankAcc ){
+            $userBankAcc = $this->UserBankAccModule->newBlankAcc($userPolicy->ppmid);
+            $this->UserBankAccModule->saveData($userBankAcc, $data);
+        }
+
+        
+    }
+
     public function clearCache()
     {
         $this->pool->deleteItem('UserPolicy/'.$this->claim->user_policy_id.'/claim/list');

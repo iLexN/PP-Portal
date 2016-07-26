@@ -70,8 +70,10 @@ class ClaimCreate extends AbstractContainer
         switch ($k) {
             case 'bank':
                 $data = $v->data();
+                $this->ClaimModule->saveBankToUserAccout($data);
                 $data['claim_id'] = $this->ClaimModule->claim->claim_id;
                 $this->ClaimModule->saveBank($data);
+                
                 break;
 
             default:

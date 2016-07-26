@@ -27,7 +27,7 @@ class UserBankAccModule extends AbstractContainer
         }
 
         $acc->save();
-        $this->clearCache();
+        $this->clearCache($acc->ppmid);
     }
 
     public function getByUserID()
@@ -49,8 +49,8 @@ class UserBankAccModule extends AbstractContainer
         return $info;
     }
 
-    private function clearCache()
+    private function clearCache($id)
     {
-        $this->pool->deleteItem('User/'.$this->UserModule->user->ppmid.'/bankacc');
+        $this->pool->deleteItem('User/'.$id.'/bankacc');
     }
 }
