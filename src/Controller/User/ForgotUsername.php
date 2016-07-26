@@ -1,0 +1,60 @@
+<?php
+
+namespace PP\Portal\Controller\User;
+
+use PP\Portal\AbstractClass\AbstractContainer;
+use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
+
+class ForgotUsername extends AbstractContainer
+{
+    public function __invoke(ServerRequestInterface $request, Response $response, array $args)
+    {
+
+        $user = new \PP\Portal\DbModel\ForgotUsername();
+
+        $v = new \Valitron\Validator((array) $request->getParsedBody(), $user->getFillable());
+        $v->rule('required', ['name','email','phone']);
+        $v->rule('email', 'email');
+
+        if (!$v->validate()) {
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020],
+                    ]);
+        }
+
+        $data = $v->data();
+        if ( !$this->UserModule->isUserExistByEmail($data['email']) ){
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010],
+            ]);
+        }
+
+        $this->UserModule->saveForgotUsername($user, $data);
+        $this->sendForgotUsernameEmail();
+
+        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2550],
+        ]);
+    }
+
+    /**
+     * send email.
+     */
+    private function sendForgotUsernameEmail()
+    {
+        /* @var $user \PP\Portal\DbModel\User */
+        $user = $this->UserModule->user;
+
+        /* @var $mail \PHPMailer */
+        $mail = $this->mailer;
+        $mail->setFrom('info@pacificprime.com', 'Pacific Prime');
+        $mail->addAddress('alex@kwiksure.com', $user->first_name.' '.$user->last_name);
+        $mail->Subject = 'Forgot Username success';
+        $mail->msgHTML($this->twigView->fetch('email/forgot-username.twig', [
+                'User' => $user,
+            ]));
+        if (!$mail->send()) {
+            $this->c->logger->error('forgot password mail send fail'.$mail->ErrorInfo);
+        } else {
+            $this->c->logger->info('forgot password mail send');
+        }
+    }
+}

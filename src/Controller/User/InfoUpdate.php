@@ -18,8 +18,9 @@ class InfoUpdate extends AbstractContainer
             $newInfo = $this->UserModule->newInfoReNew();
         }
 
-        $v = new \Valitron\Validator((array) $request->getParsedBody(), $newInfo->getVisible());
+        $v = new \Valitron\Validator((array) $request->getParsedBody(), $newInfo->getFillable());
         $v->rule('dateFormat', ['date_of_birth'], 'Y-m-d');
+        $v->rule('email', 'email');
 
         if (!$v->validate()) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020],

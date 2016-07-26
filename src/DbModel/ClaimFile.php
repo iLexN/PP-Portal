@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property int $id
  * @property int $claim_id
  * @property string $filename
+ * @property string $status
  */
 class ClaimFile extends Model
 {

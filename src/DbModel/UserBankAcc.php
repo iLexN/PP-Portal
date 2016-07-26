@@ -16,4 +16,8 @@ class UserBankAcc extends Model
     public $timestamps = false;
 
     protected $fillable = ['currency', 'account_user_name', 'account_number', 'iban', 'branch_code', 'bank_swift_code', 'bank_name', 'additional_information', 'intermediary_bank_swift_code'];
+
+    protected $casts = [
+        'ppmid' => 'integer',
+    ];
 }

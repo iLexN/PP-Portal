@@ -5,6 +5,7 @@ namespace PP\Portal\Module;
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\User;
 use PP\Portal\DbModel\UserInfoReNew;
+use \PP\Portal\DbModel\ForgotUsername;
 
 /**
  * Description of UserModule.
@@ -37,6 +38,17 @@ class UserModule extends AbstractContainer
         $count = User::where('user_name', $user_name)->count();
 
         if ($count === 0) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function isUserExistByEmail($email)
+    {
+        $user = User::where('email', $email)->first();
+        if ( $user) {
+            $this->user = $user;
             return true;
         }
 
@@ -121,5 +133,14 @@ class UserModule extends AbstractContainer
         $this->user->user_name = $data['user_name'];
         $this->user->password = $this->PasswordModule->passwordHash($data['password']);
         $this->user->save();
+    }
+
+    public function saveForgotUsername(ForgotUsername $user,$data){
+        $user->name = $data['name'];
+        $user->phone = $data['phone'];
+        $user->email = $data['email'];
+        $user->status = 'Pending';
+        $user->ppmid = $this->user->ppmid;
+        $user->save();
     }
 }

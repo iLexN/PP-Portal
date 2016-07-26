@@ -13,7 +13,7 @@ class Verify extends AbstractContainer
      * @param Response               $response
      * @param array                  $args
      *
-     * @return ResponseInterface
+     * @return Response
      */
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {

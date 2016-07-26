@@ -45,6 +45,10 @@ return [
         'code'  => 1840,
         'title' => 'upload success',
     ],
+    '1850' => [
+        'code'  => 1850,
+        'title' => 'upload file remove',
+    ],
 
 
     // user 2xxx
@@ -109,6 +113,10 @@ return [
     '2540' => [
         'code'  => 2540,
         'title' => 'Forgot password mail sent',
+    ],
+    '2550' => [
+        'code'  => 2550,
+        'title' => 'Forgot username success',
     ],
 
     //Policy

@@ -18,6 +18,7 @@ class ClaimFileModule extends AbstractContainer
     {
         $file = new ClaimFile();
         $file->claim_id = $this->ClaimModule->claim->claim_id;
+        $file->status = 'Upload';
         $file->filename = $newfile->getClientFilename();
         $file->save();
 
@@ -32,8 +33,7 @@ class ClaimFileModule extends AbstractContainer
      */
     private function moveFiles($id, FileUploadModule $newfile)
     {
-        $adapter = new Local($this->c->get('uploadConfig')['path']);
-        $filesystem = new Filesystem($adapter);
+        $filesystem = $this->getFileSystem();
         $dirPath = $this->ClaimModule->claim->claim_id.'/'.$id;
         $filesystem->createDir($dirPath);
         $newfile->moveTo($this->c->get('uploadConfig')['path'].'/'.$dirPath.'/'.$newfile->getClientFilename());
@@ -44,6 +44,23 @@ class ClaimFileModule extends AbstractContainer
         $this->file = ClaimFile::find($id);
 
         return $this->file;
+    }
+
+    public function deleteFile($path)
+    {
+        //$this->removeFile($path);
+        $this->statusUpdate();
+    }
+
+    private function statusUpdate(){
+        $this->file->status = 'Delete';
+        $this->file->save();
+    }
+
+    private function removeFile($path){
+        $filesystem = $this->getFileSystem();
+        $filesystem->delete($path);
+
     }
 
     public function getFilePath()
@@ -58,5 +75,11 @@ class ClaimFileModule extends AbstractContainer
         } else {
             return false;
         }
+    }
+
+    private function getFileSystem(){
+        $adapter = new Local($this->c->get('uploadConfig')['path']);
+        $filesystem = new Filesystem($adapter);
+        return $filesystem;
     }
 }

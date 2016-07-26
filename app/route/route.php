@@ -12,7 +12,9 @@ $app->get('/check-username/{user_name}', 'PP\Portal\Controller\User\CheckUserNam
 $app->post('/login', 'PP\Portal\Controller\User\Login')
         ->setName('UserLogin');
 $app->post('/forgot-passowrd', 'PP\Portal\Controller\User\ForgotPassword')
-        ->setName('UserChangePassword');
+        ->setName('ForgotPassword');
+$app->post('/forgot-username', 'PP\Portal\Controller\User\ForgotUsername')
+        ->setName('ForgotUsername');
 
 //User
 $app->get('/user/{id:\d+}', 'PP\Portal\Controller\User\Info')
@@ -60,6 +62,8 @@ $app->post('/claim/{id:\d+}/attachment', 'PP\Portal\Controller\Claim\ClaimAttach
         ->add($checkClaimExist);
 $app->get('/attachment/{id:\d+}', 'PP\Portal\Controller\Claim\AttachmentDownload')
         ->setName('AttachmentDownload');
+$app->post('/attachment/{id:\d+}', 'PP\Portal\Controller\Claim\AttachmentDel')
+        ->setName('AttachmentDel');
 
 
 //$app->get('/test/token', 'PP\Portal\Controller\Test\Token')
