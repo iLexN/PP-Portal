@@ -30,6 +30,8 @@ $container['twigView'] = function (\Slim\Container $c) {
         $view->addExtension(new Twig_Extension_Debug());
     }
 
+    $view['WebPortal'] = $c['settings']['WebPortal'];
+
     return $view;
 };
 
