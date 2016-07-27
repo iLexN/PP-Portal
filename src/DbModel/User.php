@@ -33,7 +33,7 @@ class User extends Model
 
     protected $guarded = ['ppmid', 'user_name', 'password'];
 
-    protected $hidden = ['password','forgot_str','forgot_expire'];
+    protected $hidden = ['password', 'forgot_str', 'forgot_expire'];
 
     public function isRegister()
     {

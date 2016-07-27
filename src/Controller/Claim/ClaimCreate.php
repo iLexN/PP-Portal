@@ -8,7 +8,6 @@ use Slim\Http\Response;
 
 class ClaimCreate extends AbstractContainer
 {
-    
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         /* @var $claim \PP\Portal\DbModel\Claim */
@@ -33,5 +32,4 @@ class ClaimCreate extends AbstractContainer
                     'data' => ['id' => $claim->claim_id],
                 ], 5010);
     }
-
 }

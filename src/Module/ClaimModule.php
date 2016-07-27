@@ -100,13 +100,15 @@ class ClaimModule extends AbstractContainer
         //return $this->bankInfo;
     }
 
-    public function getBankAcc($data){
+    public function getBankAcc($data)
+    {
         $this->bankInfo = $this->claim->bankInfo()->first();
         $this->validateBankInfo($data);
         //return $this->bankInfo;
     }
 
-    private function validateBankInfo($data){
+    private function validateBankInfo($data)
+    {
         $vb = new \Valitron\Validator($data, $this->bankInfo->getFillable());
         $vb->rule('required', ['iban', 'bank_swift_code']);
         $this->claimExtraData['bank'] = $vb;
@@ -121,7 +123,8 @@ class ClaimModule extends AbstractContainer
         $this->bankInfo->save();
     }
 
-    public function saveBankToUserAccout($data){
+    public function saveBankToUserAccout($data)
+    {
 
         /* @var $userPolicy \PP\Portal\DbModel\UserPolicy */
         $userPolicy = $this->claim->userPolicy()->first();
@@ -129,13 +132,14 @@ class ClaimModule extends AbstractContainer
         /* @var $userBankAcc \PP\Portal\DbModel\UserBankAcc */
         $userBankAcc = $userPolicy->userBankAcc()->first();
 
-        if ( !$userBankAcc ){
+        if (!$userBankAcc) {
             $userBankAcc = $this->UserBankAccModule->newBlankAcc($userPolicy->ppmid);
             $this->UserBankAccModule->saveData($userBankAcc, $data);
         }
     }
 
-    public function validateExtraClaimInfo(){
+    public function validateExtraClaimInfo()
+    {
         foreach ($this->claimExtraData as $v) {
             if (!$v->validate()) {
                 return false;
@@ -145,13 +149,15 @@ class ClaimModule extends AbstractContainer
         return true;
     }
 
-    public function saveExtraClaimInfoloop(){
+    public function saveExtraClaimInfoloop()
+    {
         foreach ($this->claimExtraData as $k => $v) {
             $this->saveExtraClaimData($k, $v);
         }
     }
 
-    private function saveExtraClaimData($k,$v){
+    private function saveExtraClaimData($k, $v)
+    {
         switch ($k) {
             case 'bank':
                 $data = $v->data();

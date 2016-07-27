@@ -20,5 +20,4 @@ class ClaimBankAcc extends Model
     protected $casts = [
         'claim_id' => 'integer',
     ];
-
 }
