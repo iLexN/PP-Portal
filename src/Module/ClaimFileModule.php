@@ -52,7 +52,8 @@ class ClaimFileModule extends AbstractContainer
         $this->statusUpdate();
     }
 
-    private function statusUpdate(){
+    private function statusUpdate()
+    {
         $this->file->status = 'Delete';
         $this->file->save();
     }
@@ -78,9 +79,11 @@ class ClaimFileModule extends AbstractContainer
         }
     }
 
-    private function getFileSystem(){
+    private function getFileSystem()
+    {
         $adapter = new Local($this->c->get('uploadConfig')['path']);
         $filesystem = new Filesystem($adapter);
+
         return $filesystem;
     }
 }

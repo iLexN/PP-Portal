@@ -20,11 +20,13 @@ class UserPolicy extends Model
         return $this->hasMany(__NAMESPACE__.'\Claim', 'user_policy_id');
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(__NAMESPACE__.'\User', 'ppmid', 'ppmid');
     }
 
-    public function userBankAcc(){
+    public function userBankAcc()
+    {
         return $this->hasManyThrough(
             __NAMESPACE__.'\UserBankAcc', __NAMESPACE__.'\User',
             'ppmid', 'ppmid', 'ppmid'

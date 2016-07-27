@@ -2,11 +2,11 @@
 
 namespace PP\Portal\Module;
 
+use Carbon\Carbon;
 use PP\Portal\AbstractClass\AbstractContainer;
+use PP\Portal\DbModel\ForgotUsername;
 use PP\Portal\DbModel\User;
 use PP\Portal\DbModel\UserInfoReNew;
-use PP\Portal\DbModel\ForgotUsername;
-use Carbon\Carbon;
 
 /**
  * Description of UserModule.
@@ -48,8 +48,9 @@ class UserModule extends AbstractContainer
     public function isUserExistByEmail($email)
     {
         $user = User::where('email', $email)->first();
-        if ( $user) {
+        if ($user) {
             $this->user = $user;
+
             return true;
         }
 
@@ -99,9 +100,10 @@ class UserModule extends AbstractContainer
         return false;
     }
 
-    public function isUserExistByForgotToken($token){
+    public function isUserExistByForgotToken($token)
+    {
         $user = User::where('forgot_str', $token)
-                ->where('forgot_expire','>',Carbon::now()->toDateTimeString())
+                ->where('forgot_expire', '>', Carbon::now()->toDateTimeString())
                 ->first();
         if ($user) {
             $this->user = $user;
@@ -121,11 +123,11 @@ class UserModule extends AbstractContainer
         $this->clearUserCache();
     }
 
-    public function saveForgot($str){
+    public function saveForgot($str)
+    {
         $this->user->forgot_str = $str;
         $this->user->forgot_expire = Carbon::now()->addHours(2)->toDateTimeString();
         $this->user->save();
-        
     }
 
     private function clearUserCache()
@@ -158,7 +160,8 @@ class UserModule extends AbstractContainer
         $this->user->save();
     }
 
-    public function saveForgotUsername(ForgotUsername $user,$data){
+    public function saveForgotUsername(ForgotUsername $user, $data)
+    {
         $user->name = $data['name'];
         $user->phone = $data['phone'];
         $user->email = $data['email'];

@@ -8,10 +8,8 @@ use Slim\Http\Response;
 
 class ClaimUpdate extends AbstractContainer
 {
-    
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $this->ClaimModule->claim->getFillable());
         $v->rule('dateFormat', ['date_of_treatment'], 'Y-m-d');
 
@@ -31,5 +29,4 @@ class ClaimUpdate extends AbstractContainer
                     'data' => $this->msgCode[6020],
                 ], 6020);
     }
-
 }

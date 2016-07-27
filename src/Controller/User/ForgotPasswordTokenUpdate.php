@@ -18,20 +18,19 @@ class ForgotPasswordTokenUpdate extends AbstractContainer
             ]);
         }
         $data = $v->data();
-        
+
         if (!$this->PasswordModule->isStrongPassword($data['new_password'])) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2510],
             ]);
         }
 
-        if( $this->UserModule->isUserExistByForgotToken($args['token']) ){
+        if ($this->UserModule->isUserExistByForgotToken($args['token'])) {
             $this->UserModule->savePassword($this->PasswordModule->passwordHash($data['new_password']));
+
             return $this->ViewHelper->withStatusCode($response, ['data' => $this->UserModule->user->toArray()], 2570);
         }
 
         return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010],
             ]);
-
-        
     }
 }

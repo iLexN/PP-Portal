@@ -10,11 +10,10 @@ class ForgotUsername extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-
         $user = new \PP\Portal\DbModel\ForgotUsername();
 
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $user->getFillable());
-        $v->rule('required', ['name','email','phone']);
+        $v->rule('required', ['name', 'email', 'phone']);
         $v->rule('email', 'email');
 
         if (!$v->validate()) {
@@ -23,7 +22,7 @@ class ForgotUsername extends AbstractContainer
         }
 
         $data = $v->data();
-        if ( !$this->UserModule->isUserExistByEmail($data['email']) ){
+        if (!$this->UserModule->isUserExistByEmail($data['email'])) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010],
             ]);
         }
