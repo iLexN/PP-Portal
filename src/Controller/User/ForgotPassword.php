@@ -6,7 +6,6 @@ use PP\Portal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
 use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
 
 class ForgotPassword extends AbstractContainer
 {
