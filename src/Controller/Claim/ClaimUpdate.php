@@ -11,7 +11,9 @@ class ClaimUpdate extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $this->ClaimModule->claim->getFillable());
+        $v->rule('required', ['status']);
         $v->rule('dateFormat', ['date_of_treatment'], 'Y-m-d');
+        $v->rule('in', ['status'], ['Save','Submit']);
 
         if (isset($request->getParsedBody()['bank'])) {
             $this->ClaimModule->getBankAcc($request->getParsedBody()['bank']);
