@@ -128,6 +128,7 @@ class UserModule extends AbstractContainer
         $this->user->forgot_str = $str;
         $this->user->forgot_expire = Carbon::now()->addHours(2)->toDateTimeString();
         $this->user->save();
+        $this->clearUserCache();
     }
 
     private function clearUserCache()
@@ -158,6 +159,7 @@ class UserModule extends AbstractContainer
         $this->user->user_name = $data['user_name'];
         $this->user->password = $this->PasswordModule->passwordHash($data['password']);
         $this->user->save();
+        $this->clearUserCache();
     }
 
     public function saveForgotUsername(ForgotUsername $user, $data)
