@@ -52,7 +52,7 @@ class Signup extends AbstractContainer
         /* @var $user \PP\Portal\DbModel\User */
         $user = $this->UserModule->user;
 
-        if ( $user->email === null){
+        if ($user->email === null) {
             return;
         }
 
