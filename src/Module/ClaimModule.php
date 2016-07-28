@@ -96,15 +96,12 @@ class ClaimModule extends AbstractContainer
     {
         $this->bankInfo = new ClaimBankAcc();
         $this->validateBankInfo($data);
-
-        //return $this->bankInfo;
     }
 
     public function getBankAcc($data)
     {
         $this->bankInfo = $this->claim->bankInfo()->first();
         $this->validateBankInfo($data);
-        //return $this->bankInfo;
     }
 
     private function validateBankInfo($data)
