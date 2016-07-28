@@ -42,10 +42,14 @@ class ForgotUsername extends AbstractContainer
         /* @var $user \PP\Portal\DbModel\User */
         $user = $this->UserModule->user;
 
+        if ( $user->email === null){
+            return;
+        }
+
         /* @var $mail \PHPMailer */
         $mail = $this->mailer;
-        $mail->setFrom('info@pacificprime.com', 'Pacific Prime');
-        $mail->addAddress('alex@kwiksure.com', $user->first_name.' '.$user->last_name);
+        $mail->setFrom($this->c->get('mailConfig')['fromAc'], $this->c->get('mailConfig')['fromName']);
+        $mail->addAddress($user->email, $user->first_name.' '.$user->last_name);
         $mail->Subject = 'Forgot Username success';
         $mail->msgHTML($this->twigView->fetch('email/forgot-username.twig', [
                 'User' => $user,
