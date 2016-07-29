@@ -4,23 +4,47 @@ namespace PP\Test;
 
 class CheckUserExistTest extends \PHPUnit_Framework_TestCase
 {
-    private $c;
+    protected $c;
+    protected $request;
+    protected $response;
+
+    protected function setUp()
+    {
+        $c = new \Slim\Container();
+        $c['pool'] = function ($c) {
+            $settings = [
+                'path' => __DIR__.'/../cache/data',
+            ];
+            $driver = new \Stash\Driver\FileSystem($settings);
+            return new \Stash\Pool($driver);
+        };
+        $c['dataCacheConfig'] = ['expiresAfter' => 1];
+
+        $c['jsonConfig'] = ['prettyPrint' => false];
+        $c['msgCode'] = function (\Slim\Container $c) {
+            return [
+                '2010' => [
+                    'code'  => 2010,
+                ],
+            ];
+        };
+
+        $c['ViewHelper'] = function ($c) {
+            return new \PP\Portal\Module\Helper\View($c);
+        };
+        $c['UserModule'] = function (\Slim\Container $c) {
+            return new \PP\Portal\Module\UserModule($c);
+        };
+        $this->c = $c;
+
+        $environment = \Slim\Http\Environment::mock([]);
+        $this->request = \Slim\Http\Request::createFromEnvironment($environment);
+        $this->response = new \Slim\Http\Response();
+    }
 
     public function testCheckUserExist()
     {
-        $c = $this->setUpContainer();
-
-        $c['UserModule'] = function () {
-            $userModule = $this->getMockBuilder(UserModule::class)
-                ->setMethods(['isUserExistByID'])
-                ->disableOriginalConstructor()
-                ->getMock();
-            $userModule->expects($this->once())
-                ->method('isUserExistByID')
-                ->willReturn(true);
-
-            return $userModule;
-        };
+        $c = $this->c;
 
         $action = new \PP\Portal\Middleware\CheckUserExist($c);
 
@@ -28,12 +52,12 @@ class CheckUserExistTest extends \PHPUnit_Framework_TestCase
                 ->setMethods(['getArguments'])
                 ->disableOriginalConstructor()
                 ->getMock();
-        $route->method('getArguments')->willReturn(['id' => 1]);
+        $route->method('getArguments')->willReturn(['id' => 2]);
 
-        $request = $this->setUpRequest();
+        $request = $this->request;
         $request = $request->withAttribute('route', $route);
 
-        $response = new \Slim\Http\Response();
+        $response = $this->response;
 
         $response = $action($request, $response, function ($request, $response) {
             return $response->write(json_encode(['success' => true]));
@@ -47,19 +71,7 @@ class CheckUserExistTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckUserError()
     {
-        $c = $this->setUpContainer();
-
-        $c['UserModule'] = function () {
-            $userModule = $this->getMockBuilder(UserModule::class)
-                ->setMethods(['isUserExistByID'])
-                ->disableOriginalConstructor()
-                ->getMock();
-            $userModule->expects($this->once())
-                ->method('isUserExistByID')
-                ->willReturn(false);
-
-            return $userModule;
-        };
+        $c = $this->c;
 
         $action = new \PP\Portal\Middleware\CheckUserExist($c);
 
@@ -69,40 +81,16 @@ class CheckUserExistTest extends \PHPUnit_Framework_TestCase
                 ->getMock();
         $route->method('getArguments')->willReturn(['id' => 1]);
 
-        $request = $this->setUpRequest();
+        $request = $this->request;
         $request = $request->withAttribute('route', $route);
 
-        $response = new \Slim\Http\Response();
+        $response = $this->response;
 
         $response = $action($request, $response, function ($request, $response) {
             return $response->write(json_encode(['success' => true]));
         });
 
-        $this->assertJsonStringEqualsJsonString(
-            json_encode(['errors' => [
-                'title' => 'User Not Found',
-            ]]),
-            json_encode(json_decode((string) $response->getBody()))
-        );
-    }
-
-    public function setUpRequest()
-    {
-        $environment = \Slim\Http\Environment::mock([]);
-
-        return  \Slim\Http\Request::createFromEnvironment($environment);
-    }
-
-    public function setUpContainer()
-    {
-        $c = new \Slim\Container();
-
-        $c['jsonConfig'] = ['prettyPrint' => false];
-
-        $c['ViewHelper'] = function ($c) {
-            return new \PP\Portal\Module\Helper\View($c);
-        };
-
-        return $c;
+        $out = json_decode((string) $response->getBody(),true);
+        $this->assertEquals(2010, $out['status_code']);
     }
 }

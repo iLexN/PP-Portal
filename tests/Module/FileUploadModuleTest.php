@@ -150,8 +150,32 @@ class FileUploadModuleTest extends \PHPUnit_Framework_TestCase
 
         $uploadModule = new \PP\Portal\Module\FileUploadModule($uploadedFile);
 
-        $this->assertFalse($uploadModule->isValid());
+        $this->assertFalse($uploadModule->isUploadSuccess());
         $this->assertNotEmpty($uploadModule->getValidationMsg());
+    }
+
+    public function testUploadErrorSuccess()
+    {
+        $attr = [
+            'tmp_name' => '.abc123',
+            'name'     => 'my-avatar.txt',
+            'size'     => 8,
+            'type'     => 'text/plain',
+            'error'    => 0,
+        ];
+        $uploadedFile = new \Slim\Http\UploadedFile(
+            $attr['tmp_name'],
+            $attr['name'],
+            $attr['type'],
+            $attr['size'],
+            $attr['error'],
+            false
+        );
+
+        $uploadModule = new \PP\Portal\Module\FileUploadModule($uploadedFile);
+
+        $this->assertTrue($uploadModule->isUploadSuccess());
+        $this->assertEmpty($uploadModule->getValidationMsg());
     }
 
     public function testUploadMove()

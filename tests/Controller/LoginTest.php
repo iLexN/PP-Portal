@@ -4,14 +4,55 @@ namespace PP\Test;
 
 class LoginTest extends \PHPUnit_Framework_TestCase
 {
-    private $c;
+    protected $action;
+    protected $response;
+
+    protected function setUp()
+    {
+        $c = new \Slim\Container();
+        $c['msgCode'] = function (\Slim\Container $c) {
+            return [
+                '2081' => [
+                    'code'  => 2081,
+                ],
+                '2080' => [
+                    'code'  => 2080,
+                ],
+                '1010' => [
+                    'code'  => 1010,
+                ],
+            ];
+        };
+        $c['pool'] = function () {
+            $settings = [
+                'path' => __DIR__.'/../cache/data',
+            ];
+
+            $driver = new \Stash\Driver\FileSystem($settings);
+
+            return new \Stash\Pool($driver);
+        };
+
+        $c['dataCacheConfig'] = ['expiresAfter' => 1];
+        $c['jsonConfig'] = ['prettyPrint' => false];
+        $c['ViewHelper'] = function (\Slim\Container $c) {
+            return new \PP\Portal\Module\Helper\View($c);
+        };
+        $c['UserModule'] = function ($c) {
+            return new \PP\Portal\Module\UserModule($c);
+        };
+        
+
+        $this->action = new \PP\Portal\Controller\User\Login($c);
+        $this->response = new \Slim\Http\Response();
+    }
 
     public function testUserFound()
     {
-        $action = new \PP\Portal\Controller\User\Login($this->setUpContainer());
+        $action = $this->action;
 
-        $_POST['clientID'] = '1';
-        $_POST['password'] = 'alex';
+        $_POST['user_name'] = 'alex';
+        $_POST['password'] = '123Psadfs';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -19,24 +60,41 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 
-        $response = new \Slim\Http\Response();
+        $response = $this->response;
 
         $response = $action($request, $response, []);
 
-        $this->assertJsonStringEqualsJsonString(
-            json_encode(['data' => [
-                'id' => 1,
-                ]]),
-            json_encode(json_decode((string) $response->getBody()))
-        );
+        $out = json_decode((string) $response->getBody(),true);
+        $this->assertEquals(2081, $out['status_code']);
+    }
+
+    public function testUserFoundwithWrongPassword()
+    {
+        $action = $this->action;
+
+        $_POST['user_name'] = 'alex';
+        $_POST['password'] = '123Psadfdds';
+        $environment = \Slim\Http\Environment::mock([
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+            ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = $this->response;
+
+        $response = $action($request, $response, []);
+
+        $out = json_decode((string) $response->getBody(),true);
+        $this->assertEquals(2080, $out['status_code']);
     }
 
     public function testUserNotFound()
     {
-        $action = new \PP\Portal\Controller\User\Login($this->setUpContainer());
+        $action = $this->action;
 
-        $_POST['clientID'] = '10000000';
-        $_POST['password'] = 'alex';
+        $_POST['user_name'] = 'alex8d8d8d8d';
+        $_POST['password'] = '123Psadfs';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -44,21 +102,17 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 
-        $response = new \Slim\Http\Response();
+        $response = $this->response;
 
         $response = $action($request, $response, []);
 
-        $this->assertJsonStringEqualsJsonString(
-            json_encode(['errors' => [
-                'title' => 'Login User Not Found',
-            ]]),
-            json_encode(json_decode((string) $response->getBody()))
-        );
+        $out = json_decode((string) $response->getBody(),true);
+        $this->assertEquals(2080, $out['status_code']);
     }
 
     public function testMissFields()
     {
-        $action = new \PP\Portal\Controller\User\Login($this->setUpContainer());
+        $action = $this->action;
 
         $_POST = [];
 
@@ -69,16 +123,12 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 
-        $response = new \Slim\Http\Response();
+        $response = $this->response;
 
         $response = $action($request, $response, []);
 
-        $this->assertJsonStringEqualsJsonString(
-            json_encode(['errors' => [
-                'title' => 'Missing field(s)',
-            ]]),
-            json_encode(json_decode((string) $response->getBody()))
-        );
+        $out = json_decode((string) $response->getBody(),true);
+        $this->assertEquals(1010, $out['status_code']);
     }
 
     public function setUpContainer()

@@ -26,7 +26,6 @@ class UserModule extends AbstractContainer
                     ->where('date_of_birth', $ar['date_of_birth'])
                     ->first();
 
-
         if ($user) {
             return $user;
         }
@@ -116,7 +115,8 @@ class UserModule extends AbstractContainer
 
     public function savePassword($pass)
     {
-        $this->user->password = $pass;
+        //$this->user->password = $pass;
+        $this->user->password = $this->PasswordModule->passwordHash($pass);
         $this->user->forgot_expire = null;
         $this->user->forgot_str = null;
         $this->user->save();
@@ -160,6 +160,10 @@ class UserModule extends AbstractContainer
         $this->user->password = $this->PasswordModule->passwordHash($data['password']);
         $this->user->save();
         $this->clearUserCache();
+    }
+
+    public function newForgotUsername() {
+        return new \PP\Portal\DbModel\ForgotUsername();
     }
 
     public function saveForgotUsername(ForgotUsername $user, $data)
