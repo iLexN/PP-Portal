@@ -14,7 +14,7 @@ class HttpBasicAuthTest extends \PHPUnit_Framework_TestCase
             return [
                 '4020' => [
                     'code'  => 4020,
-                ]
+                ],
             ];
         };
         $c['jsonConfig'] = ['prettyPrint' => false];
@@ -66,11 +66,10 @@ class HttpBasicAuthTest extends \PHPUnit_Framework_TestCase
             return $response->write(json_encode(['success' => true]));
         });
 
-        $out = json_decode((string) $response->getBody(),true);
+        $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(4020, $out['status_code']);
 
         $this->assertEquals(401, $response->getStatusCode());
         $this->assertTrue($response->hasHeader('WWW-Authenticate'));
     }
-
 }

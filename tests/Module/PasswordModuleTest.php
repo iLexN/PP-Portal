@@ -11,7 +11,7 @@ class PasswordModuleTest extends \PHPUnit_Framework_TestCase
         $p = new \PP\Portal\Module\PasswordModule($c);
 
         $this->expectOutputString('foo');
-        print 'foo';
+        echo 'foo';
 
         return $p;
     }
@@ -21,7 +21,6 @@ class PasswordModuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidateLength($p)
     {
-        
         $this->assertTrue($p->validateLength('123456', 6));
         $this->assertFalse($p->validateLength('12345', 6));
     }
@@ -31,8 +30,6 @@ class PasswordModuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidateLetters($p)
     {
-        
-
         $this->assertTrue($p->validateLetters('abc'));
         $this->assertFalse($p->validateLetters('12345'));
     }
@@ -42,8 +39,6 @@ class PasswordModuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidateNumbers($p)
     {
-        
-
         $this->assertTrue($p->validateNumbers('123'));
         $this->assertFalse($p->validateNumbers('abc'));
     }
@@ -53,8 +48,6 @@ class PasswordModuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidateCaseDiff($p)
     {
-        
-
         $this->assertTrue($p->validateCaseDiff('1a2A3'));
         $this->assertFalse($p->validateCaseDiff('abc123'));
         $this->assertFalse($p->validateCaseDiff('AA123'));
@@ -65,8 +58,6 @@ class PasswordModuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidateSymbols($p)
     {
-        
-
         $this->assertTrue($p->validateSymbols('@'));
         $this->assertTrue($p->validateSymbols('-'));
         $this->assertTrue($p->validateSymbols('_'));
@@ -109,8 +100,8 @@ class PasswordModuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidateLengthBetween($p)
     {
-        $this->assertTrue($p->validateLengthBetween('1a2A3dsf',1,8));
-        $this->assertFalse($p->validateLengthBetween('1a2A3dsf',1,6));
+        $this->assertTrue($p->validateLengthBetween('1a2A3dsf', 1, 8));
+        $this->assertFalse($p->validateLengthBetween('1a2A3dsf', 1, 6));
     }
 
     /**
@@ -122,16 +113,12 @@ class PasswordModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($p->isStrongPassword('1a23dsf'));
         $this->assertFalse($p->isStrongPassword('Aadsf'));
     }
-    
+
     /**
      * @depends testp
      */
     public function testPasswordHash($p)
     {
-        $this->assertContains('$2y$10',$p->passwordHash('1a2A3dsf'));
-        
+        $this->assertContains('$2y$10', $p->passwordHash('1a2A3dsf'));
     }
-
-
-
 }

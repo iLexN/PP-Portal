@@ -15,6 +15,7 @@ class UserModuleTest extends \PHPUnit_Framework_TestCase
                 'path' => __DIR__.'/../cache/data',
             ];
             $driver = new \Stash\Driver\FileSystem($settings);
+
             return new \Stash\Pool($driver);
         };
 
@@ -32,19 +33,18 @@ class UserModuleTest extends \PHPUnit_Framework_TestCase
     public function testverifyUser()
     {
         $ar = [
-            'ppmid'=>'2',
-            'date_of_birth'=>'2'
+            'ppmid'         => '2',
+            'date_of_birth' => '2',
         ];
         $this->assertFalse($this->userModule->verifyUser($ar));
 
         $ar = [
-            'ppmid'=>'2',
-            'date_of_birth'=>'1980-10-10'
+            'ppmid'         => '2',
+            'date_of_birth' => '1980-10-10',
         ];
         $user = $this->userModule->verifyUser($ar);
         $this->assertEquals(2, $user->ppmid);
     }
-
 
     public function testIsUserExistByID()
     {
@@ -109,31 +109,32 @@ class UserModuleTest extends \PHPUnit_Framework_TestCase
         $this->userModule->isUserExistByID(173803);
         $newInfo = $this->userModule->newInfoReNew();
         $ar = [
-           'email'=>'aaa',
+           'email'   => 'aaa',
            'phone_1' => '123',
         ];
-        $this->userModule->saveInfoReNew($newInfo,$ar);
+        $this->userModule->saveInfoReNew($newInfo, $ar);
         $this->expectOutputString('foo');
-        print 'foo';
+        echo 'foo';
     }
 
     public function testSaveSignUp()
     {
         $this->userModule->isUserExistByID(173802);
         $data = [
-            'user_name'=>'afds',
-            'password'=>'dfd'
+            'user_name' => 'afds',
+            'password'  => 'dfd',
         ];
         $this->userModule->saveSignUp($data);
 
         $this->expectOutputString('foo');
-        print 'foo';
+        echo 'foo';
     }
 
-    public function testNewForgotUsername(){
+    public function testNewForgotUsername()
+    {
         $this->userModule->newForgotUsername();
         $this->expectOutputString('foo');
-        print 'foo';
+        echo 'foo';
     }
 
     public function testSaveForgotUsername()
@@ -141,17 +142,15 @@ class UserModuleTest extends \PHPUnit_Framework_TestCase
         $user = $this->userModule->newForgotUsername();
 
         $data = [
-            'name'=>'fill name',
-            'phone'=>'123456',
-            'email'=>'a@a.com',
+            'name'  => 'fill name',
+            'phone' => '123456',
+            'email' => 'a@a.com',
         ];
 
         $this->userModule->isUserExistByID(173802);
-        $this->userModule->saveForgotUsername($user,$data);
-        
+        $this->userModule->saveForgotUsername($user, $data);
+
         $this->expectOutputString('foo');
-        print 'foo';
+        echo 'foo';
     }
-
-
 }

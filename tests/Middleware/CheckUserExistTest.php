@@ -16,6 +16,7 @@ class CheckUserExistTest extends \PHPUnit_Framework_TestCase
                 'path' => __DIR__.'/../cache/data',
             ];
             $driver = new \Stash\Driver\FileSystem($settings);
+
             return new \Stash\Pool($driver);
         };
         $c['dataCacheConfig'] = ['expiresAfter' => 1];
@@ -90,7 +91,7 @@ class CheckUserExistTest extends \PHPUnit_Framework_TestCase
             return $response->write(json_encode(['success' => true]));
         });
 
-        $out = json_decode((string) $response->getBody(),true);
+        $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2010, $out['status_code']);
     }
 }
