@@ -41,7 +41,7 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $c['UserModule'] = function ($c) {
             return new \PP\Portal\Module\UserModule($c);
         };
-        
+
 
         $this->action = new \PP\Portal\Controller\User\Login($c);
         $this->response = new \Slim\Http\Response();
@@ -64,7 +64,7 @@ class LoginTest extends \PHPUnit_Framework_TestCase
 
         $response = $action($request, $response, []);
 
-        $out = json_decode((string) $response->getBody(),true);
+        $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2081, $out['status_code']);
     }
 
@@ -85,7 +85,7 @@ class LoginTest extends \PHPUnit_Framework_TestCase
 
         $response = $action($request, $response, []);
 
-        $out = json_decode((string) $response->getBody(),true);
+        $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2080, $out['status_code']);
     }
 
@@ -106,7 +106,7 @@ class LoginTest extends \PHPUnit_Framework_TestCase
 
         $response = $action($request, $response, []);
 
-        $out = json_decode((string) $response->getBody(),true);
+        $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2080, $out['status_code']);
     }
 
@@ -127,7 +127,7 @@ class LoginTest extends \PHPUnit_Framework_TestCase
 
         $response = $action($request, $response, []);
 
-        $out = json_decode((string) $response->getBody(),true);
+        $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(1010, $out['status_code']);
     }
 

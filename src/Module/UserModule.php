@@ -162,7 +162,8 @@ class UserModule extends AbstractContainer
         $this->clearUserCache();
     }
 
-    public function newForgotUsername() {
+    public function newForgotUsername()
+    {
         return new \PP\Portal\DbModel\ForgotUsername();
     }
 

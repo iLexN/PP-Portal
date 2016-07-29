@@ -15,7 +15,7 @@ class CheckPlatformTest extends \PHPUnit_Framework_TestCase
             return [
                 '4010' => [
                     'code'  => 4010,
-                ]
+                ],
             ];
         };
         $c['jsonConfig'] = ['prettyPrint' => false];
@@ -42,7 +42,7 @@ class CheckPlatformTest extends \PHPUnit_Framework_TestCase
             return $response->write(json_encode(['success' => true]));
         });
 
-        $out = json_decode((string) $response->getBody(),true);
+        $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(4010, $out['status_code']);
     }
 
@@ -76,7 +76,7 @@ class CheckPlatformTest extends \PHPUnit_Framework_TestCase
             return $response->write(json_encode(['success' => true]));
         });
 
-        $out = json_decode((string) $response->getBody(),true);
+        $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(4010, $out['status_code']);
     }
 }

@@ -17,7 +17,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
                 ],
                 '123' => [
                     'code'  => 123,
-                ]
+                ],
             ];
         };
         $this->c = $c;
@@ -35,7 +35,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
 
         $response = $view->toJson($response, $rs);
 
-        $rs['status_code']=1530;
+        $rs['status_code'] = 1530;
 
         $this->assertJsonStringEqualsJsonString(
             json_encode($rs, JSON_UNESCAPED_SLASHES),
@@ -58,7 +58,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
 
         $response = $view->toJson($response, $rs);
 
-        $rs['status_code']=1530;
+        $rs['status_code'] = 1530;
 
         $this->assertJsonStringEqualsJsonString(
             json_encode($rs, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES),
@@ -77,11 +77,11 @@ class ViewTest extends \PHPUnit_Framework_TestCase
 
         $response = new \Slim\Http\Response();
 
-        $rs = ['data' => ['code'=>123]];
+        $rs = ['data' => ['code' => 123]];
 
         $response = $view->toJson($response, $rs);
 
-        $out = json_decode((string) $response->getBody(),true);
+        $out = json_decode((string) $response->getBody(), true);
 
         $this->assertEquals(123, $out['status_code']);
     }
@@ -94,11 +94,11 @@ class ViewTest extends \PHPUnit_Framework_TestCase
 
         $response = new \Slim\Http\Response();
 
-        $rs = ['errors' => ['code'=>123]];
+        $rs = ['errors' => ['code' => 123]];
 
         $response = $view->toJson($response, $rs);
 
-        $out = json_decode((string) $response->getBody(),true);
+        $out = json_decode((string) $response->getBody(), true);
 
         $this->assertEquals(123, $out['status_code']);
     }
@@ -113,11 +113,10 @@ class ViewTest extends \PHPUnit_Framework_TestCase
 
         $rs = ['abc' => 1];
 
-        $response = $view->withStatusCode($response, $rs,123);
+        $response = $view->withStatusCode($response, $rs, 123);
 
-        $out = json_decode((string) $response->getBody(),true);
+        $out = json_decode((string) $response->getBody(), true);
 
         $this->assertEquals(123, $out['status_code']);
     }
-
 }
