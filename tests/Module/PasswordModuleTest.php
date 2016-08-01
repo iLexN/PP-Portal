@@ -100,7 +100,7 @@ class PasswordModuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testValidateLengthBetween($p)
     {
-        $this->assertTrue($p->validateLengthBetween('1a2A3dsf', 1, 8));
+        $this->assertTrue($p->validateLengthBetween('1a2A3d', 1, 8));
         $this->assertFalse($p->validateLengthBetween('1a2A3dsf', 1, 6));
     }
 

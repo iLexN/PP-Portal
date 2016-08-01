@@ -2,24 +2,31 @@
 
 namespace PP\Test\User;
 
-class LoginTest extends \PHPUnit_Framework_TestCase
+class SignupTest extends \PHPUnit_Framework_TestCase
 {
     protected $action;
     protected $response;
+    protected $c;
 
     protected function setUp()
     {
         $c = new \Slim\Container();
         $c['msgCode'] = function (\Slim\Container $c) {
             return [
-                '2081' => [
-                    'code'  => 2081,
-                ],
-                '2080' => [
-                    'code'  => 2080,
+                '2040' => [
+                    'code'  => 2040,
                 ],
                 '1010' => [
                     'code'  => 1010,
+                ],
+                '2510' => [
+                    'code'  => 2510,
+                ],
+                '2070' => [
+                    'code'  => 2070,
+                ],
+                '2030' => [
+                    'code'  => 2030,
                 ],
             ];
         };
@@ -41,87 +48,45 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $c['UserModule'] = function ($c) {
             return new \PP\Portal\Module\UserModule($c);
         };
+        $c['PasswordModule'] = function ($c) {
+            return new \PP\Portal\Module\PasswordModule($c);
+        };
 
-
-        $this->action = new \PP\Portal\Controller\User\Login($c);
+        $this->c = $c;
+        $this->action = new \PP\Portal\Controller\User\Signup($c);
         $this->response = new \Slim\Http\Response();
     }
 
-    public function testUserFound()
+    public function testIsRegister()
     {
         $action = $this->action;
 
-        $_POST['user_name'] = 'alex';
-        $_POST['password'] = '123Psadfs';
-        $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
-        $request = \Slim\Http\Request::createFromEnvironment($environment);
-        unset($_POST);
+        $this->c['UserModule']->isUserExistByID(2);
 
+        $environment = \Slim\Http\Environment::mock([]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        
         $response = $this->response;
 
         $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(2081, $out['status_code']);
+        $this->assertEquals(2040, $out['status_code']);
     }
 
-    public function testUserFoundwithWrongPassword()
+    public function testValidator()
     {
         $action = $this->action;
 
-        $_POST['user_name'] = 'alex';
-        $_POST['password'] = '123Psadfdds';
+        $this->c['UserModule']->isUserExistByID(135929);
+
+        $_POST['user_name'] = '';
+        $_POST['password'] = '';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
             ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
-        unset($_POST);
-
-        $response = $this->response;
-
-        $response = $action($request, $response, []);
-
-        $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(2080, $out['status_code']);
-    }
-
-    public function testUserNotFound()
-    {
-        $action = $this->action;
-
-        $_POST['user_name'] = 'alex8d8d8d8d';
-        $_POST['password'] = '123Psadfs';
-        $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
-        $request = \Slim\Http\Request::createFromEnvironment($environment);
-        unset($_POST);
-
-        $response = $this->response;
-
-        $response = $action($request, $response, []);
-
-        $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(2080, $out['status_code']);
-    }
-
-    public function testMissFields()
-    {
-        $action = $this->action;
-
-        $_POST = [];
-
-        $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
-        $request = \Slim\Http\Request::createFromEnvironment($environment);
-        unset($_POST);
 
         $response = $this->response;
 
@@ -131,32 +96,71 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1010, $out['status_code']);
     }
 
-    public function setUpContainer()
+    public function testIsStrongPassword()
     {
-        $c = new \Slim\Container();
+        $action = $this->action;
 
-        $c['jsonConfig'] = ['prettyPrint' => false];
+        $this->c['UserModule']->isUserExistByID(135929);
 
-        $c['ViewHelper'] = function ($c) {
-            return new \PP\Portal\Module\Helper\View($c);
-        };
+        $_POST['user_name'] = 'ssss';
+        $_POST['password'] = 'a';
+        $environment = \Slim\Http\Environment::mock([
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+            ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
 
-        $c['UserModule'] = function ($c) {
-            return new \PP\Portal\Module\UserModule($c);
-        };
+        $response = $this->response;
 
-        $c['pool'] = function () {
-            $settings = [
-                'path' => __DIR__.'/../cache/data',
-            ];
+        $response = $action($request, $response, []);
 
-            $driver = new \Stash\Driver\FileSystem($settings);
-
-            return new \Stash\Pool($driver);
-        };
-
-        $c['dataCacheConfig'] = ['expiresAfter' => 3600];
-
-        return $c;
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(2510, $out['status_code']);
     }
+
+    public function testIsUserNameExist()
+    {
+        $action = $this->action;
+
+        $this->c['UserModule']->isUserExistByID(135929);
+
+        $_POST['user_name'] = 'alex';
+        $_POST['password'] = 'P123Aaa3ss';
+        $environment = \Slim\Http\Environment::mock([
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+            ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+
+        $response = $this->response;
+
+        $response = $action($request, $response, []);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(2070, $out['status_code']);
+    }
+
+    public function testSaveUser()
+    {
+        $action = $this->action;
+
+        $this->c['UserModule']->isUserExistByID(135929);
+
+        $_POST['user_name'] = 'alex11';
+        $_POST['password'] = 'P123Aaa3ss';
+        $environment = \Slim\Http\Environment::mock([
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+            ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+
+        $response = $this->response;
+
+        $response = $action($request, $response, []);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(2030, $out['status_code']);
+    }
+
+
 }

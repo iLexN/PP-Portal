@@ -2,7 +2,7 @@
 
 namespace PP\Test\User;
 
-class LoginTest extends \PHPUnit_Framework_TestCase
+class VerifyTest extends \PHPUnit_Framework_TestCase
 {
     protected $action;
     protected $response;
@@ -12,14 +12,17 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $c = new \Slim\Container();
         $c['msgCode'] = function (\Slim\Container $c) {
             return [
-                '2081' => [
-                    'code'  => 2081,
+                '2051' => [
+                    'code'  => 2051,
                 ],
-                '2080' => [
-                    'code'  => 2080,
+                '2050' => [
+                    'code'  => 2050,
                 ],
-                '1010' => [
-                    'code'  => 1010,
+                '1020' => [
+                    'code'  => 1020,
+                ],
+                '2040' => [
+                    'code'  => 2040,
                 ],
             ];
         };
@@ -43,16 +46,16 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         };
 
 
-        $this->action = new \PP\Portal\Controller\User\Login($c);
+        $this->action = new \PP\Portal\Controller\User\Verify($c);
         $this->response = new \Slim\Http\Response();
     }
 
-    public function testUserFound()
+    public function testValidate()
     {
         $action = $this->action;
 
-        $_POST['user_name'] = 'alex';
-        $_POST['password'] = '123Psadfs';
+        $_POST['ppmid'] = '2';
+        $_POST['date_of_birth'] = '198401010';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -65,15 +68,15 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(2081, $out['status_code']);
+        $this->assertEquals(1020, $out['status_code']);
     }
 
-    public function testUserFoundwithWrongPassword()
+    public function testVerifyUserFails()
     {
         $action = $this->action;
 
-        $_POST['user_name'] = 'alex';
-        $_POST['password'] = '123Psadfdds';
+        $_POST['ppmid'] = '2';
+        $_POST['date_of_birth'] = '2010-10-10';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -86,15 +89,15 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(2080, $out['status_code']);
+        $this->assertEquals(2051, $out['status_code']);
     }
 
-    public function testUserNotFound()
+    public function testIsRegister()
     {
         $action = $this->action;
 
-        $_POST['user_name'] = 'alex8d8d8d8d';
-        $_POST['password'] = '123Psadfs';
+        $_POST['ppmid'] = '173802';
+        $_POST['date_of_birth'] = '1980-03-04';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -107,15 +110,15 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(2080, $out['status_code']);
+        $this->assertEquals(2050, $out['status_code']);
     }
 
-    public function testMissFields()
+    public function testAlreadyMember()
     {
         $action = $this->action;
 
-        $_POST = [];
-
+        $_POST['ppmid'] = '2';
+        $_POST['date_of_birth'] = '1980-10-10';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -128,35 +131,7 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(1010, $out['status_code']);
+        $this->assertEquals(2040, $out['status_code']);
     }
 
-    public function setUpContainer()
-    {
-        $c = new \Slim\Container();
-
-        $c['jsonConfig'] = ['prettyPrint' => false];
-
-        $c['ViewHelper'] = function ($c) {
-            return new \PP\Portal\Module\Helper\View($c);
-        };
-
-        $c['UserModule'] = function ($c) {
-            return new \PP\Portal\Module\UserModule($c);
-        };
-
-        $c['pool'] = function () {
-            $settings = [
-                'path' => __DIR__.'/../cache/data',
-            ];
-
-            $driver = new \Stash\Driver\FileSystem($settings);
-
-            return new \Stash\Pool($driver);
-        };
-
-        $c['dataCacheConfig'] = ['expiresAfter' => 3600];
-
-        return $c;
-    }
 }
