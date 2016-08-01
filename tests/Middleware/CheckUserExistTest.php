@@ -36,6 +36,7 @@ class CheckUserExistTest extends \PHPUnit_Framework_TestCase
         $c['UserModule'] = function (\Slim\Container $c) {
             return new \PP\Portal\Module\UserModule($c);
         };
+        $this->c = $c;
 
         $environment = \Slim\Http\Environment::mock([]);
         $this->request = \Slim\Http\Request::createFromEnvironment($environment);
@@ -44,6 +45,7 @@ class CheckUserExistTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckUserExist()
     {
+        $c = $this->c;
         $action = new \PP\Portal\Middleware\CheckUserExist($c);
 
         $route = $this->getMockBuilder(Route::class)
@@ -69,6 +71,8 @@ class CheckUserExistTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckUserError()
     {
+        $c = $this->c;
+
         $action = new \PP\Portal\Middleware\CheckUserExist($c);
 
         $route = $this->getMockBuilder(Route::class)
