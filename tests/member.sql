@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 07 月 29 日 11:40
+-- 產生時間： 2016 年 07 月 29 日 18:14
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `member`
 --
-CREATE DATABASE IF NOT EXISTS `member` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `member`;
 
 DELIMITER $$
 --
@@ -552,7 +550,14 @@ CREATE TABLE IF NOT EXISTS `member_portal_claim` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`claim_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- 資料表的匯出資料 `member_portal_claim`
+--
+
+INSERT INTO `member_portal_claim` (`claim_id`, `user_policy_id`, `currency`, `amount`, `date_of_treatment`, `diagnosis`, `payment_method`, `issue_to_whom`, `issue_address`, `currency_receive`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'USD', '120.00', '2010-10-12', 'diagnosis', 'CC', 'issue_to_whom', 'issue_address', 'HKD', 'Save', '2016-07-28 12:16:44', '2016-07-28 12:16:44');
 
 -- --------------------------------------------------------
 
