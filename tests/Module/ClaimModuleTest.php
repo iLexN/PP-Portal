@@ -140,7 +140,7 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
 
     public function testSaveExtraClaimInfoloop(){
         $this->ClaimModule->newClaim(1);
-        $this->ClaimModule->claimExtraData['s'] = b;
+        $this->ClaimModule->claimExtraData['s'] = 'b';
         $this->ClaimModule->saveExtraClaimInfoloop();
 
         $this->expectOutputString('foo');
