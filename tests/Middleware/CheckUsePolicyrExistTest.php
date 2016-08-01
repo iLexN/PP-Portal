@@ -36,7 +36,7 @@ class CheckUsePolicyrExistTest extends \PHPUnit_Framework_TestCase
         $c['UserPolicyModule'] = function (\Slim\Container $c) {
             return new \PP\Portal\Module\UserPolicyModule($c);
         };
-        
+
 
         $environment = \Slim\Http\Environment::mock([]);
         $this->request = \Slim\Http\Request::createFromEnvironment($environment);

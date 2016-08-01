@@ -65,7 +65,7 @@ class SignupTest extends \PHPUnit_Framework_TestCase
 
         $environment = \Slim\Http\Environment::mock([]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
-        
+
         $response = $this->response;
 
         $response = $action($request, $response, []);
@@ -161,6 +161,4 @@ class SignupTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2030, $out['status_code']);
     }
-
-
 }

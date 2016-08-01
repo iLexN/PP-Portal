@@ -19,7 +19,7 @@ class ClaimFileModuleTest extends \PHPUnit_Framework_TestCase
 
             return new \Stash\Pool($driver);
         };
-        $c['uploadConfig'] = function (){
+        $c['uploadConfig'] = function () {
             return [
                 'path' => __DIR__.'/../cache',
             ];
@@ -32,15 +32,15 @@ class ClaimFileModuleTest extends \PHPUnit_Framework_TestCase
         };
         $c['ClaimModule']->geInfoById(1);
 
-        
-        
+
+
         $file = $this->getMockBuilder(\Slim\Http\UploadedFile::class)
-                ->setMethods(['moveTo','getClientFilename'])
+                ->setMethods(['moveTo', 'getClientFilename'])
                 ->disableOriginalConstructor()
                 ->getMock();
         $file->method('moveTo')->willReturn(true);
         $file->method('getClientFilename')->willReturn('a.txt');
-        
+
         $uploadModule = new \PP\Portal\Module\FileUploadModule($file);
         $this->FileUploadModule = $uploadModule;
 
@@ -55,23 +55,27 @@ class ClaimFileModuleTest extends \PHPUnit_Framework_TestCase
         echo 'foo';
     }
 
-    public function testGetFile(){
+    public function testGetFile()
+    {
         $file = $this->ClaimFileModule->getFile(1);
         $this->assertInstanceOf(\PP\Portal\DbModel\ClaimFile::class, $file);
+
         return $this->ClaimFileModule;
     }
 
     /**
      * @depends testGetFile
      */
-    public function testDeleteFile($ClaimFileModule){
+    public function testDeleteFile($ClaimFileModule)
+    {
         $ClaimFileModule->deleteFile();
     }
 
     /**
      * @depends testGetFile
      */
-    public function testGetFilePath($ClaimFileModule){
+    public function testGetFilePath($ClaimFileModule)
+    {
         $this->assertNotEmpty($ClaimFileModule->getFilePath());
 
         $ClaimFileModule->file->filename = 'b.txt';

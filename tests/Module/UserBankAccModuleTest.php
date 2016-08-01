@@ -36,6 +36,7 @@ class UserBankAccModuleTest extends \PHPUnit_Framework_TestCase
     {
         $new = $this->UserBankAccModule->newBlankAcc(2);
         $this->assertInstanceOf(\PP\Portal\DbModel\UserBankAcc::class, $new);
+
         return $new;
     }
 
@@ -45,12 +46,12 @@ class UserBankAccModuleTest extends \PHPUnit_Framework_TestCase
     public function testSaveData($new)
     {
         $data = [
-            'currency'=>'USD',
-            'account_user_name'=>'safd',
-            'account_number'=>'dsf',
-            'iban'=>'dsfdsfdsfds',
+            'currency'          => 'USD',
+            'account_user_name' => 'safd',
+            'account_number'    => 'dsf',
+            'iban'              => 'dsfdsfdsfds',
         ];
-        $new = $this->UserBankAccModule->saveData($new,$data);
+        $new = $this->UserBankAccModule->saveData($new, $data);
         $this->expectOutputString('foo');
         echo 'foo';
     }
@@ -60,5 +61,4 @@ class UserBankAccModuleTest extends \PHPUnit_Framework_TestCase
         $info = $this->UserBankAccModule->getByUserID();
         $this->assertInstanceOf(\PP\Portal\DbModel\UserBankAcc::class, $info);
     }
-
 }
