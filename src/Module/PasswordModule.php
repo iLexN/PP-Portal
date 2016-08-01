@@ -35,7 +35,7 @@ class PasswordModule extends AbstractContainer
      */
     public function validateLengthBetween($value, $min, $max)
     {
-        $length = strlen((string)$value);
+        $length = strlen((string) $value);
 
         return $length >= $min && $length <= $max;
     }
@@ -49,7 +49,7 @@ class PasswordModule extends AbstractContainer
      */
     public function validateLetters($value)
     {
-        return (bool) preg_match('/\pL/', (string)$value);
+        return (bool) preg_match('/\pL/', (string) $value);
     }
 
     /**
@@ -61,7 +61,7 @@ class PasswordModule extends AbstractContainer
      */
     public function validateNumbers($value)
     {
-        return (bool) preg_match('/\pN/', (string)$value);
+        return (bool) preg_match('/\pN/', (string) $value);
     }
 
     /**
@@ -73,7 +73,7 @@ class PasswordModule extends AbstractContainer
      */
     public function validateCaseDiff($value)
     {
-        return (bool) preg_match('/(\p{Ll}+.*\p{Lu})|(\p{Lu}+.*\p{Ll})/u', (string)$value);
+        return (bool) preg_match('/(\p{Ll}+.*\p{Lu})|(\p{Lu}+.*\p{Ll})/u', (string) $value);
     }
 
     /**
@@ -85,7 +85,7 @@ class PasswordModule extends AbstractContainer
      */
     public function validateSymbols($value)
     {
-        return (bool) preg_match('/[!@#$%^&*?()\-_=+{};:,<.>]/', (string)$value);
+        return (bool) preg_match('/[!@#$%^&*?()\-_=+{};:,<.>]/', (string) $value);
     }
 
     /**
@@ -104,6 +104,6 @@ class PasswordModule extends AbstractContainer
 
     public function passwordHash($pass)
     {
-        return password_hash((string)$pass, PASSWORD_DEFAULT);
+        return password_hash((string) $pass, PASSWORD_DEFAULT);
     }
 }

@@ -34,16 +34,15 @@ class PolicyModuleTest extends \PHPUnit_Framework_TestCase
 
     public function testGetPolicyList()
     {
-        
         $policyList = $this->PolicyModule->getPolicyList();
 
         $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $policyList);
 
-        $this->assertArrayHasKey('policy_id',$policyList[0]);
-        $this->assertArrayHasKey('insurer',$policyList[0]);
-        $this->assertArrayHasKey('plan_name',$policyList[0]);
-        $this->assertArrayHasKey('responsibility_id',$policyList[0]);
-        $this->assertArrayHasKey('user_policy_id',$policyList[0]);
+        $this->assertArrayHasKey('policy_id', $policyList[0]);
+        $this->assertArrayHasKey('insurer', $policyList[0]);
+        $this->assertArrayHasKey('plan_name', $policyList[0]);
+        $this->assertArrayHasKey('responsibility_id', $policyList[0]);
+        $this->assertArrayHasKey('user_policy_id', $policyList[0]);
 
         $this->assertEquals(1, $policyList[0]['policy_id']);
     }
@@ -54,11 +53,8 @@ class PolicyModuleTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(\PP\Portal\DbModel\Policy::class, $policy);
 
-        $this->assertEquals(2,$policy->policy_id );
-        $this->assertEquals('2020-02-17',$policy->end_date );
-        $this->assertEquals('2020-02-18',$policy->renew_date );
+        $this->assertEquals(2, $policy->policy_id);
+        $this->assertEquals('2020-02-17', $policy->end_date);
+        $this->assertEquals('2020-02-18', $policy->renew_date);
     }
-
-    
-
 }

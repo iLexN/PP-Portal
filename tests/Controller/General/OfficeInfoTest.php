@@ -54,5 +54,4 @@ class OfficeInfoTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(1540, $out['status_code']);
     }
-
 }

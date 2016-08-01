@@ -47,7 +47,7 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         $this->ClaimModule->newClaim(1);
         $data = [
             'currency' => 'USD',
-            'amount' => '123',
+            'amount'   => '123',
         ];
         $this->ClaimModule->saveClaim($data);
         $this->expectOutputString('foo');
@@ -74,28 +74,31 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->ClaimModule->geInfoById(1000));
         $this->assertTrue($this->ClaimModule->geInfoById(1));
         $this->assertInstanceOf(\PP\Portal\DbModel\Claim::class, $this->ClaimModule->claim);
+
         return $this->ClaimModule;
     }
 
     public function testNewBankAcc()
     {
         $data = [
-            'iban'=>'sdfdsfdsf',
-            'bank_swift_code'=>'dsfdsfdsf',
+            'iban'            => 'sdfdsfdsf',
+            'bank_swift_code' => 'dsfdsfdsf',
         ];
         $this->ClaimModule->newBankAcc($data);
         $this->assertInstanceOf(\PP\Portal\DbModel\ClaimBankAcc::class, $this->ClaimModule->bankInfo);
+
         return $this->ClaimModule;
     }
 
     public function testGetBankAcc()
     {
         $data = [
-            'iban'=>'sdfdsfdsf',
+            'iban' => 'sdfdsfdsf',
         ];
         $this->assertTrue($this->ClaimModule->geInfoById(1));
         $this->ClaimModule->getBankAcc($data);
         $this->assertInstanceOf(\PP\Portal\DbModel\ClaimBankAcc::class, $this->ClaimModule->bankInfo);
+
         return $this->ClaimModule;
     }
 
@@ -103,10 +106,11 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
      * @depends testNewBankAcc
      * @depends testGetBankAcc
      */
-    public function testCalidateExtraClaimInfo($ClaimModule,$ClaimModule2)
+    public function testCalidateExtraClaimInfo($ClaimModule, $ClaimModule2)
     {
         $this->assertTrue($ClaimModule->validateExtraClaimInfo());
         $this->assertFalse($ClaimModule2->validateExtraClaimInfo());
+
         return $ClaimModule;
     }
 
@@ -116,8 +120,8 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
     public function testSaveBank($ClaimModule)
     {
         $data = [
-            'iban'=>'sdfdsfdsf',
-            'bank_swift_code'=>'dsfdsfdsf',
+            'iban'            => 'sdfdsfdsf',
+            'bank_swift_code' => 'dsfdsfdsf',
         ];
         $ClaimModule->saveBank($data);
         $this->expectOutputString('foo');
@@ -130,15 +134,16 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
     public function testSaveBankToUserAccout($ClaimModule)
     {
         $data = [
-            'iban'=>'sdfdsfdsf',
-            'bank_swift_code'=>'dsfdsfdsf',
+            'iban'            => 'sdfdsfdsf',
+            'bank_swift_code' => 'dsfdsfdsf',
         ];
         $ClaimModule->saveBankToUserAccout($data);
         $this->expectOutputString('foo');
         echo 'foo';
     }
 
-    public function testSaveExtraClaimInfoloop(){
+    public function testSaveExtraClaimInfoloop()
+    {
         $this->ClaimModule->newClaim(1);
         $this->ClaimModule->claimExtraData['s'] = 'b';
         $this->ClaimModule->saveExtraClaimInfoloop();
@@ -147,11 +152,12 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         echo 'foo';
     }
 
-    public function testSaveExtraClaimInfoloop2(){
+    public function testSaveExtraClaimInfoloop2()
+    {
         $this->ClaimModule->newClaim(1);
         $data = [
-            'iban'=>'sdfdsfdsf',
-            'bank_swift_code'=>'dsfdsfdsf',
+            'iban'            => 'sdfdsfdsf',
+            'bank_swift_code' => 'dsfdsfdsf',
         ];
         $this->ClaimModule->newBankAcc($data);
         $this->ClaimModule->saveExtraClaimInfoloop();
@@ -159,5 +165,4 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         $this->expectOutputString('foo');
         echo 'foo';
     }
-    
 }

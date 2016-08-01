@@ -43,7 +43,7 @@ class InfoTest extends \PHPUnit_Framework_TestCase
         $request = $this->request;
         $response = $this->response;
 
-        $response = $action($request, $response, ['id'=>19]);
+        $response = $action($request, $response, ['id' => 19]);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(5040, $out['status_code']);
@@ -55,7 +55,7 @@ class InfoTest extends \PHPUnit_Framework_TestCase
         $request = $this->request;
         $response = $this->response;
 
-        $response = $action($request, $response, ['id'=>1]);
+        $response = $action($request, $response, ['id' => 1]);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(3510, $out['status_code']);
