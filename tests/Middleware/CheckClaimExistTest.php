@@ -72,8 +72,6 @@ class CheckClaimExistTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckUsePolicyrExistError()
     {
-        $c = $this->c;
-
         $action = $this->action;
 
         $route = $this->getMockBuilder(Route::class)

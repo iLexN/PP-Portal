@@ -36,7 +36,6 @@ class CheckUserExistTest extends \PHPUnit_Framework_TestCase
         $c['UserModule'] = function (\Slim\Container $c) {
             return new \PP\Portal\Module\UserModule($c);
         };
-        $this->c = $c;
 
         $environment = \Slim\Http\Environment::mock([]);
         $this->request = \Slim\Http\Request::createFromEnvironment($environment);
