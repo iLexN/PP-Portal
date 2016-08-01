@@ -73,14 +73,8 @@ class ClaimFileModuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetFilePath($ClaimFileModule){
         $this->assertNotEmpty($ClaimFileModule->getFilePath());
+
+        $ClaimFileModule->file->filename = 'b.txt';
+        $this->assertFalse($ClaimFileModule->getFilePath());
     }
-
-    public function testGetFilePath2(){
-        $this->ClaimFileModule->getFile(200);
-        $this->assertFalse($this->ClaimFileModule->getFilePath());
-    }
-
-
-    
-    
 }
