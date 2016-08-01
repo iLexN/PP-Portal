@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class UserModuleTest extends \PHPUnit_Framework_TestCase
+class UserBankAccModuleTest extends \PHPUnit_Framework_TestCase
 {
     protected $UserBankAccModule;
 
