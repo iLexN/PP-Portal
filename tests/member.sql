@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 07 月 29 日 18:14
+-- 產生時間： 2016 年 08 月 01 日 12:18
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -504,7 +504,14 @@ CREATE TABLE IF NOT EXISTS `member_portal_bank_transfer_claim` (
   `intermediary_bank_swift_code` varchar(255) DEFAULT NULL,
   `claim_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`banker_transfer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- 資料表的匯出資料 `member_portal_bank_transfer_claim`
+--
+
+INSERT INTO `member_portal_bank_transfer_claim` (`banker_transfer_id`, `currency`, `account_user_name`, `account_number`, `iban`, `branch_code`, `bank_swift_code`, `bank_name`, `additional_information`, `intermediary_bank_swift_code`, `claim_id`) VALUES
+(1, 'usd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -550,14 +557,15 @@ CREATE TABLE IF NOT EXISTS `member_portal_claim` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`claim_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- 資料表的匯出資料 `member_portal_claim`
 --
 
 INSERT INTO `member_portal_claim` (`claim_id`, `user_policy_id`, `currency`, `amount`, `date_of_treatment`, `diagnosis`, `payment_method`, `issue_to_whom`, `issue_address`, `currency_receive`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'USD', '120.00', '2010-10-12', 'diagnosis', 'CC', 'issue_to_whom', 'issue_address', 'HKD', 'Save', '2016-07-28 12:16:44', '2016-07-28 12:16:44');
+(1, 1, 'USD', '120.00', '2010-10-12', 'diagnosis', 'CC', 'issue_to_whom', 'issue_address', 'HKD', 'Save', '2016-07-28 12:16:44', '2016-07-28 12:16:44'),
+(2, 1, 'USD', '123.00', NULL, NULL, NULL, NULL, NULL, NULL, 'Save', '2016-08-01 12:15:29', '2016-08-01 12:15:29');
 
 -- --------------------------------------------------------
 
