@@ -45,8 +45,6 @@ class CheckUserExistTest extends \PHPUnit_Framework_TestCase
 
     public function testCheckUserExist()
     {
-        $c = $this->c;
-
         $action = new \PP\Portal\Middleware\CheckUserExist($c);
 
         $route = $this->getMockBuilder(Route::class)
