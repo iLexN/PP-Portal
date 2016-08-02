@@ -42,10 +42,6 @@ class ForgotUsername extends AbstractContainer
         /* @var $user \PP\Portal\DbModel\User */
         $user = $this->UserModule->user;
 
-        if ($user->email === null) {
-            return;
-        }
-
         /* @var $mail \PHPMailer */
         $mail = $this->mailer;
         $mail->setFrom($this->c->get('mailConfig')['fromAc'], $this->c->get('mailConfig')['fromName']);
@@ -57,7 +53,7 @@ class ForgotUsername extends AbstractContainer
         if (!$mail->send()) {
             $this->c->logger->error('forgot password mail send fail'.$mail->ErrorInfo);
         } else {
-            $this->c->logger->info('forgot password mail send');
+            //$this->c->logger->info('forgot password mail send');
         }
     }
 }

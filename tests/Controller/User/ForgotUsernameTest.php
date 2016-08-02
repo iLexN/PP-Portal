@@ -2,7 +2,7 @@
 
 namespace PP\Test\User;
 
-class LoginTest extends \PHPUnit_Framework_TestCase
+class ForgotUsername extends \PHPUnit_Framework_TestCase
 {
     protected $action;
     protected $response;
@@ -12,14 +12,14 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $c = new \Slim\Container();
         $c['msgCode'] = function (\Slim\Container $c) {
             return [
-                '2081' => [
-                    'code'  => 2081,
+                '1020' => [
+                    'code'  => 1020,
                 ],
-                '2080' => [
-                    'code'  => 2080,
+                '2010' => [
+                    'code'  => 2010,
                 ],
-                '1010' => [
-                    'code'  => 1010,
+                '2550' => [
+                    'code'  => 2550,
                 ],
             ];
         };
@@ -41,18 +41,39 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $c['UserModule'] = function ($c) {
             return new \PP\Portal\Module\UserModule($c);
         };
-
-
-        $this->action = new \PP\Portal\Controller\User\Login($c);
+        // mail
+        $c['mailer'] = function ($c){
+            $m = $this->getMockBuilder(\PHPMailer::class)
+                ->setMethods(['setFrom','addAddress','Subject','msgHTML','send'])
+                ->disableOriginalConstructor()
+                ->getMock();
+            $m->method('send')->willReturn(true);
+            return $m;
+        };
+        $c['mailConfig'] = function ($c){
+            return [
+                'fromAc'=>'dd',
+                'fromName'=>'dd',
+            ];
+        };
+        $c['twigView'] = function ($c) {
+            $m = $this->getMockBuilder(\Slim\Views::class)
+                ->setMethods(['fetch'])
+                ->disableOriginalConstructor()
+                ->getMock();
+            return $m;
+        };
+        // end mail
+        $this->action = new \PP\Portal\Controller\User\ForgotUsername($c);
         $this->response = new \Slim\Http\Response();
     }
 
-    public function testUserFound()
+    public function testValidator()
     {
         $action = $this->action;
 
-        $_POST['user_name'] = 'alex';
-        $_POST['password'] = '123Psadfs';
+        $_POST['name'] = 'alex';
+        $_POST['email'] = '123Psadfs';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -65,15 +86,16 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(2081, $out['status_code']);
+        $this->assertEquals(1020, $out['status_code']);
     }
 
-    public function testUserFoundwithWrongPassword()
+    public function testIsUser()
     {
         $action = $this->action;
 
-        $_POST['user_name'] = 'alex';
-        $_POST['password'] = '123Psadfdds';
+        $_POST['name'] = 'alex';
+        $_POST['email'] = 'a@a.com';
+        $_POST['phone'] = '1';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -86,15 +108,16 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(2080, $out['status_code']);
+        $this->assertEquals(2010, $out['status_code']);
     }
 
-    public function testUserNotFound()
+     public function testSave()
     {
         $action = $this->action;
 
-        $_POST['user_name'] = 'alex8d8d8d8d';
-        $_POST['password'] = '123Psadfs';
+        $_POST['name'] = 'alex';
+        $_POST['email'] = 'alex@kwiksure.com';
+        $_POST['phone'] = '12345678';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -107,28 +130,8 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(2080, $out['status_code']);
+        $this->assertEquals(2550, $out['status_code']);
     }
 
-    public function testMissFields()
-    {
-        $action = $this->action;
-
-        $_POST = [];
-
-        $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
-        $request = \Slim\Http\Request::createFromEnvironment($environment);
-        unset($_POST);
-
-        $response = $this->response;
-
-        $response = $action($request, $response, []);
-
-        $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(1010, $out['status_code']);
-    }
 
 }

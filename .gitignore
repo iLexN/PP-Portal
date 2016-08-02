@@ -9,4 +9,4 @@
 /claims/cache/route.cache
 /upload/*
 /app/config/
-/tests/cache/data/*
+/tests/cache/data/
