@@ -31,6 +31,7 @@ class ForgotPasswordTokenUpdateTest extends \PHPUnit_Framework_TestCase
                 'path' => __DIR__.'/../../cache/data',
             ];
             $driver = new \Stash\Driver\FileSystem($settings);
+
             return new \Stash\Pool($driver);
         };
         $c['dataCacheConfig'] = ['expiresAfter' => 1];
@@ -44,7 +45,7 @@ class ForgotPasswordTokenUpdateTest extends \PHPUnit_Framework_TestCase
         $c['PasswordModule'] = function ($c) {
             return new \PP\Portal\Module\PasswordModule($c);
         };
-        
+
         $this->action = new \PP\Portal\Controller\User\ForgotPasswordTokenUpdate($c);
         $this->response = new \Slim\Http\Response();
     }
@@ -103,7 +104,7 @@ class ForgotPasswordTokenUpdateTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['token'=>'5550522d-f8a8-4203-81c1-fa3b567157cc']);
+        $response = $action($request, $response, ['token' => '5550522d-f8a8-4203-81c1-fa3b567157cc']);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2570, $out['status_code']);
@@ -123,10 +124,9 @@ class ForgotPasswordTokenUpdateTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['token'=>'ddd']);
+        $response = $action($request, $response, ['token' => 'ddd']);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2010, $out['status_code']);
     }
-
 }

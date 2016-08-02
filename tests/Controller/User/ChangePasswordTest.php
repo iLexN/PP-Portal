@@ -31,6 +31,7 @@ class ChangePasswordTest extends \PHPUnit_Framework_TestCase
                 'path' => __DIR__.'/../../cache/data',
             ];
             $driver = new \Stash\Driver\FileSystem($settings);
+
             return new \Stash\Pool($driver);
         };
         $c['dataCacheConfig'] = ['expiresAfter' => 1];
@@ -131,5 +132,4 @@ class ChangePasswordTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2530, $out['status_code']);
     }
-
 }

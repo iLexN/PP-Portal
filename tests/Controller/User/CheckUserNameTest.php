@@ -25,6 +25,7 @@ class CheckUserNameTest extends \PHPUnit_Framework_TestCase
                 'path' => __DIR__.'/../../cache/data',
             ];
             $driver = new \Stash\Driver\FileSystem($settings);
+
             return new \Stash\Pool($driver);
         };
         $c['dataCacheConfig'] = ['expiresAfter' => 1];
@@ -46,10 +47,10 @@ class CheckUserNameTest extends \PHPUnit_Framework_TestCase
         $_POST['name'] = 'alex';
         $environment = \Slim\Http\Environment::mock([]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
-        
+
         $response = $this->response;
 
-        $response = $action($request, $response, ['user_name'=>'1235d8dd']);
+        $response = $action($request, $response, ['user_name' => '1235d8dd']);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2060, $out['status_code']);
@@ -65,7 +66,7 @@ class CheckUserNameTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['user_name'=>'alex']);
+        $response = $action($request, $response, ['user_name' => 'alex']);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2070, $out['status_code']);
