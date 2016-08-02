@@ -74,8 +74,8 @@ class UserModuleTest extends \PHPUnit_Framework_TestCase
 
     public function testIsUserExistByForgotToken()
     {
-        $this->assertTrue($this->userModule->isUserExistByForgotToken('5550522d-f8a8-4203-81c1-fa3b567157cc'));
-        $this->assertEquals(2, $this->userModule->user->ppmid);
+        $this->assertTrue($this->userModule->isUserExistByForgotToken('adf2'));
+        $this->assertEquals(173802, $this->userModule->user->ppmid);
         $this->assertFalse($this->userModule->isUserExistByForgotToken('DoreMe'));
     }
 

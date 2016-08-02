@@ -41,7 +41,7 @@ class ChangePasswordTest extends \PHPUnit_Framework_TestCase
         $c['UserModule'] = function ($c) {
             return new \PP\Portal\Module\UserModule($c);
         };
-        $c['UserModule']->isUserExistByID(2);
+        $c['UserModule']->isUserExistByID(9677);
         $c['PasswordModule'] = function ($c) {
             return new \PP\Portal\Module\PasswordModule($c);
         };

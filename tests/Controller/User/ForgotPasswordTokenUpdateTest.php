@@ -73,7 +73,7 @@ class ForgotPasswordTokenUpdateTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
 
-        $_POST['new_password'] = 'alex';
+        $_POST['new_password'] = '1';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -93,7 +93,7 @@ class ForgotPasswordTokenUpdateTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
 
-        $_POST['new_password'] = 'alex123AA';
+        $_POST['new_password'] = '123Psadfs';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',

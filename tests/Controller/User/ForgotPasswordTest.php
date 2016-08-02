@@ -89,7 +89,7 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
 
-        $_POST['user_name'] = 'alex';
+        $_POST['user_name'] = 'peter';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',

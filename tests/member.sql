@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 08 月 01 日 12:31
+-- 產生時間： 2016 年 08 月 02 日 17:54
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -20,6 +20,7 @@ SET time_zone = "+00:00";
 -- 資料庫： `member`
 --
 
+-- --------------------------------------------------------
 
 --
 -- 資料表結構 `member_portal_bank_transfer_claim`
@@ -68,7 +69,14 @@ CREATE TABLE IF NOT EXISTS `member_portal_bank_transfer_user` (
   `intermediary_bank_swift_code` varchar(255) DEFAULT NULL,
   `ppmid` int(11) DEFAULT NULL,
   PRIMARY KEY (`banker_transfer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- 資料表的匯出資料 `member_portal_bank_transfer_user`
+--
+
+INSERT INTO `member_portal_bank_transfer_user` (`banker_transfer_id`, `currency`, `account_user_name`, `account_number`, `iban`, `branch_code`, `bank_swift_code`, `bank_name`, `additional_information`, `intermediary_bank_swift_code`, `ppmid`) VALUES
+(1, '2', '2', '2', '2', '2', '2', '2', '2', '2', 2);
 
 -- --------------------------------------------------------
 
@@ -115,7 +123,14 @@ CREATE TABLE IF NOT EXISTS `member_portal_claim_file` (
   `filename` varchar(64) NOT NULL,
   `status` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- 資料表的匯出資料 `member_portal_claim_file`
+--
+
+INSERT INTO `member_portal_claim_file` (`id`, `claim_id`, `filename`, `status`) VALUES
+(1, 1, 'a.txt', 'Upload');
 
 -- --------------------------------------------------------
 
@@ -256,10 +271,10 @@ CREATE TABLE IF NOT EXISTS `member_portal_user` (
 
 INSERT INTO `member_portal_user` (`ppmid`, `title`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `user_name`, `password`, `nationality`, `email`, `phone_1`, `phone_2`, `address_line_2`, `address_line_3`, `address_line_4`, `address_line_5`, `forgot_str`, `forgot_expire`) VALUES
 (2, 'Dr', 'www', 'eee', 'rrr', '1980-10-10', 'alex', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'alex@kwiksure.com', NULL, NULL, NULL, NULL, NULL, NULL, '5550522d-f8a8-4203-81c1-fa3b567157cc', '2020-07-28 16:12:33'),
-(9677, NULL, 'dsdsab', 'sds', 'dsd', '1981-06-06', 'peter', '$2y$10$Gp36krtjE8K.Aa82WzHY0uVaV6.4t5TFK/NFMZOtS/GhRGVVNX8U2', 'China', 'peter.suen@pacificprime.com', '12345678', '87654321', 'Room 1000', 'Block B', 'ABC House', 'ST', NULL, NULL),
-(135928, 'Mrs', 'Aja', 'O', 'Gorman', '1980-12-20', 'peter2', '$2y$10$g/Wgc8.CwugmRww1g.dE.e9UQbfTnk/xwvF33lyXwxp7W2MjFP2Eu', 'Canadian', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9677, NULL, 'dsdsab', 'sds', 'dsd', '1981-06-06', 'peter', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'peter.suen@pacificprime.com', '12345678', '87654321', 'Room 1000', 'Block B', 'ABC House', 'ST', NULL, NULL),
+(135928, 'Mrs', 'Aja', 'O', 'Gorman', '1980-12-20', 'peter2', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'Canadian', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (135929, 'Mr', 'Paul', 'Andrew', 'Woods', '1985-12-22', NULL, NULL, 'Canadian', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(173802, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(173802, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'adf2', '2020-07-28 16:12:33'),
 (173803, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
