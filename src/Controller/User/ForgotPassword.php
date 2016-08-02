@@ -40,7 +40,7 @@ class ForgotPassword extends AbstractContainer
     {
         /* @var $user \PP\Portal\DbModel\User */
         $user = $this->UserModule->user;
-        
+
         /* @var $mail \PHPMailer */
         $mail = $this->mailer;
         $mail->setFrom($this->c->get('mailConfig')['fromAc'], $this->c->get('mailConfig')['fromName']);

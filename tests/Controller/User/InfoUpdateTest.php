@@ -26,6 +26,7 @@ class InfoUpdateTest extends \PHPUnit_Framework_TestCase
                 'path' => __DIR__.'/../../cache/data',
             ];
             $driver = new \Stash\Driver\FileSystem($settings);
+
             return new \Stash\Pool($driver);
         };
         $c['dataCacheConfig'] = ['expiresAfter' => 1];
@@ -36,7 +37,7 @@ class InfoUpdateTest extends \PHPUnit_Framework_TestCase
         $c['UserModule'] = function ($c) {
             return new \PP\Portal\Module\UserModule($c);
         };
-        
+
         $this->c = $c;
         $this->action = new \PP\Portal\Controller\User\InfoUpdate($c);
         $this->response = new \Slim\Http\Response();
@@ -83,5 +84,4 @@ class InfoUpdateTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2020, $out['status_code']);
     }
-
 }

@@ -130,5 +130,4 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(1010, $out['status_code']);
     }
-
 }

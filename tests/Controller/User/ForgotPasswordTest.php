@@ -28,6 +28,7 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
                 'path' => __DIR__.'/../../cache/data',
             ];
             $driver = new \Stash\Driver\FileSystem($settings);
+
             return new \Stash\Pool($driver);
         };
         $c['dataCacheConfig'] = ['expiresAfter' => 1];
@@ -39,18 +40,19 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\UserModule($c);
         };
         // mail
-        $c['mailer'] = function ($c){
+        $c['mailer'] = function ($c) {
             $m = $this->getMockBuilder(\PHPMailer::class)
-                ->setMethods(['setFrom','addAddress','Subject','msgHTML','send'])
+                ->setMethods(['setFrom', 'addAddress', 'Subject', 'msgHTML', 'send'])
                 ->disableOriginalConstructor()
                 ->getMock();
             $m->method('send')->willReturn(true);
+
             return $m;
         };
-        $c['mailConfig'] = function ($c){
+        $c['mailConfig'] = function ($c) {
             return [
-                'fromAc'=>'dd',
-                'fromName'=>'dd',
+                'fromAc'   => 'dd',
+                'fromName' => 'dd',
             ];
         };
         $c['twigView'] = function ($c) {
@@ -58,6 +60,7 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
                 ->setMethods(['fetch'])
                 ->disableOriginalConstructor()
                 ->getMock();
+
             return $m;
         };
         // end mail

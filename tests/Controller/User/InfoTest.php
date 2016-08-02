@@ -22,6 +22,7 @@ class InfoTest extends \PHPUnit_Framework_TestCase
                 'path' => __DIR__.'/../../cache/data',
             ];
             $driver = new \Stash\Driver\FileSystem($settings);
+
             return new \Stash\Pool($driver);
         };
         $c['dataCacheConfig'] = ['expiresAfter' => 1];
@@ -33,7 +34,7 @@ class InfoTest extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\UserModule($c);
         };
         $c['UserModule']->isUserExistByID(2);
-        
+
         $this->action = new \PP\Portal\Controller\User\Info($c);
         $this->response = new \Slim\Http\Response();
     }
@@ -53,5 +54,4 @@ class InfoTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('title', $out['data']);
         $this->assertArrayHasKey('user_name', $out['data']);
     }
-
 }

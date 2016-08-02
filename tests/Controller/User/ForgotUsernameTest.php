@@ -2,7 +2,7 @@
 
 namespace PP\Test\User;
 
-class ForgotUsername extends \PHPUnit_Framework_TestCase
+class ForgotUsernameTest extends \PHPUnit_Framework_TestCase
 {
     protected $action;
     protected $response;
@@ -42,18 +42,19 @@ class ForgotUsername extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\UserModule($c);
         };
         // mail
-        $c['mailer'] = function ($c){
+        $c['mailer'] = function ($c) {
             $m = $this->getMockBuilder(\PHPMailer::class)
-                ->setMethods(['setFrom','addAddress','Subject','msgHTML','send'])
+                ->setMethods(['setFrom', 'addAddress', 'Subject', 'msgHTML', 'send'])
                 ->disableOriginalConstructor()
                 ->getMock();
             $m->method('send')->willReturn(true);
+
             return $m;
         };
-        $c['mailConfig'] = function ($c){
+        $c['mailConfig'] = function ($c) {
             return [
-                'fromAc'=>'dd',
-                'fromName'=>'dd',
+                'fromAc'   => 'dd',
+                'fromName' => 'dd',
             ];
         };
         $c['twigView'] = function ($c) {
@@ -61,6 +62,7 @@ class ForgotUsername extends \PHPUnit_Framework_TestCase
                 ->setMethods(['fetch'])
                 ->disableOriginalConstructor()
                 ->getMock();
+
             return $m;
         };
         // end mail
@@ -111,7 +113,7 @@ class ForgotUsername extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2010, $out['status_code']);
     }
 
-     public function testSave()
+    public function testSave()
     {
         $action = $this->action;
 
@@ -132,6 +134,4 @@ class ForgotUsername extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2550, $out['status_code']);
     }
-
-
 }
