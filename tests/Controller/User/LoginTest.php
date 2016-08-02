@@ -25,7 +25,7 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         };
         $c['pool'] = function () {
             $settings = [
-                'path' => __DIR__.'/../cache/data',
+                'path' => __DIR__.'/../../cache/data',
             ];
 
             $driver = new \Stash\Driver\FileSystem($settings);

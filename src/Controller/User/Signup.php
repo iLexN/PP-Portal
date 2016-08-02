@@ -66,8 +66,6 @@ class Signup extends AbstractContainer
             ]));
         if (!$mail->send()) {
             $this->c->logger->error('forgot password mail send fail'.$mail->ErrorInfo);
-        } else {
-            $this->c->logger->info('forgot password mail send');
         }
     }
 }
