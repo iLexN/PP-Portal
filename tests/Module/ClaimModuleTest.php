@@ -72,7 +72,7 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
     public function testGetInfoById()
     {
         $this->assertFalse($this->ClaimModule->geInfoById(1000));
-        $this->assertTrue($this->ClaimModule->geInfoById(1));
+        $this->assertTrue($this->ClaimModule->geInfoById(2));
         $this->assertInstanceOf(\PP\Portal\DbModel\Claim::class, $this->ClaimModule->claim);
 
         return $this->ClaimModule;
