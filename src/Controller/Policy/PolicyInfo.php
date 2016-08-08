@@ -11,12 +11,7 @@ class PolicyInfo extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         /* @var $policy \PP\Portal\DbModel\Policy */
-        $policy = $this->PolicyModule->policyInfo($args['id']);
-
-        if (!$policy) {
-            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[3010],
-            ]);
-        }
+        $policy = $this->UserPolicyModule->userPolicy;
 
         return $this->ViewHelper->withStatusCode($response, [
                     'data' => $policy->toArray(),

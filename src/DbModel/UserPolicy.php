@@ -32,4 +32,9 @@ class UserPolicy extends Model
             'ppmid', 'ppmid', 'ppmid'
         );
     }
+
+    public function policy()
+    {
+        return $this->hasOne(__NAMESPACE__.'\Policy', 'policy_id', 'policy_id');
+    }
 }

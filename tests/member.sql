@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 08 月 02 日 18:13
+-- 產生時間： 2016 年 08 月 08 日 10:54
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -198,6 +198,11 @@ CREATE TABLE IF NOT EXISTS `member_portal_policy` (
   `insurer` varchar(100) DEFAULT NULL,
   `plan_name` varchar(120) DEFAULT NULL,
   `deductible` varchar(100) DEFAULT NULL,
+  `cover` varchar(100) DEFAULT NULL,
+  `options` varchar(100) DEFAULT NULL,
+  `medical_currency` varchar(30) DEFAULT NULL,
+  `payment_frequency` varchar(30) DEFAULT 'Annual',
+  `payment_method` varchar(40) DEFAULT 'Cheque',
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
   `responsibility_id` int(11) DEFAULT NULL,
@@ -208,9 +213,9 @@ CREATE TABLE IF NOT EXISTS `member_portal_policy` (
 -- 資料表的匯出資料 `member_portal_policy`
 --
 
-INSERT INTO `member_portal_policy` (`policy_id`, `insurer`, `plan_name`, `deductible`, `start_date`, `end_date`, `responsibility_id`) VALUES
-(1, 'Best Doctors', 'Ultracare', '85', '2015-01-30', NULL, 19),
-(2, 'AIA', 'test_plan', '85', '2015-02-17', '2020-02-17', 19);
+INSERT INTO `member_portal_policy` (`policy_id`, `insurer`, `plan_name`, `deductible`, `cover`, `options`, `medical_currency`, `payment_frequency`, `payment_method`, `start_date`, `end_date`, `responsibility_id`) VALUES
+(1, 'Best Doctors', 'Ultracare', '85', '', '', '', '', '', '2015-01-30', NULL, 19),
+(2, 'AIA', 'test_plan', '85', '', '', '', '', '', '2015-02-17', '2020-02-17', 19);
 
 -- --------------------------------------------------------
 
@@ -288,6 +293,7 @@ CREATE TABLE IF NOT EXISTS `member_portal_user_policy` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ppmid` int(11) NOT NULL,
   `policy_id` int(11) NOT NULL,
+  `premium_paid` decimal(19,2) DEFAULT '0.00',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
@@ -295,14 +301,14 @@ CREATE TABLE IF NOT EXISTS `member_portal_user_policy` (
 -- 資料表的匯出資料 `member_portal_user_policy`
 --
 
-INSERT INTO `member_portal_user_policy` (`id`, `ppmid`, `policy_id`) VALUES
-(1, 2, 1),
-(2, 9677, 1),
-(3, 135928, 1),
-(4, 135929, 1),
-(5, 173802, 1),
-(6, 173803, 1),
-(7, 9677, 2);
+INSERT INTO `member_portal_user_policy` (`id`, `ppmid`, `policy_id`, `premium_paid`) VALUES
+(1, 2, 1, '0.00'),
+(2, 9677, 1, '0.00'),
+(3, 135928, 1, '0.00'),
+(4, 135929, 1, '0.00'),
+(5, 173802, 1, '0.00'),
+(6, 173803, 1, '0.00'),
+(7, 9677, 2, '0.00');
 
 -- --------------------------------------------------------
 

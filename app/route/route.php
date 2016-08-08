@@ -46,8 +46,9 @@ $app->post('/user/{id:\d+}/bank-account', 'PP\Portal\Controller\User\BankAccActi
         ->add($checkUserExist);
 
 //Policy
-$app->get('/policy/{id:\d+}', 'PP\Portal\Controller\Policy\PolicyInfo')
-        ->setName('Policy');
+$app->get('/user-policy/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyInfo')
+        ->setName('Policy')
+        ->add($checkUsePolicyrExist);
 $app->get('/advisor/{id:\d+}', 'PP\Portal\Controller\Advisor\Info')
         ->setName('AdvisorInfo');
 //UserPolicy
