@@ -94,7 +94,7 @@ return [
     ],
     '2081' => [
         'code'  => 2081,
-        'title' => 'login sucess',
+        'title' => 'login success',
     ],
 
     // User password
