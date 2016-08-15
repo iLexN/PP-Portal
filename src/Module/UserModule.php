@@ -145,6 +145,14 @@ class UserModule extends AbstractContainer
         return $newInfo;
     }
 
+    public function getInfoReNew(){
+        $renewInfo = $this->user->reNewInfo()->
+                where('status','Pending')->
+                orderBy('updated_at', 'desc')->
+                first();
+        return $renewInfo;
+    }
+
     public function saveInfoReNew(UserInfoReNew $newInfo, $ar)
     {
         foreach ($ar as $k => $v) {

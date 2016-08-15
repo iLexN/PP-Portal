@@ -27,6 +27,9 @@ $app->get('/user/{id:\d+}', 'PP\Portal\Controller\User\Info')
 $app->post('/user/{id:\d+}', 'PP\Portal\Controller\User\InfoUpdate')
         ->setName('UserInfo.Post')
         ->add($checkUserExist);
+$app->get('/user/{id:\d+}/renew', 'PP\Portal\Controller\User\RenewInfo')
+        ->setName('UserInfo.Renew')
+        ->add($checkUserExist);
 
 $app->post('/user/{id:\d+}/signup', 'PP\Portal\Controller\User\Signup')
         ->setName('UserSignUp')

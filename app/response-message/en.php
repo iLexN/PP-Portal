@@ -64,6 +64,10 @@ return [
         'code'  => 2021,
         'title' => 'get userinfo success',
     ],
+    '2022' => [
+        'code'  => 2022,
+        'title' => 'get user renew info success',
+    ],
     '2030' => [
         'code'  => 2030,
         'title' => 'User Login Created',
