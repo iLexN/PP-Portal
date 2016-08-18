@@ -20,6 +20,7 @@ class Claim extends Model
 
     protected $casts = [
         'amount' => 'double',
+        'user_policy_id' => 'integer',
     ];
 
     public function fileAttachments()
