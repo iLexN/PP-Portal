@@ -16,8 +16,8 @@ class UserPolicy extends Model
     public $timestamps = false;
 
     protected $casts = [
-        'ppmid' => 'integer',
-        'policy_id' => 'integer',
+        'ppmid'        => 'integer',
+        'policy_id'    => 'integer',
         'premium_paid' => 'double',
     ];
 

@@ -39,7 +39,7 @@ class RenewInfoTest extends \PHPUnit_Framework_TestCase
         $c['UserModule'] = function ($c) {
             return new \PP\Portal\Module\UserModule($c);
         };
-        
+
 
         $this->c = $c;
         $this->action = new \PP\Portal\Controller\User\RenewInfo($c);
@@ -79,5 +79,4 @@ class RenewInfoTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2023, $out['status_code']);
     }
-
 }

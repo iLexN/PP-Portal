@@ -40,11 +40,13 @@ class ClaimModule extends AbstractContainer
         return $this->claim;
     }
 
-    public function validClaim($data,$fillable){
+    public function validClaim($data, $fillable)
+    {
         $v = new \Valitron\Validator($data, $fillable);
         $v->rule('required', ['status']);
         $v->rule('dateFormat', ['date_of_treatment'], 'Y-m-d');
         $v->rule('in', ['status'], ['Save', 'Submit']);
+
         return $v;
     }
 
@@ -145,7 +147,7 @@ class ClaimModule extends AbstractContainer
 
     public function validateExtraClaimInfo($status)
     {
-        if ( $status === 'Save') {
+        if ($status === 'Save') {
             return true;
         }
 
