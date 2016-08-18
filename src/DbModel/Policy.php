@@ -22,6 +22,10 @@ class Policy extends Model
 
     protected $appends = ['renew_date'];
 
+    protected $casts = [
+        'responsibility_id' => 'integer',
+    ];
+
     public function getRenewDateAttribute()
     {
         if ($this->attributes['end_date'] === null) {

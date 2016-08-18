@@ -12,15 +12,13 @@ class ClaimCreate extends AbstractContainer
     {
         /* @var $claim \PP\Portal\DbModel\Claim */
         $claim = $this->ClaimModule->newClaim($args['id']);
-
-        $v = new \Valitron\Validator((array) $request->getParsedBody(), $claim->getFillable());
-        $v->rule('dateFormat', ['date_of_treatment'], 'Y-m-d');
+        $v = $this->ClaimModule->validClaim((array) $request->getParsedBody(), $claim->getFillable());
 
         if (isset($request->getParsedBody()['bank'])) {
             $this->ClaimModule->newBankAcc($request->getParsedBody()['bank']);
         }
 
-        if (!$v->validate() || !$this->ClaimModule->validateExtraClaimInfo()) {
+        if (!$v->validate() || !$this->ClaimModule->validateExtraClaimInfo($request->getParsedBody()['status'])) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020],
                     ]);
         }

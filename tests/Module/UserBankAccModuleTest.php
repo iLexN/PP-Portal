@@ -59,6 +59,6 @@ class UserBankAccModuleTest extends \PHPUnit_Framework_TestCase
     public function testGetByUserID()
     {
         $info = $this->UserBankAccModule->getByUserID();
-        $this->assertInstanceOf(\PP\Portal\DbModel\UserBankAcc::class, $info);
+        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $info);
     }
 }

@@ -20,6 +20,12 @@ class UserBankAccModule extends AbstractContainer
         return $newInfo;
     }
 
+    public function validBank($data,$fillable){
+        $v = new \Valitron\Validator($data, $fillable);
+        $v->rule('required', ['iban', 'bank_swift_code']);
+        return $v;
+    }
+
     public function saveData(UserBankAcc $acc, $data)
     {
         foreach ($data as $k => $v) {
@@ -27,6 +33,11 @@ class UserBankAccModule extends AbstractContainer
         }
 
         $acc->save();
+        $this->clearCache($acc->ppmid);
+    }
+
+    public function delBank(UserBankAcc $acc){
+        $acc->delete();
         $this->clearCache($acc->ppmid);
     }
 
@@ -42,7 +53,7 @@ class UserBankAccModule extends AbstractContainer
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             //$item->expiresAfter(3600/4);
-            $info = $this->UserModule->user->userAcc()->first();
+            $info = $this->UserModule->user->userAcc()->get();
             $this->pool->save($item->set($info));
         }
 

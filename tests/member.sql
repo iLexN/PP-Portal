@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 08 月 08 日 10:54
+-- 產生時間： 2016 年 08 月 17 日 14:14
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -337,7 +337,14 @@ CREATE TABLE IF NOT EXISTS `member_portal_user_renew` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`renew_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- 資料表的匯出資料 `member_portal_user_renew`
+--
+
+INSERT INTO `member_portal_user_renew` (`renew_id`, `ppmid`, `title`, `middle_name`, `first_name`, `last_name`, `date_of_birth`, `nationality`, `email`, `phone_1`, `phone_2`, `address_line_2`, `address_line_3`, `address_line_4`, `address_line_5`, `status`, `created_at`, `updated_at`) VALUES
+(1, 2, 'asd', 'adasd', 'asd', 'asd', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', NULL, NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

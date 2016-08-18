@@ -13,4 +13,8 @@ class Advisor extends Model
     protected $primaryKey = 'responsibility_id';
 
     public $timestamps = false;
+
+    protected $casts = [
+        'contact_details_id' => 'integer',
+    ];
 }

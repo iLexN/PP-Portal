@@ -12,13 +12,13 @@ class BankAccInfo extends AbstractContainer
     {
         $info = $this->UserBankAccModule->getByUserID();
 
-        if ($info) {
+        if ($info->count() > 0) {
             return $this->ViewHelper->withStatusCode($response, ['data' => $info->toArray(),
             ], 3630);
         }
 
 
         return $this->ViewHelper->withStatusCode($response, ['error' => $this->msgCode['3610'],
-            ], 3610);
+            ], 3620);
     }
 }

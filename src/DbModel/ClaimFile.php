@@ -17,4 +17,8 @@ class ClaimFile extends Model
     public $timestamps = false;
 
     protected $hidden = ['claim_id'];
+
+    protected $casts = [
+        'claim_id' => 'integer',
+    ];
 }

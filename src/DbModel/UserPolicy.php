@@ -15,6 +15,12 @@ class UserPolicy extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'ppmid' => 'integer',
+        'policy_id' => 'integer',
+        'premium_paid' => 'double',
+    ];
+
     public function claims()
     {
         return $this->hasMany(__NAMESPACE__.'\Claim', 'user_policy_id');

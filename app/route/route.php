@@ -44,17 +44,22 @@ $app->post('/user/{id:\d+}/change-passowrd', 'PP\Portal\Controller\User\ChangePa
 $app->get('/user/{id:\d+}/bank-account', 'PP\Portal\Controller\User\BankAccInfo')
         ->setName('BankAccInfo')
         ->add($checkUserExist);
-$app->post('/user/{id:\d+}/bank-account', 'PP\Portal\Controller\User\BankAccAction')
-        ->setName('BankAccAction')
+$app->post('/user/{id:\d+}/bank-account', 'PP\Portal\Controller\User\BankAccActionNew')
+        ->setName('BankAccAction.new')
+        ->add($checkUserExist);
+$app->post('/user/{id:\d+}/bank-account/{acid:\d+}', 'PP\Portal\Controller\User\BankAccActionUpdate')
+        ->setName('BankAccAction.edit')
+        ->add($checkUserExist);
+$app->delete('/user/{id:\d+}/bank-account/{acid:\d+}', 'PP\Portal\Controller\User\BankAccActionDel')
+        ->setName('BankAccAction.del')
         ->add($checkUserExist);
 
-//Policy
-$app->get('/user-policy/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyInfo')
-        ->setName('Policy')
-        ->add($checkUsePolicyrExist);
 $app->get('/advisor/{id:\d+}', 'PP\Portal\Controller\Advisor\Info')
         ->setName('AdvisorInfo');
 //UserPolicy
+$app->get('/user-policy/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyInfo')
+        ->setName('Policy')
+        ->add($checkUsePolicyrExist);
 $app->get('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimList')
         ->setName('ClaimList')
         ->add($checkUsePolicyrExist);

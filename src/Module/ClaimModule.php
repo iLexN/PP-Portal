@@ -35,9 +35,17 @@ class ClaimModule extends AbstractContainer
     {
         $this->claim = new Claim();
         $this->claim->user_policy_id = $id;
-        $this->claim->status = 'Save';
+        //$this->claim->status = 'Save';
 
         return $this->claim;
+    }
+
+    public function validClaim($data,$fillable){
+        $v = new \Valitron\Validator($data, $fillable);
+        $v->rule('required', ['status']);
+        $v->rule('dateFormat', ['date_of_treatment'], 'Y-m-d');
+        $v->rule('in', ['status'], ['Save', 'Submit']);
+        return $v;
     }
 
     public function saveClaim($data)
@@ -65,7 +73,7 @@ class ClaimModule extends AbstractContainer
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             //$item->expiresAfter(3600/4);
-            $claim = $userPolicy->claims()->get();
+            $claim = $userPolicy->claims()->orderBy('created_at', 'desc')->get();
             $this->pool->save($item->set($claim));
         }
 
@@ -135,8 +143,12 @@ class ClaimModule extends AbstractContainer
         }
     }
 
-    public function validateExtraClaimInfo()
+    public function validateExtraClaimInfo($status)
     {
+        if ( $status === 'Save') {
+            return true;
+        }
+
         foreach ($this->claimExtraData as $v) {
             if (!$v->validate()) {
                 return false;
@@ -158,7 +170,7 @@ class ClaimModule extends AbstractContainer
         switch ($k) {
             case 'bank':
                 $data = $v->data();
-                $this->saveBankToUserAccout($data);
+                //$this->saveBankToUserAccout($data);
                 $data['claim_id'] = $this->claim->claim_id;
                 $this->saveBank($data);
 
