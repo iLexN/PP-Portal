@@ -34,7 +34,6 @@ class PolicyInfoTest extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\UserPolicyModule($c);
         };
         $c['UserPolicyModule']->getUerPolicy(1);
-        
 
         $this->action = new \PP\Portal\Controller\Policy\PolicyInfo($c);
         $this->response = new \Slim\Http\Response();

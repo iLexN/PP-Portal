@@ -55,7 +55,6 @@ class BankAccActionDelTest extends \PHPUnit_Framework_TestCase
         $response = $this->response;
 
         $response = $action($request, $response, ['acid' => 111]);
-
     }
 
     public function testValidate()

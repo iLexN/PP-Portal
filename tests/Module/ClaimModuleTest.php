@@ -57,7 +57,6 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         $data = ['status' => 'Submit'];
         $v = $this->ClaimModule->validClaim($data, $fillable);
         $this->assertTrue($v->validate());
-
     }
 
     public function testSaveClaim()
