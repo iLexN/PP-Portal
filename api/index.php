@@ -8,7 +8,7 @@ $autoloader->addPsr4('PP\Portal\\', __DIR__.'/../src');
 date_default_timezone_set('Asia/Hong_Kong');
 
 // get config
-$conf = new Noodlehaus\Config(__DIR__.'/../app/config');
+$conf = new Noodlehaus\Config(__DIR__.'/../config');
 $settings = $conf->all() ?: [];
 
 // app init
