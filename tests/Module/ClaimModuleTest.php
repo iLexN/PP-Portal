@@ -64,7 +64,6 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('currency', $claimList[0]);
         $this->assertArrayHasKey('amount', $claimList[0]);
 
-        $this->assertEquals(1, $claimList[0]['claim_id']);
         $this->assertNotNull($claimList[0]['created_at']);
         $this->assertNotNull($claimList[0]['updated_at']);
     }
