@@ -51,6 +51,31 @@ class SignupTest extends \PHPUnit_Framework_TestCase
         $c['PasswordModule'] = function ($c) {
             return new \PP\Portal\Module\PasswordModule($c);
         };
+        // mail
+        $c['mailer'] = function ($c) {
+            $m = $this->getMockBuilder(\PHPMailer::class)
+                ->setMethods(['setFrom', 'addAddress', 'Subject', 'msgHTML', 'send'])
+                ->disableOriginalConstructor()
+                ->getMock();
+            $m->method('send')->willReturn(true);
+
+            return $m;
+        };
+        $c['mailConfig'] = function ($c) {
+            return [
+                'fromAc'   => 'dd',
+                'fromName' => 'dd',
+            ];
+        };
+        $c['twigView'] = function ($c) {
+            $m = $this->getMockBuilder(\Slim\Views::class)
+                ->setMethods(['fetch'])
+                ->disableOriginalConstructor()
+                ->getMock();
+
+            return $m;
+        };
+        // end mail
 
         $this->c = $c;
         $this->action = new \PP\Portal\Controller\User\Signup($c);

@@ -40,6 +40,23 @@ class UserBankAccModuleTest extends \PHPUnit_Framework_TestCase
         return $new;
     }
 
+    public function testValidBank(){
+        $fillable = ['iban','bank_swift_code'];
+        $data = [
+                'iban'=>123,
+            ];
+        $v = $this->UserBankAccModule->validBank($data, $fillable);
+        $this->assertFalse($v->validate());
+
+        $data = [
+                'iban'=>123,
+                'bank_swift_code'=>222,
+            ];
+        $v = $this->UserBankAccModule->validBank($data, $fillable);
+        $this->assertTrue($v->validate());
+    }
+
+
     /**
      * @depends testNewBlankAcc
      */
@@ -52,6 +69,16 @@ class UserBankAccModuleTest extends \PHPUnit_Framework_TestCase
             'iban'              => 'dsfdsfdsfds',
         ];
         $new = $this->UserBankAccModule->saveData($new, $data);
+        $this->expectOutputString('foo');
+        echo 'foo';
+    }
+
+    /**
+     * @depends testNewBlankAcc
+     */
+    public function testdel($new)
+    {
+        $new = $this->UserBankAccModule->delBank($new);
         $this->expectOutputString('foo');
         echo 'foo';
     }

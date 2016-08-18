@@ -42,6 +42,24 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(\PP\Portal\DbModel\Claim::class, $new);
     }
 
+    public function testValidClaim()
+    {
+        $fillable = ['status'];
+
+        $data = ['status'=>'s'];
+        $v = $this->ClaimModule->validClaim($data, $fillable);
+        $this->assertFalse($v->validate());
+        
+        $data = ['status'=>'Save'];
+        $v = $this->ClaimModule->validClaim($data, $fillable);
+        $this->assertTrue($v->validate());
+
+        $data = ['status'=>'Submit'];
+        $v = $this->ClaimModule->validClaim($data, $fillable);
+        $this->assertTrue($v->validate());
+
+    }
+
     public function testSaveClaim()
     {
         $this->ClaimModule->newClaim(1);
@@ -105,9 +123,10 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
      * @depends testNewBankAcc
      * @depends testGetBankAcc
      */
-    public function testCalidateExtraClaimInfo($ClaimModule, $ClaimModule2)
+    public function testValidateExtraClaimInfo($ClaimModule, $ClaimModule2)
     {
         $this->assertTrue($ClaimModule->validateExtraClaimInfo('All'));
+        $this->assertTrue($ClaimModule->validateExtraClaimInfo('Save'));
         $this->assertFalse($ClaimModule2->validateExtraClaimInfo('Submit'));
 
         return $ClaimModule;
