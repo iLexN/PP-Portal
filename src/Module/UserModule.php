@@ -21,9 +21,9 @@ class UserModule extends AbstractContainer
     public $user;
 
     /**
-     *
      * @param array $ar
-     * @return boolean
+     *
+     * @return bool
      */
     public function verifyUser($ar)
     {
@@ -39,9 +39,9 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @param string $user_name
-     * @return boolean
+     *
+     * @return bool
      */
     public function isUserNameExist($user_name)
     {
@@ -55,9 +55,9 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @param string $email
-     * @return boolean
+     *
+     * @return bool
      */
     public function isUserExistByEmail($email)
     {
@@ -103,9 +103,9 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @param string $username
-     * @return boolean
+     *
+     * @return bool
      */
     public function isUserExistByUsername($username)
     {
@@ -120,9 +120,9 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @param string $token
-     * @return boolean
+     *
+     * @return bool
      */
     public function isUserExistByForgotToken($token)
     {
@@ -139,7 +139,6 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @param string $pass
      */
     public function savePassword($pass)
@@ -153,7 +152,6 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @param string $str
      */
     public function saveForgot($str)
@@ -189,9 +187,8 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @param UserInfoReNew $newInfo
-     * @param array $ar
+     * @param array         $ar
      */
     public function saveInfoReNew(UserInfoReNew $newInfo, $ar)
     {
@@ -203,7 +200,6 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @param array $data
      */
     public function saveSignUp($data)
@@ -220,9 +216,8 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @param ForgotUsername $user
-     * @param array $data
+     * @param array          $data
      */
     public function saveForgotUsername(ForgotUsername $user, $data)
     {

@@ -41,9 +41,9 @@ class ClaimModule extends AbstractContainer
     }
 
     /**
-     *
      * @param array $data
      * @param array $fillable
+     *
      * @return \Valitron\Validator
      */
     public function validClaim($data, $fillable)
@@ -89,9 +89,9 @@ class ClaimModule extends AbstractContainer
     }
 
     /**
-     *
      * @param int $id
-     * @return boolean
+     *
+     * @return bool
      */
     public function geInfoById($id)
     {
@@ -114,7 +114,6 @@ class ClaimModule extends AbstractContainer
     }
 
     /**
-     *
      * @param array $data
      */
     public function newBankAcc($data)
@@ -124,7 +123,6 @@ class ClaimModule extends AbstractContainer
     }
 
     /**
-     *
      * @param array $data
      */
     public function getBankAcc($data)
@@ -134,7 +132,6 @@ class ClaimModule extends AbstractContainer
     }
 
     /**
-     *
      * @param array $data
      */
     private function validateBankInfo($data)
@@ -145,7 +142,6 @@ class ClaimModule extends AbstractContainer
     }
 
     /**
-     *
      * @param array $data
      */
     public function saveBank($data)
@@ -158,7 +154,6 @@ class ClaimModule extends AbstractContainer
     }
 
     /**
-     *
      * @param array $data
      */
     public function saveBankToUserAccout($data)
@@ -177,9 +172,9 @@ class ClaimModule extends AbstractContainer
     }
 
     /**
-     *
      * @param string $status
-     * @return boolean
+     *
+     * @return bool
      */
     public function validateExtraClaimInfo($status)
     {

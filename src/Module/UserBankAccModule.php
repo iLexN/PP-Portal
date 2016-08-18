@@ -13,8 +13,8 @@ use PP\Portal\DbModel\UserBankAcc;
 class UserBankAccModule extends AbstractContainer
 {
     /**
-     *
      * @param int $id
+     *
      * @return UserBankAcc
      */
     public function newBlankAcc($id)
@@ -26,9 +26,9 @@ class UserBankAccModule extends AbstractContainer
     }
 
     /**
-     *
      * @param array $data
      * @param array $fillable
+     *
      * @return \Valitron\Validator
      */
     public function validBank($data, $fillable)
@@ -40,9 +40,8 @@ class UserBankAccModule extends AbstractContainer
     }
 
     /**
-     *
      * @param UserBankAcc $acc
-     * @param array $data
+     * @param array       $data
      */
     public function saveData(UserBankAcc $acc, $data)
     {
@@ -55,7 +54,6 @@ class UserBankAccModule extends AbstractContainer
     }
 
     /**
-     *
      * @param UserBankAcc $acc
      */
     public function delBank(UserBankAcc $acc)
