@@ -40,6 +40,12 @@ class ClaimModule extends AbstractContainer
         return $this->claim;
     }
 
+    /**
+     *
+     * @param array $data
+     * @param array $fillable
+     * @return \Valitron\Validator
+     */
     public function validClaim($data, $fillable)
     {
         $v = new \Valitron\Validator($data, $fillable);
@@ -63,7 +69,7 @@ class ClaimModule extends AbstractContainer
     /**
      * @param UserPolicy $userPolicy
      *
-     * @return type
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getClaimList(UserPolicy $userPolicy)
     {
@@ -82,6 +88,11 @@ class ClaimModule extends AbstractContainer
         return $claim;
     }
 
+    /**
+     *
+     * @param int $id
+     * @return boolean
+     */
     public function geInfoById($id)
     {
         $item = $this->pool->getItem('Claim/'.$id);
@@ -102,18 +113,30 @@ class ClaimModule extends AbstractContainer
         return false;
     }
 
+    /**
+     *
+     * @param array $data
+     */
     public function newBankAcc($data)
     {
         $this->bankInfo = new ClaimBankAcc();
         $this->validateBankInfo($data);
     }
 
+    /**
+     *
+     * @param array $data
+     */
     public function getBankAcc($data)
     {
         $this->bankInfo = $this->claim->bankInfo()->first();
         $this->validateBankInfo($data);
     }
 
+    /**
+     *
+     * @param array $data
+     */
     private function validateBankInfo($data)
     {
         $vb = new \Valitron\Validator($data, $this->bankInfo->getFillable());
@@ -121,6 +144,10 @@ class ClaimModule extends AbstractContainer
         $this->claimExtraData['bank'] = $vb;
     }
 
+    /**
+     *
+     * @param array $data
+     */
     public function saveBank($data)
     {
         foreach ($data as $k => $v) {
@@ -130,6 +157,10 @@ class ClaimModule extends AbstractContainer
         $this->bankInfo->save();
     }
 
+    /**
+     *
+     * @param array $data
+     */
     public function saveBankToUserAccout($data)
     {
 
@@ -145,6 +176,11 @@ class ClaimModule extends AbstractContainer
         }
     }
 
+    /**
+     *
+     * @param string $status
+     * @return boolean
+     */
     public function validateExtraClaimInfo($status)
     {
         if ($status === 'Save') {

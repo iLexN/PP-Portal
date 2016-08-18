@@ -20,6 +20,11 @@ class UserModule extends AbstractContainer
      */
     public $user;
 
+    /**
+     *
+     * @param array $ar
+     * @return boolean
+     */
     public function verifyUser($ar)
     {
         $user = User::where('ppmid', $ar['ppmid'])
@@ -33,6 +38,11 @@ class UserModule extends AbstractContainer
         return false;
     }
 
+    /**
+     *
+     * @param string $user_name
+     * @return boolean
+     */
     public function isUserNameExist($user_name)
     {
         $count = User::where('user_name', $user_name)->count();
@@ -44,6 +54,11 @@ class UserModule extends AbstractContainer
         return false;
     }
 
+    /**
+     *
+     * @param string $email
+     * @return boolean
+     */
     public function isUserExistByEmail($email)
     {
         $user = User::where('email', $email)->first();
@@ -87,6 +102,11 @@ class UserModule extends AbstractContainer
         return false;
     }
 
+    /**
+     *
+     * @param string $username
+     * @return boolean
+     */
     public function isUserExistByUsername($username)
     {
         $user = User::where('user_name', $username)->first();
@@ -99,6 +119,11 @@ class UserModule extends AbstractContainer
         return false;
     }
 
+    /**
+     *
+     * @param string $token
+     * @return boolean
+     */
     public function isUserExistByForgotToken($token)
     {
         $user = User::where('forgot_str', $token)
@@ -113,6 +138,10 @@ class UserModule extends AbstractContainer
         return false;
     }
 
+    /**
+     *
+     * @param string $pass
+     */
     public function savePassword($pass)
     {
         //$this->user->password = $pass;
@@ -123,6 +152,10 @@ class UserModule extends AbstractContainer
         $this->clearUserCache();
     }
 
+    /**
+     *
+     * @param string $str
+     */
     public function saveForgot($str)
     {
         $this->user->forgot_str = $str;
@@ -155,6 +188,11 @@ class UserModule extends AbstractContainer
         return $renewInfo;
     }
 
+    /**
+     *
+     * @param UserInfoReNew $newInfo
+     * @param type $ar
+     */
     public function saveInfoReNew(UserInfoReNew $newInfo, $ar)
     {
         foreach ($ar as $k => $v) {
@@ -164,6 +202,10 @@ class UserModule extends AbstractContainer
         $newInfo->save();
     }
 
+    /**
+     *
+     * @param array $data
+     */
     public function saveSignUp($data)
     {
         $this->user->user_name = $data['user_name'];
@@ -177,6 +219,11 @@ class UserModule extends AbstractContainer
         return new \PP\Portal\DbModel\ForgotUsername();
     }
 
+    /**
+     *
+     * @param ForgotUsername $user
+     * @param type $data
+     */
     public function saveForgotUsername(ForgotUsername $user, $data)
     {
         $user->name = $data['name'];
