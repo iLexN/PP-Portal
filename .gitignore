@@ -8,5 +8,5 @@
 /claims/cache/data/
 /claims/cache/route.cache
 /upload/*
-/app/config/
+/config/
 /tests/cache/data/
