@@ -17,7 +17,7 @@ class BankAccActionNew extends AbstractContainer
         //}
 
         $v = $this->UserBankAccModule->validBank((array) $request->getParsedBody(), $acc->getFillable());
-        
+
         if (!$v->validate()) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1010],
             ]);

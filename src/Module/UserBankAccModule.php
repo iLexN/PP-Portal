@@ -20,9 +20,11 @@ class UserBankAccModule extends AbstractContainer
         return $newInfo;
     }
 
-    public function validBank($data,$fillable){
+    public function validBank($data, $fillable)
+    {
         $v = new \Valitron\Validator($data, $fillable);
         $v->rule('required', ['iban', 'bank_swift_code']);
+
         return $v;
     }
 
@@ -36,7 +38,8 @@ class UserBankAccModule extends AbstractContainer
         $this->clearCache($acc->ppmid);
     }
 
-    public function delBank(UserBankAcc $acc){
+    public function delBank(UserBankAcc $acc)
+    {
         $acc->delete();
         $this->clearCache($acc->ppmid);
     }

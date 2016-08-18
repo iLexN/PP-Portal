@@ -12,11 +12,11 @@ class RenewInfo extends AbstractContainer
     {
         $user = $this->UserModule->getInfoReNew();
 
-        if ( $user ){
+        if ($user) {
             return $this->ViewHelper->withStatusCode($response, ['data' => $user->toArray()], 2022);
         }
 
-        return $this->ViewHelper->withStatusCode($response, 
+        return $this->ViewHelper->withStatusCode($response,
                 ['errors' => $this->msgCode[2023]],
                 2023);
     }

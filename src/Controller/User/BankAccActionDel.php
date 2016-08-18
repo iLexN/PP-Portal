@@ -12,7 +12,7 @@ class BankAccActionDel extends AbstractContainer
     {
         $acc = $this->UserModule->user->userAcc()->find($args['acid']);
 
-        if ( !$acc ) {
+        if (!$acc) {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
