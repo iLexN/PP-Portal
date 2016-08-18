@@ -191,7 +191,7 @@ class UserModule extends AbstractContainer
     /**
      *
      * @param UserInfoReNew $newInfo
-     * @param type $ar
+     * @param array $ar
      */
     public function saveInfoReNew(UserInfoReNew $newInfo, $ar)
     {
@@ -222,7 +222,7 @@ class UserModule extends AbstractContainer
     /**
      *
      * @param ForgotUsername $user
-     * @param type $data
+     * @param array $data
      */
     public function saveForgotUsername(ForgotUsername $user, $data)
     {
