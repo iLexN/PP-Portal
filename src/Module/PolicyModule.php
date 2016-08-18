@@ -21,7 +21,7 @@ class PolicyModule extends AbstractContainer
     {
         $user = $this->UserModule->user;
 
-        $item = $this->pool->getItem('User/'.$user->ppmid.'/policy/list');
+        $item = $this->pool->getItem('User/'.$user->ppmid.'/policyList');
 
         $policy = $item->get();
 

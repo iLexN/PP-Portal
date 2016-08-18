@@ -67,7 +67,7 @@ class ClaimModule extends AbstractContainer
      */
     public function getClaimList(UserPolicy $userPolicy)
     {
-        $item = $this->pool->getItem('UserPolicy/'.$userPolicy->id.'/claim/list');
+        $item = $this->pool->getItem('UserPolicy/'.$userPolicy->id.'/claimList');
 
         $claim = $item->get();
 
@@ -185,7 +185,7 @@ class ClaimModule extends AbstractContainer
 
     public function clearCache()
     {
-        $this->pool->deleteItem('UserPolicy/'.$this->claim->user_policy_id.'/claim/list');
+        $this->pool->deleteItem('UserPolicy/'.$this->claim->user_policy_id.'/claimList');
         $this->pool->deleteItem('Claim/'.$this->claim->claim_id);
     }
 }
