@@ -18,7 +18,7 @@ class BankAccInfo extends AbstractContainer
         }
 
 
-        return $this->ViewHelper->withStatusCode($response, ['error' => $this->msgCode['3610'],
+        return $this->ViewHelper->withStatusCode($response, ['error' => $this->msgCode['3620'],
             ], 3620);
     }
 }

@@ -108,8 +108,8 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
      */
     public function testCalidateExtraClaimInfo($ClaimModule, $ClaimModule2)
     {
-        $this->assertTrue($ClaimModule->validateExtraClaimInfo());
-        $this->assertFalse($ClaimModule2->validateExtraClaimInfo());
+        $this->assertTrue($ClaimModule->validateExtraClaimInfo('All'));
+        $this->assertFalse($ClaimModule2->validateExtraClaimInfo('Submit'));
 
         return $ClaimModule;
     }
