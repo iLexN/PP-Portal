@@ -79,7 +79,7 @@ class BankAccActionUpdateTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['acid' => 1]);
+        $response = $action($request, $response, ['acid' => 2]);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(1010, $out['status_code']);
@@ -100,7 +100,7 @@ class BankAccActionUpdateTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['acid' => 1]);
+        $response = $action($request, $response, ['acid' => 2]);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(3611, $out['status_code']);
