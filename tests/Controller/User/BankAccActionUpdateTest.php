@@ -60,7 +60,7 @@ class BankAccActionUpdateTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['acid'=>111]);
+        $response = $action($request, $response, ['acid' => 111]);
 
     }
 

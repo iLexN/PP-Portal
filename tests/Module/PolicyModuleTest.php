@@ -59,6 +59,5 @@ class PolicyModuleTest extends \PHPUnit_Framework_TestCase
 
         $policy = $this->PolicyModule->policyInfo(1);
         $this->assertEquals(null, $policy->renew_date);
-
     }
 }

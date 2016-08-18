@@ -53,7 +53,7 @@ class BankAccActionNewTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['id'=>2]);
+        $response = $action($request, $response, ['id' => 2]);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(1010, $out['status_code']);

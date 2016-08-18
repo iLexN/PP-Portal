@@ -46,15 +46,15 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
     {
         $fillable = ['status'];
 
-        $data = ['status'=>'s'];
+        $data = ['status' => 's'];
         $v = $this->ClaimModule->validClaim($data, $fillable);
         $this->assertFalse($v->validate());
-        
-        $data = ['status'=>'Save'];
+
+        $data = ['status' => 'Save'];
         $v = $this->ClaimModule->validClaim($data, $fillable);
         $this->assertTrue($v->validate());
 
-        $data = ['status'=>'Submit'];
+        $data = ['status' => 'Submit'];
         $v = $this->ClaimModule->validClaim($data, $fillable);
         $this->assertTrue($v->validate());
 
