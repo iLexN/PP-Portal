@@ -127,8 +127,13 @@ class ClaimModule extends AbstractContainer
      */
     public function getBankAcc($data)
     {
-        $this->bankInfo = $this->claim->bankInfo()->first();
-        $this->validateBankInfo($data);
+         $bank = $this->claim->bankInfo()->first();
+         if ( !$bank ) {
+             $this->newBankAcc($data);
+         } else {
+             $this->bankInfo = $bank;
+             $this->validateBankInfo($data);
+         }
     }
 
     /**
