@@ -65,7 +65,7 @@ class SignupTest extends \PHPUnit_Framework_TestCase
             ];
         };
         $c['twigView'] = function ($c) {
-            $m = $this->createMock(\Slim\Views::class);
+            $m = $this->createMock(\Slim\Views\Twig::class);
 
             return $m;
         };
