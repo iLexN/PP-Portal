@@ -56,6 +56,7 @@ class ClaimFileModule extends AbstractContainer
     {
         $this->file->status = 'Delete';
         $this->file->save();
+        $this->ClaimModule->clearCache();
     }
 
     /*

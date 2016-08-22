@@ -10,11 +10,7 @@ class BankAccActionNew extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        //$acc = $this->UserModule->user->userAcc()->first();
-
-        //if (!$acc) {
-            $acc = $this->UserBankAccModule->newBlankAcc($args['id']);
-        //}
+        $acc = $this->UserBankAccModule->newBlankAcc($args['id']);
 
         $v = $this->UserBankAccModule->validBank((array) $request->getParsedBody(), $acc->getFillable());
 

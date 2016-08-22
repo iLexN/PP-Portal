@@ -16,16 +16,23 @@ class ClaimList extends AbstractContainer
 
         $group = $claims->groupBy('status');
 
-        if ($group->has($status)) {
+        $out = [
+            'Save' => $group->has('Save') ? $group->get('Save') : [],
+            'Submit' => $group->has('Submit') ? $group->get('Submit') : [],
+        ];
+
+        if ( $status !== 'All' ) {
             return $this->ViewHelper->withStatusCode($response, [
                     //'data' => $claims->toArray(),
-                    'data' => $group->get($status),
+                    //'data' => $group->get($status),
+                    'data' => isset($out[$status]) ? $out[$status] : [],
                 ], 5030);
         }
 
         return $this->ViewHelper->withStatusCode($response, [
                     //'data' => $claims->toArray(),
-                    'data' => $group->all(),
+                    //'data' => $group->all(),
+                    'data' => $out,
                 ], 5030);
     }
 }

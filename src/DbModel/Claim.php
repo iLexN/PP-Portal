@@ -30,7 +30,9 @@ class Claim extends Model
 
     public function bankInfo()
     {
-        return $this->hasOne(__NAMESPACE__.'\ClaimBankAcc', 'claim_id');
+        //return $this->hasOne(__NAMESPACE__.'\ClaimBankAcc', 'claim_id');
+        // force no result return [] not null
+        return $this->hasMany(__NAMESPACE__.'\ClaimBankAcc', 'claim_id');
     }
 
     public function userPolicy()
