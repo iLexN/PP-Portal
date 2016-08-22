@@ -41,10 +41,7 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
         };
         // mail
         $c['mailer'] = function ($c) {
-            $m = $this->getMockBuilder(\PHPMailer::class)
-                ->setMethods(['setFrom', 'addAddress', 'Subject', 'msgHTML', 'send'])
-                ->disableOriginalConstructor()
-                ->getMock();
+            $m = $this->createMock(\PHPMailer::class);
             $m->method('send')->willReturn(true);
 
             return $m;
@@ -56,10 +53,7 @@ class ForgotPasswordTest extends \PHPUnit_Framework_TestCase
             ];
         };
         $c['twigView'] = function ($c) {
-            $m = $this->getMockBuilder(\Slim\Views::class)
-                ->setMethods(['fetch'])
-                ->disableOriginalConstructor()
-                ->getMock();
+            $m = $this->createMock(\Slim\Views::class);
 
             return $m;
         };

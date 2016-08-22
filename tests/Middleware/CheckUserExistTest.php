@@ -48,10 +48,7 @@ class CheckUserExistTest extends \PHPUnit_Framework_TestCase
         $c = $this->c;
         $action = new \PP\Portal\Middleware\CheckUserExist($c);
 
-        $route = $this->getMockBuilder(Route::class)
-                ->setMethods(['getArguments'])
-                ->disableOriginalConstructor()
-                ->getMock();
+        $route = $this->createMock(Route::class);
         $route->method('getArguments')->willReturn(['id' => 2]);
 
         $request = $this->request;
@@ -75,10 +72,7 @@ class CheckUserExistTest extends \PHPUnit_Framework_TestCase
 
         $action = new \PP\Portal\Middleware\CheckUserExist($c);
 
-        $route = $this->getMockBuilder(Route::class)
-                ->setMethods(['getArguments'])
-                ->disableOriginalConstructor()
-                ->getMock();
+        $route = $this->createMock(Route::class);
         $route->method('getArguments')->willReturn(['id' => 1]);
 
         $request = $this->request;

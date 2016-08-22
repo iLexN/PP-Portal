@@ -49,10 +49,7 @@ class CheckClaimExistTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
 
-        $route = $this->getMockBuilder(Route::class)
-                ->setMethods(['getArguments'])
-                ->disableOriginalConstructor()
-                ->getMock();
+        $route = $this->createMock(Route::class);
         $route->method('getArguments')->willReturn(['id' => 1]);
 
         $request = $this->request;
@@ -74,10 +71,7 @@ class CheckClaimExistTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
 
-        $route = $this->getMockBuilder(Route::class)
-                ->setMethods(['getArguments'])
-                ->disableOriginalConstructor()
-                ->getMock();
+        $route = $this->createMock(Route::class);
         $route->method('getArguments')->willReturn(['id' => 22020]);
 
         $request = $this->request;
