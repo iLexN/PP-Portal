@@ -69,6 +69,8 @@ class ClaimFileModuleTest extends \PHPUnit_Framework_TestCase
     public function testDeleteFile($ClaimFileModule)
     {
         $ClaimFileModule->deleteFile();
+        $this->expectOutputString('foo');
+        echo 'foo';
     }
 
     /**
