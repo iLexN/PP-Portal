@@ -54,7 +54,7 @@ class AttachmentDownloadTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=>10]);
+        $response = $action($request, $response, ['id' => 10]);
     }
 
     /**
@@ -67,7 +67,7 @@ class AttachmentDownloadTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=>3]);
+        $response = $action($request, $response, ['id' => 3]);
     }
 
     /**
@@ -80,10 +80,9 @@ class AttachmentDownloadTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=>4]);
+        $response = $action($request, $response, ['id' => 4]);
     }
 
-    
     public function testDownlaod()
     {
         $action = $this->action;
@@ -91,9 +90,9 @@ class AttachmentDownloadTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=>1]);
+        $response = $action($request, $response, ['id' => 1]);
 
-        
+
         $this->assertTrue($response->hasHeader('Content-Type'));
     }
 }
