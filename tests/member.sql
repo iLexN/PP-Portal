@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 08 月 26 日 12:45
+-- 產生時間： 2016 年 08 月 26 日 14:34
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `member_portal_claim_file` (
   `filename` varchar(64) NOT NULL,
   `status` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- 資料表的匯出資料 `member_portal_claim_file`
@@ -132,7 +132,8 @@ CREATE TABLE IF NOT EXISTS `member_portal_claim_file` (
 INSERT INTO `member_portal_claim_file` (`id`, `claim_id`, `filename`, `status`) VALUES
 (1, 1, 'a.txt', 'Upload'),
 (2, 1, 'a.txt', 'Upload'),
-(3, 1, 'a.txt', 'Delete');
+(3, 1, 'a.txt', 'Delete'),
+(4, 1, 'a.txt', 'Upload');
 
 -- --------------------------------------------------------
 
