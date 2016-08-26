@@ -17,11 +17,11 @@ class ClaimList extends AbstractContainer
         $group = $claims->groupBy('status');
 
         $out = [
-            'Save' => $group->has('Save') ? $group->get('Save') : [],
+            'Save'   => $group->has('Save') ? $group->get('Save') : [],
             'Submit' => $group->has('Submit') ? $group->get('Submit') : [],
         ];
 
-        if ( $status !== 'All' ) {
+        if ($status !== 'All') {
             return $this->ViewHelper->withStatusCode($response, [
                     //'data' => $claims->toArray(),
                     //'data' => $group->get($status),

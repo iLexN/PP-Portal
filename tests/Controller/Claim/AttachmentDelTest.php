@@ -52,7 +52,7 @@ class AttachmentDelTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=>10]);
+        $response = $action($request, $response, ['id' => 10]);
     }
 
     public function testDelStatusChange()
@@ -62,7 +62,7 @@ class AttachmentDelTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=>2]);
+        $response = $action($request, $response, ['id' => 2]);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(1850, $out['status_code']);

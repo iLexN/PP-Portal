@@ -14,8 +14,8 @@ class ClaimInfo extends AbstractContainer
         $bankInfo = $claimInfo->bankInfo()->first();
 
         $out = $claimInfo->toArray();
-        $out['file_attachments'] = $claimInfo->fileAttachments()->where('status','Upload')->get()->toArray();
-        $out['bank_info'] = is_null($bankInfo)? null : $bankInfo->toArray();
+        $out['file_attachments'] = $claimInfo->fileAttachments()->where('status', 'Upload')->get()->toArray();
+        $out['bank_info'] = is_null($bankInfo) ? null : $bankInfo->toArray();
 
         return $this->ViewHelper->withStatusCode($response, [
                     //'data' => $claimInfo->toArray(),
