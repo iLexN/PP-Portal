@@ -36,7 +36,7 @@ class PolicyModuleTest extends \PHPUnit_Framework_TestCase
     {
         $policyList = $this->PolicyModule->getPolicyList();
 
-        $this->assertInstanceOf(\Illuminate\Database\Eloquent\Collection::class, $policyList);
+        $this->assertInstanceOf(\Illuminate\Support\Collection::class, $policyList);
 
         $this->assertArrayHasKey('policy_id', $policyList[0]);
         $this->assertArrayHasKey('insurer', $policyList[0]);
