@@ -12,7 +12,7 @@ class AttachmentDownload extends AbstractContainer
     {
         $file = $this->ClaimFileModule->getFile($args['id']);
 
-        if (!$file) {
+        if (!$file || $file->status === 'Delete') {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
