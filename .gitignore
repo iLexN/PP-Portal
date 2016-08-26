@@ -10,3 +10,4 @@
 /upload/*
 /config/
 /tests/cache/data/
+/dispatcher.php
