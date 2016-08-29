@@ -62,7 +62,7 @@ class ClaimListTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('Save', $out['data']);
         $this->assertArrayHasKey('Submit', $out['data']);
     }
-
+/*
     public function testSuccessWithStatus()
     {
         $action = $this->action;
@@ -78,6 +78,6 @@ class ClaimListTest extends \PHPUnit_Framework_TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(5030, $out['status_code']);
-    }
+    }*/
 
 }
