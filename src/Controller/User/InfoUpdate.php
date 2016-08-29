@@ -10,7 +10,6 @@ class InfoUpdate extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-
         /* @var $newInfo \PP\Portal\DbModel\UserInfoReNew */
         $newInfo = $this->UserModule->user->reNewInfo()->where('status', 'Pending')->first();
 
@@ -23,8 +22,7 @@ class InfoUpdate extends AbstractContainer
         $v->rule('email', 'email');
 
         if (!$v->validate()) {
-            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020],
-                    ]);
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
         }
 
         $this->UserModule->saveInfoReNew($newInfo, $v->data());
