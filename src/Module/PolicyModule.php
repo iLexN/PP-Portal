@@ -31,8 +31,12 @@ class PolicyModule extends AbstractContainer
             $this->pool->save($item->set($policy));
         }
 
+        return $this->serializing($policy);
+    }
+
+    private function serializing($policy){
         /* @var $item \PP\Portal\DbModel\Policy */
-        $out = $policy->map(function (Policy $item) {
+        return $policy->map(function (Policy $item) {
             return [
                 'policy_id'         => $item->policy_id,
                 'insurer'           => $item->insurer,
@@ -41,8 +45,6 @@ class PolicyModule extends AbstractContainer
                 'user_policy_id'    => $item->pivot->id,
             ];
         });
-
-        return $out;
     }
 
     /**
