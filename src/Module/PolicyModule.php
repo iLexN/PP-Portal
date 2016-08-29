@@ -20,9 +20,7 @@ class PolicyModule extends AbstractContainer
     public function getPolicyList()
     {
         $user = $this->UserModule->user;
-
         $item = $this->pool->getItem('User/'.$user->ppmid.'/policyList');
-
         $policy = $item->get();
 
         if ($item->isMiss()) {

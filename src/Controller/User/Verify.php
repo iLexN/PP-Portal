@@ -32,16 +32,13 @@ class Verify extends AbstractContainer
         /* @var $user \PP\Portal\DbModel\User */
         $user = $this->UserModule->verifyUser($data);
         if (!$user) {
-            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2051],
-            ]);
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2051]]);
         }
 
         if ($user->isRegister()) {
-            return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2050],
-            ]);
+            return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2050]]);
         }
 
-        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2040],
-        ]);
+        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2040]]);
     }
 }

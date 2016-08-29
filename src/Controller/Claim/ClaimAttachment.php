@@ -28,7 +28,6 @@ class ClaimAttachment extends AbstractContainer
 
         if (!$newfile->isValid()) {
             return $this->ViewHelper->withStatusCode($response, [
-                //'errors' => $newfile->getValidationMsg(),
                 'errors' => $this->msgCode['1820'],
             ], 1820);
         }

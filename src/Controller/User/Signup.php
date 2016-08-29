@@ -14,26 +14,22 @@ class Signup extends AbstractContainer
         $user = $this->UserModule->user;
 
         if (!$user->isRegister()) {
-            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2040],
-            ]);
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2040]]);
         }
 
         $v = new \Valitron\Validator((array) $request->getParsedBody());
         $v->rule('required', ['user_name', 'password']);
 
         if (!$v->validate()) {
-            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1010],
-            ]);
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1010]]);
         }
         $data = $v->data();
         if (!$this->c['PasswordModule']->isStrongPassword($data['password'])) {
-            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][2510],
-            ]);
+            return $this->c['ViewHelper']->toJson($response, ['errors' => $this->c['msgCode'][2510]]);
         }
 
         if (!$this->UserModule->isUserNameExist($data['user_name'])) {
-            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2070],
-            ]);
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2070]]);
         }
 
         //success action

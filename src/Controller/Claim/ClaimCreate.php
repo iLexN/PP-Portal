@@ -19,8 +19,7 @@ class ClaimCreate extends AbstractContainer
         }
 
         if (!$v->validate() || !$this->ClaimModule->validateExtraClaimInfo($request->getParsedBody()['status'])) {
-            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020],
-                    ]);
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
         }
 
         $this->ClaimModule->saveClaim($v->data());

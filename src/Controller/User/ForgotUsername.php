@@ -17,14 +17,12 @@ class ForgotUsername extends AbstractContainer
         $v->rule('email', 'email');
 
         if (!$v->validate()) {
-            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020],
-                    ]);
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
         }
 
         $data = $v->data();
         if (!$this->UserModule->isUserExistByEmail($data['email'])) {
-            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010],
-            ]);
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010]]);
         }
 
         $this->UserModule->saveForgotUsername($user, $data);
