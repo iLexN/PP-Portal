@@ -18,7 +18,6 @@ class ClaimInfo extends AbstractContainer
         $out['bank_info'] = is_null($bankInfo) ? null : $bankInfo->toArray();
 
         return $this->ViewHelper->withStatusCode($response, [
-                    //'data' => $claimInfo->toArray(),
                     'data' => $out,
                 ], 6030);
     }

@@ -23,15 +23,11 @@ class ClaimList extends AbstractContainer
 
         if ($status !== 'All') {
             return $this->ViewHelper->withStatusCode($response, [
-                    //'data' => $claims->toArray(),
-                    //'data' => $group->get($status),
                     'data' => isset($out[$status]) ? $out[$status] : [],
                 ], 5030);
         }
 
         return $this->ViewHelper->withStatusCode($response, [
-                    //'data' => $claims->toArray(),
-                    //'data' => $group->all(),
                     'data' => $out,
                 ], 5030);
     }
