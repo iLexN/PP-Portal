@@ -34,7 +34,7 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         $c['ViewHelper'] = function (\Slim\Container $c) {
             return new \PP\Portal\Module\Helper\View($c);
         };
-        
+
         $c['ClaimModule'] = function ($c) {
             return new \PP\Portal\Module\ClaimModule($c);
         };
@@ -48,7 +48,7 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
     {
         $this->c['ClaimModule']->geInfoById(2);
         $action = $this->action;
-        
+
         $_POST['bank'] = [];
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
@@ -58,7 +58,7 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         unset($_POST);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=>1]);
+        $response = $action($request, $response, ['id' => 1]);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(1020, $out['status_code']);
@@ -70,7 +70,7 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         $action = $this->action;
 
         $_POST['status'] = 'Save';
-        $_POST['bank'] = ['iban'=>'123','bank_swift_code'=>'sdfds'];
+        $_POST['bank'] = ['iban' => '123', 'bank_swift_code' => 'sdfds'];
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
             'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -91,7 +91,7 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         $action = $this->action;
 
         $_POST['status'] = 'Save';
-        $_POST['bank'] = ['iban'=>'123','bank_swift_code'=>'sdfds'];
+        $_POST['bank'] = ['iban' => '123', 'bank_swift_code' => 'sdfds'];
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
             'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -105,5 +105,4 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(6020, $out['status_code']);
     }
-
 }
