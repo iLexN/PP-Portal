@@ -32,7 +32,7 @@ class ClaimList extends AbstractContainer
                 ], 5030);
     }
 
-    private function getData($group,$s)
+    private function getData($group, $s)
     {
         return $group->has($s) ? $group->get($s) : [];
     }

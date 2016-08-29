@@ -30,7 +30,7 @@ class ClaimInfoTest extends \PHPUnit_Framework_TestCase
         $c['ViewHelper'] = function (\Slim\Container $c) {
             return new \PP\Portal\Module\Helper\View($c);
         };
-        
+
         $c['ClaimModule'] = function ($c) {
             return new \PP\Portal\Module\ClaimModule($c);
         };
@@ -43,7 +43,7 @@ class ClaimInfoTest extends \PHPUnit_Framework_TestCase
     public function testSuccess()
     {
         $action = $this->action;
-        
+
         $_POST['bank'] = [];
         $environment = \Slim\Http\Environment::mock([]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
@@ -58,5 +58,4 @@ class ClaimInfoTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('file_attachments', $out['data']);
         $this->assertArrayHasKey('bank_info', $out['data']);
     }
-
 }

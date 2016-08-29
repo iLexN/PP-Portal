@@ -77,11 +77,11 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
                 ->disableOriginalConstructor()
                 ->getMock();
         $file = $this->getMockBuilder(\Slim\Http\UploadedFile::class)
-                ->setMethods(['moveTo', 'getClientFilename','getError'])
+                ->setMethods(['moveTo', 'getClientFilename', 'getError'])
                 ->disableOriginalConstructor()
                 ->getMock();
         $file->method('getError')->willReturn('a');
-        $request->method('getUploadedFiles')->willReturn(['newfile'=>$file]);
+        $request->method('getUploadedFiles')->willReturn(['newfile' => $file]);
 
 
         $response = $this->response;
@@ -99,12 +99,12 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
                 ->disableOriginalConstructor()
                 ->getMock();
         $file = $this->getMockBuilder(\Slim\Http\UploadedFile::class)
-                ->setMethods(['moveTo', 'getClientMediaType','getError'])
+                ->setMethods(['moveTo', 'getClientMediaType', 'getError'])
                 ->disableOriginalConstructor()
                 ->getMock();
         $file->method('getError')->willReturn(UPLOAD_ERR_OK);
         $file->method('getClientMediaType')->willReturn('aaa');
-        $request->method('getUploadedFiles')->willReturn(['newfile'=>$file]);
+        $request->method('getUploadedFiles')->willReturn(['newfile' => $file]);
 
         $response = $this->response;
         $response = $action($request, $response, []);
@@ -121,14 +121,14 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
                 ->disableOriginalConstructor()
                 ->getMock();
         $file = $this->getMockBuilder(\Slim\Http\UploadedFile::class)
-                ->setMethods(['moveTo', 'getClientMediaType','getError','getClientFilename'])
+                ->setMethods(['moveTo', 'getClientMediaType', 'getError', 'getClientFilename'])
                 ->disableOriginalConstructor()
                 ->getMock();
         $file->method('getError')->willReturn(UPLOAD_ERR_OK);
         $file->method('getClientMediaType')->willReturn('image/jpeg');
         $file->method('moveTo')->willReturn(true);
         $file->method('getClientFilename')->willReturn('upload.png');
-        $request->method('getUploadedFiles')->willReturn(['newfile'=>$file]);
+        $request->method('getUploadedFiles')->willReturn(['newfile' => $file]);
 
         $response = $this->response;
         $response = $action($request, $response, []);
@@ -136,5 +136,4 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(1840, $out['status_code']);
     }
-
 }

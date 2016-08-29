@@ -34,7 +34,8 @@ class PolicyModule extends AbstractContainer
         return $this->serializing($policy);
     }
 
-    private function serializing($policy){
+    private function serializing($policy)
+    {
         /* @var $item \PP\Portal\DbModel\Policy */
         return $policy->map(function (Policy $item) {
             return [

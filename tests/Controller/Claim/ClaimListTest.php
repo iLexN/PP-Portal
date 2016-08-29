@@ -30,7 +30,7 @@ class ClaimListTest extends \PHPUnit_Framework_TestCase
         $c['ViewHelper'] = function (\Slim\Container $c) {
             return new \PP\Portal\Module\Helper\View($c);
         };
-        
+
         $c['ClaimModule'] = function ($c) {
             return new \PP\Portal\Module\ClaimModule($c);
         };
@@ -38,7 +38,7 @@ class ClaimListTest extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\UserPolicyModule($c);
         };
         $c['UserPolicyModule']->getUerPolicy(1);
-        
+
 
         $this->action = new \PP\Portal\Controller\Claim\ClaimList($c);
         $this->response = new \Slim\Http\Response();
@@ -47,10 +47,10 @@ class ClaimListTest extends \PHPUnit_Framework_TestCase
     public function testSuccess()
     {
         $action = $this->action;
-        
+
         $_POST['bank'] = [];
         $environment = \Slim\Http\Environment::mock([
-            'QUERY_STRING'=>'status=All'
+            'QUERY_STRING' => 'status=All',
         ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
@@ -62,6 +62,7 @@ class ClaimListTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('Save', $out['data']);
         $this->assertArrayHasKey('Submit', $out['data']);
     }
+
 /*
     public function testSuccessWithStatus()
     {
@@ -79,5 +80,4 @@ class ClaimListTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(5030, $out['status_code']);
     }*/
-
 }
