@@ -23,8 +23,7 @@ class Verify extends AbstractContainer
         $v->rule('date', 'date_of_birth');
 
         if (!$v->validate()) {
-            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020],
-            ]);
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
         }
 
         $data = $v->data();

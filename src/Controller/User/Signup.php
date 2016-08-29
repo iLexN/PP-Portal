@@ -36,8 +36,7 @@ class Signup extends AbstractContainer
         $this->UserModule->saveSignUp($data);
         $this->sendSignupEmail();
 
-        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2030],
-        ]);
+        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2030]]);
     }
 
     /**

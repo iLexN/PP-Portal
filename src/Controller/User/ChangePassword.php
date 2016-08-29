@@ -23,10 +23,7 @@ class ChangePassword extends AbstractContainer
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2510]]);
         }
 
-        /* @var $user \PP\Portal\DbModel\User */
-        $user = $this->UserModule->user;
-
-        if (!$user->passwordVerify($data['old_password'])) {
+        if (!$this->UserModule->user->passwordVerify($data['old_password'])) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2520]]);
         }
 
