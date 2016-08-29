@@ -33,10 +33,7 @@ class OfficeInfoTest extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\Helper\View($c);
         };
 
-        $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+        $environment = \Slim\Http\Environment::mock([]);
         $this->request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $this->action = new \PP\Portal\Controller\General\OfficeInfo($c);
