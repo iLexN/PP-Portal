@@ -4,6 +4,7 @@ namespace PP\Test\Claim;
 
 class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
 {
+    protected $c;
     protected $action;
     protected $response;
 
@@ -37,14 +38,15 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         $c['ClaimModule'] = function ($c) {
             return new \PP\Portal\Module\ClaimModule($c);
         };
-        $c['ClaimModule']->geInfoById(1);
 
+        $this->c = $c;
         $this->action = new \PP\Portal\Controller\Claim\ClaimUpdate($c);
         $this->response = new \Slim\Http\Response();
     }
 
     public function testInValid()
     {
+        $this->c['ClaimModule']->geInfoById(2);
         $action = $this->action;
         
         $_POST['bank'] = [];
@@ -64,6 +66,7 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
 
     public function testSuccess()
     {
+        $this->c['ClaimModule']->geInfoById(2);
         $action = $this->action;
 
         $_POST['status'] = 'Save';
@@ -76,7 +79,28 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         unset($_POST);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=>1]);
+        $response = $action($request, $response, []);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(6020, $out['status_code']);
+    }
+
+    public function testSuccess2()
+    {
+        $this->c['ClaimModule']->geInfoById(1);
+        $action = $this->action;
+
+        $_POST['status'] = 'Save';
+        $_POST['bank'] = ['iban'=>'123','bank_swift_code'=>'sdfds'];
+        $environment = \Slim\Http\Environment::mock([
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = $this->response;
+        $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(6020, $out['status_code']);
