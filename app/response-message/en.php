@@ -177,7 +177,11 @@ return [
     //UserPolicy
     '5010' => [
         'code'  => 5010,
-        'title' => 'Claim Create',
+        'title' => 'Claim Create with Submit',
+    ],
+    '5011' => [
+        'code'  => 5011,
+        'title' => 'Claim Create with Save',
     ],
     '5020' => [
         'code'  => 5020,
@@ -199,7 +203,11 @@ return [
     ],
     '6020' => [
         'code'  => 6020,
-        'title' => 'claim info update',
+        'title' => 'claim info update with Submit',
+    ],
+    '6021' => [
+        'code'  => 6021,
+        'title' => 'claim info update with Save',
     ],
     '6030' => [
         'code'  => 6030,

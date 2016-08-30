@@ -19,6 +19,9 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
                 '6020' => [
                     'code'  => 6020,
                 ],
+                '6021' => [
+                    'code'  => 6021,
+                ],
             ];
         };
         $c['pool'] = function () {
@@ -69,7 +72,7 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         $this->c['ClaimModule']->geInfoById(2);
         $action = $this->action;
 
-        $_POST['status'] = 'Save';
+        $_POST['status'] = 'Submit';
         $_POST['bank'] = ['iban' => '123', 'bank_swift_code' => 'sdfds'];
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
@@ -103,6 +106,6 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(6020, $out['status_code']);
+        $this->assertEquals(6021, $out['status_code']);
     }
 }

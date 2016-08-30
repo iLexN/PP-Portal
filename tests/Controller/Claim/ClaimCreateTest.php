@@ -18,6 +18,9 @@ class ClaimCreateTest extends \PHPUnit_Framework_TestCase
                 '5010' => [
                     'code'  => 5010,
                 ],
+                '5011' => [
+                    'code'  => 5011,
+                ],
             ];
         };
         $c['pool'] = function () {
@@ -66,6 +69,26 @@ class ClaimCreateTest extends \PHPUnit_Framework_TestCase
         $action = $this->action;
 
         $_POST['status'] = 'Save';
+        $_POST['bank'] = ['iban' => '123', 'bank_swift_code' => 'sdfds'];
+        $environment = \Slim\Http\Environment::mock([
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = $this->response;
+        $response = $action($request, $response, ['id' => 1]);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(5011, $out['status_code']);
+    }
+
+    public function testSuccess2()
+    {
+        $action = $this->action;
+
+        $_POST['status'] = 'Submit';
         $_POST['bank'] = ['iban' => '123', 'bank_swift_code' => 'sdfds'];
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',

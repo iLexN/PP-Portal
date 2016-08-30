@@ -23,8 +23,10 @@ class ClaimUpdate extends AbstractContainer
         $this->ClaimModule->saveClaim($v->data());
         $this->ClaimModule->saveExtraClaimInfoloop();
 
+        $code = $v->data()['status'] == 'Submit' ? 6020 : 6021;
+
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $this->msgCode[6020],
-                ], 6020);
+                    'data' => $this->msgCode[$code],
+                ],  $code);
     }
 }
