@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c806de4df10d08ad17df64c3ffedc765",
-    "content-hash": "87085a03da49124b1730cd370fee8704",
+    "hash": "6087e95740c61930f702d0fcc830f717",
+    "content-hash": "272dc58b71b6c6f92f9b29d8c2914e46",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -160,7 +160,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.3.0",
+            "version": "v5.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -203,7 +203,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.3.0",
+            "version": "v5.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -245,16 +245,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v5.3.0",
+            "version": "v5.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "c480fa98cf754e8c1246dbb2ef693fa1e98c80db"
+                "reference": "048a65ba4a7ed250e16c82b6bb323daf38410050"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/c480fa98cf754e8c1246dbb2ef693fa1e98c80db",
-                "reference": "c480fa98cf754e8c1246dbb2ef693fa1e98c80db",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/048a65ba4a7ed250e16c82b6bb323daf38410050",
+                "reference": "048a65ba4a7ed250e16c82b6bb323daf38410050",
                 "shasum": ""
             },
             "require": {
@@ -301,20 +301,20 @@
                 "orm",
                 "sql"
             ],
-            "time": "2016-08-22 22:10:23"
+            "time": "2016-08-25 15:46:46"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.3.0",
+            "version": "v5.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "6fe5a61e6af5b928a07aca2f278e4651160996f3"
+                "reference": "1b4f32dfa799dd8d0e0d11e0aaaf677e2829d6e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/6fe5a61e6af5b928a07aca2f278e4651160996f3",
-                "reference": "6fe5a61e6af5b928a07aca2f278e4651160996f3",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/1b4f32dfa799dd8d0e0d11e0aaaf677e2829d6e8",
+                "reference": "1b4f32dfa799dd8d0e0d11e0aaaf677e2829d6e8",
                 "shasum": ""
             },
             "require": {
@@ -358,7 +358,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2016-08-19 12:28:00"
+            "time": "2016-08-26 17:26:49"
         },
         {
             "name": "league/flysystem",
@@ -1941,16 +1941,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.5.2",
+            "version": "5.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "46ec2d1522ae8c9a12aca6b7650e0be78bbb0502"
+                "reference": "3e6e88e56c912133de6e99b87728cca7ed70c5f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/46ec2d1522ae8c9a12aca6b7650e0be78bbb0502",
-                "reference": "46ec2d1522ae8c9a12aca6b7650e0be78bbb0502",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3e6e88e56c912133de6e99b87728cca7ed70c5f5",
+                "reference": "3e6e88e56c912133de6e99b87728cca7ed70c5f5",
                 "shasum": ""
             },
             "require": {
@@ -2015,20 +2015,20 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-08-18 11:10:44"
+            "time": "2016-08-26 07:11:44"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "3.2.5",
+            "version": "3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "8f444748e174e49d5bd2bd7a9bebbf44edbb55fb"
+                "reference": "46b249b43fd2ed8e127aa0fdb3cbcf56e9bc0e49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/8f444748e174e49d5bd2bd7a9bebbf44edbb55fb",
-                "reference": "8f444748e174e49d5bd2bd7a9bebbf44edbb55fb",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/46b249b43fd2ed8e127aa0fdb3cbcf56e9bc0e49",
+                "reference": "46b249b43fd2ed8e127aa0fdb3cbcf56e9bc0e49",
                 "shasum": ""
             },
             "require": {
@@ -2074,7 +2074,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2016-08-24 16:58:26"
+            "time": "2016-08-26 05:51:59"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
