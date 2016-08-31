@@ -14,7 +14,7 @@ class ClaimFileModule extends AbstractContainer
      */
     public $file;
 
-    public function newClaimFile(FileUploadModule $newfile,$data)
+    public function newClaimFile(FileUploadModule $newfile, $data)
     {
         $file = new ClaimFile();
         $file->claim_id = $this->ClaimModule->claim->claim_id;

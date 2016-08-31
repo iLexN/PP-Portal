@@ -27,6 +27,6 @@ class ClaimUpdate extends AbstractContainer
 
         return $this->ViewHelper->withStatusCode($response, [
                     'data' => $this->msgCode[$code],
-                ],  $code);
+                ], $code);
     }
 }

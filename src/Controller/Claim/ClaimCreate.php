@@ -27,6 +27,6 @@ class ClaimCreate extends AbstractContainer
 
         return $this->ViewHelper->withStatusCode($response, [
                     'data' => ['id' => $claim->claim_id],
-                ], $v->data()['status'] == 'Submit' ? 5010 : 5011 );
+                ], $v->data()['status'] == 'Submit' ? 5010 : 5011);
     }
 }
