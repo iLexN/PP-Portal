@@ -40,7 +40,7 @@ class ClaimAttachment extends AbstractContainer
             ], 1820);
         }
 
-        $this->ClaimFileModule->newClaimFile($newfile,$v->data());
+        $this->ClaimFileModule->newClaimFile($newfile, $v->data());
 
         return $this->ViewHelper->withStatusCode($response, [
                 'data' => [

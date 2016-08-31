@@ -63,13 +63,13 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
 
-        
+
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
             'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
         ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
-        
+
 
         $response = $this->response;
         $response = $action($request, $response, []);
@@ -101,7 +101,7 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
         $request = $this->getMockBuilder(\Slim\Http\Request::class)
-                ->setMethods(['getUploadedFiles','getParsedBody'])
+                ->setMethods(['getUploadedFiles', 'getParsedBody'])
                 ->disableOriginalConstructor()
                 ->getMock();
         $file = $this->getMockBuilder(\Slim\Http\UploadedFile::class)
@@ -124,7 +124,7 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
         $request = $this->getMockBuilder(\Slim\Http\Request::class)
-                ->setMethods(['getUploadedFiles','getParsedBody'])
+                ->setMethods(['getUploadedFiles', 'getParsedBody'])
                 ->disableOriginalConstructor()
                 ->getMock();
         $file = $this->getMockBuilder(\Slim\Http\UploadedFile::class)
@@ -147,7 +147,7 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
         $request = $this->getMockBuilder(\Slim\Http\Request::class)
-                ->setMethods(['getUploadedFiles','getParsedBody'])
+                ->setMethods(['getUploadedFiles', 'getParsedBody'])
                 ->disableOriginalConstructor()
                 ->getMock();
         $file = $this->getMockBuilder(\Slim\Http\UploadedFile::class)

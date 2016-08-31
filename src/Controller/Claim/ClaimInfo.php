@@ -18,7 +18,7 @@ class ClaimInfo extends AbstractContainer
         $out = $claimInfo->toArray();
         $out['file_attachments'] = [
             'support_doc'   => $this->getDataByGroup($groupFileAttachments, 'support_doc'),
-            'claim_form' => $this->getDataByGroup($groupFileAttachments, 'claim_form'),
+            'claim_form'    => $this->getDataByGroup($groupFileAttachments, 'claim_form'),
         ];
         $out['bank_info'] = is_null($bankInfo) ? null : $bankInfo->toArray();
 
