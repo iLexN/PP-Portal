@@ -36,9 +36,9 @@ abstract class AbstractContainer
 
     /**
      * helper function for grouping data
-     * @param type $group
-     * @param type $s
-     * @return type
+     * @param Illuminate\Database\Eloquent\Collection $group
+     * @param string $s
+     * @return array
      */
     public function getDataByGroup($group, $s)
     {
