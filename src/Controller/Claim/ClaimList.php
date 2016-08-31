@@ -17,8 +17,8 @@ class ClaimList extends AbstractContainer
         $group = $claims->groupBy('status');
 
         $out = [
-            'Save'   => $this->getData($group, 'Save'),
-            'Submit' => $this->getData($group, 'Submit'),
+            'Save'   => $this->getDataByGroup($group, 'Save'),
+            'Submit' => $this->getDataByGroup($group, 'Submit'),
         ];
 /*
         if ($status !== 'All') {
@@ -30,10 +30,5 @@ class ClaimList extends AbstractContainer
         return $this->ViewHelper->withStatusCode($response, [
                     'data' => $out,
                 ], 5030);
-    }
-
-    private function getData($group, $s)
-    {
-        return $group->has($s) ? $group->get($s) : [];
     }
 }

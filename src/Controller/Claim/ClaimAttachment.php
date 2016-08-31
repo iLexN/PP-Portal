@@ -12,6 +12,14 @@ class ClaimAttachment extends AbstractContainer
     {
         $files = $request->getUploadedFiles();
 
+        $v = new \Valitron\Validator((array) $request->getParsedBody());
+        $v->rule('required', ['file_type']);
+        $v->rule('in', ['file_type'], ['support_doc', 'claim_form']);
+
+        if (!$v->validate()) {
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
+        }
+
         if (empty($files['newfile'])) {
             return $this->ViewHelper->toJson($response, [
                     'errors' => $this->msgCode['1810'],
@@ -32,7 +40,7 @@ class ClaimAttachment extends AbstractContainer
             ], 1820);
         }
 
-        $this->ClaimFileModule->newClaimFile($newfile);
+        $this->ClaimFileModule->newClaimFile($newfile,$v->data());
 
         return $this->ViewHelper->withStatusCode($response, [
                 'data' => [

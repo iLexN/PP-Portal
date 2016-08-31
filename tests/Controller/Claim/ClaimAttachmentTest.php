@@ -12,6 +12,9 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
         $c = new \Slim\Container();
         $c['msgCode'] = function (\Slim\Container $c) {
             return [
+                '1020' => [
+                    'code'  => 1020,
+                ],
                 '1810' => [
                     'code'  => 1810,
                 ],
@@ -56,11 +59,36 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
         $this->response = new \Slim\Http\Response();
     }
 
+    public function testNoFileType()
+    {
+        $action = $this->action;
+
+        
+        $environment = \Slim\Http\Environment::mock([
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        
+
+        $response = $this->response;
+        $response = $action($request, $response, []);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(1020, $out['status_code']);
+    }
+
     public function testNoFile()
     {
         $action = $this->action;
-        $environment = \Slim\Http\Environment::mock([]);
+
+        $_POST['file_type'] = 'support_doc';
+        $environment = \Slim\Http\Environment::mock([
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
 
         $response = $this->response;
         $response = $action($request, $response, []);
@@ -73,7 +101,7 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
         $request = $this->getMockBuilder(\Slim\Http\Request::class)
-                ->setMethods(['getUploadedFiles'])
+                ->setMethods(['getUploadedFiles','getParsedBody'])
                 ->disableOriginalConstructor()
                 ->getMock();
         $file = $this->getMockBuilder(\Slim\Http\UploadedFile::class)
@@ -82,6 +110,7 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
                 ->getMock();
         $file->method('getError')->willReturn('a');
         $request->method('getUploadedFiles')->willReturn(['newfile' => $file]);
+        $request->method('getParsedBody')->willReturn(['file_type' => 'support_doc']);
 
 
         $response = $this->response;
@@ -95,7 +124,7 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
         $request = $this->getMockBuilder(\Slim\Http\Request::class)
-                ->setMethods(['getUploadedFiles'])
+                ->setMethods(['getUploadedFiles','getParsedBody'])
                 ->disableOriginalConstructor()
                 ->getMock();
         $file = $this->getMockBuilder(\Slim\Http\UploadedFile::class)
@@ -105,6 +134,7 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
         $file->method('getError')->willReturn(UPLOAD_ERR_OK);
         $file->method('getClientMediaType')->willReturn('aaa');
         $request->method('getUploadedFiles')->willReturn(['newfile' => $file]);
+        $request->method('getParsedBody')->willReturn(['file_type' => 'support_doc']);
 
         $response = $this->response;
         $response = $action($request, $response, []);
@@ -117,7 +147,7 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
         $request = $this->getMockBuilder(\Slim\Http\Request::class)
-                ->setMethods(['getUploadedFiles'])
+                ->setMethods(['getUploadedFiles','getParsedBody'])
                 ->disableOriginalConstructor()
                 ->getMock();
         $file = $this->getMockBuilder(\Slim\Http\UploadedFile::class)
@@ -129,6 +159,7 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
         $file->method('moveTo')->willReturn(true);
         $file->method('getClientFilename')->willReturn('upload.png');
         $request->method('getUploadedFiles')->willReturn(['newfile' => $file]);
+        $request->method('getParsedBody')->willReturn(['file_type' => 'support_doc']);
 
         $response = $this->response;
         $response = $action($request, $response, []);

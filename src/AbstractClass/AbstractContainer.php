@@ -33,4 +33,15 @@ abstract class AbstractContainer
     {
         return $this->c[$name];
     }
+
+    /**
+     * helper function for grouping data
+     * @param type $group
+     * @param type $s
+     * @return type
+     */
+    public function getDataByGroup($group, $s)
+    {
+        return $group->has($s) ? $group->get($s) : [];
+    }
 }

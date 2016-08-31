@@ -50,7 +50,7 @@ class ClaimFileModuleTest extends \PHPUnit_Framework_TestCase
 
     public function testNewClaimFile()
     {
-        $this->ClaimFileModule->newClaimFile($this->FileUploadModule);
+        $this->ClaimFileModule->newClaimFile($this->FileUploadModule,['file_type'=>'test']);
         $this->expectOutputString('foo');
         echo 'foo';
     }
