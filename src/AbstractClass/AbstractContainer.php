@@ -2,6 +2,8 @@
 
 namespace PP\Portal\AbstractClass;
 
+use Illuminate\Database\Eloquent\Collection;
+
 /**
  * @property \Monolog\Logger $logger
  * @property \Stash\Pool $pool
@@ -36,11 +38,11 @@ abstract class AbstractContainer
 
     /**
      * helper function for grouping data
-     * @param Illuminate\Database\Eloquent\Collection $group
+     * @param \Illuminate\Database\Eloquent\Collection $group
      * @param string $s
      * @return array
      */
-    public function getDataByGroup($group, $s)
+    public function getDataByGroup(Collection $group, $s)
     {
         return $group->has($s) ? $group->get($s) : [];
     }
