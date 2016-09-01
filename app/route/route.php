@@ -56,6 +56,11 @@ $app->delete('/user/{id:\d+}/bank-account/{acid:\d+}', 'PP\Portal\Controller\Use
 
 $app->get('/advisor/{id:\d+}', 'PP\Portal\Controller\Advisor\Info')
         ->setName('AdvisorInfo');
+
+//Policy
+$app->get('/policy/{id:\d+}/people', 'PP\Portal\Controller\Policy\People')
+        ->setName('Policy.People');
+
 //UserPolicy
 $app->get('/user-policy/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyInfo')
         ->setName('Policy')

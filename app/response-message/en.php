@@ -148,6 +148,10 @@ return [
         'code'  => 3030,
         'title' => 'get policy success',
     ],
+    '3040' => [
+        'code'  => 3040,
+        'title' => 'get policy people success',
+    ],
     '3510' => [
         'code'  => 3510,
         'title' => 'Advisor not found',
