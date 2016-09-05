@@ -41,13 +41,14 @@ class User extends Model
                $this->attributes['password'] === null;
     }
 
-    public function userName(){
+    public function userName()
+    {
         return [
-            'ppmid'=>(int)$this->attributes['ppmid'],
-            'title'=>$this->attributes['title'],
-            'first_name'=>$this->attributes['first_name'],
-            'middle_name'=>$this->attributes['middle_name'],
-            'last_name'=>$this->attributes['last_name'],
+            'ppmid'       => (int) $this->attributes['ppmid'],
+            'title'       => $this->attributes['title'],
+            'first_name'  => $this->attributes['first_name'],
+            'middle_name' => $this->attributes['middle_name'],
+            'last_name'   => $this->attributes['last_name'],
         ];
     }
 
