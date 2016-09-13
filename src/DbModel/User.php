@@ -17,10 +17,6 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property string $email
  * @property string $phone_1
  * @property string $phone_2
- * @property string $address_line_2
- * @property string $address_line_3
- * @property string $address_line_4
- * @property string $address_line_5
  * @property string $forgot_str
  * @property string $forgot_expire
  */
@@ -64,7 +60,13 @@ class User extends Model
 
     public function userAcc()
     {
-        return $this->hasOne(__NAMESPACE__.'\UserBankAcc', 'ppmid');
+        //return $this->hasOne(__NAMESPACE__.'\UserBankAcc', 'ppmid');
+        return $this->hasMany(__NAMESPACE__.'\UserBankAcc', 'ppmid');
+    }
+
+    public function userPreference()
+    {
+        return $this->hasOne(__NAMESPACE__.'\UserPreference', 'ppmid');
     }
 
     public function userPolicy()

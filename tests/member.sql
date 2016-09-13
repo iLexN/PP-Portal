@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 08 月 31 日 10:12
+-- 產生時間： 2016 年 09 月 13 日 11:15
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -19,6 +19,24 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `member`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `member_portal_address_user`
+--
+
+DROP TABLE IF EXISTS `member_portal_address_user`;
+CREATE TABLE IF NOT EXISTS `member_portal_address_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `address_type` varchar(255) DEFAULT NULL,
+  `address_line_2` varchar(255) DEFAULT NULL,
+  `address_line_3` varchar(255) DEFAULT NULL,
+  `address_line_4` varchar(255) DEFAULT NULL,
+  `address_line_5` varchar(255) DEFAULT NULL,
+  `ppmid` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -81,6 +99,27 @@ INSERT INTO `member_portal_bank_transfer_user` (`banker_transfer_id`, `currency`
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `member_portal_cheque`
+--
+
+DROP TABLE IF EXISTS `member_portal_cheque`;
+CREATE TABLE IF NOT EXISTS `member_portal_cheque` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `first_name` varchar(45) DEFAULT NULL,
+  `middle_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+  `address_line_2` varchar(45) DEFAULT NULL,
+  `address_line_3` varchar(45) DEFAULT NULL,
+  `address_line_4` varchar(45) DEFAULT NULL,
+  `address_line_5` varchar(45) DEFAULT NULL,
+  `claim_id` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `member_portal_claim`
 --
 
@@ -93,7 +132,6 @@ CREATE TABLE IF NOT EXISTS `member_portal_claim` (
   `date_of_treatment` date DEFAULT NULL,
   `diagnosis` varchar(255) DEFAULT NULL,
   `payment_method` varchar(255) DEFAULT NULL,
-  `issue_to_whom` varchar(255) DEFAULT NULL,
   `issue_address` varchar(255) DEFAULT NULL,
   `currency_receive` varchar(255) DEFAULT NULL,
   `status` varchar(64) DEFAULT NULL,
@@ -106,9 +144,9 @@ CREATE TABLE IF NOT EXISTS `member_portal_claim` (
 -- 資料表的匯出資料 `member_portal_claim`
 --
 
-INSERT INTO `member_portal_claim` (`claim_id`, `user_policy_id`, `currency`, `amount`, `date_of_treatment`, `diagnosis`, `payment_method`, `issue_to_whom`, `issue_address`, `currency_receive`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'USD', '120.00', '2010-10-12', 'diagnosis', 'CC', 'issue_to_whom', 'issue_address', 'HKD', 'Save', '2016-07-28 12:16:44', '2016-07-28 12:16:44'),
-(2, 7, 'USD', '123.00', NULL, NULL, NULL, NULL, NULL, NULL, 'Save', '2016-08-01 12:15:29', '2016-08-01 12:15:29');
+INSERT INTO `member_portal_claim` (`claim_id`, `user_policy_id`, `currency`, `amount`, `date_of_treatment`, `diagnosis`, `payment_method`, `issue_address`, `currency_receive`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'USD', '120.00', '2010-10-12', 'diagnosis', 'CC', 'issue_address', 'HKD', 'Save', '2016-07-28 12:16:44', '2016-07-28 12:16:44'),
+(2, 7, 'USD', '123.00', NULL, NULL, NULL, NULL, NULL, 'Save', '2016-08-01 12:15:29', '2016-08-01 12:15:29');
 
 -- --------------------------------------------------------
 
@@ -265,10 +303,6 @@ CREATE TABLE IF NOT EXISTS `member_portal_user` (
   `email` varchar(255) DEFAULT NULL,
   `phone_1` varchar(255) DEFAULT NULL,
   `phone_2` varchar(255) DEFAULT NULL,
-  `address_line_2` varchar(255) DEFAULT NULL,
-  `address_line_3` varchar(255) DEFAULT NULL,
-  `address_line_4` varchar(255) DEFAULT NULL,
-  `address_line_5` varchar(255) DEFAULT NULL,
   `forgot_str` varchar(255) DEFAULT NULL,
   `forgot_expire` datetime DEFAULT NULL,
   PRIMARY KEY (`ppmid`)
@@ -278,13 +312,13 @@ CREATE TABLE IF NOT EXISTS `member_portal_user` (
 -- 資料表的匯出資料 `member_portal_user`
 --
 
-INSERT INTO `member_portal_user` (`ppmid`, `title`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `user_name`, `password`, `nationality`, `email`, `phone_1`, `phone_2`, `address_line_2`, `address_line_3`, `address_line_4`, `address_line_5`, `forgot_str`, `forgot_expire`) VALUES
-(2, 'Dr', 'www', 'eee', 'rrr', '1980-10-10', 'alex', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'alex@kwiksure.com', NULL, NULL, NULL, NULL, NULL, NULL, '5550522d-f8a8-4203-81c1-fa3b567157cc', '2020-07-28 16:12:33'),
-(9677, NULL, 'dsdsab', 'sds', 'dsd', '1981-06-06', 'peter', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'peter.suen@pacificprime.com', '12345678', '87654321', 'Room 1000', 'Block B', 'ABC House', 'ST', NULL, NULL),
-(135928, 'Mrs', 'Aja', 'O', 'Gorman', '1980-12-20', 'peter2', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'Canadian', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(135929, 'Mr', 'Paul', 'Andrew', 'Woods', '1985-12-22', NULL, NULL, 'Canadian', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(173802, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'adf2', '2020-07-28 16:12:33'),
-(173803, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `member_portal_user` (`ppmid`, `title`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `user_name`, `password`, `nationality`, `email`, `phone_1`, `phone_2`, `forgot_str`, `forgot_expire`) VALUES
+(2, 'Dr', 'www', 'eee', 'rrr', '1980-10-10', 'alex', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'alex@kwiksure.com', NULL, NULL, '5550522d-f8a8-4203-81c1-fa3b567157cc', '2020-07-28 16:12:33'),
+(9677, NULL, 'dsdsab', 'sds', 'dsd', '1981-06-06', 'peter', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'peter.suen@pacificprime.com', '12345678', '87654321', NULL, NULL),
+(135928, 'Mrs', 'Aja', 'O', 'Gorman', '1980-12-20', 'peter2', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'Canadian', NULL, NULL, NULL, NULL, NULL),
+(135929, 'Mr', 'Paul', 'Andrew', 'Woods', '1985-12-22', NULL, NULL, 'Canadian', NULL, NULL, NULL, NULL, NULL),
+(173802, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, 'adf2', '2020-07-28 16:12:33'),
+(173803, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 

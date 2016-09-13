@@ -17,10 +17,6 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property string $email
  * @property string $phone_1
  * @property string $phone_2
- * @property string $address_line_2
- * @property string $address_line_3
- * @property string $address_line_4
- * @property string $address_line_5
  * @property string $status
  */
 class UserInfoReNew extends Model
@@ -40,10 +36,6 @@ class UserInfoReNew extends Model
             'email',
             'phone_1',
             'phone_2',
-            'address_line_2',
-            'address_line_3',
-            'address_line_4',
-            'address_line_5',
         ];
 
     protected $casts = [

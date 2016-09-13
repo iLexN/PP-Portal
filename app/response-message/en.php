@@ -176,6 +176,14 @@ return [
         'code'  => 3630,
         'title' => 'bank a/c info success',
     ],
+    '3640' => [
+        'code'  => 3640,
+        'title' => 'Preference info success',
+    ],
+    '3650' => [
+        'code'  => 3650,
+        'title' => 'Preference info updated',
+    ],
 
 
     //UserPolicy

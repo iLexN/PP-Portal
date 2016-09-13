@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Collection;
  * @property \PP\Portal\Module\PolicyModule $PolicyModule
  * @property \PP\Portal\Module\UserPolicyModule $UserPolicyModule
  * @property \PP\Portal\Module\UserBankAccModule $UserBankAccModule
+ * @property \PP\Portal\Module\UserPreferenceModule $UserPreferenceModule
  * @property \PP\Portal\Module\ClaimModule $ClaimModule
  * @property \PP\Portal\Module\ClaimFileModule $ClaimFileModule
  * @property \PP\Portal\Module\PasswordModule $PasswordModule

@@ -53,6 +53,12 @@ $app->post('/user/{id:\d+}/bank-account/{acid:\d+}', 'PP\Portal\Controller\User\
 $app->delete('/user/{id:\d+}/bank-account/{acid:\d+}', 'PP\Portal\Controller\User\BankAccActionDel')
         ->setName('BankAccAction.del')
         ->add($checkUserExist);
+$app->get('/user/{id:\d+}/preference', 'PP\Portal\Controller\User\UserPreferenceInfo')
+        ->setName('UserPreference.get')
+        ->add($checkUserExist);
+$app->post('/user/{id:\d+}/preference', 'PP\Portal\Controller\User\UserPreferenceUpdate')
+        ->setName('UserPreference.update')
+        ->add($checkUserExist);
 
 $app->get('/advisor/{id:\d+}', 'PP\Portal\Controller\Advisor\Info')
         ->setName('AdvisorInfo');
