@@ -10,7 +10,7 @@ class AddressUpdate extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        $address = $this->UserPolicyModule->userPolicy->policy->address()->find((int)$args['acid']);
+        $address = $this->UserPolicyModule->userPolicy->policy->address()->find((int) $args['acid']);
 
         if (!$address) {
             throw new \Slim\Exception\NotFoundException($request, $response);
@@ -19,15 +19,15 @@ class AddressUpdate extends AbstractContainer
         $v = $this->AddressModule->setValidator($request->getParsedBody(), $address);
 
         if (!$v->validate()) {
-            return $this->ViewHelper->toJson($response, ['errors' => $v->errors(),$request->getParsedBody()]);
+            return $this->ViewHelper->toJson($response, ['errors' => $v->errors(), $request->getParsedBody()]);
         }
 
         $default = [];
         $default['status'] = 'pending';
         $default['old_id'] = $address->id;
 
-        $data = array_merge($address->toArray(),$default,$v->data());
-        $new = new \PP\Portal\DbModel\Address;
+        $data = array_merge($address->toArray(), $default, $v->data());
+        $new = new \PP\Portal\DbModel\Address();
         $this->AddressModule->saveData($data, $new);
 
         return $this->ViewHelper->withStatusCode($response, [
