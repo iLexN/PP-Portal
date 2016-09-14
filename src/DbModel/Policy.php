@@ -37,4 +37,9 @@ class Policy extends Model
 
         return $dateObj->toDateString();
     }
+
+    public function address()
+    {
+        return $this->hasMany(__NAMESPACE__.'\Address', 'ref_id');
+    }
 }

@@ -5,8 +5,9 @@ namespace PP\Portal\DbModel;
 use Illuminate\Database\Eloquent\Model as Model;
 
 /**
- * @property int $banker_transfer_id
  * @property int $ppmid
+ * @property string $currency
+ * @property string $currency_receive
  */
 class UserPreference extends Model
 {
@@ -16,8 +17,6 @@ class UserPreference extends Model
     public $timestamps = false;
 
     protected $fillable = ['currency','currency_receive'];
-
-    protected $hidden = ['ppmid'];
 
     protected $casts = [
         'ppmid' => 'integer',

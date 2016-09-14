@@ -74,4 +74,9 @@ class User extends Model
         return $this->belongsToMany(__NAMESPACE__.'\Policy', 'member_portal_user_policy', 'ppmid', 'policy_id')
                 ->withPivot('id');
     }
+
+    public function address()
+    {
+        return $this->hasMany(__NAMESPACE__.'\Address', 'ref_id');
+    }
 }

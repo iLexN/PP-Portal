@@ -134,6 +134,19 @@ return [
         'code'  => 2570,
         'title' => 'Forgot password ,password updated',
     ],
+    '2600' => [
+        'code'  => 2600,
+        'title' => 'user address get List success',
+    ],
+    '2610' => [
+        'code'  => 2610,
+        'title' => 'user address create',
+    ],
+    '2620' => [
+        'code'  => 2620,
+        'title' => 'user address create and pending',
+    ],
+
 
     //Policy
     '3010' => [
@@ -206,6 +219,14 @@ return [
     '5040' => [
         'code'  => 5040,
         'title' => 'get advisor info success',
+    ],
+    '5050' => [
+        'code'  => 5050,
+        'title' => 'policy address info success',
+    ],
+    '5060' => [
+        'code'  => 5060,
+        'title' => 'policy/mail address info update',
     ],
 
     //Claim

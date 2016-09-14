@@ -59,6 +59,15 @@ $app->get('/user/{id:\d+}/preference', 'PP\Portal\Controller\User\UserPreference
 $app->post('/user/{id:\d+}/preference', 'PP\Portal\Controller\User\UserPreferenceUpdate')
         ->setName('UserPreference.update')
         ->add($checkUserExist);
+$app->get('/user/{id:\d+}/address', 'PP\Portal\Controller\User\AddressList')
+        ->setName('addresslist.get')
+        ->add($checkUserExist);
+$app->post('/user/{id:\d+}/address', 'PP\Portal\Controller\User\AddressNew')
+        ->setName('addresslist.new')
+        ->add($checkUserExist);
+$app->post('/user/{id:\d+}/address/{acid:\d+}', 'PP\Portal\Controller\User\AddressUpdate')
+        ->setName('addresslist.update')
+        ->add($checkUserExist);
 
 $app->get('/advisor/{id:\d+}', 'PP\Portal\Controller\Advisor\Info')
         ->setName('AdvisorInfo');
@@ -70,6 +79,12 @@ $app->get('/policy/{id:\d+}/people', 'PP\Portal\Controller\Policy\People')
 //UserPolicy
 $app->get('/user-policy/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyInfo')
         ->setName('Policy')
+        ->add($checkUsePolicyrExist);
+$app->get('/user-policy/{id:\d+}/address', 'PP\Portal\Controller\Policy\AddressList')
+        ->setName('PolicyAddressList.get')
+        ->add($checkUsePolicyrExist);
+$app->post('/user-policy/{id:\d+}/address/{acid:\d+}', 'PP\Portal\Controller\Policy\AddressUpdate')
+        ->setName('PolicyAddressInfo.update')
         ->add($checkUsePolicyrExist);
 $app->get('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimList')
         ->setName('ClaimList')

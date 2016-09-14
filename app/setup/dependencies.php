@@ -75,6 +75,9 @@ $container['UserBankAccModule'] = function (\Slim\Container $c) {
 $container['UserPreferenceModule'] = function (\Slim\Container $c) {
     return new \PP\Portal\Module\UserPreferenceModule($c);
 };
+$container['AddressModule'] = function (\Slim\Container $c) {
+    return new \PP\Portal\Module\AddressModule($c);
+};
 $container['UserPolicyModule'] = function (\Slim\Container $c) {
     return new \PP\Portal\Module\UserPolicyModule($c);
 };
