@@ -12,12 +12,11 @@ class UserPreferenceInfo extends AbstractContainer
     {
         $info = $this->UserPreferenceModule->getByUserID();
 
-        if ( $info === null) {
+        if ($info === null) {
             $info = $this->UserPreferenceModule->newPreference();
         }
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $info->toArray(),
             ], 3640);
-
     }
 }

@@ -16,7 +16,7 @@ class UserPreference extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['currency','currency_receive'];
+    protected $fillable = ['currency', 'currency_receive'];
 
     protected $casts = [
         'ppmid' => 'integer',

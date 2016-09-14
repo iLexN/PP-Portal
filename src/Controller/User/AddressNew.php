@@ -9,8 +9,8 @@ use Slim\Http\Response;
 class AddressNew extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
-    {        
-        $address = new \PP\Portal\DbModel\Address;
+    {
+        $address = new \PP\Portal\DbModel\Address();
 
         $v = $this->AddressModule->setValidator($request->getParsedBody(), $address);
 
@@ -23,7 +23,7 @@ class AddressNew extends AbstractContainer
         $default['status'] = 'active';
         $default['ref_id'] = $this->UserModule->user->ppmid;
 
-        $data = array_merge($default,$v->data());
+        $data = array_merge($default, $v->data());
         $this->AddressModule->saveData($data, $address);
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $address->toArray()], 2610);
