@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 09 月 13 日 11:15
+-- 產生時間： 2016 年 09 月 13 日 17:28
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -28,15 +28,20 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `member_portal_address_user`;
 CREATE TABLE IF NOT EXISTS `member_portal_address_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `address_type` varchar(255) DEFAULT NULL,
+  `nick_name` varchar(255) DEFAULT NULL,
   `address_line_2` varchar(255) DEFAULT NULL,
   `address_line_3` varchar(255) DEFAULT NULL,
   `address_line_4` varchar(255) DEFAULT NULL,
   `address_line_5` varchar(255) DEFAULT NULL,
-  `ppmid` varchar(45) DEFAULT NULL,
+  `ref_id` int(11) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `old_id` int(11) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -347,6 +352,21 @@ INSERT INTO `member_portal_user_policy` (`id`, `ppmid`, `policy_id`, `premium_pa
 (5, 173802, 1, '0.00'),
 (6, 173803, 1, '0.00'),
 (7, 9677, 2, '0.00');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `member_portal_user_preference`
+--
+
+DROP TABLE IF EXISTS `member_portal_user_preference`;
+CREATE TABLE IF NOT EXISTS `member_portal_user_preference` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `currency` varchar(255) DEFAULT NULL,
+  `currency_receive` varchar(255) DEFAULT NULL,
+  `ppmid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

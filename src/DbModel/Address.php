@@ -3,6 +3,7 @@
 namespace PP\Portal\DbModel;
 
 use Illuminate\Database\Eloquent\Model as Model;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * @property string $address_type
@@ -27,16 +28,21 @@ class Address extends Model
         'old_id' => 'integer',
     ];
 
-    public function scopePolicyAddress($query)
+    public function scopePolicyAddress(Builder $query)
     {
         return $query->where('status', 'active')
-                ->where(function ($query) {
+                ->where(function (Builder $query) {
                     $query->where('address_type','policy_address')
                           ->orWhere('address_type','mail_address');
                 });
     }
 
-    public function scopeUserAddress($query)
+    /**
+     * Scope a query to only include active users.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeUserAddress(Builder $query)
     {
         return $query->where('status', 'active')
                 ->where('address_type','user');

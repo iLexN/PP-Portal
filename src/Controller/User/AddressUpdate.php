@@ -22,6 +22,7 @@ class AddressUpdate extends AbstractContainer
             return $this->ViewHelper->toJson($response, ['errors' => $v->errors(),$request->getParsedBody()]);
         }
 
+        $defualt = [];
         $default['status'] = 'pending';
         $default['old_id'] = $address->id;
 

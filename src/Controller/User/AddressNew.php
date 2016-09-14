@@ -18,6 +18,7 @@ class AddressNew extends AbstractContainer
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
         }
 
+        $defualt = [];
         $default['address_type'] = 'user';
         $default['status'] = 'active';
         $default['ref_id'] = $this->UserModule->user->ppmid;
