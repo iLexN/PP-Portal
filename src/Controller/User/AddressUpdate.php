@@ -19,7 +19,7 @@ class AddressUpdate extends AbstractContainer
         $v = $this->AddressModule->setValidator($request->getParsedBody(), $address);
 
         if (!$v->validate()) {
-            return $this->ViewHelper->toJson($response, ['errors' => $v->errors(), $request->getParsedBody()]);
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
         }
 
         $default = [];
