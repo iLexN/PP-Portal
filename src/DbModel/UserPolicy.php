@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property int $id
  * @property int $ppmid
  * @property \PP\Portal\DbModel\Policy $policy
+ * @property \PP\Portal\DbModel\User $user
  */
 class UserPolicy extends Model
 {
