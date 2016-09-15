@@ -223,6 +223,7 @@ class ClaimModule extends AbstractContainer
                 $data['claim_id'] = $this->claim->claim_id;
                 $this->saveCheque($data);
 
+                break;
             default:
                 break;
         }
