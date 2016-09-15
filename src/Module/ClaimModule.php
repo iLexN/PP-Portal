@@ -5,6 +5,7 @@ namespace PP\Portal\Module;
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\Claim;
 use PP\Portal\DbModel\ClaimBankAcc;
+use PP\Portal\DbModel\ClaimCheque;
 use PP\Portal\DbModel\UserPolicy;
 
 /**
@@ -23,6 +24,11 @@ class ClaimModule extends AbstractContainer
      * @var \PP\Portal\DbModel\ClaimBankAcc
      */
     public $bankInfo;
+
+    /**
+     * @var \PP\Portal\DbModel\ClaimCheque
+     */
+    public $cheque;
 
     public $claimExtraData = [];
 
@@ -212,6 +218,10 @@ class ClaimModule extends AbstractContainer
                 $this->saveBank($data);
 
                 break;
+            case 'cheque':
+                $data = $v->data();
+                $data['claim_id'] = $this->claim->claim_id;
+                $this->saveCheque($data);
 
             default:
                 break;
@@ -222,5 +232,49 @@ class ClaimModule extends AbstractContainer
     {
         $this->pool->deleteItem('UserPolicy/'.$this->claim->user_policy_id.'/claimList');
         $this->pool->deleteItem('Claim/'.$this->claim->claim_id);
+    }
+
+    /**
+     * @param array $data
+     */
+    public function newCheque($data)
+    {
+        $this->cheque = new ClaimCheque();
+        $this->validateCheque($data);
+    }
+
+    /**
+     * @param array $data
+     */
+    public function getCheque($data)
+    {
+        $cheque = $this->claim->cheque()->first();
+        if (!$cheque) {
+            $this->newCheque($data);
+        } else {
+            $this->cheque = $cheque;
+            $this->validateCheque($data);
+        }
+    }
+    /**
+     * @param array $data
+     */
+    private function validateCheque($data)
+    {
+        $vb = new \Valitron\Validator($data, $this->cheque->getFillable());
+        $vb->rule('required', ['first_name', 'address_line_2']);
+        $this->claimExtraData['cheque'] = $vb;
+    }
+
+    /**
+     * @param array $data
+     */
+    public function saveCheque($data)
+    {
+        foreach ($data as $k => $v) {
+            $this->cheque->{$k} = $v;
+        }
+
+        $this->cheque->save();
     }
 }
