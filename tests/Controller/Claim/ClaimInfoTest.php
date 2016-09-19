@@ -56,6 +56,6 @@ class ClaimInfoTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('claim_id', $out['data']);
         $this->assertEquals(1, $out['data']['user_policy_id']);
         $this->assertArrayHasKey('file_attachments', $out['data']);
-        $this->assertArrayHasKey('bank_info', $out['data']);
+        //$this->assertArrayHasKey('bank_info', $out['data']);
     }
 }

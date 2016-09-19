@@ -11,7 +11,6 @@ class ClaimInfo extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         $claimInfo = $this->ClaimModule->claim;
-        $bankInfo = $claimInfo->bankInfo()->first();
 
         $groupFileAttachments = $claimInfo->fileAttachments()->where('status', 'Upload')->get()->groupBy('file_type');
 
@@ -20,7 +19,19 @@ class ClaimInfo extends AbstractContainer
             'support_doc'   => $this->getDataByGroup($groupFileAttachments, 'support_doc'),
             'claim_form'    => $this->getDataByGroup($groupFileAttachments, 'claim_form'),
         ];
-        $out['bank_info'] = is_null($bankInfo) ? null : $bankInfo->toArray();
+
+        switch ($claimInfo->payment_method) {
+            case 'Bank transfer':
+                $bankInfo = $claimInfo->bankInfo()->first();
+                $out['bank_info'] = is_null($bankInfo) ? null : $bankInfo->toArray();
+                break;
+            case 'Cheque':
+                $cheque = $claimInfo->cheque()->first();
+                $out['cheque'] = is_null($cheque) ? null : $cheque->toArray();
+                break;
+            default:
+                break;
+        }
 
         return $this->ViewHelper->withStatusCode($response, [
                     'data' => $out,
