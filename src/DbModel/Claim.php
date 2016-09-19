@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model as Model;
 /**
  * @property int $claim_id
  * @property int $user_policy_id
+ * @property string $payment_method
  * @property string $status
  */
 class Claim extends Model
