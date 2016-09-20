@@ -33,13 +33,14 @@ class UserPolicy extends Model
         return $this->belongsTo(__NAMESPACE__.'\User', 'ppmid', 'ppmid');
     }
 
+    /*
     public function userBankAcc()
     {
         return $this->hasManyThrough(
             __NAMESPACE__.'\UserBankAcc', __NAMESPACE__.'\User',
             'ppmid', 'ppmid', 'ppmid'
         );
-    }
+    }*/
 
     public function policy()
     {

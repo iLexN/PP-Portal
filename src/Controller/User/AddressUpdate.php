@@ -22,15 +22,19 @@ class AddressUpdate extends AbstractContainer
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
         }
 
-        $default = [];
-        $default['status'] = 'pending';
-        $default['old_id'] = $address->id;
-
-        $data = array_merge($address->toArray(), $default, $v->data());
+        $data = $this->inputData($address->toArray(), $v->data());
         $new = new \PP\Portal\DbModel\Address();
 
         $this->AddressModule->saveData($data, $new);
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $new->toArray()], 2620);
+    }
+
+    private function inputData($address,$input){
+        $default = [];
+        $default['status'] = 'pending';
+        $default['old_id'] = $address['id'];
+        $data = array_merge($address, $default, $input);
+        return $data;
     }
 }
