@@ -180,13 +180,13 @@ class ClaimModule extends AbstractContainer
             $this->UserBankAccModule->saveData($userBankAcc, $data);
         }
     }
-
+    
     /**
      * @param string $status
      *
      * @return bool
      */
-    public function validateExtraClaimInfo($status)
+    public function validateClaimInfo($status)
     {
         if ($status === 'Save') {
             return true;
@@ -277,5 +277,10 @@ class ClaimModule extends AbstractContainer
         }
 
         $this->cheque->save();
+    }
+
+    public function saveAllInfo($data){
+        $this->saveClaim($data);
+        $this->saveExtraClaimInfoloop();
     }
 }
