@@ -17,10 +17,7 @@ class Verify extends AbstractContainer
      */
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        $v = new \Valitron\Validator((array) $request->getParsedBody());
-        $v->rule('required', ['ppmid', 'date_of_birth']);
-        $v->rule('integer', 'ppmid');
-        $v->rule('date', 'date_of_birth');
+        $v = $this->validator($request->getParsedBody());
 
         if (!$v->validate()) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
@@ -39,5 +36,13 @@ class Verify extends AbstractContainer
         }
 
         return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2040]]);
+    }
+
+    private function validator($data){
+        new \Valitron\Validator($data);
+        $v->rule('required', ['ppmid', 'date_of_birth']);
+        $v->rule('integer', 'ppmid');
+        $v->rule('date', 'date_of_birth');
+        return $v;
     }
 }
