@@ -23,7 +23,8 @@ class ClaimCreate extends AbstractContainer
 
         $this->ClaimModule->parseExtraData($request->getParsedBody());
 
-        $status = $request->getParsedBody()['status'];
+        //$status = $request->getParsedBody()['status'];
+        $status = $request->getParsedBodyParam('status');
         if ($this->validate($status)) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
         }
