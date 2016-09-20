@@ -3,8 +3,8 @@
 namespace PP\Portal\Controller\Claim;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
+use Slim\Http\Request;
 
 class ClaimUpdate extends AbstractContainer
 {
@@ -14,7 +14,7 @@ class ClaimUpdate extends AbstractContainer
      */
     private $v;
 
-    public function __invoke(ServerRequestInterface $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args)
     {
         $this->v = $this->ClaimModule->validClaim((array) $request->getParsedBody(), $this->ClaimModule->claim->getFillable());
 

@@ -3,8 +3,8 @@
 namespace PP\Portal\Controller\Claim;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
+use Slim\Http\Request;
 
 class ClaimCreate extends AbstractContainer
 {
@@ -15,7 +15,7 @@ class ClaimCreate extends AbstractContainer
      */
     private $v;
     
-    public function __invoke(ServerRequestInterface $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args)
     {
         /* @var $claim \PP\Portal\DbModel\Claim */
         $claim = $this->ClaimModule->newClaim($args['id']);
