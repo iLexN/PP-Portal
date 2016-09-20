@@ -39,7 +39,7 @@ class Verify extends AbstractContainer
     }
 
     private function validator($data){
-        new \Valitron\Validator($data);
+        $v = new \Valitron\Validator($data);
         $v->rule('required', ['ppmid', 'date_of_birth']);
         $v->rule('integer', 'ppmid');
         $v->rule('date', 'date_of_birth');
