@@ -21,32 +21,22 @@ class ClaimAttachment extends AbstractContainer
         }
 
         if (empty($files['newfile'])) {
-            return $this->ViewHelper->toJson($response, [
-                    'errors' => $this->msgCode['1810'],
-                ]);
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode['1810']]);
         }
 
         $newfile = $this->handerFile($files['newfile']);
 
         if (!$newfile->isUploadSuccess()) {
-            return $this->ViewHelper->withStatusCode($response, [
-                'errors' => $newfile->getValidationMsg(),
-            ], 1830);
+            return $this->ViewHelper->withStatusCode($response, ['errors' => $newfile->getValidationMsg()], 1830);
         }
 
         if (!$newfile->isValid()) {
-            return $this->ViewHelper->withStatusCode($response, [
-                'errors' => $this->msgCode['1820'],
-            ], 1820);
+            return $this->ViewHelper->withStatusCode($response, ['errors' => $this->msgCode['1820']], 1820);
         }
 
         $this->ClaimFileModule->newClaimFile($newfile, $v->data());
 
-        return $this->ViewHelper->withStatusCode($response, [
-                'data' => [
-                    $this->msgCode[1840],
-                ],
-            ], 1840);
+        return $this->ViewHelper->withStatusCode($response, ['data' => [$this->msgCode[1840]]], 1840);
     }
 
     /**
