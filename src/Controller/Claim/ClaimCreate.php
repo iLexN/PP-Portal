@@ -3,18 +3,16 @@
 namespace PP\Portal\Controller\Claim;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Slim\Http\Request;
+use Slim\Http\Response;
 
 class ClaimCreate extends AbstractContainer
 {
-
     /**
-     *
      * @var \Valitron\Validator
      */
     private $v;
-    
+
     public function __invoke(Request $request, Response $response, array $args)
     {
         /* @var $claim \PP\Portal\DbModel\Claim */
@@ -36,12 +34,13 @@ class ClaimCreate extends AbstractContainer
                 ], $this->getStatusCode($status));
     }
 
-    private function validate($status){
+    private function validate($status)
+    {
         return !$this->v->validate() || !$this->ClaimModule->validateClaimInfo($status);
     }
 
-    private function getStatusCode($status){
+    private function getStatusCode($status)
+    {
         return $status == 'Submit' ? 5010 : 5011;
     }
-
 }

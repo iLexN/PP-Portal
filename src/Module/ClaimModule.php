@@ -219,7 +219,7 @@ class ClaimModule extends AbstractContainer
             $this->validateCheque($data);
         }
     }
-    
+
     /**
      * @param array $data
      */
@@ -230,15 +230,17 @@ class ClaimModule extends AbstractContainer
         $this->claimExtraData['cheque'] = $vb;
     }
 
-    public function saveAllInfo($data){
+    public function saveAllInfo($data)
+    {
         $this->saveClaim($data);
         $this->saveExtraClaimInfoloop();
     }
 
-    public function parseExtraData($data){
+    public function parseExtraData($data)
+    {
         if (isset($data['bank'])) {
             $this->newBankAcc($data['bank']);
-        } else if (isset($data['cheque'])) {
+        } elseif (isset($data['cheque'])) {
             $this->newCheque($data['cheque']);
         }
     }

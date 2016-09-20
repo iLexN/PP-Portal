@@ -3,13 +3,12 @@
 namespace PP\Portal\Controller\Claim;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Slim\Http\Response;
 use Slim\Http\Request;
+use Slim\Http\Response;
 
 class ClaimUpdate extends AbstractContainer
 {
     /**
-     *
      * @var \Valitron\Validator
      */
     private $v;
@@ -33,12 +32,13 @@ class ClaimUpdate extends AbstractContainer
                 ], $this->getStatusCode($status));
     }
 
-    private function validate($status){
+    private function validate($status)
+    {
         return !$this->v->validate() || !$this->ClaimModule->validateClaimInfo($status);
     }
 
-    private function getStatusCode($status){
+    private function getStatusCode($status)
+    {
         return $status == 'Submit' ? 6020 : 6021;
     }
-
 }
