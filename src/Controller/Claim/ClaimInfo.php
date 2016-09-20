@@ -29,8 +29,6 @@ class ClaimInfo extends AbstractContainer
                 $cheque = $claimInfo->cheque()->first();
                 $out['cheque'] = is_null($cheque) ? null : $cheque->toArray();
                 break;
-            default:
-                break;
         }
 
         return $this->ViewHelper->withStatusCode($response, [
