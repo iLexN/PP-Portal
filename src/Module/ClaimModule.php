@@ -152,36 +152,6 @@ class ClaimModule extends AbstractContainer
     }
 
     /**
-     * @param array $data
-     */
-    public function saveBank($data)
-    {
-        foreach ($data as $k => $v) {
-            $this->bank->{$k} = $v;
-        }
-
-        $this->bank->save();
-    }
-
-    /**
-     * @param array $data
-     */
-    public function saveBankToUserAccout($data)
-    {
-
-        /* @var $userPolicy \PP\Portal\DbModel\UserPolicy */
-        $userPolicy = $this->claim->userPolicy()->first();
-
-        /* @var $userBankAcc \PP\Portal\DbModel\UserBankAcc */
-        $userBankAcc = $userPolicy->userBankAcc()->first();
-
-        if (!$userBankAcc) {
-            $userBankAcc = $this->UserBankAccModule->newBlankAcc($userPolicy->ppmid);
-            $this->UserBankAccModule->saveData($userBankAcc, $data);
-        }
-    }
-    
-    /**
      * @param string $status
      *
      * @return bool
@@ -210,23 +180,15 @@ class ClaimModule extends AbstractContainer
 
     private function saveExtraClaimData($k, $v)
     {
-        switch ($k) {
-            case 'bank':
-                $data = $v->data();
-                //$this->saveBankToUserAccout($data);
-                $data['claim_id'] = $this->claim->claim_id;
-                $this->saveBank($data);
+        $data = $v->data();
+        //$this->saveBankToUserAccout($data);
+        $data['claim_id'] = $this->claim->claim_id;
+        //$this->saveBank($data);
 
-                break;
-            case 'cheque':
-                $data = $v->data();
-                $data['claim_id'] = $this->claim->claim_id;
-                $this->saveCheque($data);
-
-                break;
-            default:
-                break;
+        foreach ($data as $dk => $dv) {
+            $this->{$k}->{$dk} = $dv;
         }
+        $this->{$k}->save();
     }
 
     public function clearCache()
@@ -257,6 +219,7 @@ class ClaimModule extends AbstractContainer
             $this->validateCheque($data);
         }
     }
+    
     /**
      * @param array $data
      */
@@ -265,18 +228,6 @@ class ClaimModule extends AbstractContainer
         $vb = new \Valitron\Validator($data, $this->cheque->getFillable());
         $vb->rule('required', ['first_name', 'address_line_2']);
         $this->claimExtraData['cheque'] = $vb;
-    }
-
-    /**
-     * @param array $data
-     */
-    public function saveCheque($data)
-    {
-        foreach ($data as $k => $v) {
-            $this->cheque->{$k} = $v;
-        }
-
-        $this->cheque->save();
     }
 
     public function saveAllInfo($data){

@@ -133,7 +133,7 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @depends testNewBankAcc
-     */
+     
     public function testSaveBank($ClaimModule)
     {
         $data = [
@@ -143,11 +143,11 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         $ClaimModule->saveBank($data);
         $this->expectOutputString('foo');
         echo 'foo';
-    }
+    }*/
 
     /**
      * @depends testGetInfoById
-     */
+     
     public function testSaveBankToUserAccout($ClaimModule)
     {
         $data = [
@@ -157,12 +157,12 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         $ClaimModule->saveBankToUserAccout($data);
         $this->expectOutputString('foo');
         echo 'foo';
-    }
+    }*/
 
     public function testSaveExtraClaimInfoloop()
     {
         $this->ClaimModule->newClaim(1);
-        $this->ClaimModule->claimExtraData['s'] = 'b';
+        $this->ClaimModule->newBankAcc([]);
         $this->ClaimModule->saveExtraClaimInfoloop();
 
         $this->expectOutputString('foo');
