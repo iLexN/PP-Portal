@@ -33,7 +33,7 @@ class ClaimUpdate extends AbstractContainer
 
         return $this->ViewHelper->withStatusCode($response, [
                     'data' => $this->msgCode[$this->getStatusCode($status)],
-                ], $code);
+                ], $this->getStatusCode($status));
     }
 
     private function validate($status){
