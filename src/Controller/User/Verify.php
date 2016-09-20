@@ -38,11 +38,13 @@ class Verify extends AbstractContainer
         return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2040]]);
     }
 
-    private function validator($data){
+    private function validator($data)
+    {
         $v = new \Valitron\Validator($data);
         $v->rule('required', ['ppmid', 'date_of_birth']);
         $v->rule('integer', 'ppmid');
         $v->rule('date', 'date_of_birth');
+
         return $v;
     }
 }

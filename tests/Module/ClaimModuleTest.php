@@ -133,32 +133,13 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @depends testNewBankAcc
-     
-    public function testSaveBank($ClaimModule)
-    {
-        $data = [
-            'iban'            => 'sdfdsfdsf',
-            'bank_swift_code' => 'dsfdsfdsf',
-        ];
-        $ClaimModule->saveBank($data);
-        $this->expectOutputString('foo');
-        echo 'foo';
-    }*/
+
+     }*/
 
     /**
      * @depends testGetInfoById
-     
-    public function testSaveBankToUserAccout($ClaimModule)
-    {
-        $data = [
-            'iban'            => 'sdfdsfdsf',
-            'bank_swift_code' => 'dsfdsfdsf',
-        ];
-        $ClaimModule->saveBankToUserAccout($data);
-        $this->expectOutputString('foo');
-        echo 'foo';
-    }*/
 
+     }*/
     public function testSaveExtraClaimInfoloop()
     {
         $this->ClaimModule->newClaim(1);

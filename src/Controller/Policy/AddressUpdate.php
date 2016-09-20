@@ -31,11 +31,13 @@ class AddressUpdate extends AbstractContainer
                 ], 5060);
     }
 
-    private function inputData($address,$input){
+    private function inputData($address, $input)
+    {
         $default = [];
         $default['status'] = 'pending';
         $default['old_id'] = $address['id'];
         $data = array_merge($address, $default, $input);
+
         return $data;
     }
 }

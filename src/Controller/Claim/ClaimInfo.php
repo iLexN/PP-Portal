@@ -9,7 +9,7 @@ use Slim\Http\Response;
 class ClaimInfo extends AbstractContainer
 {
     private $claimInfo;
-    
+
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         $this->claimInfo = $this->ClaimModule->claim;
@@ -31,21 +31,27 @@ class ClaimInfo extends AbstractContainer
                 ], 6030);
     }
 
-    private function getFileAttachment(){
+    private function getFileAttachment()
+    {
         $groupFileAttachments = $this->claimInfo->fileAttachments()->where('status', 'Upload')->get()->groupBy('file_type');
+
         return [
             'support_doc'   => $this->getDataByGroup($groupFileAttachments, 'support_doc'),
             'claim_form'    => $this->getDataByGroup($groupFileAttachments, 'claim_form'),
         ];
     }
 
-    private function getBankInfo(){
+    private function getBankInfo()
+    {
         $bankInfo = $this->claimInfo->bankInfo()->first();
+
         return is_null($bankInfo) ? null : $bankInfo->toArray();
     }
 
-    private function getCheque(){
+    private function getCheque()
+    {
         $cheque = $this->claimInfo->cheque()->first();
+
         return is_null($cheque) ? null : $cheque->toArray();
     }
 }
