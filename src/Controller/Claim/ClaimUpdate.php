@@ -18,11 +18,7 @@ class ClaimUpdate extends AbstractContainer
     {
         $this->v = $this->ClaimModule->validClaim((array) $request->getParsedBody(), $this->ClaimModule->claim->getFillable());
 
-        if (isset($request->getParsedBody()['bank'])) {
-            $this->ClaimModule->getBankAcc($request->getParsedBody()['bank']);
-        } else if (isset($request->getParsedBody()['cheque'])) {
-            $this->ClaimModule->getCheque($request->getParsedBody()['cheque']);
-        }
+        $this->ClaimModule->parseExtraData($request->getParsedBody());
 
         $status = $request->getParsedBody()['status'];
         if ($this->validate($status)) {

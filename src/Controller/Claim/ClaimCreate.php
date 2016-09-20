@@ -21,11 +21,7 @@ class ClaimCreate extends AbstractContainer
         $claim = $this->ClaimModule->newClaim($args['id']);
         $this->v = $this->ClaimModule->validClaim((array) $request->getParsedBody(), $claim->getFillable());
 
-        if (isset($request->getParsedBody()['bank'])) {
-            $this->ClaimModule->newBankAcc($request->getParsedBody()['bank']);
-        } else if (isset($request->getParsedBody()['cheque'])) {
-            $this->ClaimModule->newCheque($request->getParsedBody()['cheque']);
-        }
+        $this->ClaimModule->parseExtraData($request->getParsedBody());
 
         $status = $request->getParsedBody()['status'];
         if ($this->validate($status)) {

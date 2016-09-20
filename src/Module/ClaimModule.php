@@ -283,4 +283,12 @@ class ClaimModule extends AbstractContainer
         $this->saveClaim($data);
         $this->saveExtraClaimInfoloop();
     }
+
+    public function parseExtraData($data){
+        if (isset($data['bank'])) {
+            $this->newBankAcc($data['bank']);
+        } else if (isset($data['cheque'])) {
+            $this->newCheque($data['cheque']);
+        }
+    }
 }
