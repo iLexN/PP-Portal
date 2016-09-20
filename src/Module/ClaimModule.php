@@ -23,7 +23,7 @@ class ClaimModule extends AbstractContainer
     /**
      * @var \PP\Portal\DbModel\ClaimBankAcc
      */
-    public $bankInfo;
+    public $bank;
 
     /**
      * @var \PP\Portal\DbModel\ClaimCheque
@@ -123,7 +123,7 @@ class ClaimModule extends AbstractContainer
      */
     public function newBankAcc($data)
     {
-        $this->bankInfo = new ClaimBankAcc();
+        $this->bank = new ClaimBankAcc();
         $this->validateBankInfo($data);
     }
 
@@ -136,7 +136,7 @@ class ClaimModule extends AbstractContainer
         if (!$bank) {
             $this->newBankAcc($data);
         } else {
-            $this->bankInfo = $bank;
+            $this->bank = $bank;
             $this->validateBankInfo($data);
         }
     }
@@ -146,7 +146,7 @@ class ClaimModule extends AbstractContainer
      */
     private function validateBankInfo($data)
     {
-        $vb = new \Valitron\Validator($data, $this->bankInfo->getFillable());
+        $vb = new \Valitron\Validator($data, $this->bank->getFillable());
         $vb->rule('required', ['iban', 'bank_swift_code']);
         $this->claimExtraData['bank'] = $vb;
     }
@@ -157,10 +157,10 @@ class ClaimModule extends AbstractContainer
     public function saveBank($data)
     {
         foreach ($data as $k => $v) {
-            $this->bankInfo->{$k} = $v;
+            $this->bank->{$k} = $v;
         }
 
-        $this->bankInfo->save();
+        $this->bank->save();
     }
 
     /**

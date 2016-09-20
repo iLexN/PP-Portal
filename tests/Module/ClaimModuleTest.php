@@ -101,7 +101,7 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
             'bank_swift_code' => 'dsfdsfdsf',
         ];
         $this->ClaimModule->newBankAcc($data);
-        $this->assertInstanceOf(\PP\Portal\DbModel\ClaimBankAcc::class, $this->ClaimModule->bankInfo);
+        $this->assertInstanceOf(\PP\Portal\DbModel\ClaimBankAcc::class, $this->ClaimModule->bank);
 
         return $this->ClaimModule;
     }
@@ -113,7 +113,7 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         ];
         $this->assertTrue($this->ClaimModule->geInfoById(1));
         $this->ClaimModule->getBankAcc($data);
-        $this->assertInstanceOf(\PP\Portal\DbModel\ClaimBankAcc::class, $this->ClaimModule->bankInfo);
+        $this->assertInstanceOf(\PP\Portal\DbModel\ClaimBankAcc::class, $this->ClaimModule->bank);
 
         return $this->ClaimModule;
     }
