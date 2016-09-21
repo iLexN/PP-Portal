@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 09 月 13 日 17:28
+-- 產生時間： 2016 年 09 月 21 日 14:49
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -92,14 +92,15 @@ CREATE TABLE IF NOT EXISTS `member_portal_bank_transfer_user` (
   `intermediary_bank_swift_code` varchar(255) DEFAULT NULL,
   `ppmid` int(11) DEFAULT NULL,
   PRIMARY KEY (`banker_transfer_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- 資料表的匯出資料 `member_portal_bank_transfer_user`
 --
 
 INSERT INTO `member_portal_bank_transfer_user` (`banker_transfer_id`, `currency`, `account_user_name`, `account_number`, `iban`, `branch_code`, `bank_swift_code`, `bank_name`, `additional_information`, `intermediary_bank_swift_code`, `ppmid`) VALUES
-(1, '2', '2', '2', '2', '2', '2', '2', '2', '2', 2);
+(1, '2', '2', '2', '2', '2', '2', '2', '2', '2', 2),
+(2, '2', '2', '2', '2', '2', '2', '2', '2', '2', 2);
 
 -- --------------------------------------------------------
 
