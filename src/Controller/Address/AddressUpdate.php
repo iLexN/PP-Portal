@@ -1,6 +1,6 @@
 <?php
 
-namespace PP\Portal\Controller\Policy;
+namespace PP\Portal\Controller\Address;
 
 use PP\Portal\AbstractClass\AbstractContainer;
 use Psr\Http\Message\ServerRequestInterface;
@@ -10,7 +10,7 @@ class AddressUpdate extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        $address = $this->UserPolicyModule->userPolicy->policy->address()->find((int) $args['acid']);
+        $address = $this->getAddress($args);
 
         if (!$address) {
             throw new \Slim\Exception\NotFoundException($request, $response);
@@ -24,11 +24,11 @@ class AddressUpdate extends AbstractContainer
 
         $data = $this->inputData($address->toArray(), $v->data());
         $new = new \PP\Portal\DbModel\Address();
+
         $this->AddressModule->saveData($data, $new);
 
-        return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $new->toArray(),
-                ], 5060);
+        return $this->ViewHelper->withStatusCode($response, ['data' => $new->toArray()],
+                $this->getStatusCode($args));
     }
 
     private function inputData($address, $input)
@@ -39,5 +39,20 @@ class AddressUpdate extends AbstractContainer
         $data = array_merge($address, $default, $input);
 
         return $data;
+    }
+
+    private function getStatusCode($args){
+        if ( $args['mode'] === 'UserPolicy'){
+            return 5060;
+        }
+        return 2620;
+    }
+
+    private function getAddress($args){
+        if ( $args['mode'] === 'UserPolicy'){
+            return $this->UserPolicyModule->userPolicy->policy->address()->find((int) $args['acid']);
+        }
+        //User
+        return $this->UserModule->user->address()->find((int) $args['acid']);
     }
 }
