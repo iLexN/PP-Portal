@@ -89,8 +89,9 @@ $app->post('/user-policy/{id:\d+}/address/{acid:\d+}', 'PP\Portal\Controller\Pol
 $app->get('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimList')
         ->setName('ClaimList')
         ->add($checkUsePolicyrExist);
-$app->post('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimCreate')
+$app->post('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimUpdate')
         ->setName('ClaimCreate')
+        ->setArgument('mode','create')
         ->add($checkUsePolicyrExist);
 //Claim
 $app->get('/claim/{id:\d+}', 'PP\Portal\Controller\Claim\ClaimInfo')
@@ -98,6 +99,7 @@ $app->get('/claim/{id:\d+}', 'PP\Portal\Controller\Claim\ClaimInfo')
         ->add($checkClaimExist);
 $app->post('/claim/{id:\d+}', 'PP\Portal\Controller\Claim\ClaimUpdate')
         ->setName('ClaimUpdate')
+        ->setArgument('mode','update')
         ->add($checkClaimExist);
 $app->post('/claim/{id:\d+}/attachment', 'PP\Portal\Controller\Claim\ClaimAttachment')
         ->setName('ClaimAttachment')
