@@ -10,7 +10,7 @@ class BankAccActionUpdate extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        $acc = $this->UserModule->user->userAcc()->find($args['acid']);
+        $acc = $this->getAcc($args);
 
         if (!$acc) {
             throw new \Slim\Exception\NotFoundException($request, $response);
@@ -25,7 +25,18 @@ class BankAccActionUpdate extends AbstractContainer
 
         $this->UserBankAccModule->saveData($acc, $v->data());
 
-        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[3611],
-            ]);
+        return $this->ViewHelper->toJson($response, ['data' => $this->getCode($args)]);
+    }
+
+    private function getCode($args){
+        $code = $args['mode'] === 'create' ?  3610 : 3611;
+        return $this->msgCode[$code];
+    }
+
+    private function getAcc($args){
+        if ( $args['mode'] === 'create') {
+            return $this->UserBankAccModule->newBlankAcc($args['id']);
+        }
+        return $this->UserModule->user->userAcc()->find($args['acid']);
     }
 }

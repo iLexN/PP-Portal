@@ -44,11 +44,13 @@ $app->post('/user/{id:\d+}/change-passowrd', 'PP\Portal\Controller\User\ChangePa
 $app->get('/user/{id:\d+}/bank-account', 'PP\Portal\Controller\User\BankAccInfo')
         ->setName('BankAccInfo')
         ->add($checkUserExist);
-$app->post('/user/{id:\d+}/bank-account', 'PP\Portal\Controller\User\BankAccActionNew')
+$app->post('/user/{id:\d+}/bank-account', 'PP\Portal\Controller\User\BankAccActionUpdate')
         ->setName('BankAccAction.new')
+        ->setArgument('mode','create')
         ->add($checkUserExist);
 $app->post('/user/{id:\d+}/bank-account/{acid:\d+}', 'PP\Portal\Controller\User\BankAccActionUpdate')
         ->setName('BankAccAction.edit')
+        ->setArgument('mode','update')
         ->add($checkUserExist);
 $app->delete('/user/{id:\d+}/bank-account/{acid:\d+}', 'PP\Portal\Controller\User\BankAccActionDel')
         ->setName('BankAccAction.del')
