@@ -85,7 +85,7 @@ class AddressNewTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(1020, $out['status_code']);
+        $this->assertEquals(2610, $out['status_code']);
     }
 
 }
