@@ -41,15 +41,18 @@ class AddressUpdate extends AbstractContainer
         return $data;
     }
 
-    private function getStatusCode($args){
-        if ( $args['mode'] === 'UserPolicy'){
+    private function getStatusCode($args)
+    {
+        if ($args['mode'] === 'UserPolicy') {
             return 5060;
         }
+
         return 2620;
     }
 
-    private function getAddress($args){
-        if ( $args['mode'] === 'UserPolicy'){
+    private function getAddress($args)
+    {
+        if ($args['mode'] === 'UserPolicy') {
             return $this->UserPolicyModule->userPolicy->policy->address()->find((int) $args['acid']);
         }
         //User

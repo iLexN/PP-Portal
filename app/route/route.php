@@ -46,11 +46,11 @@ $app->get('/user/{id:\d+}/bank-account', 'PP\Portal\Controller\User\BankAccInfo'
         ->add($checkUserExist);
 $app->post('/user/{id:\d+}/bank-account', 'PP\Portal\Controller\User\BankAccActionUpdate')
         ->setName('BankAccAction.new')
-        ->setArgument('mode','create')
+        ->setArgument('mode', 'create')
         ->add($checkUserExist);
 $app->post('/user/{id:\d+}/bank-account/{acid:\d+}', 'PP\Portal\Controller\User\BankAccActionUpdate')
         ->setName('BankAccAction.edit')
-        ->setArgument('mode','update')
+        ->setArgument('mode', 'update')
         ->add($checkUserExist);
 $app->delete('/user/{id:\d+}/bank-account/{acid:\d+}', 'PP\Portal\Controller\User\BankAccActionDel')
         ->setName('BankAccAction.del')
@@ -69,7 +69,7 @@ $app->post('/user/{id:\d+}/address', 'PP\Portal\Controller\User\AddressNew')
         ->add($checkUserExist);
 $app->post('/user/{id:\d+}/address/{acid:\d+}', 'PP\Portal\Controller\Address\AddressUpdate')
         ->setName('addresslist.update')
-        ->setArgument('mode','User')
+        ->setArgument('mode', 'User')
         ->add($checkUserExist);
 
 $app->get('/advisor/{id:\d+}', 'PP\Portal\Controller\Advisor\Info')
@@ -88,14 +88,14 @@ $app->get('/user-policy/{id:\d+}/address', 'PP\Portal\Controller\Policy\AddressL
         ->add($checkUsePolicyrExist);
 $app->post('/user-policy/{id:\d+}/address/{acid:\d+}', 'PP\Portal\Controller\Address\AddressUpdate')
         ->setName('PolicyAddressInfo.update')
-        ->setArgument('mode','UserPolicy')
+        ->setArgument('mode', 'UserPolicy')
         ->add($checkUsePolicyrExist);
 $app->get('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimList')
         ->setName('ClaimList')
         ->add($checkUsePolicyrExist);
 $app->post('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimUpdate')
         ->setName('ClaimCreate')
-        ->setArgument('mode','create')
+        ->setArgument('mode', 'create')
         ->add($checkUsePolicyrExist);
 //Claim
 $app->get('/claim/{id:\d+}', 'PP\Portal\Controller\Claim\ClaimInfo')
@@ -103,7 +103,7 @@ $app->get('/claim/{id:\d+}', 'PP\Portal\Controller\Claim\ClaimInfo')
         ->add($checkClaimExist);
 $app->post('/claim/{id:\d+}', 'PP\Portal\Controller\Claim\ClaimUpdate')
         ->setName('ClaimUpdate')
-        ->setArgument('mode','update')
+        ->setArgument('mode', 'update')
         ->add($checkClaimExist);
 $app->post('/claim/{id:\d+}/attachment', 'PP\Portal\Controller\Claim\ClaimAttachment')
         ->setName('ClaimAttachment')

@@ -34,7 +34,7 @@ class ClaimUpdate extends AbstractContainer
         return $this->ViewHelper->withStatusCode($response, [
                     //'data' => $this->msgCode[$this->getStatusCode($status)],
                     'data' => ['id' => $this->ClaimModule->claim->claim_id],
-                ], $this->getStatusCode($status,$mode));
+                ], $this->getStatusCode($status, $mode));
     }
 
     private function validate($status)
@@ -42,16 +42,18 @@ class ClaimUpdate extends AbstractContainer
         return !$this->v->validate() || !$this->ClaimModule->validateClaimInfo($status);
     }
 
-    private function getStatusCode($status,$mode)
+    private function getStatusCode($status, $mode)
     {
-        if ( $mode === 'create') {
+        if ($mode === 'create') {
             return $status == 'Submit' ? 5010 : 5011;
         }
+
         return $status == 'Submit' ? 6020 : 6021;
     }
 
-    private function setClaim($mode,$id) {
-        if ( $mode === 'create') {
+    private function setClaim($mode, $id)
+    {
+        if ($mode === 'create') {
             $this->ClaimModule->newClaim($id);
         }
     }
