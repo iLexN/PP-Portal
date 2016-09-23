@@ -71,8 +71,8 @@ class AddressUpdateTest extends \PHPUnit_Framework_TestCase
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
             ]);
-        unset($_POST);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
 
         $response = $this->response;
 
