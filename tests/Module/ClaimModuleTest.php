@@ -122,7 +122,7 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         $data = [
             'iban' => 'sdfdsfdsf',
         ];
-        $this->assertTrue($this->ClaimModule->geInfoById(2));
+        $this->assertTrue($this->ClaimModule->geInfoById(5));
         $this->ClaimModule->getBankAcc($data);
         $this->assertInstanceOf(\PP\Portal\DbModel\ClaimBankAcc::class, $this->ClaimModule->bank);
 
