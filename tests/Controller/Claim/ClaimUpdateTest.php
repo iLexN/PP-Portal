@@ -61,7 +61,7 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         unset($_POST);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id' => 1,'mode'=>'create']);
+        $response = $action($request, $response, ['id' => 1, 'mode' => 'create']);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(1020, $out['status_code']);
@@ -82,7 +82,7 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         unset($_POST);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id' => 1,'mode'=>'update']);
+        $response = $action($request, $response, ['id' => 1, 'mode' => 'update']);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(6020, $out['status_code']);
@@ -103,7 +103,7 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         unset($_POST);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id' => 1,'mode'=>'update']);
+        $response = $action($request, $response, ['id' => 1, 'mode' => 'update']);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(6021, $out['status_code']);

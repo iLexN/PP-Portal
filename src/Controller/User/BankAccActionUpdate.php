@@ -28,15 +28,19 @@ class BankAccActionUpdate extends AbstractContainer
         return $this->ViewHelper->toJson($response, ['data' => $this->getCode($args)]);
     }
 
-    private function getCode($args){
-        $code = $args['mode'] === 'create' ?  3610 : 3611;
+    private function getCode($args)
+    {
+        $code = $args['mode'] === 'create' ? 3610 : 3611;
+
         return $this->msgCode[$code];
     }
 
-    private function getAcc($args){
-        if ( $args['mode'] === 'create') {
+    private function getAcc($args)
+    {
+        if ($args['mode'] === 'create') {
             return $this->UserBankAccModule->newBlankAcc($args['id']);
         }
+
         return $this->UserModule->user->userAcc()->find($args['acid']);
     }
 }
