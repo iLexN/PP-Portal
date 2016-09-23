@@ -117,6 +117,7 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
 
         return $this->ClaimModule;
     }
+
     public function testGetBankAcc2()
     {
         $data = [
@@ -175,40 +176,44 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         echo 'foo';
     }
 
-    public function testNewCheque(){
+    public function testNewCheque()
+    {
         $this->ClaimModule->newClaim(1);
         $data = [
             'first_name'            => 'sdfdsfdsf',
-            'address_line_2' => 'dsfdsfdsf',
+            'address_line_2'        => 'dsfdsfdsf',
         ];
         $this->ClaimModule->newCheque($data);
-         $this->expectOutputString('foo');
+        $this->expectOutputString('foo');
         echo 'foo';
     }
 
-    public function testGetCheque(){
+    public function testGetCheque()
+    {
         $this->ClaimModule->newClaim(1);
         $data = [
             'first_name'            => 'sdfdsfdsf',
-            'address_line_2' => 'dsfdsfdsf',
-        ];
-        $this->ClaimModule->getCheque($data);
-         $this->expectOutputString('foo');
-        echo 'foo';
-    }
-
-    public function testGetCheque2(){
-        $this->ClaimModule->geInfoById(2);
-        $data = [
-            'first_name'            => 'sdfdsfdsf',
-            'address_line_2' => 'dsfdsfdsf',
+            'address_line_2'        => 'dsfdsfdsf',
         ];
         $this->ClaimModule->getCheque($data);
         $this->expectOutputString('foo');
         echo 'foo';
     }
 
-    public function testSaveAllInfo(){
+    public function testGetCheque2()
+    {
+        $this->ClaimModule->geInfoById(2);
+        $data = [
+            'first_name'            => 'sdfdsfdsf',
+            'address_line_2'        => 'dsfdsfdsf',
+        ];
+        $this->ClaimModule->getCheque($data);
+        $this->expectOutputString('foo');
+        echo 'foo';
+    }
+
+    public function testSaveAllInfo()
+    {
         $this->ClaimModule->newClaim(1);
         $data = [];
         $this->ClaimModule->saveAllInfo($data);
@@ -216,11 +221,12 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         echo 'foo';
     }
 
-    public function testParseExtraData(){
-        $data = ['bank'=>[]];
+    public function testParseExtraData()
+    {
+        $data = ['bank' => []];
         $this->ClaimModule->parseExtraData($data);
 
-        $data = ['cheque'=>[]];
+        $data = ['cheque' => []];
         $this->ClaimModule->parseExtraData($data);
 
         $this->expectOutputString('foo');

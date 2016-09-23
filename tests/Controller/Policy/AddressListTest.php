@@ -43,7 +43,6 @@ class AddressListTest extends \PHPUnit_Framework_TestCase
 
     public function testGet()
     {
-        
         $action = $this->action;
         $environment = \Slim\Http\Environment::mock([]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
@@ -54,5 +53,4 @@ class AddressListTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(5050, $out['status_code']);
     }
-
 }

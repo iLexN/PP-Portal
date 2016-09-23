@@ -41,17 +41,19 @@ class AddressUpdateTest extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\Helper\View($c);
         };
 
-        $c['UserModule'] = function ($c){
+        $c['UserModule'] = function ($c) {
             $userModule = new \PP\Portal\Module\UserModule($c);
             $userModule->isUserExistByID(2);
+
             return $userModule;
         };
-        $c['AddressModule'] = function ($c){
+        $c['AddressModule'] = function ($c) {
             return new \PP\Portal\Module\AddressModule($c);
         };
-        $c['UserPolicyModule'] = function ($c){
+        $c['UserPolicyModule'] = function ($c) {
             $userPolicyModule = new \PP\Portal\Module\UserPolicyModule($c);
             $userPolicyModule->getUerPolicy(1);
+
             return $userPolicyModule;
         };
 
@@ -76,7 +78,7 @@ class AddressUpdateTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['id' => 2,'acid'=>'1111','mode'=>'User']);
+        $response = $action($request, $response, ['id' => 2, 'acid' => '1111', 'mode' => 'User']);
         //$out = json_decode((string) $response->getBody(), true);
         //$this->assertEquals(5040, $out['status_code']);
     }
@@ -95,7 +97,7 @@ class AddressUpdateTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['id' => 2,'acid'=>'1','mode'=>'User']);
+        $response = $action($request, $response, ['id' => 2, 'acid' => '1', 'mode' => 'User']);
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(1020, $out['status_code']);
     }
@@ -114,7 +116,7 @@ class AddressUpdateTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['id' => 2,'acid'=>'1','mode'=>'User']);
+        $response = $action($request, $response, ['id' => 2, 'acid' => '1', 'mode' => 'User']);
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2620, $out['status_code']);
     }
@@ -133,10 +135,8 @@ class AddressUpdateTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['id' => 1,'acid'=>'2','mode'=>'UserPolicy']);
+        $response = $action($request, $response, ['id' => 1, 'acid' => '2', 'mode' => 'UserPolicy']);
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(5060, $out['status_code']);
     }
-
-    
 }

@@ -53,5 +53,4 @@ class AddressListTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2600, $out['status_code']);
     }
-
 }

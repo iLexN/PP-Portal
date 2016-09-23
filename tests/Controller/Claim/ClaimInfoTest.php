@@ -35,7 +35,7 @@ class ClaimInfoTest extends \PHPUnit_Framework_TestCase
         $c['ClaimModule'] = function ($c) {
             return new \PP\Portal\Module\ClaimModule($c);
         };
-        
+
         $this->c = $c;
         $this->action = new \PP\Portal\Controller\Claim\ClaimInfo($c);
         $this->response = new \Slim\Http\Response();
