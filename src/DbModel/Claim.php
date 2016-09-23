@@ -39,7 +39,7 @@ class Claim extends Model
         return $this->hasOne(__NAMESPACE__.'\ClaimCheque', 'claim_id');
     }
 
-    /**
+    /*
     public function userPolicy()
     {
         return $this->belongsTo(__NAMESPACE__.'\UserPolicy', 'user_policy_id', 'id');

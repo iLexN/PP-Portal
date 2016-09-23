@@ -53,8 +53,8 @@ class UserPreferenceUpdateTest extends \PHPUnit_Framework_TestCase
         $action = $this->action;
 
         $_POST = [
-            'currency'=>'HKD',
-            'currency_receive'=>'HKD',
+            'currency'         => 'HKD',
+            'currency_receive' => 'HKD',
         ];
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
@@ -77,8 +77,8 @@ class UserPreferenceUpdateTest extends \PHPUnit_Framework_TestCase
         $action = $this->action;
 
         $_POST = [
-            'currency-wrong'=>'HKD',
-            'currency_receive'=>'HKD',
+            'currency-wrong'   => 'HKD',
+            'currency_receive' => 'HKD',
         ];
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
@@ -104,8 +104,8 @@ class UserPreferenceUpdateTest extends \PHPUnit_Framework_TestCase
         $action = $this->action;
 
         $_POST = [
-            'currency-wrong'=>'HKD',
-            'currency_receive'=>'HKD',
+            'currency-wrong'   => 'HKD',
+            'currency_receive' => 'HKD',
         ];
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
@@ -116,7 +116,5 @@ class UserPreferenceUpdateTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->response;
         $response = $action($request, $response, []);
-
     }
-
 }

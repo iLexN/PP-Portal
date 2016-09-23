@@ -45,12 +45,12 @@ class AddressNewTest extends \PHPUnit_Framework_TestCase
         $this->action = new \PP\Portal\Controller\User\AddressNew($c);
         $this->response = new \Slim\Http\Response();
     }
-    
+
     public function testFail()
     {
         $this->c['UserModule']->isUserExistByID(2);
         $action = $this->action;
-        
+
         $_POST = [];
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
@@ -72,7 +72,7 @@ class AddressNewTest extends \PHPUnit_Framework_TestCase
         $action = $this->action;
 
         $_POST = [
-            'nick_name'=>'a',
+            'nick_name' => 'a',
         ];
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
@@ -87,5 +87,4 @@ class AddressNewTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2610, $out['status_code']);
     }
-
 }

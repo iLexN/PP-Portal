@@ -22,27 +22,25 @@ class UserPreferenceModuleTest extends \PHPUnit_Framework_TestCase
         $c['dataCacheConfig'] = ['expiresAfter' => 1];
 
 
-        $c['UserModule'] = function ($c){
+        $c['UserModule'] = function ($c) {
             $userModule = new \PP\Portal\Module\UserModule($c);
             $userModule->isUserExistByID(2);
+
             return $userModule;
         };
 
         $this->userPreferenceModule = new \PP\Portal\Module\UserPreferenceModule($c);
-        
     }
 
     public function testNewPreference()
-    {   
+    {
         $info = $this->userPreferenceModule->newPreference();
-        $this->assertInstanceOf(\PP\Portal\DbModel\UserPreference::class , $info);
+        $this->assertInstanceOf(\PP\Portal\DbModel\UserPreference::class, $info);
     }
 
     public function testGetByUserID()
     {
         $info = $this->userPreferenceModule->getByUserID();
-        $this->assertInstanceOf(\PP\Portal\DbModel\UserPreference::class , $info);
+        $this->assertInstanceOf(\PP\Portal\DbModel\UserPreference::class, $info);
     }
-
-    
 }

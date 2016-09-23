@@ -21,15 +21,16 @@ class AddressModuleTest extends \PHPUnit_Framework_TestCase
         $data = [
             'nick_name'         => 't',
         ];
-        $v = $this->addressModule->setValidator($data , $this->address);
-        $this->assertInstanceOf(\Valitron\Validator::class , $v);
+        $v = $this->addressModule->setValidator($data, $this->address);
+        $this->assertInstanceOf(\Valitron\Validator::class, $v);
     }
 
-    public function testSaveData(){
+    public function testSaveData()
+    {
         $data = [
             'nick_name'         => 't',
         ];
-        $v = $this->addressModule->saveData($data , $this->address);
+        $v = $this->addressModule->saveData($data, $this->address);
         $this->expectOutputString('foo');
         echo 'foo';
     }
