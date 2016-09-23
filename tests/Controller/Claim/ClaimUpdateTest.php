@@ -22,6 +22,12 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
                 '6021' => [
                     'code'  => 6021,
                 ],
+                '5010' => [
+                    'code'  => 5010,
+                ],
+                '5011' => [
+                    'code'  => 5011,
+                ],
             ];
         };
         $c['pool'] = function () {
@@ -107,5 +113,47 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(6021, $out['status_code']);
+    }
+
+    public function testCreateSubmit()
+    {
+        $this->c['ClaimModule']->geInfoById(1);
+        $action = $this->action;
+
+        $_POST['status'] = 'Submit';
+        $_POST['bank'] = ['iban' => '123', 'bank_swift_code' => 'sdfds'];
+        $environment = \Slim\Http\Environment::mock([
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = $this->response;
+        $response = $action($request, $response, ['id' => 1, 'mode' => 'create']);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(5010, $out['status_code']);
+    }
+
+    public function testCreateSave()
+    {
+        $this->c['ClaimModule']->geInfoById(1);
+        $action = $this->action;
+
+        $_POST['status'] = 'Save';
+        $_POST['bank'] = ['iban' => '123', 'bank_swift_code' => 'sdfds'];
+        $environment = \Slim\Http\Environment::mock([
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = $this->response;
+        $response = $action($request, $response, ['id' => 1, 'mode' => 'create']);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(5011, $out['status_code']);
     }
 }

@@ -21,6 +21,9 @@ class BankAccActionUpdateTest extends \PHPUnit_Framework_TestCase
                 '3611' => [
                     'code'  => 3611,
                 ],
+                '3610' => [
+                    'code'  => 3610,
+                ],
             ];
         };
         $c['pool'] = function () {
@@ -103,5 +106,26 @@ class BankAccActionUpdateTest extends \PHPUnit_Framework_TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(3611, $out['status_code']);
+    }
+
+    public function testSuccessCreate()
+    {
+        $action = $this->action;
+
+        $_POST['iban'] = 'update';
+        $_POST['bank_swift_code'] = 'update';
+        $environment = \Slim\Http\Environment::mock([
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = $this->response;
+
+        $response = $action($request, $response, ['id' => 2, 'mode' => 'create']);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(3610, $out['status_code']);
     }
 }
