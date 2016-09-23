@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 09 月 23 日 15:50
+-- 產生時間： 2016 年 09 月 23 日 16:40
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -130,6 +130,13 @@ CREATE TABLE IF NOT EXISTS `member_portal_cheque` (
   `claim_id` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 資料表的匯出資料 `member_portal_cheque`
+--
+
+INSERT INTO `member_portal_cheque` (`id`, `title`, `first_name`, `middle_name`, `last_name`, `address_line_2`, `address_line_3`, `address_line_4`, `address_line_5`, `claim_id`) VALUES
+(1, '2', '2', '2', '2', '2', '2', '2', '2', '2');
 
 -- --------------------------------------------------------
 

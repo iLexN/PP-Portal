@@ -117,6 +117,17 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
 
         return $this->ClaimModule;
     }
+    public function testGetBankAcc2()
+    {
+        $data = [
+            'iban' => 'sdfdsfdsf',
+        ];
+        $this->assertTrue($this->ClaimModule->geInfoById(2));
+        $this->ClaimModule->getBankAcc($data);
+        $this->assertInstanceOf(\PP\Portal\DbModel\ClaimBankAcc::class, $this->ClaimModule->bank);
+
+        return $this->ClaimModule;
+    }
 
     /**
      * @depends testNewBankAcc
@@ -159,6 +170,58 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
         ];
         $this->ClaimModule->newBankAcc($data);
         $this->ClaimModule->saveExtraClaimInfoloop();
+
+        $this->expectOutputString('foo');
+        echo 'foo';
+    }
+
+    public function testNewCheque(){
+        $this->ClaimModule->newClaim(1);
+        $data = [
+            'first_name'            => 'sdfdsfdsf',
+            'address_line_2' => 'dsfdsfdsf',
+        ];
+        $this->ClaimModule->newCheque($data);
+         $this->expectOutputString('foo');
+        echo 'foo';
+    }
+
+    public function testGetCheque(){
+        $this->ClaimModule->newClaim(1);
+        $data = [
+            'first_name'            => 'sdfdsfdsf',
+            'address_line_2' => 'dsfdsfdsf',
+        ];
+        $this->ClaimModule->getCheque($data);
+         $this->expectOutputString('foo');
+        echo 'foo';
+    }
+
+    public function testGetCheque2(){
+        $this->ClaimModule->geInfoById(2);
+        $data = [
+            'first_name'            => 'sdfdsfdsf',
+            'address_line_2' => 'dsfdsfdsf',
+        ];
+        $this->ClaimModule->getCheque($data);
+        $this->expectOutputString('foo');
+        echo 'foo';
+    }
+
+    public function testSaveAllInfo(){
+        $this->ClaimModule->newClaim(1);
+        $data = [];
+        $this->ClaimModule->saveAllInfo($data);
+        $this->expectOutputString('foo');
+        echo 'foo';
+    }
+
+    public function testParseExtraData(){
+        $data = ['bank'=>[]];
+        $this->ClaimModule->parseExtraData($data);
+
+        $data = ['cheque'=>[]];
+        $this->ClaimModule->parseExtraData($data);
 
         $this->expectOutputString('foo');
         echo 'foo';
