@@ -1,6 +1,6 @@
 <?php
 
-namespace PP\Test\User;
+namespace PP\Test\Policy;
 
 class AddressListTest extends \PHPUnit_Framework_TestCase
 {
@@ -13,8 +13,8 @@ class AddressListTest extends \PHPUnit_Framework_TestCase
         $c = new \Slim\Container();
         $c['msgCode'] = function (\Slim\Container $c) {
             return [
-                '2600' => [
-                    'code'  => 2600,
+                '5050' => [
+                    'code'  => 5050,
                 ],
             ];
         };
@@ -31,18 +31,19 @@ class AddressListTest extends \PHPUnit_Framework_TestCase
         $c['ViewHelper'] = function (\Slim\Container $c) {
             return new \PP\Portal\Module\Helper\View($c);
         };
-        $c['UserModule'] = function ($c) {
-            return new \PP\Portal\Module\UserModule($c);
+        $c['UserPolicyModule'] = function ($c) {
+            return new \PP\Portal\Module\UserPolicyModule($c);
         };
+        $c['UserPolicyModule']->getUerPolicy(1);
 
         $this->c = $c;
-        $this->action = new \PP\Portal\Controller\User\AddressList($c);
+        $this->action = new \PP\Portal\Controller\Policy\AddressList($c);
         $this->response = new \Slim\Http\Response();
     }
 
     public function testGet()
     {
-        $this->c['UserModule']->isUserExistByID(2);
+        
         $action = $this->action;
         $environment = \Slim\Http\Environment::mock([]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
@@ -51,7 +52,7 @@ class AddressListTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(2600, $out['status_code']);
+        $this->assertEquals(5050, $out['status_code']);
     }
 
 }
