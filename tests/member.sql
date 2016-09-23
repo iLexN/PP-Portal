@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 09 月 21 日 14:49
+-- 產生時間： 2016 年 09 月 23 日 12:39
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `member_portal_address_user`;
 CREATE TABLE IF NOT EXISTS `member_portal_address_user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `address_type` varchar(255) DEFAULT NULL,
   `nick_name` varchar(255) DEFAULT NULL,
   `address_line_2` varchar(255) DEFAULT NULL,
@@ -41,7 +41,15 @@ CREATE TABLE IF NOT EXISTS `member_portal_address_user` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- 資料表的匯出資料 `member_portal_address_user`
+--
+
+INSERT INTO `member_portal_address_user` (`id`, `address_type`, `nick_name`, `address_line_2`, `address_line_3`, `address_line_4`, `address_line_5`, `ref_id`, `status`, `old_id`, `created_at`, `updated_at`) VALUES
+(1, 'user', 'test', 'test', 'test', 'test', 'test', 2, 'active', NULL, '2016-09-14 12:44:51', '2016-09-14 12:44:51'),
+(2, 'policy_address', 'policy_address', 'policy_address', 'policy_address', 'policy_address', 'policy_address', 1, NULL, NULL, '2016-09-14 00:00:00', '2016-09-14 00:00:00');
 
 -- --------------------------------------------------------
 
