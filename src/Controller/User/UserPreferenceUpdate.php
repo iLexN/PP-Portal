@@ -12,6 +12,10 @@ class UserPreferenceUpdate extends AbstractContainer
     {
         $info = $this->UserPreferenceModule->getByUserID();
 
+        if (!$info) {
+            throw new \Slim\Exception\NotFoundException($request, $response);
+        }
+        
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $info->getFillable());
         $v->rule('required', ['currency', 'currency_receive']);
 
