@@ -11,6 +11,10 @@ use PP\Portal\AbstractClass\AbstractContainer;
  */
 class UserPreferenceModule extends AbstractContainer
 {
+    /**
+     *
+     * @return \PP\Portal\DbModel\UserPreference
+     */
     public function newPreference()
     {
         $info = $this->UserModule->user->userPreference()->create([
@@ -22,6 +26,10 @@ class UserPreferenceModule extends AbstractContainer
         return $info;
     }
 
+    /**
+     *
+     * @return \PP\Portal\DbModel\UserPreference
+     */
     public function getByUserID()
     {
         $id = $this->UserModule->user->ppmid;

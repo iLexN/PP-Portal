@@ -162,11 +162,18 @@ class UserModule extends AbstractContainer
         $this->clearUserCache();
     }
 
+    /**
+     * clear user info Cache
+     */
     private function clearUserCache()
     {
         $this->pool->deleteItem('User/'.$this->user->ppmid.'/info');
     }
 
+    /**
+     *
+     * @return UserInfoReNew
+     */
     public function newInfoReNew()
     {
         $newInfo = new UserInfoReNew();
@@ -176,6 +183,10 @@ class UserModule extends AbstractContainer
         return $newInfo;
     }
 
+    /**
+     *
+     * @return UserInfoReNew
+     */
     public function getInfoReNew()
     {
         $renewInfo = $this->user->reNewInfo()->
@@ -210,6 +221,10 @@ class UserModule extends AbstractContainer
         $this->clearUserCache();
     }
 
+    /**
+     *
+     * @return ForgotUsername
+     */
     public function newForgotUsername()
     {
         return new \PP\Portal\DbModel\ForgotUsername();
@@ -229,6 +244,11 @@ class UserModule extends AbstractContainer
         $user->save();
     }
 
+    /**
+     *
+     * @param string $phone
+     * @return bool
+     */
     public function isPhoneMatch($phone)
     {
         return $this->user->phone_1 == $phone || $this->user->phone_2 == $phone;

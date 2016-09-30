@@ -61,6 +61,10 @@ class ClaimModule extends AbstractContainer
         return $v;
     }
 
+    /**
+     *
+     * @param array $data
+     */
     public function saveClaim($data)
     {
         foreach ($data as $k => $v) {

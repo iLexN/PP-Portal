@@ -40,6 +40,7 @@ class ForgotUsername extends AbstractContainer
         if (!$this->UserModule->isPhoneMatch($data['phone'])) {
             return false;
         }
+        
         return true;
     }
 
