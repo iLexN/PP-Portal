@@ -229,7 +229,8 @@ class UserModule extends AbstractContainer
         $user->save();
     }
 
-    public function isPhoneMatch($phone) {
+    public function isPhoneMatch($phone)
+    {
         return $this->user->phone_1 == $phone || $this->user->phone_2 == $phone;
     }
 }

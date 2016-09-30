@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 09 月 23 日 16:40
+-- 產生時間： 2016 年 09 月 30 日 09:35
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -334,7 +334,7 @@ CREATE TABLE IF NOT EXISTS `member_portal_user` (
 --
 
 INSERT INTO `member_portal_user` (`ppmid`, `title`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `user_name`, `password`, `nationality`, `email`, `phone_1`, `phone_2`, `forgot_str`, `forgot_expire`) VALUES
-(2, 'Dr', 'www', 'eee', 'rrr', '1980-10-10', 'alex', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'alex@kwiksure.com', NULL, NULL, '5550522d-f8a8-4203-81c1-fa3b567157cc', '2020-07-28 16:12:33'),
+(2, 'Dr', 'www', 'eee', 'rrr', '1980-10-10', 'alex', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'alex@kwiksure.com', '12345678', NULL, '5550522d-f8a8-4203-81c1-fa3b567157cc', '2020-07-28 16:12:33'),
 (9677, NULL, 'dsdsab', 'sds', 'dsd', '1981-06-06', 'peter', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'peter.suen@pacificprime.com', '12345678', '87654321', NULL, NULL),
 (135928, 'Mrs', 'Aja', 'O', 'Gorman', '1980-12-20', 'peter2', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'Canadian', NULL, NULL, NULL, NULL, NULL),
 (135929, 'Mr', 'Paul', 'Andrew', 'Woods', '1985-12-22', NULL, NULL, 'Canadian', NULL, NULL, NULL, NULL, NULL),
