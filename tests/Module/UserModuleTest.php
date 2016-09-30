@@ -154,7 +154,8 @@ class UserModuleTest extends \PHPUnit_Framework_TestCase
         echo 'foo';
     }
 
-    public function testisPhoneMatch(){
+    public function testisPhoneMatch()
+    {
         $this->userModule->isUserExistByID(2);
         $this->assertTrue($this->userModule->isPhoneMatch('12345678'));
         $this->assertFalse($this->userModule->isPhoneMatch('12345679'));

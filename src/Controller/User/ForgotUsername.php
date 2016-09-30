@@ -21,11 +21,7 @@ class ForgotUsername extends AbstractContainer
         }
 
         $data = $v->data();
-        if (!$this->UserModule->isUserExistByEmail($data['email'])) {
-            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010]]);
-        }
-
-        if (!$this->UserModule->isPhoneMatch($data['phone'])) {
+        if (!$this->userMatch($data)) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010]]);
         }
 
@@ -34,6 +30,17 @@ class ForgotUsername extends AbstractContainer
 
         return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2550],
         ]);
+    }
+
+    private function userMatch($data)
+    {
+        if (!$this->UserModule->isUserExistByEmail($data['email'])) {
+            return false;
+        }
+        if (!$this->UserModule->isPhoneMatch($data['phone'])) {
+            return false;
+        }
+        return true;
     }
 
     /**
