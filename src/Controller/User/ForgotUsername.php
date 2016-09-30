@@ -25,6 +25,10 @@ class ForgotUsername extends AbstractContainer
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010]]);
         }
 
+        if (!$this->UserModule->isPhoneMatch($data['phone'])) {
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010]]);
+        }
+
         $this->UserModule->saveForgotUsername($user, $data);
         $this->sendForgotUsernameEmail();
 
