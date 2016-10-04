@@ -62,7 +62,6 @@ class ClaimModule extends AbstractContainer
     }
 
     /**
-     *
      * @param array $data
      */
     public function saveClaim($data)
