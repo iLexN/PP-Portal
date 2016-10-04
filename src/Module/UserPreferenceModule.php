@@ -12,7 +12,6 @@ use PP\Portal\AbstractClass\AbstractContainer;
 class UserPreferenceModule extends AbstractContainer
 {
     /**
-     *
      * @return \PP\Portal\DbModel\UserPreference
      */
     public function newPreference()
@@ -27,7 +26,6 @@ class UserPreferenceModule extends AbstractContainer
     }
 
     /**
-     *
      * @return \PP\Portal\DbModel\UserPreference
      */
     public function getByUserID()

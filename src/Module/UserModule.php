@@ -163,7 +163,7 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     * clear user info Cache
+     * clear user info Cache.
      */
     private function clearUserCache()
     {
@@ -171,7 +171,6 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @return UserInfoReNew
      */
     public function newInfoReNew()
@@ -184,7 +183,6 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @return UserInfoReNew
      */
     public function getInfoReNew()
@@ -222,7 +220,6 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @return ForgotUsername
      */
     public function newForgotUsername()
@@ -245,8 +242,8 @@ class UserModule extends AbstractContainer
     }
 
     /**
-     *
      * @param string $phone
+     *
      * @return bool
      */
     public function isPhoneMatch($phone)
