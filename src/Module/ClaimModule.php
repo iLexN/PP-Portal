@@ -71,7 +71,7 @@ class ClaimModule extends AbstractContainer
         }
 
         $this->claim->save();
-        $this->clearCache();
+        //$this->clearCache();
     }
 
     /**
@@ -81,17 +81,17 @@ class ClaimModule extends AbstractContainer
      */
     public function getClaimList(UserPolicy $userPolicy)
     {
-        $item = $this->pool->getItem('UserPolicy/'.$userPolicy->id.'/claimList');
+        //$item = $this->pool->getItem('UserPolicy/'.$userPolicy->id.'/claimList');
 
-        $claim = $item->get();
+        //$claim = $item->get();
 
-        if ($item->isMiss()) {
-            $item->lock();
-            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+        //if ($item->isMiss()) {
+        //    $item->lock();
+        //    $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             //$item->expiresAfter(3600/4);
             $claim = $userPolicy->claims()->orderBy('created_at', 'desc')->get();
-            $this->pool->save($item->set($claim));
-        }
+        //    $this->pool->save($item->set($claim));
+        //}
 
         return $claim;
     }
@@ -103,15 +103,15 @@ class ClaimModule extends AbstractContainer
      */
     public function geInfoById($id)
     {
-        $item = $this->pool->getItem('Claim/'.$id);
-        $claim = $item->get();
-        if ($item->isMiss()) {
-            $item->lock();
-            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+        //$item = $this->pool->getItem('Claim/'.$id);
+        //$claim = $item->get();
+        //if ($item->isMiss()) {
+        //    $item->lock();
+        //    $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             //$item->expiresAfter(3600/4);
             $claim = Claim::find($id);
-            $this->pool->save($item->set($claim));
-        }
+        //    $this->pool->save($item->set($claim));
+        //}
         if ($claim) {
             $this->claim = $claim;
 
@@ -194,11 +194,11 @@ class ClaimModule extends AbstractContainer
         $this->{$k}->save();
     }
 
-    public function clearCache()
-    {
-        $this->pool->deleteItem('UserPolicy/'.$this->claim->user_policy_id.'/claimList');
-        $this->pool->deleteItem('Claim/'.$this->claim->claim_id);
-    }
+    //public function clearCache()
+    //{
+    //    $this->pool->deleteItem('UserPolicy/'.$this->claim->user_policy_id.'/claimList');
+    //    $this->pool->deleteItem('Claim/'.$this->claim->claim_id);
+    //}
 
     /**
      * @param array $data

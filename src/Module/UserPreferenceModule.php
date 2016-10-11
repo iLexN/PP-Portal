@@ -20,7 +20,7 @@ class UserPreferenceModule extends AbstractContainer
                 'currency'         => 'USD',
                 'currency_receive' => 'USD',
             ]);
-        $this->clearCache();
+        //$this->clearCache();
 
         return $info;
     }
@@ -30,25 +30,25 @@ class UserPreferenceModule extends AbstractContainer
      */
     public function getByUserID()
     {
-        $id = $this->UserModule->user->ppmid;
+        //$id = $this->UserModule->user->ppmid;
 
-        $item = $this->pool->getItem('User/'.$id.'/Preference');
+        //$item = $this->pool->getItem('User/'.$id.'/Preference');
 
-        $info = $item->get();
+        //$info = $item->get();
 
-        if ($item->isMiss()) {
-            $item->lock();
-            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+        //if ($item->isMiss()) {
+        //    $item->lock();
+        //    $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             $info = $this->UserModule->user->userPreference()->first();
-            $this->pool->save($item->set($info));
-        }
+        //    $this->pool->save($item->set($info));
+        //}
 
         return $info;
     }
 
-    public function clearCache()
-    {
-        $id = $this->UserModule->user->ppmid;
-        $this->pool->deleteItem('User/'.$id.'/Preference');
-    }
+    //public function clearCache()
+    //{
+    //    $id = $this->UserModule->user->ppmid;
+    //    $this->pool->deleteItem('User/'.$id.'/Preference');
+    //}
 }

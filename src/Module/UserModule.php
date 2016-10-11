@@ -159,7 +159,7 @@ class UserModule extends AbstractContainer
         $this->user->forgot_str = $str;
         $this->user->forgot_expire = Carbon::now()->addHours(2)->toDateTimeString();
         $this->user->save();
-        $this->clearUserCache();
+        //$this->clearUserCache();
     }
 
     /**
