@@ -10,7 +10,7 @@ class PolicyList extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        $out = $this->PolicyModule->getPolicyList();
+        $out = $this->UserPolicyModule->getPolicyList();
 
         return $this->ViewHelper->withStatusCode($response, [
                     'data' => $out->toArray(),

@@ -66,9 +66,9 @@ $container['mailer'] = function () {
 $container['UserModule'] = function (\Slim\Container $c) {
     return new \PP\Portal\Module\UserModule($c);
 };
-$container['PolicyModule'] = function (\Slim\Container $c) {
-    return new \PP\Portal\Module\PolicyModule($c);
-};
+//$container['PolicyModule'] = function (\Slim\Container $c) {
+//    return new \PP\Portal\Module\PolicyModule($c);
+//};
 $container['UserBankAccModule'] = function (\Slim\Container $c) {
     return new \PP\Portal\Module\UserBankAccModule($c);
 };

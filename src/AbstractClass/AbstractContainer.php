@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Collection;
  * @property \Slim\Views\Twig $twigView
  * @property \PHPMailer $mailer
  * @property \PP\Portal\Module\UserModule $UserModule
- * @property \PP\Portal\Module\PolicyModule $PolicyModule
  * @property \PP\Portal\Module\UserPolicyModule $UserPolicyModule
  * @property \PP\Portal\Module\UserBankAccModule $UserBankAccModule
  * @property \PP\Portal\Module\UserPreferenceModule $UserPreferenceModule
