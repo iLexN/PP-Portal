@@ -49,16 +49,16 @@ class UserPolicyModule extends AbstractContainer
     public function getPolicyList()
     {
         $user = $this->UserModule->user;
-        //$item = $this->pool->getItem('User/'.$user->ppmid.'/policyList');
-        //$policy = $item->get();
+        $item = $this->pool->getItem('User/'.$user->ppmid.'/policyList');
+        $policy = $item->get();
 
-        //if ($item->isMiss()) {
-        //    $item->lock();
-        //    $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             //$item->expiresAfter(3600/4);
             $policy = $user->userPolicy()->get();
-        //    $this->pool->save($item->set($policy));
-        //}
+            $this->pool->save($item->set($policy));
+        }
 
         return $this->serializing($policy);
     }
