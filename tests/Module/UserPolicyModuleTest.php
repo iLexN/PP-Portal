@@ -21,11 +21,10 @@ class UserPolicyModuleTest extends \PHPUnit_Framework_TestCase
 
         $c['dataCacheConfig'] = ['expiresAfter' => 1];
 
-        $c['UserModule'] = function($c){
+        $c['UserModule'] = function ($c) {
             return new \PP\Portal\Module\UserModule($c);
         };
         $c['UserModule']->isUserExistByID(9677);
-
 
         $UserPolicyModule = new \PP\Portal\Module\UserPolicyModule($c);
 
@@ -43,18 +42,18 @@ class UserPolicyModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->UserPolicyModule->getUerPolicy(1000));
     }
 
-    public function testgetPolicyList(){
+    public function testgetPolicyList()
+    {
         $policyList = $this->UserPolicyModule->getPolicyList();
- 
+
         $this->assertInstanceOf(\Illuminate\Support\Collection::class, $policyList);
- 
+
         $this->assertArrayHasKey('policy_id', $policyList[0]);
         $this->assertArrayHasKey('insurer', $policyList[0]);
         $this->assertArrayHasKey('plan_name', $policyList[0]);
         $this->assertArrayHasKey('responsibility_id', $policyList[0]);
         $this->assertArrayHasKey('user_policy_id', $policyList[0]);
- 
+
         $this->assertEquals(1, $policyList[0]['policy_id']);
     }
-
 }
