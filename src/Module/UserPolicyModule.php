@@ -69,7 +69,7 @@ class UserPolicyModule extends AbstractContainer
         /* @var $item \PP\Portal\DbModel\Policy */
         return $policy->map(function (Policy $item) {
             return [
-                'policy_id'         => $item->policy_id,
+                'policy_id'         => (int) $item->policy_id,
                 'insurer'           => $item->insurer,
                 'plan_name'         => $item->plan_name,
                 'responsibility_id' => $item->responsibility_id,

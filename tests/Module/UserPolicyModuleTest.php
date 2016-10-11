@@ -37,6 +37,9 @@ class UserPolicyModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->UserPolicyModule->getUerPolicy(1));
         $this->assertInstanceOf(\PP\Portal\DbModel\UserPolicy::class, $this->UserPolicyModule->userPolicy);
 
+        //$this->assertTrue($this->UserPolicyModule->getUerPolicy(7));
+        //$this->assertInstanceOf(\PP\Portal\DbModel\UserPolicy::class, $this->UserPolicyModule->userPolicy);
+
         $this->assertFalse($this->UserPolicyModule->getUerPolicy(1000));
     }
 
