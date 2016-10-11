@@ -4,6 +4,7 @@ namespace PP\Portal\Module;
 
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\UserPolicy;
+use PP\Portal\DbModel\Policy;
 
 class UserPolicyModule extends AbstractContainer
 {
