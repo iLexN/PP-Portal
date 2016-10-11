@@ -47,6 +47,7 @@ class PolicyModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $policyList[0]['policy_id']);
     }
 
+    /*
     public function testPolicyInfo()
     {
         $policy = $this->PolicyModule->policyInfo(2);
@@ -59,5 +60,5 @@ class PolicyModuleTest extends \PHPUnit_Framework_TestCase
 
         $policy = $this->PolicyModule->policyInfo(1);
         $this->assertEquals(null, $policy->renew_date);
-    }
+    }*/
 }
