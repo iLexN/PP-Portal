@@ -34,8 +34,8 @@ class PolicyListTest extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\UserModule($c);
         };
         $c['UserModule']->isUserExistByID(2);
-        $c['PolicyModule'] = function ($c) {
-            return new \PP\Portal\Module\PolicyModule($c);
+        $c['UserPolicyModule'] = function ($c) {
+            return new \PP\Portal\Module\UserPolicyModule($c);
         };
 
         $this->action = new \PP\Portal\Controller\Policy\PolicyList($c);
