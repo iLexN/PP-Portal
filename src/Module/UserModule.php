@@ -80,7 +80,7 @@ class UserModule extends AbstractContainer
      */
     public function isUserExistByID($id)
     {
-        $item = $this->pool->getItem('User/'.$id.'/info');
+        $item = $this->pool->getItem('User/'.$id);
 
         /* @var $user User */
         $user = $item->get();
@@ -88,7 +88,6 @@ class UserModule extends AbstractContainer
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            //$item->expiresAfter(3600 * 12);
             $user = User::find($id);
             $this->pool->save($item->set($user));
         }
@@ -167,7 +166,7 @@ class UserModule extends AbstractContainer
      */
     private function clearUserCache()
     {
-        $this->pool->deleteItem('User/'.$this->user->ppmid.'/info');
+        $this->pool->deleteItem('User/'.$this->user->ppmid);
     }
 
     /**
@@ -187,11 +186,20 @@ class UserModule extends AbstractContainer
      */
     public function getInfoReNew()
     {
-        $renewInfo = $this->user->reNewInfo()->
+        $item = $this->pool->getItem('UserReNew/'.$this->user->ppmid);
+
+        /* @var $user User */
+        $renewInfo = $item->get();
+
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $renewInfo = $this->user->reNewInfo()->
                 where('status', 'Pending')->
                 orderBy('updated_at', 'desc')->
                 first();
-
+            $this->pool->save($item->set($renewInfo));
+        }
         return $renewInfo;
     }
 

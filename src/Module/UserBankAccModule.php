@@ -50,7 +50,7 @@ class UserBankAccModule extends AbstractContainer
         }
 
         $acc->save();
-        //$this->clearCache($acc->ppmid);
+        $this->clearCache($acc->ppmid);
     }
 
     /**
@@ -59,30 +59,29 @@ class UserBankAccModule extends AbstractContainer
     public function delBank(UserBankAcc $acc)
     {
         $acc->delete();
-        //$this->clearCache($acc->ppmid);
+        $this->clearCache($acc->ppmid);
     }
 
     public function getByUserID()
     {
-        //$id = $this->UserModule->user->ppmid;
+        $id = $this->UserModule->user->ppmid;
 
-        //$item = $this->pool->getItem('User/'.$id.'/bankacc');
+        $item = $this->pool->getItem('UserBank/'.$id);
 
-        //$info = $item->get();
+        $info = $item->get();
 
-        //if ($item->isMiss()) {
-        //    $item->lock();
-        //    $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            //$item->expiresAfter(3600/4);
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             $info = $this->UserModule->user->userAcc()->get();
-        //    $this->pool->save($item->set($info));
-        //}
+            $this->pool->save($item->set($info));
+        }
 
         return $info;
     }
 
-    //private function clearCache($id)
-    //{
-    //    $this->pool->deleteItem('User/'.$id.'/bankacc');
-    //}
+    private function clearCache($id)
+    {
+        $this->pool->deleteItem('UserBank/'.$id);
+    }
 }

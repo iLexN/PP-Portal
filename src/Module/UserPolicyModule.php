@@ -27,7 +27,6 @@ class UserPolicyModule extends AbstractContainer
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            //$item->expiresAfter(3600/4);
             $userPolicy = UserPolicy::with('policy')->find($id);
             $this->pool->save($item->set($userPolicy));
         }
@@ -55,7 +54,6 @@ class UserPolicyModule extends AbstractContainer
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            //$item->expiresAfter(3600/4);
             $policy = $user->userPolicy()->get();
             $this->pool->save($item->set($policy));
         }

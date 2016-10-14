@@ -10,10 +10,17 @@ class Info extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
+        $item = $this->pool->getItem('Advisor/'.$args['id']);
+        $advisor = $item->get();
 
-        //todo add cache
-        $advisor = \PP\Portal\DbModel\Advisor::find($args['id']);
-
+        if ($item->isMiss()) {
+            $item->lock();
+            //$item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $item->expiresAfter(3600 * 12);
+            $advisor = \PP\Portal\DbModel\Advisor::find($args['id']);
+            $this->pool->save($item->set($advisor));
+        }
+        
         if ($advisor) {
             $out = ['data' => $advisor->toArray()];
 

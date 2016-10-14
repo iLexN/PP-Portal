@@ -14,6 +14,32 @@ class ClaimInfo extends AbstractContainer
     {
         $this->claimInfo = $this->ClaimModule->claim;
 
+        $out = $this->getInfo();
+
+        return $this->ViewHelper->withStatusCode($response, [
+                    'data' => $out,
+                ], 6030);
+    }
+
+    private function getInfo()
+    {
+        $item = $this->pool->getItem('Claim/'.$this->claimInfo->claim_id .'/detailInfo');
+
+        $info = $item->get();
+
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $info = $this->getOutPut();
+            $this->pool->save($item->set($info));
+        }
+        return $info;
+    }
+
+    private function getOutPut()
+    {
+        $this->logger->info('out');
+
         $out = $this->claimInfo->toArray();
         $out['file_attachments'] = $this->getFileAttachment();
 
@@ -25,10 +51,7 @@ class ClaimInfo extends AbstractContainer
                 $out['cheque'] = $this->getCheque();
                 break;
         }
-
-        return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $out,
-                ], 6030);
+        return $out;
     }
 
     private function getFileAttachment()
