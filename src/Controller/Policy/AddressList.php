@@ -29,6 +29,7 @@ class AddressList extends AbstractContainer
             $address = $this->UserPolicyModule->userPolicy->policy->address()->PolicyAddress()->get();
             $this->pool->save($item->set($address));
         }
+
         return $address;
     }
 }

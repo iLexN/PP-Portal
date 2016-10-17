@@ -13,7 +13,6 @@ class UserPreferenceModule extends AbstractContainer
 {
     public $info;
 
-
     /**
      * @return \PP\Portal\DbModel\UserPreference
      */
@@ -46,6 +45,7 @@ class UserPreferenceModule extends AbstractContainer
             $this->pool->save($item->set($info));
         }
         $this->info = $info;
+
         return $info;
     }
 

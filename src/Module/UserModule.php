@@ -200,6 +200,7 @@ class UserModule extends AbstractContainer
                 first();
             $this->pool->save($item->set($renewInfo));
         }
+
         return $renewInfo;
     }
 

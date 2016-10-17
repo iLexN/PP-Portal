@@ -27,6 +27,7 @@ class AddressList extends AbstractContainer
             $address = $this->UserModule->user->address()->UserAddress()->get();
             $this->pool->save($item->set($address));
         }
+
         return $address;
     }
 }
