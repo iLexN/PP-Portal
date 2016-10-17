@@ -34,6 +34,7 @@ class People extends AbstractContainer
                         ->where('policy_id', $id)->get();
             $this->pool->save($item->set($policyPeople));
         }
+
         return $policyPeople;
     }
 }

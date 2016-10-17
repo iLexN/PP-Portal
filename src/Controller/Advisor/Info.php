@@ -20,7 +20,7 @@ class Info extends AbstractContainer
             $advisor = \PP\Portal\DbModel\Advisor::find($args['id']);
             $this->pool->save($item->set($advisor));
         }
-        
+
         if ($advisor) {
             $out = ['data' => $advisor->toArray()];
 

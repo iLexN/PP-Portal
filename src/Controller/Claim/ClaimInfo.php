@@ -23,7 +23,7 @@ class ClaimInfo extends AbstractContainer
 
     private function getInfo()
     {
-        $item = $this->pool->getItem('Claim/'.$this->claimInfo->claim_id .'/detailInfo');
+        $item = $this->pool->getItem('Claim/'.$this->claimInfo->claim_id.'/detailInfo');
 
         $info = $item->get();
 
@@ -33,6 +33,7 @@ class ClaimInfo extends AbstractContainer
             $info = $this->getOutPut();
             $this->pool->save($item->set($info));
         }
+
         return $info;
     }
 
@@ -49,6 +50,7 @@ class ClaimInfo extends AbstractContainer
                 $out['cheque'] = $this->getCheque();
                 break;
         }
+
         return $out;
     }
 
