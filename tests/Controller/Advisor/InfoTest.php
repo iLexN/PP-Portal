@@ -21,6 +21,14 @@ class InfoTest extends \PHPUnit_Framework_TestCase
                 ],
             ];
         };
+        $c['pool'] = function () {
+            $settings = [
+                'path' => __DIR__.'/../../cache/data',
+            ];
+            $driver = new \Stash\Driver\FileSystem($settings);
+
+            return new \Stash\Pool($driver);
+        };
 
         $c['jsonConfig'] = ['prettyPrint' => false];
         $c['ViewHelper'] = function (\Slim\Container $c) {

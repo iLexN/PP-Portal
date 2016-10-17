@@ -38,8 +38,6 @@ class ClaimInfo extends AbstractContainer
 
     private function getOutPut()
     {
-        $this->logger->info('out');
-
         $out = $this->claimInfo->toArray();
         $out['file_attachments'] = $this->getFileAttachment();
 
