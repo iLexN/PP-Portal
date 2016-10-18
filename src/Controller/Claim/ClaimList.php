@@ -10,7 +10,6 @@ class ClaimList extends AbstractContainer
 {
     public function __invoke(Request $request, Response $response, array $args)
     {
-
         $claims = $this->ClaimModule->getClaimList($this->UserPolicyModule->userPolicy);
 
         $group = $claims->groupBy('status');
