@@ -2,7 +2,7 @@
 
 $autoloader = require dirname(__DIR__).'/vendor/autoload.php';
 
-$autoloader->addPsr4('PP\Portal\\', __DIR__.'/../src');
+//$autoloader->addPsr4('PP\Portal\\', __DIR__.'/../src');
 
 $db = [
         'driver'    => 'mysql',

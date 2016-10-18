@@ -3,7 +3,7 @@
 session_start();
 
 $autoloader = require '../vendor/autoload.php';
-$autoloader->addPsr4('PP\Portal\\', __DIR__.'/../src');
+//$autoloader->addPsr4('PP\Portal\\', __DIR__.'/../src');
 
 date_default_timezone_set('Asia/Hong_Kong');
 
