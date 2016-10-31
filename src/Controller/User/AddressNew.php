@@ -19,9 +19,9 @@ class AddressNew extends AbstractContainer
         }
 
         $default = [];
-        $default['address_type'] = 'user';
+        //$default['address_type'] = 'user';
         $default['status'] = 'active';
-        $default['ref_id'] = $this->UserModule->user->ppmid;
+        $default['ppmid'] = $this->UserModule->user->ppmid;
 
         $data = array_merge($default, $v->data());
         $this->AddressModule->saveData($data, $address);

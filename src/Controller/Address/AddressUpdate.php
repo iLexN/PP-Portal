@@ -25,7 +25,8 @@ class AddressUpdate extends AbstractContainer
         $data = $this->inputData($address->toArray(), $v->data());
         $new = new \PP\Portal\DbModel\Address();
 
-        $this->AddressModule->saveData($data, $new);
+        // todo have no update to server yet
+        $this->AddressModule->updateDate($data, $new);
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $new->toArray()],
                 $this->getStatusCode($args));
@@ -37,6 +38,8 @@ class AddressUpdate extends AbstractContainer
         $default['status'] = 'pending';
         $default['old_id'] = $address['id'];
         $data = array_merge($address, $default, $input);
+
+        unset($data['id']);
 
         return $data;
     }

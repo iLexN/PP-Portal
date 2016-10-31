@@ -146,6 +146,23 @@ return [
         'code'  => 2620,
         'title' => 'user address create and pending',
     ],
+    '2630' => [
+        'code'  => 2630,
+        'title' => 'user people list success',
+    ],
+    '2640' => [
+        'code'  => 2640,
+        'title' => 'holder info success',
+    ],
+    '2641' => [
+        'code'  => 2641,
+        'title' => 'holder info update',
+    ],
+    '2642' => [
+        'code'  => 2642,
+        'title' => 'holder info renew list',
+    ],
+
 
 
     //Policy

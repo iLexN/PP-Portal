@@ -1,6 +1,6 @@
 <?php
 
-namespace PP\Test\Advisor;
+namespace PP\Test\Address;
 
 class AddressUpdateTest extends \PHPUnit_Framework_TestCase
 {
@@ -121,6 +121,7 @@ class AddressUpdateTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2620, $out['status_code']);
     }
 
+    /*
     public function testUserPolicyAddressSuccess()
     {
         $action = $this->action;
@@ -138,5 +139,5 @@ class AddressUpdateTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, ['id' => 1, 'acid' => '2', 'mode' => 'UserPolicy']);
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(5060, $out['status_code']);
-    }
+    }*/
 }

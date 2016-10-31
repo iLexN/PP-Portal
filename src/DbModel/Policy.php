@@ -20,7 +20,7 @@ class Policy extends Model
 
     public $timestamps = false;
 
-    protected $appends = ['renew_date'];
+    protected $appends = ['renew_date','is_end'];
 
     protected $casts = [
         'responsibility_id' => 'integer',
@@ -36,6 +36,18 @@ class Policy extends Model
         $dateObj->addDay();
 
         return $dateObj->toDateString();
+    }
+
+    public function getIsEndAttribute()
+    {
+        if ($this->attributes['end_date'] === null) {
+            return true;
+        }
+
+        $endDateObj = Carbon::createFromFormat('Y-m-d', $this->attributes['end_date']);
+        $todayDateObj = new Carbon();
+
+        return $endDateObj->lte($todayDateObj);
     }
 
     public function address()

@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property string $address_line_3
  * @property string $address_line_4
  * @property string $address_line_5
- * @property int $ref_id
+ * @property int $ppmid
  * @property string $status
  */
 class Address extends Model
@@ -24,7 +24,6 @@ class Address extends Model
 
     protected $casts = [
         'ppmid'  => 'integer',
-        'ref_id' => 'integer',
         'old_id' => 'integer',
     ];
 
@@ -44,7 +43,7 @@ class Address extends Model
      */
     public function scopeUserAddress(Builder $query)
     {
-        return $query->where('status', 'active')
-                ->where('address_type', 'user');
+        return $query->where('status', 'active');
+                //->where('address_type', 'user');
     }
 }

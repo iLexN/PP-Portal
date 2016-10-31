@@ -22,8 +22,8 @@ class AddressList extends AbstractContainer
 
         if ($item->isMiss()) {
             $item->lock();
-            //$item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $item->expiresAfter(3600 * 12);
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            //$item->expiresAfter(3600 * 12);
             $address = $this->UserModule->user->address()->UserAddress()->get();
             $this->pool->save($item->set($address));
         }

@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property string $phone_2
  * @property string $forgot_str
  * @property string $forgot_expire
+ * @property int $holder_id
  */
 class User extends Model
 {
@@ -27,9 +28,13 @@ class User extends Model
 
     public $timestamps = false;
 
-    protected $guarded = ['ppmid', 'user_name', 'password'];
+    protected $guarded = ['ppmid', 'user_name', 'password','holder_id'];
 
     protected $hidden = ['password', 'forgot_str', 'forgot_expire'];
+
+    protected $casts = [
+        'holder_id' => 'integer',
+    ];
 
     public function isRegister()
     {
@@ -77,6 +82,6 @@ class User extends Model
 
     public function address()
     {
-        return $this->hasMany(__NAMESPACE__.'\Address', 'ref_id');
+        return $this->hasMany(__NAMESPACE__.'\Address', 'ppmid');
     }
 }

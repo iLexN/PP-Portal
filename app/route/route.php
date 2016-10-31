@@ -30,6 +30,9 @@ $app->post('/user/{id:\d+}', 'PP\Portal\Controller\User\InfoUpdate')
 $app->get('/user/{id:\d+}/renew', 'PP\Portal\Controller\User\RenewInfo')
         ->setName('UserInfo.Renew')
         ->add($checkUserExist);
+$app->get('/user/{id:\d+}/people', 'PP\Portal\Controller\User\People')
+        ->setName('UserInfo.People')
+        ->add($checkUserExist);
 
 $app->post('/user/{id:\d+}/signup', 'PP\Portal\Controller\User\Signup')
         ->setName('UserSignUp')
@@ -75,6 +78,14 @@ $app->post('/user/{id:\d+}/address/{acid:\d+}', 'PP\Portal\Controller\Address\Ad
 $app->get('/advisor/{id:\d+}', 'PP\Portal\Controller\Advisor\Info')
         ->setName('AdvisorInfo');
 
+//Holder
+$app->get('/holder/{id:\d+}', 'PP\Portal\Controller\Holder\Info')
+        ->setName('HolderInfo.get');
+$app->post('/holder/{id:\d+}', 'PP\Portal\Controller\Holder\Update')
+        ->setName('HolderInfo.update');
+$app->get('/holder/{id:\d+}/renew', 'PP\Portal\Controller\Holder\RenewInfo')
+        ->setName('HolderInfoRenew.get');
+
 //Policy
 $app->get('/policy/{id:\d+}/people', 'PP\Portal\Controller\Policy\People')
         ->setName('Policy.People');
@@ -83,6 +94,7 @@ $app->get('/policy/{id:\d+}/people', 'PP\Portal\Controller\Policy\People')
 $app->get('/user-policy/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyInfo')
         ->setName('Policy')
         ->add($checkUsePolicyrExist);
+/** seem no use any more, move to holder info
 $app->get('/user-policy/{id:\d+}/address', 'PP\Portal\Controller\Policy\AddressList')
         ->setName('PolicyAddressList.get')
         ->add($checkUsePolicyrExist);
@@ -90,6 +102,7 @@ $app->post('/user-policy/{id:\d+}/address/{acid:\d+}', 'PP\Portal\Controller\Add
         ->setName('PolicyAddressInfo.update')
         ->setArgument('mode', 'UserPolicy')
         ->add($checkUsePolicyrExist);
+ */
 $app->get('/user-policy/{id:\d+}/claim', 'PP\Portal\Controller\Claim\ClaimList')
         ->setName('ClaimList')
         ->add($checkUsePolicyrExist);
