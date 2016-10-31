@@ -28,7 +28,7 @@ class User extends Model
 
     public $timestamps = false;
 
-    protected $guarded = ['ppmid', 'user_name', 'password','holder_id'];
+    protected $guarded = ['ppmid', 'user_name', 'password', 'holder_id'];
 
     protected $hidden = ['password', 'forgot_str', 'forgot_expire'];
 

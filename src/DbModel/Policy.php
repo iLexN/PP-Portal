@@ -20,7 +20,7 @@ class Policy extends Model
 
     public $timestamps = false;
 
-    protected $appends = ['renew_date','is_end'];
+    protected $appends = ['renew_date', 'is_end'];
 
     protected $casts = [
         'responsibility_id' => 'integer',

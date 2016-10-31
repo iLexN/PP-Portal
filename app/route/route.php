@@ -94,7 +94,7 @@ $app->get('/policy/{id:\d+}/people', 'PP\Portal\Controller\Policy\People')
 $app->get('/user-policy/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyInfo')
         ->setName('Policy')
         ->add($checkUsePolicyrExist);
-/** seem no use any more, move to holder info
+/* seem no use any more, move to holder info
 $app->get('/user-policy/{id:\d+}/address', 'PP\Portal\Controller\Policy\AddressList')
         ->setName('PolicyAddressList.get')
         ->add($checkUsePolicyrExist);
