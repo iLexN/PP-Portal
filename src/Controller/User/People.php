@@ -29,7 +29,7 @@ class People extends AbstractContainer
                 ->where('ppmid', $id)
                 ->where('relationship','PolicyHolder')
                 ->get();
-        $ar = $policylist->map(function($item){
+        $ar = $policylist->map(function(UserPolicy $item){
             return $item->policy_id;
         });
         return $ar;
