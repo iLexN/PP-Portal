@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model as Model;
 /**
  * @property int $id
  * @property int $ppmid
+ * @property int $policy_id
  * @property \PP\Portal\DbModel\Policy $policy
  * @property \PP\Portal\DbModel\User $user
  */

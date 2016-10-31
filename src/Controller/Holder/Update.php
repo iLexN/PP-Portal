@@ -25,7 +25,7 @@ class Update extends AbstractContainer
         }
 
         $new = new HolderInfoUpdate();
-        $inArray = $this->saveData($v->data());
+        $inArray = $this->saveData($v->data(),$args['id']);
         foreach ( $inArray as $k=>$v){
             $new->{$k} = $v;
         }
@@ -35,11 +35,11 @@ class Update extends AbstractContainer
                 2641);
     }
 
-    private function saveData($ar){
+    private function saveData($ar,$id){
         $inArray = $ar;
 
         unset($inArray['id']);
-        $inArray['holder_id'] = $args['id'];
+        $inArray['holder_id'] = $id;
         $inArray['status'] = 'Pending';
 
         return $inArray;
