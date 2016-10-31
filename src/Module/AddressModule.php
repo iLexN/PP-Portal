@@ -26,11 +26,13 @@ class AddressModule extends AbstractContainer
         $this->save($newData, $address);
     }
 
-    public function updateDate($data, Address $address){
+    public function updateDate($data, Address $address)
+    {
         $this->save($data, $address);
     }
 
-    private function save($data, Address $address){
+    private function save($data, Address $address)
+    {
         foreach ($data as $k => $v) {
             $address->{$k} = $v;
         }

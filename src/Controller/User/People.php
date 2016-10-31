@@ -11,7 +11,6 @@ class People extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-
         $ar = $this->getPolicyList($args['id']);
 
         $policyPeople = $this->getPeople($ar, $args['id']);
@@ -24,21 +23,24 @@ class People extends AbstractContainer
                         ], 2630);
     }
 
-    private function getPolicyList($id){
+    private function getPolicyList($id)
+    {
         $policylist = UserPolicy::select('policy_id')
                 ->where('ppmid', $id)
-                ->where('relationship','PolicyHolder')
+                ->where('relationship', 'PolicyHolder')
                 ->get();
-        $ar = $policylist->map(function(UserPolicy $item){
+        $ar = $policylist->map(function (UserPolicy $item) {
             return $item->policy_id;
         });
+
         return $ar;
     }
 
-    private function getPeople($ar,$id){
-        if ( $ar->count() === 0 ) {
+    private function getPeople($ar, $id)
+    {
+        if ($ar->count() === 0) {
             $policyPeople = UserPolicy::with('user')
-                            ->where('ppmid',$id)
+                            ->where('ppmid', $id)
                             ->groupBy('ppmid')
                             ->get();
         } else {
@@ -47,6 +49,7 @@ class People extends AbstractContainer
                             ->groupBy('ppmid')
                             ->get();
         }
+
         return $policyPeople;
     }
 }

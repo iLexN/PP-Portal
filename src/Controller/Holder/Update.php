@@ -3,10 +3,10 @@
 namespace PP\Portal\Controller\Holder;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use Psr\Http\Message\ServerRequestInterface;
-use Slim\Http\Response;
 use PP\Portal\DbModel\HolderInfo;
 use PP\Portal\DbModel\HolderInfoUpdate;
+use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Response;
 
 class Update extends AbstractContainer
 {
@@ -25,8 +25,8 @@ class Update extends AbstractContainer
         }
 
         $new = new HolderInfoUpdate();
-        $inArray = $this->saveData($v->data(),$args['id']);
-        foreach ( $inArray as $k=>$v){
+        $inArray = $this->saveData($v->data(), $args['id']);
+        foreach ($inArray as $k => $v) {
             $new->{$k} = $v;
         }
         $new->save();
@@ -35,7 +35,8 @@ class Update extends AbstractContainer
                 2641);
     }
 
-    private function saveData($ar,$id){
+    private function saveData($ar, $id)
+    {
         $inArray = $ar;
 
         unset($inArray['id']);
@@ -44,5 +45,4 @@ class Update extends AbstractContainer
 
         return $inArray;
     }
-
 }
