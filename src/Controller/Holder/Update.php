@@ -25,7 +25,7 @@ class Update extends AbstractContainer
         }
 
         $inArray = $this->processData($v->data(), $args['id']);
-        $this->saveData($inArray);
+        $new = $this->saveData($inArray);
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $new->toArray()],
                 2641);
@@ -42,12 +42,15 @@ class Update extends AbstractContainer
         return $inArray;
     }
 
-    private function saveData($inArray){
+    private function saveData($inArray)
+    {
         $new = new HolderInfoUpdate();
 
         foreach ($inArray as $k => $v) {
             $new->{$k} = $v;
         }
         $new->save();
+
+        return $new;
     }
 }

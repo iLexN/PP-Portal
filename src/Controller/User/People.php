@@ -25,7 +25,6 @@ class People extends AbstractContainer
         $ar = $policylist->filter(function (UserPolicy $item) {
             $policy = $item->policy->status;
             if ($policy === 'Active') {
-
                 return true;
             }
 
@@ -44,11 +43,9 @@ class People extends AbstractContainer
         $peopleList = $policyPeople->filter(function (UserPolicy $item) use ($id) {
             $this->logger->info('item', $item->toArray());
             if ($item->ppmid == $id) {
-
                 return true;
             }
             if ($item->user->profile_permission !== null) {
-
                 return true;
             }
 
