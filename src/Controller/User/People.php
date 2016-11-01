@@ -40,6 +40,13 @@ class People extends AbstractContainer
     {
         $policyPeople = $this->getPeopleListFromUserPolicy($ar, $id);
 
+        $peopleList = $this->filterPeople($policyPeople,$id);
+        
+        return $peopleList->values();
+    }
+
+    private function filterPeople($policyPeople,$id)
+    {
         $peopleList = $policyPeople->filter(function (UserPolicy $item) use ($id) {
             $this->logger->info('item', $item->toArray());
             if ($item->ppmid == $id) {
@@ -54,9 +61,7 @@ class People extends AbstractContainer
             return $item->user->userName();
         });
 
-        $new = $peopleList->values();
-
-        return $new->all();
+        return $peopleList;
     }
 
     private function getPeopleListFromUserPolicy($ar, $id)
