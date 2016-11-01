@@ -12,8 +12,23 @@ class People extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $this->getPeople($this->getPolicyList($args['id']), $args['id']),
+                    'data' => $this->getResult($args),
                         ], 2630);
+    }
+
+    private function getResult($args){
+
+        $item = $this->pool->getItem('User/'.$this->UserModule->user->ppmid.'/people');
+        $people = $item->get();
+
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $people = $this->getPeople($this->getPolicyList($args['id']), $args['id']);
+            $this->pool->save($item->set($people));
+        }
+
+        return $people;
     }
 
     private function getPolicyList($id)
@@ -41,14 +56,13 @@ class People extends AbstractContainer
         $policyPeople = $this->getPeopleListFromUserPolicy($ar, $id);
 
         $peopleList = $this->filterPeople($policyPeople,$id);
-        
+
         return $peopleList->values();
     }
 
     private function filterPeople($policyPeople,$id)
     {
         $peopleList = $policyPeople->filter(function (UserPolicy $item) use ($id) {
-            $this->logger->info('item', $item->toArray());
             if ($item->ppmid == $id) {
                 return true;
             }
