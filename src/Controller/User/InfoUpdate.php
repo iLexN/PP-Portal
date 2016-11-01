@@ -11,11 +11,11 @@ class InfoUpdate extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         /* @var $newInfo \PP\Portal\DbModel\UserInfoReNew */
-        $newInfo = $this->UserModule->user->reNewInfo()->where('status', 'Pending')->first();
+        //$newInfo = $this->UserModule->user->reNewInfo()->where('status', 'Pending')->first();
 
-        if (!$newInfo) {
+        //if (!$newInfo) {
             $newInfo = $this->UserModule->newInfoReNew();
-        }
+        //}
 
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $newInfo->getFillable());
         $v->rule('dateFormat', ['date_of_birth'], 'Y-m-d');

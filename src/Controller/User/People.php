@@ -11,25 +11,24 @@ class People extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        $ar = $this->getPolicyList($args['id']);
-
-        $policyPeople = $this->getPeople($ar, $args['id']);
-
-        /* @var $item \PP\Portal\DbModel\UserPolicy */
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $policyPeople->map(function (UserPolicy $item) {
-                        return $item->user->userName();
-                    }),
+                    'data' => $this->getPeople($this->getPolicyList($args['id']), $args['id']),
                         ], 2630);
     }
 
     private function getPolicyList($id)
     {
-        $policylist = UserPolicy::select('policy_id')
+        $policylist = UserPolicy::with('policy')
                 ->where('ppmid', $id)
                 ->where('relationship', 'PolicyHolder')
                 ->get();
-        $ar = $policylist->map(function (UserPolicy $item) {
+        $ar = $policylist->filter(function (UserPolicy $item) {
+            $policy = $item->policy->status;
+            if ($policy === 'Active') {
+                return true;
+            }
+            return false;
+        })->map(function ($item) {
             return $item->policy_id;
         });
 
@@ -38,6 +37,25 @@ class People extends AbstractContainer
 
     private function getPeople($ar, $id)
     {
+        $policyPeople = $this->getPeopleListFromUserPolicy($ar,$id);
+
+        $peopleList = $policyPeople->filter(function (UserPolicy $item) use ($id) {
+            $this->logger->info('item', $item->toArray());
+            if ($item->ppmid == $id) {
+                return true;
+            }
+            if ($item->user->profile_permission != null) {
+                return true;
+            }
+            return false;
+        })->map(function (UserPolicy $item) {
+            return $item->user->userName();
+        });
+
+        return $peopleList;
+    }
+
+    private function getPeopleListFromUserPolicy($ar,$id){
         if ($ar->count() === 0) {
             $policyPeople = UserPolicy::with('user')
                             ->where('ppmid', $id)
@@ -49,7 +67,6 @@ class People extends AbstractContainer
                             ->groupBy('ppmid')
                             ->get();
         }
-
         return $policyPeople;
     }
 }

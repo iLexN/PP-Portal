@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 10 月 31 日 17:08
+-- 產生時間： 2016 年 11 月 01 日 15:04
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -271,6 +271,8 @@ CREATE TABLE IF NOT EXISTS `member_portal_policy` (
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
   `responsibility_id` int(11) DEFAULT NULL,
+  `status` varchar(64) DEFAULT NULL,
+  `Policy_Number` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`policy_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -278,9 +280,9 @@ CREATE TABLE IF NOT EXISTS `member_portal_policy` (
 -- 資料表的匯出資料 `member_portal_policy`
 --
 
-INSERT INTO `member_portal_policy` (`policy_id`, `insurer`, `plan_name`, `deductible`, `cover`, `options`, `medical_currency`, `payment_frequency`, `payment_method`, `start_date`, `end_date`, `responsibility_id`) VALUES
-(1, 'Best Doctors', 'Ultracare', '85', '', '', '', '', '', '2015-01-30', NULL, 19),
-(2, 'AIA', 'test_plan', '85', '', '', '', '', '', '2015-02-17', '2020-02-17', 19);
+INSERT INTO `member_portal_policy` (`policy_id`, `insurer`, `plan_name`, `deductible`, `cover`, `options`, `medical_currency`, `payment_frequency`, `payment_method`, `start_date`, `end_date`, `responsibility_id`, `status`, `Policy_Number`) VALUES
+(1, 'Best Doctors', 'Ultracare', '85', '', '', '', '', '', '2015-01-30', NULL, 19, NULL, NULL),
+(2, 'AIA', 'test_plan', '85', '', '', '', '', '', '2015-02-17', '2020-02-17', 19, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -328,6 +330,8 @@ CREATE TABLE IF NOT EXISTS `member_portal_user` (
   `phone_2` varchar(255) DEFAULT NULL,
   `forgot_str` varchar(255) DEFAULT NULL,
   `forgot_expire` datetime DEFAULT NULL,
+  `holder_id` int(11) DEFAULT NULL,
+  `profile_permission` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`ppmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -335,13 +339,13 @@ CREATE TABLE IF NOT EXISTS `member_portal_user` (
 -- 資料表的匯出資料 `member_portal_user`
 --
 
-INSERT INTO `member_portal_user` (`ppmid`, `title`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `user_name`, `password`, `nationality`, `email`, `phone_1`, `phone_2`, `forgot_str`, `forgot_expire`) VALUES
-(2, 'Dr', 'www', 'eee', 'rrr', '1980-10-10', 'alex', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'alex@kwiksure.com', '12345678', NULL, '5550522d-f8a8-4203-81c1-fa3b567157cc', '2020-07-28 16:12:33'),
-(9677, NULL, 'dsdsab', 'sds', 'dsd', '1981-06-06', 'peter', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'peter.suen@pacificprime.com', '12345678', '87654321', NULL, NULL),
-(135928, 'Mrs', 'Aja', 'O', 'Gorman', '1980-12-20', 'peter2', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'Canadian', NULL, NULL, NULL, NULL, NULL),
-(135929, 'Mr', 'Paul', 'Andrew', 'Woods', '1985-12-22', NULL, NULL, 'Canadian', NULL, NULL, NULL, NULL, NULL),
-(173802, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, 'adf2', '2020-07-28 16:12:33'),
-(173803, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `member_portal_user` (`ppmid`, `title`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `user_name`, `password`, `nationality`, `email`, `phone_1`, `phone_2`, `forgot_str`, `forgot_expire`, `holder_id`, `profile_permission`) VALUES
+(2, 'Dr', 'www', 'eee', 'rrr', '1980-10-10', 'alex', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'alex@kwiksure.com', '12345678', NULL, '5550522d-f8a8-4203-81c1-fa3b567157cc', '2020-07-28 16:12:33', NULL, NULL),
+(9677, NULL, 'dsdsab', 'sds', 'dsd', '1981-06-06', 'peter', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'peter.suen@pacificprime.com', '12345678', '87654321', NULL, NULL, NULL, NULL),
+(135928, 'Mrs', 'Aja', 'O', 'Gorman', '1980-12-20', 'peter2', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'Canadian', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(135929, 'Mr', 'Paul', 'Andrew', 'Woods', '1985-12-22', NULL, NULL, 'Canadian', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(173802, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, 'adf2', '2020-07-28 16:12:33', NULL, NULL),
+(173803, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
