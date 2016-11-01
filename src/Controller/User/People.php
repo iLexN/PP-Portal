@@ -28,7 +28,7 @@ class People extends AbstractContainer
                 return true;
             }
             return false;
-        })->map(function ($item) {
+        })->map(function (UserPolicy $item) {
             return $item->policy_id;
         });
 
@@ -37,14 +37,14 @@ class People extends AbstractContainer
 
     private function getPeople($ar, $id)
     {
-        $policyPeople = $this->getPeopleListFromUserPolicy($ar,$id);
+        $policyPeople = $this->getPeopleListFromUserPolicy($ar, $id);
 
         $peopleList = $policyPeople->filter(function (UserPolicy $item) use ($id) {
             $this->logger->info('item', $item->toArray());
             if ($item->ppmid == $id) {
                 return true;
             }
-            if ($item->user->profile_permission != null) {
+            if ($item->user->profile_permission !== null) {
                 return true;
             }
             return false;
@@ -55,7 +55,8 @@ class People extends AbstractContainer
         return $peopleList;
     }
 
-    private function getPeopleListFromUserPolicy($ar,$id){
+    private function getPeopleListFromUserPolicy($ar, $id)
+    {
         if ($ar->count() === 0) {
             $policyPeople = UserPolicy::with('user')
                             ->where('ppmid', $id)
@@ -67,6 +68,7 @@ class People extends AbstractContainer
                             ->groupBy('ppmid')
                             ->get();
         }
+
         return $policyPeople;
     }
 }

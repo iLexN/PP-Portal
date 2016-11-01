@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property string $insurer
  * @property string $plan_name
  * @property string $responsibility_id
+ * @property string $status
  * @property array $pivot
  */
 class Policy extends Model
