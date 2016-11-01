@@ -24,18 +24,14 @@ class Update extends AbstractContainer
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
         }
 
-        $new = new HolderInfoUpdate();
-        $inArray = $this->saveData($v->data(), $args['id']);
-        foreach ($inArray as $k => $v) {
-            $new->{$k} = $v;
-        }
-        $new->save();
+        $inArray = $this->processData($v->data(), $args['id']);
+        $this->saveData($inArray);
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $new->toArray()],
                 2641);
     }
 
-    private function saveData($ar, $id)
+    private function processData($ar, $id)
     {
         $inArray = $ar;
 
@@ -44,5 +40,14 @@ class Update extends AbstractContainer
         $inArray['status'] = 'Pending';
 
         return $inArray;
+    }
+
+    private function saveData($inArray){
+        $new = new HolderInfoUpdate();
+
+        foreach ($inArray as $k => $v) {
+            $new->{$k} = $v;
+        }
+        $new->save();
     }
 }
