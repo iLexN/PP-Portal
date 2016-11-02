@@ -45,7 +45,7 @@ class RenewInfoTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=>10000]);
+        $response = $action($request, $response, ['id'=> 10000]);
     }
 
     public function testGet()
@@ -55,7 +55,7 @@ class RenewInfoTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=>1]);
+        $response = $action($request, $response, ['id'=> 1]);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2642, $out['status_code']);
