@@ -13,6 +13,10 @@ class Info extends AbstractContainer
     {
         $holderInfo = HolderInfo::find($args['id']);
 
+        if (!$holderInfo) {
+            throw new \Slim\Exception\NotFoundException($request, $response);
+        }
+
         return $this->ViewHelper->withStatusCode($response, ['data' => $holderInfo->toArray()],
                 2640);
     }

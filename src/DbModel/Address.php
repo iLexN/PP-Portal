@@ -27,6 +27,7 @@ class Address extends Model
         'old_id' => 'integer',
     ];
 
+    /** move to holder info
     public function scopePolicyAddress(Builder $query)
     {
         return $query->where('status', 'active')
@@ -35,6 +36,8 @@ class Address extends Model
                           ->orWhere('address_type', 'mail_address');
                 });
     }
+     *
+     */
 
     /**
      * Scope a query to only include active users.

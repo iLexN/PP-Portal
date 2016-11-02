@@ -107,6 +107,28 @@ class ForgotUsernameTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2010, $out['status_code']);
     }
 
+    public function testIsUser2()
+    {
+        $action = $this->action;
+
+        $_POST['name'] = 'alex';
+        $_POST['email'] = 'alex@kwiksure.com';
+        $_POST['phone'] = 'ddd';
+        $environment = \Slim\Http\Environment::mock([
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+            ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = $this->response;
+
+        $response = $action($request, $response, []);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(2010, $out['status_code']);
+    }
+
     public function testSave()
     {
         $action = $this->action;
