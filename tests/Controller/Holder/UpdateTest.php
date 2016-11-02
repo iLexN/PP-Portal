@@ -45,7 +45,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=> 10000]);
+        $response = $action($request, $response, ['id' => 10000]);
     }
 
     public function testPost()
@@ -62,7 +62,7 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         unset($_POST);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=> 1]);
+        $response = $action($request, $response, ['id' => 1]);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2641, $out['status_code']);

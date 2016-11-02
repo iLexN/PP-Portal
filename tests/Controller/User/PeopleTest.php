@@ -50,7 +50,7 @@ class PeopleTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=> 2]);
+        $response = $action($request, $response, ['id' => 2]);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2630, $out['status_code']);
@@ -65,7 +65,7 @@ class PeopleTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['id'=> 9677]);
+        $response = $action($request, $response, ['id' => 9677]);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2630, $out['status_code']);
