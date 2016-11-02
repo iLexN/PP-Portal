@@ -52,7 +52,6 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
     {
         $action = $this->action;
 
-
         $_POST['mail_address_line_2'] = '1111';
         $_POST['policy_address_line_2'] = '2222';
         $environment = \Slim\Http\Environment::mock([
@@ -68,6 +67,5 @@ class UpdateTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2641, $out['status_code']);
         $this->assertEquals('Pending', $out['data']['status']);
-
     }
 }
