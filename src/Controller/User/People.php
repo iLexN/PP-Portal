@@ -16,8 +16,8 @@ class People extends AbstractContainer
                         ], 2630);
     }
 
-    private function getResult($args){
-
+    private function getResult($args)
+    {
         $item = $this->pool->getItem('User/'.$this->UserModule->user->ppmid.'/people');
         $people = $item->get();
 
@@ -55,12 +55,12 @@ class People extends AbstractContainer
     {
         $policyPeople = $this->getPeopleListFromUserPolicy($ar, $id);
 
-        $peopleList = $this->filterPeople($policyPeople,$id);
+        $peopleList = $this->filterPeople($policyPeople, $id);
 
         return $peopleList->values();
     }
 
-    private function filterPeople($policyPeople,$id)
+    private function filterPeople($policyPeople, $id)
     {
         $peopleList = $policyPeople->filter(function (UserPolicy $item) use ($id) {
             if ($item->ppmid == $id) {
