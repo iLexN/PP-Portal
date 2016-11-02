@@ -51,8 +51,10 @@ class Policy extends Model
         return $endDateObj->lte($todayDateObj);
     }
 
+    /** move to holder info
     public function address()
     {
         return $this->hasMany(__NAMESPACE__.'\Address', 'ref_id');
     }
+     * **/
 }
