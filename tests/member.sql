@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 11 月 02 日 10:57
+-- 產生時間： 2016 年 11 月 02 日 11:42
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -281,8 +281,8 @@ CREATE TABLE IF NOT EXISTS `member_portal_policy` (
 --
 
 INSERT INTO `member_portal_policy` (`policy_id`, `insurer`, `plan_name`, `deductible`, `cover`, `options`, `medical_currency`, `payment_frequency`, `payment_method`, `start_date`, `end_date`, `responsibility_id`, `status`, `Policy_Number`) VALUES
-(1, 'Best Doctors', 'Ultracare', '85', '', '', '', '', '', '2015-01-30', '2020-02-17', 19, NULL, NULL),
-(2, 'AIA', 'test_plan', '85', '', '', '', '', '', '2015-02-17', '2020-02-17', 19, NULL, NULL);
+(1, 'Best Doctors', 'Ultracare', '85', '', '', '', '', '', '2015-01-30', '2020-02-17', 19, 'Active', NULL),
+(2, 'AIA', 'test_plan', '85', '', '', '', '', '', '2015-02-17', '2020-02-17', 19, 'Active', NULL);
 
 -- --------------------------------------------------------
 
@@ -400,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `member_portal_user` (
 
 INSERT INTO `member_portal_user` (`ppmid`, `title`, `first_name`, `middle_name`, `last_name`, `date_of_birth`, `user_name`, `password`, `nationality`, `email`, `phone_1`, `phone_2`, `forgot_str`, `forgot_expire`, `holder_id`, `profile_permission`) VALUES
 (2, 'Dr', 'www', 'eee', 'rrr', '1980-10-10', 'alex', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'alex@kwiksure.com', '12345678', NULL, '5550522d-f8a8-4203-81c1-fa3b567157cc', '2020-07-28 16:12:33', 1, NULL),
-(9677, NULL, 'dsdsab', 'sds', 'dsd', '1981-06-06', 'peter', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'peter.suen@pacificprime.com', '12345678', '87654321', NULL, NULL, 1, NULL),
+(9677, NULL, 'dsdsab', 'sds', 'dsd', '1981-06-06', 'peter', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'China', 'peter.suen@pacificprime.com', '12345678', '87654321', NULL, NULL, 1, 'View'),
 (135928, 'Mrs', 'Aja', 'O', 'Gorman', '1980-12-20', 'peter2', '$2y$10$JPMtTxYGjP9X.iuYRG29eOEgF4poIZsk6PdSu/..0MzSEwuwUO9MK', 'Canadian', NULL, NULL, NULL, NULL, NULL, 1, NULL),
 (135929, 'Mr', 'Paul', 'Andrew', 'Woods', '1985-12-22', NULL, NULL, 'Canadian', NULL, NULL, NULL, NULL, NULL, 1, NULL),
 (173802, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, 'adf2', '2020-07-28 16:12:33', 1, NULL),
@@ -418,6 +418,7 @@ CREATE TABLE IF NOT EXISTS `member_portal_user_policy` (
   `ppmid` int(11) NOT NULL,
   `policy_id` int(11) NOT NULL,
   `premium_paid` decimal(19,2) DEFAULT '0.00',
+  `relationship` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
@@ -425,14 +426,14 @@ CREATE TABLE IF NOT EXISTS `member_portal_user_policy` (
 -- 資料表的匯出資料 `member_portal_user_policy`
 --
 
-INSERT INTO `member_portal_user_policy` (`id`, `ppmid`, `policy_id`, `premium_paid`) VALUES
-(1, 2, 1, '0.00'),
-(2, 9677, 1, '0.00'),
-(3, 135928, 1, '0.00'),
-(4, 135929, 1, '0.00'),
-(5, 173802, 1, '0.00'),
-(6, 173803, 1, '0.00'),
-(7, 9677, 2, '0.00');
+INSERT INTO `member_portal_user_policy` (`id`, `ppmid`, `policy_id`, `premium_paid`, `relationship`) VALUES
+(1, 2, 1, '0.00', 'PolicyHolder'),
+(2, 9677, 1, '0.00', NULL),
+(3, 135928, 1, '0.00', NULL),
+(4, 135929, 1, '0.00', NULL),
+(5, 173802, 1, '0.00', NULL),
+(6, 173803, 1, '0.00', NULL),
+(7, 9677, 2, '0.00', NULL);
 
 -- --------------------------------------------------------
 
