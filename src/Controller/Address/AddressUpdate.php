@@ -35,7 +35,7 @@ class AddressUpdate extends AbstractContainer
     private function inputData($address, $input)
     {
         $default = [];
-        $default['status'] = 'pending';
+        $default['status'] = 'Pending';
         $default['old_id'] = $address['id'];
         $data = array_merge($address, $default, $input);
 
