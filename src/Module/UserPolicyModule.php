@@ -21,7 +21,6 @@ class UserPolicyModule extends AbstractContainer
     public function getUerPolicy($id)
     {
         $item = $this->pool->getItem('UserPolicy/'.$id);
-
         $userPolicy = $item->get();
 
         if ($item->isMiss()) {
@@ -62,10 +61,14 @@ class UserPolicyModule extends AbstractContainer
         return $this->serializing($policy);
     }
 
+    /**
+    * @param integer $policy_id
+    */
     public function getPolicyDetail($policy_id)
     {
         $item = $this->pool->getItem('Policy/'.$policy_id);
         $policy = $item->get();
+
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
@@ -76,7 +79,7 @@ class UserPolicyModule extends AbstractContainer
         return $policy;
     }
 
-    private function serializing($policy)
+    private function serializing(Policy $policy)
     {
         // can move to db model like policy people
         /* @var $item \PP\Portal\DbModel\Policy */

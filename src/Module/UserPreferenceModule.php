@@ -33,9 +33,7 @@ class UserPreferenceModule extends AbstractContainer
     public function getByUserID()
     {
         $id = $this->UserModule->user->ppmid;
-
         $item = $this->pool->getItem('UserPreference/'.$id);
-
         $info = $item->get();
 
         if ($item->isMiss()) {
