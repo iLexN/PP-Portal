@@ -64,7 +64,7 @@ class User extends Model
         if (password_needs_rehash($this->attributes['password'], PASSWORD_DEFAULT)) {
             return true;
         }
-        
+
         return false;
     }
 

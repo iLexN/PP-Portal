@@ -23,7 +23,7 @@ class Login extends AbstractContainer
         }
 
         //todo check rehash password
-        $this->checkNeedRehash($data);
+        $this->checkNeedRehash($v->data());
 
         return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2080],
         ]);
@@ -59,10 +59,11 @@ class Login extends AbstractContainer
                 ]];
     }
 
-    private function checkNeedRehash($data){
+    private function checkNeedRehash($data)
+    {
         /* @var $user \PP\Portal\DbModel\User */
         $user = $this->UserModule->user;
-        if ( $user->needReHash() ){
+        if ($user->needReHash()) {
             $user->password = $this->PasswordModule->passwordHash($data['password']);
             $user->save();
         }

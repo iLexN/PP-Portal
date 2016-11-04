@@ -72,7 +72,7 @@ class UserPolicyModule extends AbstractContainer
             $policy = Policy::with('Advisor')->find($policy_id);
             $this->pool->save($item->set($policy));
         }
-        
+
         return $policy;
     }
 
