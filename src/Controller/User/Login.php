@@ -19,11 +19,10 @@ class Login extends AbstractContainer
         }
 
         if ($this->isUserExist($v->data())) {
+            $this->checkNeedRehash($v->data());
+
             return $this->ViewHelper->withStatusCode($response, $this->success(), 2081);
         }
-
-        //todo check rehash password
-        $this->checkNeedRehash($v->data());
 
         return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2080],
         ]);
