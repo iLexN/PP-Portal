@@ -54,6 +54,12 @@ class PeopleTest extends \PHPUnit_Framework_TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2630, $out['status_code']);
+
+        $this->assertArrayHasKey('ppmid', $out['data'][0]);
+        $this->assertArrayHasKey('title', $out['data'][0]);
+        $this->assertArrayHasKey('first_name', $out['data'][0]);
+        $this->assertArrayHasKey('middle_name', $out['data'][0]);
+        $this->assertArrayHasKey('last_name', $out['data'][0]);
     }
 
     public function testGet2()
@@ -69,5 +75,11 @@ class PeopleTest extends \PHPUnit_Framework_TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2630, $out['status_code']);
+
+        $this->assertArrayHasKey('ppmid', $out['data'][0]);
+        $this->assertArrayHasKey('title', $out['data'][0]);
+        $this->assertArrayHasKey('first_name', $out['data'][0]);
+        $this->assertArrayHasKey('middle_name', $out['data'][0]);
+        $this->assertArrayHasKey('last_name', $out['data'][0]);
     }
 }

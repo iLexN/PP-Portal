@@ -59,6 +59,8 @@ class RenewInfoTest extends \PHPUnit_Framework_TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2642, $out['status_code']);
+        $this->assertArrayHasKey('id', $out['data']);
+
         $this->assertArrayHasKey('policy_address_line_2', $out['data']);
         $this->assertArrayHasKey('policy_address_line_3', $out['data']);
         $this->assertArrayHasKey('policy_address_line_4', $out['data']);

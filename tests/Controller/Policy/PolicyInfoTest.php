@@ -54,5 +54,30 @@ class PolicyInfoTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('policy_id', $out['data']);
         $this->assertArrayHasKey('premium_paid', $out['data']);
         $this->assertArrayHasKey('policy', $out['data']);
+
+        $this->assertArrayHasKey('policy_id', $out['data']['policy']);
+        $this->assertArrayHasKey('insurer', $out['data']['policy']);
+        $this->assertArrayHasKey('plan_name', $out['data']['policy']);
+        $this->assertArrayHasKey('deductible', $out['data']['policy']);
+        $this->assertArrayHasKey('cover', $out['data']['policy']);
+        $this->assertArrayHasKey('options', $out['data']['policy']);
+        $this->assertArrayHasKey('medical_currency', $out['data']['policy']);
+        $this->assertArrayHasKey('payment_frequency', $out['data']['policy']);
+        $this->assertArrayHasKey('payment_method', $out['data']['policy']);
+        $this->assertArrayHasKey('start_date', $out['data']['policy']);
+        $this->assertArrayHasKey('end_date', $out['data']['policy']);
+        $this->assertArrayHasKey('responsibility_id', $out['data']['policy']);
+        $this->assertArrayHasKey('status', $out['data']['policy']);
+        $this->assertArrayHasKey('Policy_Number', $out['data']['policy']);
+        $this->assertArrayHasKey('renew_date', $out['data']['policy']);
+        $this->assertArrayHasKey('is_end', $out['data']['policy']);
+        $this->assertArrayHasKey('advisor', $out['data']['policy']);
+
+        $this->assertArrayHasKey('responsibility_id', $out['data']['policy']['advisor']);
+        $this->assertArrayHasKey('name', $out['data']['policy']['advisor']);
+        $this->assertArrayHasKey('email', $out['data']['policy']['advisor']);
+        $this->assertArrayHasKey('office_phone', $out['data']['policy']['advisor']);
+        $this->assertArrayHasKey('contact_details_id', $out['data']['policy']['advisor']);
+        $this->assertArrayHasKey('location', $out['data']['policy']['advisor']);
     }
 }

@@ -52,6 +52,14 @@ class InfoTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2021, $out['status_code']);
         $this->assertArrayHasKey('ppmid', $out['data']);
         $this->assertArrayHasKey('title', $out['data']);
+        $this->assertArrayHasKey('first_name', $out['data']);
+        $this->assertArrayHasKey('middle_name', $out['data']);
         $this->assertArrayHasKey('user_name', $out['data']);
+        $this->assertArrayHasKey('nationality', $out['data']);
+        $this->assertArrayHasKey('email', $out['data']);
+        $this->assertArrayHasKey('phone_1', $out['data']);
+        $this->assertArrayHasKey('phone_2', $out['data']);
+        $this->assertArrayHasKey('holder_id', $out['data']);
+        $this->assertArrayHasKey('profile_permission', $out['data']);
     }
 }

@@ -55,5 +55,10 @@ class UserPreferenceInfoTest extends \PHPUnit_Framework_TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(3640, $out['status_code']);
+
+        $this->assertArrayHasKey('id', $out['data']);
+        $this->assertArrayHasKey('currency', $out['data']);
+        $this->assertArrayHasKey('currency_receive', $out['data']);
+        $this->assertArrayHasKey('ppmid', $out['data']);
     }
 }

@@ -79,8 +79,6 @@ class AddressUpdateTest extends \PHPUnit_Framework_TestCase
         $response = $this->response;
 
         $response = $action($request, $response, ['id' => 2, 'acid' => '1111', 'mode' => 'User']);
-        //$out = json_decode((string) $response->getBody(), true);
-        //$this->assertEquals(5040, $out['status_code']);
     }
 
     public function testMissingData()
@@ -119,6 +117,19 @@ class AddressUpdateTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, ['id' => 2, 'acid' => '1', 'mode' => 'User']);
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2620, $out['status_code']);
+
+        $this->assertArrayHasKey('nick_name', $out['data']);
+        $this->assertArrayHasKey('address_line_2', $out['data']);
+        $this->assertArrayHasKey('address_line_3', $out['data']);
+        $this->assertArrayHasKey('address_line_4', $out['data']);
+        $this->assertArrayHasKey('address_line_5', $out['data']);
+        $this->assertArrayHasKey('ppmid', $out['data']);
+        $this->assertArrayHasKey('status', $out['data']);
+        $this->assertEquals('Pending', $out['data']['status']);
+        $this->assertArrayHasKey('old_id', $out['data']);
+        $this->assertArrayHasKey('created_at', $out['data']);
+        $this->assertArrayHasKey('updated_at', $out['data']);
+        $this->assertArrayHasKey('id', $out['data']);
     }
 
     /*

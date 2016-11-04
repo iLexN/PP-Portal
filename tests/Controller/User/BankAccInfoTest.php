@@ -58,6 +58,21 @@ class BankAccInfoTest extends \PHPUnit_Framework_TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(3630, $out['status_code']);
+
+        $this->assertArrayHasKey('banker_transfer_id', $out['data'][0]);
+        $this->assertArrayHasKey('nick_name', $out['data'][0]);
+        $this->assertArrayHasKey('currency', $out['data'][0]);
+        $this->assertArrayHasKey('account_user_name', $out['data'][0]);
+        $this->assertArrayHasKey('account_number', $out['data'][0]);
+        $this->assertArrayHasKey('iban', $out['data'][0]);
+        $this->assertArrayHasKey('branch_code', $out['data'][0]);
+        $this->assertArrayHasKey('bank_swift_code', $out['data'][0]);
+        $this->assertArrayHasKey('bank_name', $out['data'][0]);
+        $this->assertArrayHasKey('additional_information', $out['data'][0]);
+        $this->assertArrayHasKey('intermediary_bank_swift_code', $out['data'][0]);
+        $this->assertArrayHasKey('ppmid', $out['data'][0]);
+        $this->assertArrayHasKey('created_at', $out['data'][0]);
+        $this->assertArrayHasKey('updated_at', $out['data'][0]);
     }
 
     public function testGetFail()

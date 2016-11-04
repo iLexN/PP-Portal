@@ -50,5 +50,20 @@ class OfficeInfoTest extends \PHPUnit_Framework_TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(1540, $out['status_code']);
+
+        $this->assertArrayHasKey('contact_details_id', $out['data'][0]);
+        $this->assertArrayHasKey('region', $out['data'][0]);
+        $this->assertArrayHasKey('region_full', $out['data'][0]);
+        $this->assertArrayHasKey('tel_1', $out['data'][0]);
+        $this->assertArrayHasKey('tel_2', $out['data'][0]);
+        $this->assertArrayHasKey('fax_1', $out['data'][0]);
+        $this->assertArrayHasKey('fax_2', $out['data'][0]);
+        $this->assertArrayHasKey('fax_3', $out['data'][0]);
+        $this->assertArrayHasKey('address_1', $out['data'][0]);
+        $this->assertArrayHasKey('address_2', $out['data'][0]);
+        $this->assertArrayHasKey('address_3', $out['data'][0]);
+        $this->assertArrayHasKey('address_4', $out['data'][0]);
+        $this->assertArrayHasKey('address_5', $out['data'][0]);
+        $this->assertArrayHasKey('gmap_url', $out['data'][0]);
     }
 }

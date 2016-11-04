@@ -52,6 +52,12 @@ class InfoTest extends \PHPUnit_Framework_TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(5040, $out['status_code']);
+        $this->assertArrayHasKey('responsibility_id', $out['data']);
+        $this->assertArrayHasKey('name', $out['data']);
+        $this->assertArrayHasKey('email', $out['data']);
+        $this->assertArrayHasKey('office_phone', $out['data']);
+        $this->assertArrayHasKey('contact_details_id', $out['data']);
+        $this->assertArrayHasKey('location', $out['data']);
     }
 
     public function testAdvisorNotFound()

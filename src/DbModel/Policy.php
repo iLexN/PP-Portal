@@ -58,7 +58,7 @@ class Policy extends Model
     }
     */
 
-    public function Advisor()
+    public function advisor()
     {
         return $this->hasOne(__NAMESPACE__.'\Advisor', 'responsibility_id', 'responsibility_id');
     }

@@ -61,6 +61,20 @@ class RenewInfoTest extends \PHPUnit_Framework_TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2022, $out['status_code']);
+
+        $this->assertArrayHasKey('renew_id', $out['data']);
+        $this->assertArrayHasKey('ppmid', $out['data']);
+        $this->assertArrayHasKey('title', $out['data']);
+        $this->assertArrayHasKey('middle_name', $out['data']);
+        $this->assertArrayHasKey('first_name', $out['data']);
+        $this->assertArrayHasKey('last_name', $out['data']);
+        $this->assertArrayHasKey('nationality', $out['data']);
+        $this->assertArrayHasKey('email', $out['data']);
+        $this->assertArrayHasKey('phone_1', $out['data']);
+        $this->assertArrayHasKey('phone_2', $out['data']);
+        $this->assertArrayHasKey('status', $out['data']);
+        $this->assertArrayHasKey('created_at', $out['data']);
+        $this->assertArrayHasKey('updated_at', $out['data']);
     }
 
     public function testwithoutInfo()

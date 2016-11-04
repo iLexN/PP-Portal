@@ -57,8 +57,19 @@ class ClaimInfoTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(6030, $out['status_code']);
         $this->assertArrayHasKey('claim_id', $out['data']);
         $this->assertEquals(1, $out['data']['user_policy_id']);
+        $this->assertArrayHasKey('currency', $out['data']);
+        $this->assertArrayHasKey('amount', $out['data']);
+        $this->assertArrayHasKey('date_of_treatment', $out['data']);
+        $this->assertArrayHasKey('diagnosis', $out['data']);
+        $this->assertArrayHasKey('payment_method', $out['data']);
+        $this->assertArrayHasKey('issue_to_whom', $out['data']);
+        $this->assertArrayHasKey('currency_receive', $out['data']);
+        $this->assertArrayHasKey('status', $out['data']);
+        $this->assertArrayHasKey('created_at', $out['data']);
+        $this->assertArrayHasKey('updated_at', $out['data']);
         $this->assertArrayHasKey('file_attachments', $out['data']);
-        //$this->assertArrayHasKey('bank_info', $out['data']);
+        $this->assertArrayHasKey('support_doc', $out['data']['file_attachments']);
+        $this->assertArrayHasKey('claim_form', $out['data']['file_attachments']);
     }
 
     public function testSuccess2()
@@ -75,7 +86,18 @@ class ClaimInfoTest extends \PHPUnit_Framework_TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(6030, $out['status_code']);
         $this->assertArrayHasKey('claim_id', $out['data']);
+        $this->assertArrayHasKey('currency', $out['data']);
+        $this->assertArrayHasKey('amount', $out['data']);
+        $this->assertArrayHasKey('date_of_treatment', $out['data']);
+        $this->assertArrayHasKey('diagnosis', $out['data']);
+        $this->assertArrayHasKey('payment_method', $out['data']);
+        $this->assertArrayHasKey('issue_to_whom', $out['data']);
+        $this->assertArrayHasKey('currency_receive', $out['data']);
+        $this->assertArrayHasKey('status', $out['data']);
+        $this->assertArrayHasKey('created_at', $out['data']);
+        $this->assertArrayHasKey('updated_at', $out['data']);
         $this->assertArrayHasKey('file_attachments', $out['data']);
-        //$this->assertArrayHasKey('bank_info', $out['data']);
+        $this->assertArrayHasKey('support_doc', $out['data']['file_attachments']);
+        $this->assertArrayHasKey('claim_form', $out['data']['file_attachments']);
     }
 }
