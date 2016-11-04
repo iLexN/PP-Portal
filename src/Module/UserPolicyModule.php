@@ -27,7 +27,8 @@ class UserPolicyModule extends AbstractContainer
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $userPolicy = UserPolicy::with('policy')->find($id);
+            //$userPolicy = UserPolicy::with('policy.Advisor')->find($id);
+            $userPolicy = UserPolicy::find($id);
             $this->pool->save($item->set($userPolicy));
         }
 
@@ -59,6 +60,20 @@ class UserPolicyModule extends AbstractContainer
         }
 
         return $this->serializing($policy);
+    }
+
+    public function getPolicyDetail($policy_id)
+    {
+        $item = $this->pool->getItem('Policy/'.$policy_id);
+        $policy = $item->get();
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            $policy = Policy::with('Advisor')->find($policy_id);
+            $this->pool->save($item->set($policy));
+        }
+        
+        return $policy;
     }
 
     private function serializing($policy)

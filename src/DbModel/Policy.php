@@ -57,4 +57,9 @@ class Policy extends Model
         return $this->hasMany(__NAMESPACE__.'\Address', 'ref_id');
     }
     */
+
+    public function Advisor()
+    {
+        return $this->hasOne(__NAMESPACE__.'\Advisor', 'responsibility_id', 'responsibility_id');
+    }
 }

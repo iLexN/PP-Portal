@@ -59,6 +59,15 @@ class User extends Model
         return password_verify($password, $this->attributes['password']);
     }
 
+    public function needReHash()
+    {
+        if (password_needs_rehash($this->attributes['password'], PASSWORD_DEFAULT)) {
+            return true;
+        }
+        
+        return false;
+    }
+
     public function reNewInfo()
     {
         return $this->hasMany(__NAMESPACE__.'\UserInfoReNew', 'ppmid');

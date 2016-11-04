@@ -13,8 +13,12 @@ class PolicyInfo extends AbstractContainer
         /* @var $policy \PP\Portal\DbModel\Policy */
         $policy = $this->UserPolicyModule->userPolicy;
 
+        $out = $policy->toArray();
+        $p = $this->UserPolicyModule->getPolicyDetail($policy->policy_id);
+        $out['policy'] = $p->toArray();
+
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $policy->toArray(),
+                    'data' => $out,
                 ], 3030);
     }
 }
