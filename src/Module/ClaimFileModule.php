@@ -25,7 +25,7 @@ class ClaimFileModule extends AbstractContainer
 
         $id = $file->id;
         $this->moveFiles($id, $newfile);
-        //$this->ClaimModule->clearCache();
+        $this->ClaimModule->clearCache();
     }
 
     /**
@@ -58,7 +58,7 @@ class ClaimFileModule extends AbstractContainer
         $this->file->status = 'Delete';
         $this->file->save();
         $this->ClaimModule->geInfoById($this->file->claim_id);
-        //$this->ClaimModule->clearCache();
+        $this->ClaimModule->clearCache();
     }
 
     /*

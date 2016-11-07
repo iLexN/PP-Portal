@@ -5,6 +5,7 @@ namespace PP\Portal\Module;
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\Policy;
 use PP\Portal\DbModel\UserPolicy;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserPolicyModule extends AbstractContainer
 {
@@ -79,7 +80,7 @@ class UserPolicyModule extends AbstractContainer
         return $policy;
     }
 
-    private function serializing(Policy $policy)
+    private function serializing(Collection $policy)
     {
         // can move to db model like policy people
         /* @var $item \PP\Portal\DbModel\Policy */
