@@ -2,10 +2,11 @@
 
 namespace PP\Portal\Module;
 
+use Illuminate\Database\Eloquent\Collection;
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\Policy;
 use PP\Portal\DbModel\UserPolicy;
-use Illuminate\Database\Eloquent\Collection;
+
 
 class UserPolicyModule extends AbstractContainer
 {
@@ -44,7 +45,7 @@ class UserPolicyModule extends AbstractContainer
     /**
      * PolicyList with cache.
      *
-     * @return \PP\Portal\DbModel\Policy
+     * @return \Illuminate\Support\Collection
      */
     public function getPolicyList()
     {
@@ -63,7 +64,7 @@ class UserPolicyModule extends AbstractContainer
     }
 
     /**
-    * @param integer $policy_id
+    * @param int $policy_id
     */
     public function getPolicyDetail($policy_id)
     {
