@@ -64,8 +64,8 @@ class UserPolicyModule extends AbstractContainer
     }
 
     /**
-    * @param int $policy_id
-    */
+     * @param int $policy_id
+     */
     public function getPolicyDetail($policy_id)
     {
         $item = $this->pool->getItem('Policy/'.$policy_id);
