@@ -64,6 +64,7 @@ class OfficeInfoTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('address_3', $out['data'][0]);
         $this->assertArrayHasKey('address_4', $out['data'][0]);
         $this->assertArrayHasKey('address_5', $out['data'][0]);
-        $this->assertArrayHasKey('gmap_url', $out['data'][0]);
+        $this->assertArrayHasKey('gmap_lat', $out['data'][0]);
+        $this->assertArrayHasKey('gmap_lng', $out['data'][0]);
     }
 }

@@ -57,7 +57,6 @@ class InfoTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('email', $out['data']);
         $this->assertArrayHasKey('office_phone', $out['data']);
         $this->assertArrayHasKey('contact_details_id', $out['data']);
-        $this->assertArrayHasKey('location', $out['data']);
     }
 
     public function testAdvisorNotFound()

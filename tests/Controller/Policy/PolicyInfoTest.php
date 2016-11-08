@@ -78,6 +78,5 @@ class PolicyInfoTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('email', $out['data']['policy']['advisor']);
         $this->assertArrayHasKey('office_phone', $out['data']['policy']['advisor']);
         $this->assertArrayHasKey('contact_details_id', $out['data']['policy']['advisor']);
-        $this->assertArrayHasKey('location', $out['data']['policy']['advisor']);
     }
 }
