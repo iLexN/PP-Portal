@@ -7,7 +7,6 @@ use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\Policy;
 use PP\Portal\DbModel\UserPolicy;
 
-
 class UserPolicyModule extends AbstractContainer
 {
     /**
