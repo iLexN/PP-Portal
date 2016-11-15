@@ -56,7 +56,17 @@ class PolicyListTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('policy_id', $out['data'][0]);
         $this->assertArrayHasKey('insurer', $out['data'][0]);
         $this->assertArrayHasKey('plan_name', $out['data'][0]);
+        $this->assertArrayHasKey('deductible', $out['data'][0]);
+        $this->assertArrayHasKey('cover', $out['data'][0]);
+        $this->assertArrayHasKey('options', $out['data'][0]);
+        $this->assertArrayHasKey('medical_currency', $out['data'][0]);
+        $this->assertArrayHasKey('payment_frequency', $out['data'][0]);
+        $this->assertArrayHasKey('payment_method', $out['data'][0]);
+        $this->assertArrayHasKey('start_date', $out['data'][0]);
         $this->assertArrayHasKey('responsibility_id', $out['data'][0]);
-        $this->assertArrayHasKey('user_policy_id', $out['data'][0]);
+        $this->assertArrayHasKey('status', $out['data'][0]);
+        $this->assertArrayHasKey('renew_date', $out['data'][0]);
+        $this->assertArrayHasKey('pivot', $out['data'][0]);
+        $this->assertArrayHasKey('advisor', $out['data'][0]);
     }
 }

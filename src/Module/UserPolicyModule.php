@@ -55,11 +55,12 @@ class UserPolicyModule extends AbstractContainer
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $policy = $user->userPolicy()->get();
+            $policy = $user->userPolicy()->withPivot('premium_paid')->with('advisor')->get();
             $this->pool->save($item->set($policy));
         }
 
-        return $this->serializing($policy);
+        //return $this->serializing($policy);
+        return $policy;
     }
 
     /**
@@ -80,18 +81,19 @@ class UserPolicyModule extends AbstractContainer
         return $policy;
     }
 
-    private function serializing(Collection $policy)
-    {
-        // can move to db model like policy people
-        /* @var $item \PP\Portal\DbModel\Policy */
-        return $policy->map(function (Policy $item) {
-            return [
-                'policy_id'         => (int) $item->policy_id,
-                'insurer'           => $item->insurer,
-                'plan_name'         => $item->plan_name,
-                'responsibility_id' => $item->responsibility_id,
-                'user_policy_id'    => $item->pivot->id,
-            ];
-        });
-    }
+// seem no use any more
+//    private function serializing(Collection $policy)
+//    {
+//        // can move to db model like policy people
+//        /* @var $item \PP\Portal\DbModel\Policy */
+//        return $policy->map(function (Policy $item) {
+//            return [
+//                'policy_id'         => (int) $item->policy_id,
+//                'insurer'           => $item->insurer,
+//                'plan_name'         => $item->plan_name,
+//                'responsibility_id' => $item->responsibility_id,
+//                'user_policy_id'    => $item->pivot->id,
+//            ];
+//        });
+//    }
 }
