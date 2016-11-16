@@ -2,7 +2,6 @@
 
 namespace PP\Portal\Module;
 
-use Illuminate\Database\Eloquent\Collection;
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\Policy;
 use PP\Portal\DbModel\UserPolicy;

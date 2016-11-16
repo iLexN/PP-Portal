@@ -63,7 +63,5 @@ class UserPolicyModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('renew_date', $policyList[0]);
         $this->assertArrayHasKey('pivot', $policyList[0]);
         $this->assertArrayHasKey('advisor', $policyList[0]);
-
-
     }
 }
