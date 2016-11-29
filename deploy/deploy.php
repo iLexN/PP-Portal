@@ -9,7 +9,11 @@ $autoloader->addPsr4('Ilex\Deploy\\', __DIR__.'/../deploy');
 
 
 $deploy = new Ilex\Deploy\DeployGit();
-
+/*
+$files = $deploy->goLive('0.1.0');
+print_r($files);
+exit();
+*/
 $f = $deploy->diffFiles();
 
 print_r($f);
@@ -28,5 +32,5 @@ $filesystem = new Filesystem(new Adapter([
 ]));
 
 foreach ( $f as $fileArray ) {
-    $filesystem->write($fileArray[1], file_get_contents('../'.$fileArray[1]));
+    $filesystem->put($fileArray[1], file_get_contents('../'.$fileArray[1]));
 }
