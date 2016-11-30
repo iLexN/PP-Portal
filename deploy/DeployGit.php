@@ -37,7 +37,7 @@ class DeployGit
     public function goLive($lastTag)
     {
         //Get new and modified files
-        $process = new Process("git diff 0.1.0 --name-only");
+        $process = new Process("git diff {$lastTag} --name-only");
         $process->setTimeout(3600);
         $process->run();
         if (!$process->isSuccessful()) {

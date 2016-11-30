@@ -31,6 +31,15 @@ $filesystem = new Filesystem(new Adapter([
     'timeout' => 30,
 ]));
 
-foreach ( $f as $fileArray ) {
-    $filesystem->put($fileArray[1], file_get_contents('../'.$fileArray[1]));
+foreach ($f as $fileArray) {
+    switch ($fileArray[0]) {
+        case 'D':
+            if ( $filesystem->has($fileArray[2]) ) {
+                $filesystem->delete($fileArray[2]);
+            }
+            break;
+
+        default:
+            $filesystem->put($fileArray[1], file_get_contents('../'.$fileArray[1]));
+    }
 }
