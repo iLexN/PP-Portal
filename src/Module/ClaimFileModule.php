@@ -13,7 +13,7 @@ class ClaimFileModule extends AbstractContainer
      * @var \PP\Portal\DbModel\ClaimFile
      */
     public $file;
-//dd
+
     public function newClaimFile(FileUploadModule $newfile, $data)
     {
         $file = new ClaimFile();
