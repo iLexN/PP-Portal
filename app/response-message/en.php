@@ -50,7 +50,6 @@ return [
         'title' => 'upload file remove',
     ],
 
-
     // user 2xxx
     '2010' => [
         'code'  => 2010,
@@ -163,8 +162,6 @@ return [
         'title' => 'holder info renew list',
     ],
 
-
-
     //Policy
     '3010' => [
         'code'  => 3010,
@@ -215,7 +212,6 @@ return [
         'title' => 'Preference info updated',
     ],
 
-
     //UserPolicy
     '5010' => [
         'code'  => 5010,
@@ -263,9 +259,6 @@ return [
         'code'  => 6030,
         'title' => 'claim info get',
     ],
-
-
-
 
     // using api fail 4xxxx
     '4010' => [

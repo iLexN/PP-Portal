@@ -21,7 +21,6 @@ class UserPreferenceModuleTest extends \PHPUnit_Framework_TestCase
 
         $c['dataCacheConfig'] = ['expiresAfter' => 1];
 
-
         $c['UserModule'] = function ($c) {
             $userModule = new \PP\Portal\Module\UserModule($c);
             $userModule->isUserExistByID(2);

@@ -32,8 +32,6 @@ class ClaimFileModuleTest extends \PHPUnit_Framework_TestCase
         };
         $c['ClaimModule']->geInfoById(1);
 
-
-
         $file = $this->getMockBuilder(\Slim\Http\UploadedFile::class)
                 ->setMethods(['moveTo', 'getClientFilename'])
                 ->disableOriginalConstructor()

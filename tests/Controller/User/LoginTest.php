@@ -42,7 +42,6 @@ class LoginTest extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\UserModule($c);
         };
 
-
         $this->action = new \PP\Portal\Controller\User\Login($c);
         $this->response = new \Slim\Http\Response();
     }

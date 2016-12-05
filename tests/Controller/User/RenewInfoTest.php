@@ -40,7 +40,6 @@ class RenewInfoTest extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\UserModule($c);
         };
 
-
         $this->c = $c;
         $this->action = new \PP\Portal\Controller\User\RenewInfo($c);
         $this->response = new \Slim\Http\Response();

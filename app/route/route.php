@@ -126,11 +126,9 @@ $app->get('/attachment/{id:\d+}', 'PP\Portal\Controller\Claim\AttachmentDownload
 $app->post('/attachment/{id:\d+}', 'PP\Portal\Controller\Claim\AttachmentDel')
         ->setName('AttachmentDel');
 
-
 //$app->get('/test/token', 'PP\Portal\Controller\Test\Token')
 //        ->setName('TestToken')
 //        ->add($checkToken);
-
 
 //helper for development
 $app->get('/helper/router', 'PP\Portal\Controller\Helper\Router')
