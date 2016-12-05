@@ -39,7 +39,6 @@ class ClaimListTest extends \PHPUnit_Framework_TestCase
         };
         $c['UserPolicyModule']->getUerPolicy(1);
 
-
         $this->action = new \PP\Portal\Controller\Claim\ClaimList($c);
         $this->response = new \Slim\Http\Response();
     }

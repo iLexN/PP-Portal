@@ -112,7 +112,6 @@ class ClaimAttachmentTest extends \PHPUnit_Framework_TestCase
         $request->method('getUploadedFiles')->willReturn(['newfile' => $file]);
         $request->method('getParsedBody')->willReturn(['file_type' => 'support_doc']);
 
-
         $response = $this->response;
         $response = $action($request, $response, []);
 

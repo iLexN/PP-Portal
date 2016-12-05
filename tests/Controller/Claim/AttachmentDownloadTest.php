@@ -92,7 +92,6 @@ class AttachmentDownloadTest extends \PHPUnit_Framework_TestCase
         $response = $this->response;
         $response = $action($request, $response, ['id' => 1]);
 
-
         $this->assertTrue($response->hasHeader('Content-Type'));
     }
 }

@@ -37,7 +37,6 @@ class CheckClaimExistTest extends \PHPUnit_Framework_TestCase
             return new \PP\Portal\Module\ClaimModule($c);
         };
 
-
         $environment = \Slim\Http\Environment::mock([]);
         $this->request = \Slim\Http\Request::createFromEnvironment($environment);
         $this->response = new \Slim\Http\Response();
