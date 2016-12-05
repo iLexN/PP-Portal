@@ -1,4 +1,5 @@
 #### [Current]
+ * [bf17d4e](../../commit/bf17d4e) - __(2016-12-01 18:06:24 +0800)__ test again
  * [93205ba](../../commit/93205ba) - __(2016-12-01 18:03:33 +0800)__ test post hook
  * [e20aa40](../../commit/e20aa40) - __(2016-12-01 18:02:18 +0800)__ test pre hook
  * [ae47e44](../../commit/ae47e44) - __(2016-12-01 17:31:18 +0800)__ add defterdar.php to gen changelog
