@@ -74,6 +74,9 @@ $app->post('/user/{id:\d+}/address/{acid:\d+}', 'PP\Portal\Controller\Address\Ad
         ->setName('addresslist.update')
         ->setArgument('mode', 'User')
         ->add($checkUserExist);
+$app->delete('/user/{id:\d+}/address/{acid:\d+}', 'PP\Portal\Controller\Address\AddressDelete')
+        ->setName('addresslist.delete')
+        ->add($checkUserExist);
 
 $app->get('/advisor/{id:\d+}', 'PP\Portal\Controller\Advisor\Info')
         ->setName('AdvisorInfo');
