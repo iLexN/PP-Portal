@@ -245,8 +245,8 @@ class UserModule extends AbstractContainer
         $user->name = $data['name'];
         $user->phone = $data['phone'];
         $user->email = $data['email'];
-        $user->status = 'Pending';
-        $user->ppmid = $this->user->ppmid;
+        $user->status = 'Fail';
+        //$user->ppmid = $this->user->ppmid;
         $user->save();
     }
 
