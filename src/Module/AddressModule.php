@@ -20,31 +20,56 @@ class AddressModule extends AbstractContainer
         return $v;
     }
 
+    /*
     public function saveData($data, Address $address)
     {
         $newData = $this->resetData($data);
         $this->save($newData, $address);
-    }
+    }*/
 
+    /*
     public function updateDate($data, Address $address)
     {
         $this->save($data, $address);
-    }
+        $this->clearCache();
+    }*/
 
-    private function save($data, Address $address)
+    public function save($data, Address $address)
     {
         foreach ($data as $k => $v) {
             $address->{$k} = $v;
         }
         $address->save();
+        $this->clearCache();
     }
 
-    private function resetData($data)
+    /*private function resetData($data)
     {
         unset($data['id']);
         unset($data['updated_at']);
         unset($data['created_at']);
 
         return $data;
+    }*/
+
+    private function clearCache()
+    {
+        $this->pool->deleteItem('UserAddress/'.$this->UserModule->user->ppmid);
+    }
+
+    public function getAddressList()
+    {
+        $item = $this->pool->getItem('UserAddress/'.$this->UserModule->user->ppmid);
+        $address = $item->get();
+
+        if ($item->isMiss()) {
+            $item->lock();
+            $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
+            //$item->expiresAfter(3600 * 12);
+            $address = $this->UserModule->user->address()->UserAddress()->get();
+            $this->pool->save($item->set($address));
+        }
+
+        return $address;
     }
 }

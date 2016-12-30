@@ -12,6 +12,23 @@ class AddressModuleTest extends \PHPUnit_Framework_TestCase
     {
         $c = new \Slim\Container();
 
+        $c['pool'] = function ($c) {
+            $settings = [
+                'path' => __DIR__.'/../cache/data',
+            ];
+            $driver = new \Stash\Driver\FileSystem($settings);
+
+            return new \Stash\Pool($driver);
+        };
+        $c['dataCacheConfig'] = ['expiresAfter' => 1];
+
+        $c['UserModule'] = function ($c) {
+            $userModule = new \PP\Portal\Module\UserModule($c);
+            $userModule->isUserExistByID(2);
+
+            return $userModule;
+        };
+
         $this->addressModule = new \PP\Portal\Module\AddressModule($c);
         $this->address = new \PP\Portal\DbModel\Address();
     }
@@ -30,7 +47,7 @@ class AddressModuleTest extends \PHPUnit_Framework_TestCase
         $data = [
             'nick_name'         => 't',
         ];
-        $v = $this->addressModule->saveData($data, $this->address);
+        $v = $this->addressModule->save($data, $this->address);
         $this->expectOutputString('foo');
         echo 'foo';
     }

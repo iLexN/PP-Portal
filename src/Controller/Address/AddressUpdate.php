@@ -22,16 +22,16 @@ class AddressUpdate extends AbstractContainer
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
         }
 
-        $data = $this->inputData($address->toArray(), $v->data());
-        $new = new \PP\Portal\DbModel\Address();
+        //$data = $this->inputData($address->toArray(), $v->data());
+        //$new = new \PP\Portal\DbModel\Address();
 
-        // todo have no update to server yet
-        $this->AddressModule->updateDate($data, $new);
+        $this->AddressModule->save($v->data(), $address);
 
-        return $this->ViewHelper->withStatusCode($response, ['data' => $new->toArray()],
+        return $this->ViewHelper->withStatusCode($response, ['data' => $address->toArray()],
                 $this->getStatusCode());
     }
 
+    /*
     private function inputData($address, $input)
     {
         $default = [];
@@ -42,7 +42,7 @@ class AddressUpdate extends AbstractContainer
         unset($data['id']);
 
         return $data;
-    }
+    }*/
 
     private function getStatusCode()
     {

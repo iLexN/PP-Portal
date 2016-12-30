@@ -24,7 +24,7 @@ class AddressNew extends AbstractContainer
         $default['ppmid'] = $this->UserModule->user->ppmid;
 
         $data = array_merge($default, $v->data());
-        $this->AddressModule->saveData($data, $address);
+        $this->AddressModule->save($data, $address);
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $address->toArray()], 2610);
     }

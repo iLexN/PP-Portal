@@ -34,6 +34,9 @@ class AddressListTest extends \PHPUnit_Framework_TestCase
         $c['UserModule'] = function ($c) {
             return new \PP\Portal\Module\UserModule($c);
         };
+        $c['AddressModule'] = function ($c) {
+            return new \PP\Portal\Module\AddressModule($c);
+        };
 
         $this->c = $c;
         $this->action = new \PP\Portal\Controller\User\AddressList($c);

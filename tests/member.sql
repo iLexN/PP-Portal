@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 11 月 08 日 17:23
+-- 產生時間： 2016 年 12 月 30 日 11:03
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -47,8 +47,7 @@ CREATE TABLE IF NOT EXISTS `member_portal_address_user` (
 --
 
 INSERT INTO `member_portal_address_user` (`id`, `nick_name`, `address_line_2`, `address_line_3`, `address_line_4`, `address_line_5`, `ppmid`, `status`, `old_id`, `created_at`, `updated_at`) VALUES
-(1, 'test', 'test', 'test', 'test', 'test', 2, 'active', NULL, '2016-09-14 12:44:51', '2016-09-14 12:44:51'),
-(2, 'policy_address', 'policy_address', 'policy_address', 'policy_address', 'policy_address', 1, NULL, NULL, '2016-09-14 00:00:00', '2016-09-14 00:00:00');
+(1, 'test', 'test', 'test', 'test', 'test', 2, 'Active', NULL, '2016-09-14 12:44:51', '2016-09-14 12:44:51');
 
 -- --------------------------------------------------------
 
@@ -247,7 +246,6 @@ CREATE TABLE IF NOT EXISTS `member_portal_forgot_username` (
   `phone` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `status` varchar(64) DEFAULT NULL,
-  `ppmid` int(11) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
