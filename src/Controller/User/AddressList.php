@@ -14,4 +14,5 @@ class AddressList extends AbstractContainer
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $address->toArray()], 2600);
     }
+
 }

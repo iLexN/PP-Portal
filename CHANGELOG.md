@@ -1,6 +1,4 @@
 #### [Current]
- * [cefc047](../../commit/cefc047) - __(2016-12-30 12:37:33 +0800)__ address add del
- * [8e11200](../../commit/8e11200) - __(2016-12-30 11:55:50 +0800)__ UserPreferenceModule currency usd -> usd united states dollar
  * [609d522](../../commit/609d522) - __(2016-12-30 11:31:59 +0800)__ cs fix , code improve1
  * [5e6b080](../../commit/5e6b080) - __(2016-12-30 11:16:32 +0800)__ address module update, no need pending status , also improve code module
  * [613bfff](../../commit/613bfff) - __(2016-12-30 09:23:23 +0800)__ forgot username change fail to save to db.

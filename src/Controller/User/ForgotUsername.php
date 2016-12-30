@@ -29,7 +29,8 @@ class ForgotUsername extends AbstractContainer
 
         $this->sendForgotUsernameEmail();
 
-        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2550]]);
+        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2550],
+        ]);
     }
 
     private function userMatch($data)

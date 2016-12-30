@@ -2,7 +2,7 @@
 
 namespace PP\Test\Address;
 
-class AddressDeleteTest extends \PHPUnit_Framework_TestCase
+class AddressUpdateTest extends \PHPUnit_Framework_TestCase
 {
     protected $action;
     protected $response;
@@ -79,10 +79,12 @@ class AddressDeleteTest extends \PHPUnit_Framework_TestCase
         ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
+
         $response = $this->response;
 
         $response = $action($request, $response, ['id' => 2, 'acid' => '3']);
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2625, $out['status_code']);
     }
+
 }
