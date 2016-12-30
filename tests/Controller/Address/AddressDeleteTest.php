@@ -2,7 +2,7 @@
 
 namespace PP\Test\Address;
 
-class AddressUpdateTest extends \PHPUnit_Framework_TestCase
+class AddressDeleteTest extends \PHPUnit_Framework_TestCase
 {
     protected $action;
     protected $response;
