@@ -10,7 +10,7 @@ class AddressUpdate extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        $address = $this->AddressModule->getAddressByUser($args['acid']);
+        $address = $this->getAddress($args);
 
         if (!$address) {
             throw new \Slim\Exception\NotFoundException($request, $response);
@@ -47,5 +47,11 @@ class AddressUpdate extends AbstractContainer
     private function getStatusCode()
     {
         return 2620;
+    }
+
+    private function getAddress($args)
+    {
+        //User
+        return $this->UserModule->user->address()->find((int) $args['acid']);
     }
 }

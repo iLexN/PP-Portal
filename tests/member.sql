@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 12 月 30 日 12:25
+-- 產生時間： 2016 年 12 月 30 日 11:03
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -40,16 +40,14 @@ CREATE TABLE IF NOT EXISTS `member_portal_address_user` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- 資料表的匯出資料 `member_portal_address_user`
 --
 
 INSERT INTO `member_portal_address_user` (`id`, `nick_name`, `address_line_2`, `address_line_3`, `address_line_4`, `address_line_5`, `ppmid`, `status`, `old_id`, `created_at`, `updated_at`) VALUES
-(1, 'test', 'test', 'test', 'test', 'test', 2, 'Active', NULL, '2016-09-14 12:44:51', '2016-09-14 12:44:51'),
-(3, 'test', 'test', 'test', 'test', 'test', 2, 'Active', NULL, '2016-09-14 12:44:51', '2016-09-14 12:44:51'),
-(4, 'test', 'test', 'test', 'test', 'test', 2, 'Active', NULL, '2016-09-14 12:44:51', '2016-09-14 12:44:51');
+(1, 'test', 'test', 'test', 'test', 'test', 2, 'Active', NULL, '2016-09-14 12:44:51', '2016-09-14 12:44:51');
 
 -- --------------------------------------------------------
 
