@@ -1,4 +1,10 @@
 #### [Current]
+ * [a0af25c](../../commit/a0af25c) - __(2016-12-30 14:53:05 +0800)__ roll back
+ * [1c90336](../../commit/1c90336) - __(2016-12-30 14:49:21 +0800)__ Merge origin/master
+ * [d056563](../../commit/d056563) - __(2016-12-30 14:48:19 +0800)__ Revert "address add del"
+ * [90fc953](../../commit/90fc953) - __(2016-12-30 14:47:28 +0800)__ Revert "fix test"
+ * [da6943e](../../commit/da6943e) - __(2016-12-30 14:44:54 +0800)__ fix test
+ * [9824fb5](../../commit/9824fb5) - __(2016-12-30 14:39:28 +0800)__ fix test
  * [cefc047](../../commit/cefc047) - __(2016-12-30 12:37:33 +0800)__ address add del
  * [8e11200](../../commit/8e11200) - __(2016-12-30 11:55:50 +0800)__ UserPreferenceModule currency usd -> usd united states dollar
  * [609d522](../../commit/609d522) - __(2016-12-30 11:31:59 +0800)__ cs fix , code improve1

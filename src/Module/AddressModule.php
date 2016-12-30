@@ -20,6 +20,11 @@ class AddressModule extends AbstractContainer
         return $v;
     }
 
+    public function getAddressByUser($id)
+    {
+        return $this->UserModule->user->address()->find((int) $id);
+    }
+
     /*
     public function saveData($data, Address $address)
     {
@@ -71,5 +76,11 @@ class AddressModule extends AbstractContainer
         }
 
         return $address;
+    }
+
+    public function delete(Address $address)
+    {
+        $address->delete();
+        $this->clearCache();
     }
 }
