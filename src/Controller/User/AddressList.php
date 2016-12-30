@@ -10,7 +10,7 @@ class AddressList extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        $address =$this->AddressModule->getAddressList();
+        $address = $this->AddressModule->getAddressList();
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $address->toArray()], 2600);
     }

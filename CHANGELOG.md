@@ -1,4 +1,11 @@
 #### [Current]
+ * [5e6b080](../../commit/5e6b080) - __(2016-12-30 11:16:32 +0800)__ address module update, no need pending status , also improve code module
+ * [613bfff](../../commit/613bfff) - __(2016-12-30 09:23:23 +0800)__ forgot username change fail to save to db.
+ * [3332337](../../commit/3332337) - __(2016-12-29 14:06:17 +0800)__ php package version update
+ * [6852ed8](../../commit/6852ed8) - __(2016-12-05 12:35:59 +0800)__ Merge pull request  [#2](../../issues/2)9 from iLexN/analysis-q1E4r1
+ * [dfdaafc](../../commit/dfdaafc) - __(2016-12-05 04:35:49 +0000)__ Apply fixes from StyleCI
+ * [1ec4c3f](../../commit/1ec4c3f) - __(2016-12-05 12:21:03 +0800)__ package version update
+ * [1d7a729](../../commit/1d7a729) - __(2016-12-05 11:06:32 +0800)__ ci improve
  * [bf17d4e](../../commit/bf17d4e) - __(2016-12-01 18:06:24 +0800)__ test again
  * [93205ba](../../commit/93205ba) - __(2016-12-01 18:03:33 +0800)__ test post hook
  * [e20aa40](../../commit/e20aa40) - __(2016-12-01 18:02:18 +0800)__ test pre hook

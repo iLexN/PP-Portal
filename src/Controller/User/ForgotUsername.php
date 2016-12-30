@@ -26,8 +26,6 @@ class ForgotUsername extends AbstractContainer
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010]]);
         }
 
-        // success send email not need log to db
-        //$this->UserModule->saveForgotUsername($user, $data);
         $this->sendForgotUsernameEmail();
 
         return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2550],
