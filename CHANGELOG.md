@@ -1,4 +1,5 @@
 #### [Current]
+ * [609d522](../../commit/609d522) - __(2016-12-30 11:31:59 +0800)__ cs fix , code improve1
  * [5e6b080](../../commit/5e6b080) - __(2016-12-30 11:16:32 +0800)__ address module update, no need pending status , also improve code module
  * [613bfff](../../commit/613bfff) - __(2016-12-30 09:23:23 +0800)__ forgot username change fail to save to db.
  * [3332337](../../commit/3332337) - __(2016-12-29 14:06:17 +0800)__ php package version update
