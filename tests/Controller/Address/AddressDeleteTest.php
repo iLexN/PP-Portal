@@ -79,7 +79,6 @@ class AddressDeleteTest extends \PHPUnit_Framework_TestCase
         ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
-
         $response = $this->response;
 
         $response = $action($request, $response, ['id' => 2, 'acid' => '3']);

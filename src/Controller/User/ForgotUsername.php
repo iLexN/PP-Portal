@@ -23,13 +23,13 @@ class ForgotUsername extends AbstractContainer
         $data = $v->data();
         if (!$this->userMatch($data)) {
             $this->UserModule->saveForgotUsername($user, $data);
+
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010]]);
         }
 
         $this->sendForgotUsernameEmail();
 
-        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2550],
-        ]);
+        return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2550]]);
     }
 
     private function userMatch($data)
