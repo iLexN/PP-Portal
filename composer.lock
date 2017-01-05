@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "85c4fc4dcb2250775183822e0f96484d",
-    "content-hash": "6d1c3121fa55d3259a7bd6054ed8b82c",
+    "hash": "ce0b5507ba5d1d07531b8a844995acc7",
+    "content-hash": "a3dbf938c57637cfc1a5ab53898e9200",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -1356,16 +1356,16 @@
         },
         {
             "name": "vlucas/valitron",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/valitron.git",
-                "reference": "ce8e9a4a39f0771325ff68deb15d7db22d90235e"
+                "reference": "d9b1548c396011bcb9a35f78b2d5959d94d0532a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/valitron/zipball/ce8e9a4a39f0771325ff68deb15d7db22d90235e",
-                "reference": "ce8e9a4a39f0771325ff68deb15d7db22d90235e",
+                "url": "https://api.github.com/repos/vlucas/valitron/zipball/d9b1548c396011bcb9a35f78b2d5959d94d0532a",
+                "reference": "d9b1548c396011bcb9a35f78b2d5959d94d0532a",
                 "shasum": ""
             },
             "require": {
@@ -1398,7 +1398,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-11-15 12:32:32"
+            "time": "2016-12-09 10:59:35"
         }
     ],
     "packages-dev": [
