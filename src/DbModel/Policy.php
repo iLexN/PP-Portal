@@ -62,4 +62,9 @@ class Policy extends Model
     {
         return $this->hasOne(__NAMESPACE__.'\Advisor', 'responsibility_id', 'responsibility_id');
     }
+
+    public function policyuser(){
+        return $this->belongsToMany(__NAMESPACE__.'\User', 'member_portal_user_policy', 'policy_id', 'ppmid')
+                ->withPivot('premium_paid');
+    }
 }

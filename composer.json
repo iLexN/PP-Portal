@@ -17,7 +17,7 @@
         "ramsey/uuid" : "3.5.*",
         "tedivm/stash": "0.14.*",
         "illuminate/database":"5.3.*",
-        "vlucas/valitron":"v1.3.0",
+        "vlucas/valitron":"v1.3.*",
         "league/flysystem":"1.0.*"
     },
     "require-dev": {

@@ -10,10 +10,25 @@ class PolicyList extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        $out = $this->UserPolicyModule->getPolicyList();
+        $collection = $this->UserPolicyModule->getPolicyList();
+
+        $out = $this->formatArray($collection);
 
         return $this->ViewHelper->withStatusCode($response, [
                     'data' => $out->toArray(),
                 ], 3020);
+    }
+
+    public function formatArray($collection){
+        return $collection->map(function ($item) {
+            $ar = $item->toArray();
+            $people = $item->policyuser->map(function($item){
+                $user = $item->userName();
+                $user['premium_paid'] = $item->pivot->premium_paid;
+                return $user;
+            });
+            $ar['policyuser'] = $people;
+            return $ar;
+        });
     }
 }
