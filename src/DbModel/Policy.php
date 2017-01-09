@@ -3,8 +3,8 @@
 namespace PP\Portal\DbModel;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model as Model;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model as Model;
 
 /**
  * @property int $policy_id
