@@ -50,7 +50,7 @@ class UserPolicyModuleTest extends \PHPUnit_Framework_TestCase
 
         $this->assertArrayHasKey('policy_id', $policyList[0]);
         $this->assertArrayHasKey('insurer', $policyList[0]);
-        $this->assertArrayHasKey('plan_name', $policyList[0]);
+        $this->assertArrayHasKey('plan_id', $policyList[0]);
         $this->assertArrayHasKey('cover', $policyList[0]);
         $this->assertArrayHasKey('options', $policyList[0]);
         $this->assertArrayHasKey('medical_currency', $policyList[0]);
@@ -63,5 +63,7 @@ class UserPolicyModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('renew_date', $policyList[0]);
         $this->assertArrayHasKey('pivot', $policyList[0]);
         $this->assertArrayHasKey('advisor', $policyList[0]);
+        $this->assertArrayHasKey('plan', $policyList[0]);
+        $this->assertArrayHasKey('policyuser', $policyList[0]);
     }
 }

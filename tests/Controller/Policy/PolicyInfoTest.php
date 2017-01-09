@@ -57,7 +57,7 @@ class PolicyInfoTest extends \PHPUnit_Framework_TestCase
 
         $this->assertArrayHasKey('policy_id', $out['data']['policy']);
         $this->assertArrayHasKey('insurer', $out['data']['policy']);
-        $this->assertArrayHasKey('plan_name', $out['data']['policy']);
+        $this->assertArrayHasKey('plan_id', $out['data']['policy']);
         $this->assertArrayHasKey('deductible', $out['data']['policy']);
         $this->assertArrayHasKey('cover', $out['data']['policy']);
         $this->assertArrayHasKey('options', $out['data']['policy']);

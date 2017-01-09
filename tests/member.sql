@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2016 年 12 月 30 日 12:25
+-- 產生時間： 2017 年 01 月 09 日 10:12
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -256,6 +256,118 @@ CREATE TABLE IF NOT EXISTS `member_portal_forgot_username` (
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `member_portal_insurer_plan_management`
+--
+
+DROP TABLE IF EXISTS `member_portal_insurer_plan_management`;
+CREATE TABLE IF NOT EXISTS `member_portal_insurer_plan_management` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `insurer_id` varchar(255) DEFAULT NULL,
+  `plan_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=139 ;
+
+--
+-- 資料表的匯出資料 `member_portal_insurer_plan_management`
+--
+
+INSERT INTO `member_portal_insurer_plan_management` (`id`, `insurer_id`, `plan_name`) VALUES
+(25, '38', 'Expatline'),
+(27, '5', 'Poineer'),
+(28, '5', 'Summit'),
+(30, '31', 'IE'),
+(31, '31', 'SC Optimum'),
+(32, '31', 'SC Executive'),
+(33, '125', 'BWHO'),
+(34, '125', 'LifeLine'),
+(35, '125', 'Asean Plus'),
+(36, '166', 'CGHO'),
+(37, '106', 'Prestige'),
+(38, '9', 'ProHealth'),
+(39, '161', 'ProMedico'),
+(40, '161', 'ProMedico Plus'),
+(42, '165', 'WorldCare'),
+(43, '31', 'SC Optimum Enhanced'),
+(47, '4', 'IHP - Group'),
+(48, '15', 'Prima'),
+(50, '18', 'IHP - Group'),
+(54, '78', 'IHHP'),
+(55, '78', 'ISM'),
+(58, '41', 'BWHO'),
+(59, '41', 'Lifeline'),
+(60, '69', 'YouGenio  World'),
+(61, '69', 'YouGenio'),
+(63, '84', 'Individual'),
+(66, '1', 'SEA'),
+(67, '1', 'Global'),
+(69, '4', 'IHP Indiviudal'),
+(70, '4', 'Pioneer'),
+(71, '6', 'Starr CN'),
+(72, '10', 'AIG China'),
+(74, '152', 'LJYS Plan'),
+(75, '152', 'Unity Health Plan'),
+(76, '143', 'SmartCare Plan'),
+(77, '16', 'IHHP'),
+(78, '18', 'IHP - Individual'),
+(79, '141', 'Elite Plan'),
+(80, '22', 'Ambassade'),
+(81, '32', 'IHP'),
+(82, '141', 'Essential Plan'),
+(83, '32', 'EHP'),
+(84, '36', 'Medical Care'),
+(85, '168', 'Individual Health Insurance'),
+(86, '39', 'OVC'),
+(87, '40', 'Premier'),
+(88, '130', 'Expatline Plan'),
+(89, '151', 'Medical Health'),
+(90, '118', 'ZunXin Plan'),
+(92, '118', 'Zun You Ren Sheng Plan'),
+(93, '113', 'ASEAN'),
+(94, '113', 'Thailand'),
+(95, '41', 'Lifeline - Corporate'),
+(96, '53', 'HealthFirst Elite'),
+(97, '53', 'Global Health'),
+(98, '53', 'Silver'),
+(99, '112', 'WorldwideCare Plan'),
+(100, '52', 'CMB SME'),
+(101, '52', 'IPMI D Premier'),
+(102, '164', 'Medical'),
+(103, '59', 'New World'),
+(104, '59', 'Germany'),
+(105, '59', 'Old Plan'),
+(106, '151', 'Travel'),
+(108, '10', 'Domestic Travel'),
+(109, '10', 'Global Travel'),
+(110, '52', 'Local A'),
+(111, '111', 'Worldcare Plan'),
+(112, '65', 'Independence'),
+(113, '65', 'Local Advantage'),
+(114, '65', 'Inpatient'),
+(115, '68', 'Xplorer'),
+(116, '70', 'Henner Care & Health Asia'),
+(117, '77', 'Premier Care'),
+(118, '118', 'SME Plan'),
+(120, '77', 'GlobalCare'),
+(121, '102', 'Evolution'),
+(122, '79', 'IHHP'),
+(123, '79', 'ISM'),
+(124, '80', 'GlobeHopper'),
+(125, '80', 'Fusion'),
+(126, '80', 'GlobalSelect'),
+(127, '171', 'Advanced Plan'),
+(128, '87', 'UltraCare'),
+(129, '87', 'UltraCare - Africa'),
+(130, '171', 'SME Plan'),
+(131, '171', 'Premier Plan'),
+(132, '171', 'Elite Choice Plan'),
+(133, '171', 'Advanced IP Plan'),
+(134, '170', 'First Expat'),
+(137, '172', 'Asia Care Plan'),
+(138, '172', 'Asia Care Plus Plan');
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `member_portal_policy`
 --
 
@@ -263,7 +375,7 @@ DROP TABLE IF EXISTS `member_portal_policy`;
 CREATE TABLE IF NOT EXISTS `member_portal_policy` (
   `policy_id` int(11) NOT NULL,
   `insurer` varchar(100) DEFAULT NULL,
-  `plan_name` varchar(120) DEFAULT NULL,
+  `plan_id` int(11) NOT NULL DEFAULT '-1',
   `deductible` varchar(100) DEFAULT NULL,
   `cover` varchar(100) DEFAULT NULL,
   `options` varchar(100) DEFAULT NULL,
@@ -282,9 +394,9 @@ CREATE TABLE IF NOT EXISTS `member_portal_policy` (
 -- 資料表的匯出資料 `member_portal_policy`
 --
 
-INSERT INTO `member_portal_policy` (`policy_id`, `insurer`, `plan_name`, `deductible`, `cover`, `options`, `medical_currency`, `payment_frequency`, `payment_method`, `start_date`, `end_date`, `responsibility_id`, `status`, `Policy_Number`) VALUES
-(1, 'Best Doctors', 'Ultracare', '85', '', '', '', '', '', '2015-01-30', '2020-02-17', 19, 'Active', NULL),
-(2, 'AIA', 'test_plan', '85', '', '', '', '', '', '2015-02-17', '2020-02-17', 19, 'Active', NULL);
+INSERT INTO `member_portal_policy` (`policy_id`, `insurer`, `plan_id`, `deductible`, `cover`, `options`, `medical_currency`, `payment_frequency`, `payment_method`, `start_date`, `end_date`, `responsibility_id`, `status`, `Policy_Number`) VALUES
+(1, 'Best Doctors', 25, '85', '', '', '', '', '', '2015-01-30', '2020-02-17', 19, 'Active', NULL),
+(2, 'AIA', 25, '85', '', '', '', '', '', '2015-02-17', '2020-02-17', 19, 'Active', NULL);
 
 -- --------------------------------------------------------
 

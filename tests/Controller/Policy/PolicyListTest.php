@@ -53,9 +53,9 @@ class PolicyListTest extends \PHPUnit_Framework_TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(3020, $out['status_code']);
-        $this->assertArrayHasKey('policy_id', $out['data'][0]);
+        $this->assertArrayHasKey('plan_id', $out['data'][0]);
         $this->assertArrayHasKey('insurer', $out['data'][0]);
-        $this->assertArrayHasKey('plan_name', $out['data'][0]);
+        $this->assertArrayHasKey('plan_id', $out['data'][0]);
         $this->assertArrayHasKey('deductible', $out['data'][0]);
         $this->assertArrayHasKey('cover', $out['data'][0]);
         $this->assertArrayHasKey('options', $out['data'][0]);

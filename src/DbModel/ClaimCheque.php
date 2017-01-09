@@ -15,7 +15,7 @@ class ClaimCheque extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['title', 'first_name', 'middle_name', 'last_name', 'address_line_2', 'address_line_3', 'address_line_4', 'address_line_5'];
+    protected $fillable = ['name', 'address_line_2', 'address_line_3', 'address_line_4', 'address_line_5'];
 
     protected $casts = [
         'claim_id' => 'integer',
