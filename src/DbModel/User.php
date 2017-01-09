@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property string $forgot_expire
  * @property int $holder_id
  * @property string $profile_permission
+ * @property array $pivot
  */
 class User extends Model
 {

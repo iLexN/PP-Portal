@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property string $responsibility_id
  * @property string $status
  * @property array $pivot
+ * @property array $policyuser
  */
 class Policy extends Model
 {

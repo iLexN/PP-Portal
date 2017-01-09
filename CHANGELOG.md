@@ -1,4 +1,11 @@
 #### [Current]
+ * [b0f9bde](../../commit/b0f9bde) - __(2017-01-09 10:42:14 +0800)__ ci fix
+ * [1d58d77](../../commit/1d58d77) - __(2017-01-09 10:19:00 +0800)__ policy change plan name -> plan id
+ * [b041877](../../commit/b041877) - __(2017-01-05 15:27:13 +0800)__ ci fix
+ * [cc4e3ff](../../commit/cc4e3ff) - __(2017-01-05 15:12:35 +0800)__ policy list add member with premium paid
+ * [ef7f4e3](../../commit/ef7f4e3) - __(2017-01-03 10:37:23 +0800)__ currency long form -> short form
+ * [ee70e13](../../commit/ee70e13) - __(2016-12-30 15:01:33 +0800)__ fix test for db
+ * [ea0270d](../../commit/ea0270d) - __(2016-12-30 14:56:27 +0800)__ fix mage
  * [a0af25c](../../commit/a0af25c) - __(2016-12-30 14:53:05 +0800)__ roll back
  * [1c90336](../../commit/1c90336) - __(2016-12-30 14:49:21 +0800)__ Merge origin/master
  * [d056563](../../commit/d056563) - __(2016-12-30 14:48:19 +0800)__ Revert "address add del"
