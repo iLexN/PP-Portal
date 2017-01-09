@@ -3,7 +3,6 @@
 namespace PP\Portal\DbModel;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model as Model;
 
 /**
@@ -13,7 +12,7 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property string $responsibility_id
  * @property string $status
  * @property array $pivot
- * @property array|Collection $policyuser
+ * @property array|\Illuminate\Database\Eloquent\Collection $policyuser
  */
 class Policy extends Model
 {
