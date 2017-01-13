@@ -17,11 +17,12 @@ class Claim extends Model
 
     //public $timestamps = false;
 
-    protected $fillable = ['user_policy_id', 'currency', 'amount', 'date_of_treatment', 'diagnosis', 'payment_method', 'issue_to_whom', 'currency_receive', 'status'];
+    protected $fillable = ['user_policy_id', 'currency', 'amount', 'date_of_treatment', 'diagnosis', 'payment_method', 'claimiant_ppmid', 'currency_receive', 'status'];
 
     protected $casts = [
         'amount'         => 'double',
         'user_policy_id' => 'integer',
+        'claimiant_ppmid' => 'integer',
     ];
 
     public function fileAttachments()

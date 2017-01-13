@@ -89,6 +89,9 @@ $app->get('/holder/{id:\d+}/renew', 'PP\Portal\Controller\Holder\RenewInfo')
 //Policy
 $app->get('/policy/{id:\d+}/people', 'PP\Portal\Controller\Policy\People')
         ->setName('Policy.People');
+//file download
+$app->get('/policy/{name:policy-file|plan-file}/{id:\d+}', 'PP\Portal\Controller\Policy\FileDownload')
+        ->setName('File.Download');
 
 //UserPolicy
 $app->get('/user-policy/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyInfo')

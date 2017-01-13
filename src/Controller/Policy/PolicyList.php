@@ -28,6 +28,7 @@ class PolicyList extends AbstractContainer
             $people = $item->policyuser->map(function (User $item) {
                 $user = $item->userName();
                 $user['premium_paid'] = $item->pivot->premium_paid;
+                $user['relationship'] = $item->pivot->relationship;
 
                 return $user;
             });

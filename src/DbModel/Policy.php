@@ -69,9 +69,19 @@ class Policy extends Model
         return $this->hasOne(__NAMESPACE__.'\InsurerPlan', 'id', 'plan_id');
     }
 
+    public function planfile()
+    {
+        return $this->hasMany(__NAMESPACE__.'\PlanFile', 'plan_id', 'plan_id');
+    }
+
+    public function policyfile()
+    {
+        return $this->hasMany(__NAMESPACE__.'\PolicyFile', 'ppib', 'policy_id');
+    }
+
     public function policyuser()
     {
         return $this->belongsToMany(__NAMESPACE__.'\User', 'member_portal_user_policy', 'policy_id', 'ppmid')
-                ->withPivot('premium_paid');
+                ->withPivot('premium_paid', 'relationship');
     }
 }
