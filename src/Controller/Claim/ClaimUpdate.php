@@ -39,6 +39,9 @@ class ClaimUpdate extends AbstractContainer
 
     private function validate($status)
     {
+        if ($status === 'Save') {
+            return false;
+        }
         return !$this->v->validate() || !$this->ClaimModule->validateClaimInfo($status);
     }
 

@@ -223,6 +223,7 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
 
     public function testParseExtraData()
     {
+        $this->ClaimModule->newClaim(1);
         $data = ['bank' => []];
         $this->ClaimModule->parseExtraData($data);
 

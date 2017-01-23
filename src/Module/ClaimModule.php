@@ -157,12 +157,8 @@ class ClaimModule extends AbstractContainer
      *
      * @return bool
      */
-    public function validateClaimInfo($status)
+    public function validateClaimInfo()
     {
-        if ($status === 'Save') {
-            return true;
-        }
-
         foreach ($this->claimExtraData as $v) {
             if (!$v->validate()) {
                 return false;
@@ -239,10 +235,10 @@ class ClaimModule extends AbstractContainer
 
     public function parseExtraData($data)
     {
-        if (isset($data['bank'])) {
-            $this->newBankAcc($data['bank']);
-        } elseif (isset($data['cheque'])) {
-            $this->newCheque($data['cheque']);
+        if (isset($data['bank']) && is_array($data['bank'])) {
+            $this->getBankAcc($data['bank']);
+        } elseif (isset($data['cheque']) && is_array($data['cheque'])) {
+            $this->getCheque($data['cheque']);
         }
     }
 }

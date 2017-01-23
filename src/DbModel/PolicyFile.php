@@ -17,4 +17,11 @@ class PolicyFile extends Model
     protected $casts = [
         'ppib' => 'integer',
     ];
+
+    protected $appends = ['display_name'];
+
+    public function getDisplayNameAttribute()
+    {
+        return pathinfo($this->attributes['file_name'], PATHINFO_FILENAME);
+    }
 }

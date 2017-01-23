@@ -17,4 +17,11 @@ class PlanFile extends Model
     protected $casts = [
         'plan_id' => 'integer',
     ];
+
+    protected $appends = ['display_name'];
+
+    public function getDisplayNameAttribute()
+    {
+        return pathinfo($this->attributes['file_name'], PATHINFO_FILENAME);
+    }
 }
