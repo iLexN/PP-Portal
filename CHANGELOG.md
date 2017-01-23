@@ -1,5 +1,12 @@
 #### [Current]
- * [b0f9bde](../../commit/b0f9bde) - __(2017-01-09 10:42:14 +0800)__ ci fix
+ * [de63fbb](../../commit/de63fbb) - __(2017-01-23 15:03:59 +0800)__ ci fix 2
+ * [10bf6d2](../../commit/10bf6d2) - __(2017-01-23 14:50:05 +0800)__ ci fix
+ * [327a083](../../commit/327a083) - __(2017-01-23 14:36:41 +0800)__ fix for web version call. , add plan file / policy file download
+ * [34233cf](../../commit/34233cf) - __(2017-01-13 17:10:38 +0800)__ add file donwload for plan and policy
+ * [2e8551a](../../commit/2e8551a) - __(2017-01-09 10:59:28 +0800)__ ci fix 4
+ * [223e5c2](../../commit/223e5c2) - __(2017-01-09 10:57:09 +0800)__ ci fix 3
+ * [addb944](../../commit/addb944) - __(2017-01-09 10:52:42 +0800)__ ci fix 2
+ * [107edc4](../../commit/107edc4) - __(2017-01-09 10:42:51 +0800)__ ci fix
  * [1d58d77](../../commit/1d58d77) - __(2017-01-09 10:19:00 +0800)__ policy change plan name -> plan id
  * [b041877](../../commit/b041877) - __(2017-01-05 15:27:13 +0800)__ ci fix
  * [cc4e3ff](../../commit/cc4e3ff) - __(2017-01-05 15:12:35 +0800)__ policy list add member with premium paid

@@ -233,10 +233,20 @@ class ClaimModule extends AbstractContainer
 
     public function parseExtraData($data)
     {
-        if (isset($data['bank']) && is_array($data['bank'])) {
+        if ($this->haveBankData($data)) {
             $this->getBankAcc($data['bank']);
-        } elseif (isset($data['cheque']) && is_array($data['cheque'])) {
+        } elseif ($this->haveChequeData($data)) {
             $this->getCheque($data['cheque']);
         }
+    }
+
+    private function haveBankData($data)
+    {
+        return isset($data['bank']) && is_array($data['bank']);
+    }
+
+    private function haveChequeData($data)
+    {
+        return isset($data['cheque']) && is_array($data['cheque']);
     }
 }
