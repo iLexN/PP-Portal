@@ -86,7 +86,7 @@ class ClaimFileModule extends AbstractContainer
 
     private function getFileSystem()
     {
-        $adapter = new Local($this->c->get('uploadConfig')['path'] . '/claim_upload');
+        $adapter = new Local($this->c->get('uploadConfig')['path'].'/claim_upload');
         $filesystem = new Filesystem($adapter);
 
         return $filesystem;

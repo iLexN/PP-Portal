@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2017 年 01 月 09 日 10:12
+-- 產生時間： 2017 年 01 月 23 日 14:29
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -364,6 +364,50 @@ INSERT INTO `member_portal_insurer_plan_management` (`id`, `insurer_id`, `plan_n
 (134, '170', 'First Expat'),
 (137, '172', 'Asia Care Plan'),
 (138, '172', 'Asia Care Plus Plan');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `member_portal_medical_plan_file_list`
+--
+
+DROP TABLE IF EXISTS `member_portal_medical_plan_file_list`;
+CREATE TABLE IF NOT EXISTS `member_portal_medical_plan_file_list` (
+  `id` int(11) NOT NULL,
+  `plan_id` int(11) DEFAULT NULL,
+  `file_name` varchar(255) DEFAULT NULL,
+  `file_type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 資料表的匯出資料 `member_portal_medical_plan_file_list`
+--
+
+INSERT INTO `member_portal_medical_plan_file_list` (`id`, `plan_id`, `file_name`, `file_type`) VALUES
+(1, 25, 'test.pdf', 'Table of Benefits');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `member_portal_medical_policy_file_list`
+--
+
+DROP TABLE IF EXISTS `member_portal_medical_policy_file_list`;
+CREATE TABLE IF NOT EXISTS `member_portal_medical_policy_file_list` (
+  `id` int(11) NOT NULL,
+  `ppib` int(11) DEFAULT NULL,
+  `file_name` varchar(255) DEFAULT NULL,
+  `file_type` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- 資料表的匯出資料 `member_portal_medical_policy_file_list`
+--
+
+INSERT INTO `member_portal_medical_policy_file_list` (`id`, `ppib`, `file_name`, `file_type`) VALUES
+(1, 1, 'test.pdf', 'Policy Certificate');
 
 -- --------------------------------------------------------
 

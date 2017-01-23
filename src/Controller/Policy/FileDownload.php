@@ -34,17 +34,17 @@ class FileDownload extends AbstractContainer
     private function getFileData($info)
     {
         if ($info['name'] == 'policy-file') {
-            $this->fileInfo =[
+            $this->fileInfo = [
                 'folder' => 'policy_documents',
-                'idKey' => 'ppib',
+                'idKey'  => 'ppib',
             ];
 
             return PolicyFile::find($info['id']);
         } else {
             //plan-file
-            $this->fileInfo =[
+            $this->fileInfo = [
                 'folder' => 'plan_documents',
-                'idKey' => 'plan_id',
+                'idKey'  => 'plan_id',
             ];
             return PlanFile::find($info['id']);
         }

@@ -153,8 +153,6 @@ class ClaimModule extends AbstractContainer
     }
 
     /**
-     * @param string $status
-     *
      * @return bool
      */
     public function validateClaimInfo()

@@ -20,8 +20,8 @@ class Claim extends Model
     protected $fillable = ['user_policy_id', 'currency', 'amount', 'date_of_treatment', 'diagnosis', 'payment_method', 'claimiant_ppmid', 'currency_receive', 'status'];
 
     protected $casts = [
-        'amount'         => 'double',
-        'user_policy_id' => 'integer',
+        'amount'          => 'double',
+        'user_policy_id'  => 'integer',
         'claimiant_ppmid' => 'integer',
     ];
 

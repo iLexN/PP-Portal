@@ -19,14 +19,12 @@ class BankAccActionUpdate extends AbstractContainer
         $v = $this->UserBankAccModule->validBank((array) $request->getParsedBody(), $acc->getFillable());
 
         if (!$v->validate()) {
-            //return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1010],]);
-            return $this->ViewHelper->withStatusCode($response,  ['errors' => $v->errors()]  , 1010);
+            return $this->ViewHelper->withStatusCode($response, ['errors' => $v->errors()], 1010);
         }
 
         $this->UserBankAccModule->saveData($acc, $v->data());
 
-        return $this->ViewHelper->withStatusCode($response,  ['data' => $acc->toArray()]  , $this->getCode($args));
-        //return $this->ViewHelper->toJson($response, ['data' => $this->getCode($args)]);
+        return $this->ViewHelper->withStatusCode($response, ['data' => $acc->toArray()], $this->getCode($args));
     }
 
     private function getCode($args)
