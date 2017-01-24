@@ -45,4 +45,14 @@ class Claim extends Model
     {
         return $this->belongsTo(__NAMESPACE__.'\UserPolicy', 'user_policy_id', 'id');
     }**/
+
+    public function getPaymentMethodAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function setPaymentMethodAttribute($value)
+    {
+        $this->attributes['payment_method'] = ucwords($value);
+    }
 }

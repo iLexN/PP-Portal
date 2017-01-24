@@ -43,7 +43,7 @@ class ClaimInfo extends AbstractContainer
         $out['file_attachments'] = $this->getFileAttachment();
 
         switch ($this->claimInfo->payment_method) {
-            case 'Bank transfer':
+            case 'Bank Transfer':
                 $out['bank_info'] = $this->getBankInfo();
                 break;
             case 'Cheque':

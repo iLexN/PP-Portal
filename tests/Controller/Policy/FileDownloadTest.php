@@ -54,7 +54,7 @@ class FileDownloadTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['name'=>'aaa','id' => 10]);
+        $response = $action($request, $response, ['name'=>'aaa', 'id' => 10]);
     }
 
     public function testPolicyFile()
@@ -64,7 +64,7 @@ class FileDownloadTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['name'=>'policy-file','id' => 1]);
+        $response = $action($request, $response, ['name'=>'policy-file', 'id' => 1]);
 
         $this->assertTrue($response->hasHeader('Content-Type'));
         $this->assertTrue($response->hasHeader('Content-Disposition'));
@@ -77,7 +77,7 @@ class FileDownloadTest extends \PHPUnit_Framework_TestCase
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
-        $response = $action($request, $response, ['name'=>'plan-file','id' => 1]);
+        $response = $action($request, $response, ['name'=>'plan-file', 'id' => 1]);
 
         $this->assertTrue($response->hasHeader('Content-Type'));
         $this->assertTrue($response->hasHeader('Content-Disposition'));
