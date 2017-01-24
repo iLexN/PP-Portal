@@ -55,6 +55,8 @@ class ClaimModule extends AbstractContainer
     {
         $v = new \Valitron\Validator($data, $fillable);
         $v->rule('required', ['status']);
+        $v->rule('required', ['claimiant_ppmid']);
+        $v->rule('integer', ['claimiant_ppmid']);
         $v->rule('dateFormat', ['date_of_treatment'], 'Y-m-d');
         $v->rule('in', ['status'], ['Save', 'Submit']);
 
