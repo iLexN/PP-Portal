@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model as Model;
  * @property int $id
  * @property int $ppmid
  * @property int $policy_id
+ * @property float $premium_paid
+ * @property string $relationship relationship
  * @property \PP\Portal\DbModel\Policy $policy
  * @property \PP\Portal\DbModel\User $user
  */

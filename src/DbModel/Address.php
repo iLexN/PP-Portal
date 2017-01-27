@@ -22,7 +22,7 @@ class Address extends Model
 
     protected $fillable = ['nick_name', 'address_line_2', 'address_line_3', 'address_line_4', 'address_line_5'];
 
-    protected $hidden = ['created_at','updated_at'];
+    protected $hidden = ['created_at', 'updated_at'];
 
     protected $casts = [
         'ppmid'  => 'integer',

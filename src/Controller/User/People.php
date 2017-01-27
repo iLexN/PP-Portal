@@ -74,7 +74,8 @@ class People extends AbstractContainer
             return false;
         })->map(function (UserPolicy $item) {
             $user = $item->user->toArray();
-            $user['relationship'] =  $item->relationship;
+            $user['relationship'] = $item->relationship;
+
             return $user;
         });
 

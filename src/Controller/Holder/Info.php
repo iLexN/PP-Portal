@@ -32,7 +32,6 @@ class Info extends AbstractContainer
             $info = HolderInfo::with('renew')->find($id);
             $this->pool->save($item->set($info));
         }
-        $this->info = $info;
 
         return $info;
     }

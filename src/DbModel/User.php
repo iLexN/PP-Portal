@@ -32,7 +32,7 @@ class User extends Model
 
     protected $guarded = ['ppmid', 'user_name', 'password', 'holder_id'];
 
-    protected $hidden = ['user_name','password', 'forgot_str', 'forgot_expire'];
+    protected $hidden = ['user_name', 'password', 'forgot_str', 'forgot_expire'];
 
     protected $casts = [
         'holder_id' => 'integer',
@@ -47,12 +47,12 @@ class User extends Model
     public function userName()
     {
         return [
-            'ppmid'       => (int) $this->attributes['ppmid'],
-            'title'       => $this->attributes['title'],
-            'first_name'  => $this->attributes['first_name'],
-            'middle_name' => $this->attributes['middle_name'],
-            'last_name'   => $this->attributes['last_name'],
-            'nationality' => $this->attributes['nationality'],
+            'ppmid'              => (int) $this->attributes['ppmid'],
+            'title'              => $this->attributes['title'],
+            'first_name'         => $this->attributes['first_name'],
+            'middle_name'        => $this->attributes['middle_name'],
+            'last_name'          => $this->attributes['last_name'],
+            'nationality'        => $this->attributes['nationality'],
             'profile_permission' => $this->attributes['profile_permission'],
         ];
     }

@@ -15,9 +15,9 @@ class HolderInfo extends Model
 
     protected $guarded = ['id'];
 
-    protected $hidden = ['client_no','service_office','title','first_name','middle_name','last_name'];
+    protected $hidden = ['client_no', 'service_office', 'title', 'first_name', 'middle_name', 'last_name'];
 
-    protected $fillable = ['policy_address_line_2','policy_address_line_3','policy_address_line_4','policy_address_line_5','holder_id','status'];
+    protected $fillable = ['policy_address_line_2', 'policy_address_line_3', 'policy_address_line_4', 'policy_address_line_5', 'holder_id', 'status'];
 
     public function reNewInfo()
     {

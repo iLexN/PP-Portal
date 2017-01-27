@@ -44,7 +44,7 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
 
     public function testValidClaim()
     {
-        $fillable = ['status','claimiant_ppmid'];
+        $fillable = ['status', 'claimiant_ppmid'];
 
         $data = ['status' => 's'];
         $v = $this->ClaimModule->validClaim($data, $fillable);
