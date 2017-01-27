@@ -66,13 +66,16 @@ class People extends AbstractContainer
             if ($item->ppmid == $id) {
                 return true;
             }
+            // now only have View
             if ($item->user->profile_permission !== null) {
                 return true;
             }
 
             return false;
         })->map(function (UserPolicy $item) {
-            return $item->user->userName();
+            $user = $item->user->toArray();
+            $user['relationship'] =  $item->relationship;
+            return $user;
         });
 
         return $peopleList;
@@ -87,7 +90,7 @@ class People extends AbstractContainer
                             ->get();
         } else {
             $policyPeople = UserPolicy::with('user')
-                            ->where('policy_id', $ar)
+                            ->whereIn('policy_id', $ar)
                             ->groupBy('ppmid')
                             ->get();
         }

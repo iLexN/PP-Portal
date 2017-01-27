@@ -127,8 +127,8 @@ class AddressUpdateTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('status', $out['data']);
         $this->assertEquals('Active', $out['data']['status']);
         $this->assertArrayHasKey('old_id', $out['data']);
-        $this->assertArrayHasKey('created_at', $out['data']);
-        $this->assertArrayHasKey('updated_at', $out['data']);
+        //$this->assertArrayHasKey('created_at', $out['data']);
+        //$this->assertArrayHasKey('updated_at', $out['data']);
         $this->assertArrayHasKey('id', $out['data']);
     }
 

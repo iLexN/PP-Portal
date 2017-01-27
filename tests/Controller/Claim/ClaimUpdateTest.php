@@ -79,6 +79,7 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         $action = $this->action;
 
         $_POST['status'] = 'Submit';
+        $_POST['claimiant_ppmid'] = 2;
         $_POST['bank'] = ['iban' => '123', 'bank_swift_code' => 'sdfds'];
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
@@ -121,6 +122,7 @@ class ClaimUpdateTest extends \PHPUnit_Framework_TestCase
         $action = $this->action;
 
         $_POST['status'] = 'Submit';
+        $_POST['claimiant_ppmid'] = 2;
         $_POST['bank'] = ['iban' => '123', 'bank_swift_code' => 'sdfds'];
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',

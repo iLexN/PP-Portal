@@ -17,7 +17,7 @@ class RenewInfo extends AbstractContainer
         }
 
         return $this->ViewHelper->withStatusCode($response,
-                ['errors' => $this->msgCode[2023]],
+                ['data' => []],
                 2023);
     }
 }

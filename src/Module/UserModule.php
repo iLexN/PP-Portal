@@ -215,6 +215,7 @@ class UserModule extends AbstractContainer
         }
 
         $newInfo->save();
+        $this->pool->deleteItem('UserReNew/'.$this->user->ppmid);
     }
 
     /**

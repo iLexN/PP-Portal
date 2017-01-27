@@ -82,5 +82,4 @@ class FileDownloadTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($response->hasHeader('Content-Type'));
         $this->assertTrue($response->hasHeader('Content-Disposition'));
     }
-
 }

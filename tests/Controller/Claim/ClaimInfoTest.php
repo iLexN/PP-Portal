@@ -62,7 +62,7 @@ class ClaimInfoTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('date_of_treatment', $out['data']);
         $this->assertArrayHasKey('diagnosis', $out['data']);
         $this->assertArrayHasKey('payment_method', $out['data']);
-        $this->assertArrayHasKey('issue_to_whom', $out['data']);
+        $this->assertArrayHasKey('claimiant_ppmid', $out['data']);
         $this->assertArrayHasKey('currency_receive', $out['data']);
         $this->assertArrayHasKey('status', $out['data']);
         $this->assertArrayHasKey('created_at', $out['data']);
@@ -91,7 +91,7 @@ class ClaimInfoTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('date_of_treatment', $out['data']);
         $this->assertArrayHasKey('diagnosis', $out['data']);
         $this->assertArrayHasKey('payment_method', $out['data']);
-        $this->assertArrayHasKey('issue_to_whom', $out['data']);
+        $this->assertArrayHasKey('claimiant_ppmid', $out['data']);
         $this->assertArrayHasKey('currency_receive', $out['data']);
         $this->assertArrayHasKey('status', $out['data']);
         $this->assertArrayHasKey('created_at', $out['data']);

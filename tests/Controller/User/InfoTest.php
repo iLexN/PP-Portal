@@ -54,7 +54,7 @@ class InfoTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('title', $out['data']);
         $this->assertArrayHasKey('first_name', $out['data']);
         $this->assertArrayHasKey('middle_name', $out['data']);
-        $this->assertArrayHasKey('user_name', $out['data']);
+        //$this->assertArrayHasKey('user_name', $out['data']);
         $this->assertArrayHasKey('nationality', $out['data']);
         $this->assertArrayHasKey('email', $out['data']);
         $this->assertArrayHasKey('phone_1', $out['data']);
