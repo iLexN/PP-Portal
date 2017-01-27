@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2017 年 01 月 23 日 14:29
+-- 產生時間： 2017 年 01 月 27 日 12:06
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -156,8 +156,8 @@ CREATE TABLE IF NOT EXISTS `member_portal_claim` (
   `date_of_treatment` date DEFAULT NULL,
   `diagnosis` varchar(255) DEFAULT NULL,
   `payment_method` varchar(255) DEFAULT NULL,
-  `issue_to_whom` varchar(255) DEFAULT NULL,
   `currency_receive` varchar(255) DEFAULT NULL,
+  `claimiant_ppmid` int(11) DEFAULT NULL,
   `status` varchar(64) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -168,8 +168,8 @@ CREATE TABLE IF NOT EXISTS `member_portal_claim` (
 -- 資料表的匯出資料 `member_portal_claim`
 --
 
-INSERT INTO `member_portal_claim` (`claim_id`, `user_policy_id`, `currency`, `amount`, `date_of_treatment`, `diagnosis`, `payment_method`, `issue_to_whom`, `currency_receive`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'USD', '120.00', '2010-10-12', 'diagnosis', 'Bank transfer', 'issue_address', 'HKD', 'Save', '2016-07-28 12:16:44', '2016-07-28 12:16:44'),
+INSERT INTO `member_portal_claim` (`claim_id`, `user_policy_id`, `currency`, `amount`, `date_of_treatment`, `diagnosis`, `payment_method`, `currency_receive`, `claimiant_ppmid`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'USD', '120.00', '2010-10-12', 'diagnosis', 'Bank transfer', 'HKD', NULL, 'Save', '2016-07-28 12:16:44', '2016-07-28 12:16:44'),
 (2, 7, 'USD', '123.00', NULL, NULL, 'Cheque', NULL, NULL, 'Save', '2016-08-01 12:15:29', '2016-08-01 12:15:29');
 
 -- --------------------------------------------------------
