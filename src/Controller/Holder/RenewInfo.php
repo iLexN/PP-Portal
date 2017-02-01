@@ -20,7 +20,7 @@ class RenewInfo extends AbstractContainer
         $renew = $holderInfo->reNewInfo()->where('status', 'Pending')->orderBy('created_at', 'desc')->first();
 
         return $this->ViewHelper->withStatusCode($response,
-                    ['data' => $renew ? $renew->toArray() : [] ],
+                    ['data' => $renew ? $renew->toArray() : []],
                     2642
                 );
     }

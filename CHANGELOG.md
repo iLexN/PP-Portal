@@ -1,4 +1,8 @@
 #### [Current]
+ * [92dcfda](../../commit/92dcfda) - __(2017-02-01 18:06:06 +0800)__ ci fix
+ * [8366d13](../../commit/8366d13) - __(2017-02-01 16:43:41 +0800)__ check null if no data
+ * [47ff828](../../commit/47ff828) - __(2017-02-01 16:43:18 +0800)__ validator cheque from first_name -> name
+ * [236c87a](../../commit/236c87a) - __(2017-02-01 16:42:34 +0800)__ check find user as Object
  * [6c098c3](../../commit/6c098c3) - __(2017-01-27 12:22:01 +0800)__ update db for test
  * [5a03d8e](../../commit/5a03d8e) - __(2017-01-27 12:20:47 +0800)__ ci / cs fix
  * [1dc02ab](../../commit/1dc02ab) - __(2017-01-27 12:12:42 +0800)__ fix / improve for web version call api , claim table field changed claimiant_ppmid
