@@ -35,7 +35,7 @@ class People extends AbstractContainer
     {
         $policylist = UserPolicy::with('policy')
                 ->where('ppmid', $id)
-                ->where('relationship', 'PolicyHolder')
+                ->where('relationship', 'Policy Holder')
                 ->get();
         $ar = $policylist->filter(function (UserPolicy $item) {
             $policy = $item->policy->status;
@@ -67,7 +67,8 @@ class People extends AbstractContainer
                 return true;
             }
             // now only have View
-            if ($item->user->profile_permission !== null) {
+
+            if (is_object($item->user) && $item->user->profile_permission !== null) {
                 return true;
             }
 

@@ -1,5 +1,14 @@
 #### [Current]
- * [de63fbb](../../commit/de63fbb) - __(2017-01-23 15:03:59 +0800)__ ci fix 2
+ * [6c098c3](../../commit/6c098c3) - __(2017-01-27 12:22:01 +0800)__ update db for test
+ * [5a03d8e](../../commit/5a03d8e) - __(2017-01-27 12:20:47 +0800)__ ci / cs fix
+ * [1dc02ab](../../commit/1dc02ab) - __(2017-01-27 12:12:42 +0800)__ fix / improve for web version call api , claim table field changed claimiant_ppmid
+ * [2db2731](../../commit/2db2731) - __(2017-01-24 10:55:01 +0800)__ add validator claim rule
+ * [1b7ed19](../../commit/1b7ed19) - __(2017-01-24 09:52:57 +0800)__ 'Bank transfer' => 'Bank Transfer'
+ * [56c70e3](../../commit/56c70e3) - __(2017-01-23 15:37:41 +0800)__ add test for download file (plan file / policy file)
+ * [729dd5c](../../commit/729dd5c) - __(2017-01-23 15:04:36 +0800)__ ci fix 2
+
+#### [0.1.6]
+ * [729dd5c](../../commit/729dd5c) - __(2017-01-23 15:04:36 +0800)__ ci fix 2
  * [10bf6d2](../../commit/10bf6d2) - __(2017-01-23 14:50:05 +0800)__ ci fix
  * [327a083](../../commit/327a083) - __(2017-01-23 14:36:41 +0800)__ fix for web version call. , add plan file / policy file download
  * [34233cf](../../commit/34233cf) - __(2017-01-13 17:10:38 +0800)__ add file donwload for plan and policy
