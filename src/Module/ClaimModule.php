@@ -223,7 +223,7 @@ class ClaimModule extends AbstractContainer
     private function validateCheque($data)
     {
         $vb = new \Valitron\Validator($data, $this->cheque->getFillable());
-        $vb->rule('required', ['first_name', 'address_line_2']);
+        $vb->rule('required', ['name', 'address_line_2']);
         $this->claimExtraData['cheque'] = $vb;
     }
 
