@@ -143,7 +143,11 @@ return [
     ],
     '2620' => [
         'code'  => 2620,
-        'title' => 'user address create and pending',
+        'title' => 'user address updated',
+    ],
+    '2625' => [
+        'code'  => 2625,
+        'title' => 'user address deleted',
     ],
     '2630' => [
         'code'  => 2630,
