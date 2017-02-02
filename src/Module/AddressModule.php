@@ -16,6 +16,7 @@ class AddressModule extends AbstractContainer
     {
         $v = new \Valitron\Validator($data, $address->getFillable());
         $v->rule('required', ['nick_name']);
+        $v->rule('required', ['address_line_2']);
 
         return $v;
     }
