@@ -21,6 +21,9 @@ class LoginTest extends \PHPUnit_Framework_TestCase
                 '1010' => [
                     'code'  => 1010,
                 ],
+                '2010' => [
+                    'code'  => 2010,
+                ],
             ];
         };
         $c['pool'] = function () {
@@ -106,7 +109,7 @@ class LoginTest extends \PHPUnit_Framework_TestCase
         $response = $action($request, $response, []);
 
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(2080, $out['status_code']);
+        $this->assertEquals(2010, $out['status_code']);
     }
 
     public function testMissFields()

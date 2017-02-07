@@ -105,6 +105,7 @@ class AddressUpdateTest extends \PHPUnit_Framework_TestCase
         $action = $this->action;
 
         $_POST['nick_name'] = 'alex';
+        $_POST['address_line_2'] = 'line2';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',

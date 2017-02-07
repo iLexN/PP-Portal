@@ -18,34 +18,20 @@ class Login extends AbstractContainer
             ]);
         }
 
-        if ($this->isUserExist($v->data())) {
-            $this->checkNeedRehash($v->data());
+        $data = $v->data();
 
-            return $this->ViewHelper->withStatusCode($response, $this->success(), 2081);
-        }
-
-        return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2080],
-        ]);
-    }
-
-    /**
-     * check email in db or not(already user?).
-     *
-     * @param array $data
-     *
-     * @return bool
-     */
-    private function isUserExist($data)
-    {
         if (!$this->UserModule->isUserExistByUsername($data['user_name'])) {
-            return false;
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010]]);
         }
 
         if (!$this->UserModule->user->passwordVerify($data['password'])) {
-            return false;
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2080]]);
         }
 
-        return true;
+        $this->checkNeedRehash($v->data());
+
+        return $this->ViewHelper->withStatusCode($response, $this->success(), 2081);
+
     }
 
     private function success()

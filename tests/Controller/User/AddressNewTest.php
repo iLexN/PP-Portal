@@ -73,6 +73,7 @@ class AddressNewTest extends \PHPUnit_Framework_TestCase
 
         $_POST = [
             'nick_name' => 'a',
+            'address_line_2' => 'line3',
         ];
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',

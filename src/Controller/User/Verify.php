@@ -26,8 +26,14 @@ class Verify extends AbstractContainer
         $data = $v->data();
 
         /* @var $user \PP\Portal\DbModel\User */
-        $user = $this->UserModule->verifyUser($data);
+        $this->UserModule->isUserExistByID($data['ppmid']);
+        $user = $this->UserModule->user;
         if (!$user) {
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010]]);
+        }
+
+        //check dob
+        if ($user->date_of_birth != $data['date_of_birth']) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2051]]);
         }
 
