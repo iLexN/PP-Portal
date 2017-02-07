@@ -1,5 +1,14 @@
 #### [Current]
- * [92dcfda](../../commit/92dcfda) - __(2017-02-01 18:06:06 +0800)__ ci fix
+ * [75752a4](../../commit/75752a4) - __(2017-02-07 09:54:03 +0800)__ cs fix + code improve
+ * [851d05b](../../commit/851d05b) - __(2017-02-07 09:38:56 +0800)__ verify and login  add user not found status
+ * [87545db](../../commit/87545db) - __(2017-02-02 16:53:08 +0800)__ added back address del method
+ * [c46ca94](../../commit/c46ca94) - __(2017-02-02 16:21:02 +0800)__ address add required - address_line_2
+
+#### [0.1.8]
+ * [15de30a](../../commit/15de30a) - __(2017-02-02 10:10:01 +0800)__ gitignore
+
+#### [0.1.7]
+ * [77be087](../../commit/77be087) - __(2017-02-01 18:06:46 +0800)__ ci fix
  * [8366d13](../../commit/8366d13) - __(2017-02-01 16:43:41 +0800)__ check null if no data
  * [47ff828](../../commit/47ff828) - __(2017-02-01 16:43:18 +0800)__ validator cheque from first_name -> name
  * [236c87a](../../commit/236c87a) - __(2017-02-01 16:42:34 +0800)__ check find user as Object
@@ -9,7 +18,6 @@
  * [2db2731](../../commit/2db2731) - __(2017-01-24 10:55:01 +0800)__ add validator claim rule
  * [1b7ed19](../../commit/1b7ed19) - __(2017-01-24 09:52:57 +0800)__ 'Bank transfer' => 'Bank Transfer'
  * [56c70e3](../../commit/56c70e3) - __(2017-01-23 15:37:41 +0800)__ add test for download file (plan file / policy file)
- * [729dd5c](../../commit/729dd5c) - __(2017-01-23 15:04:36 +0800)__ ci fix 2
 
 #### [0.1.6]
  * [729dd5c](../../commit/729dd5c) - __(2017-01-23 15:04:36 +0800)__ ci fix 2

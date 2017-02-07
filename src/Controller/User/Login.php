@@ -10,16 +10,13 @@ class Login extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
-        $v = new \Valitron\Validator((array) $request->getParsedBody());
-        $v->rule('required', ['user_name', 'password']);
+        $v = $this->getValidator((array) $request->getParsedBody());
 
         if (!$v->validate()) {
-            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1010],
-            ]);
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1010]]);
         }
 
         $data = $v->data();
-
         if (!$this->UserModule->isUserExistByUsername($data['user_name'])) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010]]);
         }
@@ -28,10 +25,19 @@ class Login extends AbstractContainer
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2080]]);
         }
 
-        $this->checkNeedRehash($v->data());
+        $this->checkNeedRehash($data);
 
         return $this->ViewHelper->withStatusCode($response, $this->success(), 2081);
+    }
 
+    /**
+     * @return \Valitron\Validator
+     */
+    private function getValidator($inData)
+    {
+        $v = new \Valitron\Validator($inData);
+        $v->rule('required', ['user_name', 'password']);
+        return $v;
     }
 
     private function success()
