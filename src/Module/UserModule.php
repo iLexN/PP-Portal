@@ -142,8 +142,7 @@ class UserModule extends AbstractContainer
      */
     public function savePassword($pass)
     {
-        //$this->user->password = $pass;
-        $this->user->password = $this->PasswordModule->passwordHash($pass);
+        $this->user->password = $pass;
         $this->user->forgot_expire = null;
         $this->user->forgot_str = null;
         $this->user->save();

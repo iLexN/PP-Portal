@@ -37,6 +37,7 @@ class Login extends AbstractContainer
     {
         $v = new \Valitron\Validator($inData);
         $v->rule('required', ['user_name', 'password']);
+
         return $v;
     }
 
