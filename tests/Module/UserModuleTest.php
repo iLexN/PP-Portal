@@ -85,7 +85,7 @@ class UserModuleTest extends \PHPUnit_Framework_TestCase
         $this->userModule->isUserExistByID(173803);
         $this->assertEquals(null, $this->userModule->user->password);
         $this->userModule->savePassword($pass);
-        $this->assertContains('$2y$10', $this->userModule->user->password);
+        $this->assertContains($pass, $this->userModule->user->password);
     }
 
     public function testSaveForgot()
