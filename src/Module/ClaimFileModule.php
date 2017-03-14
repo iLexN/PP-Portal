@@ -39,7 +39,7 @@ class ClaimFileModule extends AbstractContainer
         $filesystem = $this->getFileSystem();
         $dirPath = $this->ClaimModule->claim->claim_id.'/'.$id;
         $filesystem->createDir($dirPath);
-        $newfile->moveTo($this->c->get('uploadConfig')['path'].'/claim_upload/'.$dirPath.'/'.$newfile->getClientFilename());
+        $newfile->moveTo($this->c->get('uploadConfig')['path'].$this->c->get('uploadConfig')['client_upload'].$dirPath.'/'.$newfile->getClientFilename());
     }
 
     public function getFile($id)
@@ -72,7 +72,7 @@ class ClaimFileModule extends AbstractContainer
 
     public function getFilePath()
     {
-        $filePath = $this->c->get('uploadConfig')['path'].'/claim_upload/'.
+        $filePath = $this->c->get('uploadConfig')['path'].$this->c->get('uploadConfig')['client_upload'].
                 $this->file->claim_id.'/'.
                 $this->file->id.'/'.
                 $this->file->filename;
@@ -86,7 +86,7 @@ class ClaimFileModule extends AbstractContainer
 
     private function getFileSystem()
     {
-        $adapter = new Local($this->c->get('uploadConfig')['path'].'/claim_upload');
+        $adapter = new Local($this->c->get('uploadConfig')['path'].$this->c->get('uploadConfig')['client_upload']);
         $filesystem = new Filesystem($adapter);
 
         return $filesystem;
