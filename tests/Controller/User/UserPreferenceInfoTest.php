@@ -2,7 +2,7 @@
 
 namespace PP\Test\User;
 
-class UserPreferenceInfoTest extends \PHPUnit_Framework_TestCase
+class UserPreferenceInfoTest extends \PHPUnit\Framework\TestCase
 {
     protected $c;
     protected $action;

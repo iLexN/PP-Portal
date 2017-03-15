@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class CheckUsePolicyrExistTest extends \PHPUnit_Framework_TestCase
+class CheckUsePolicyrExistTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $request;

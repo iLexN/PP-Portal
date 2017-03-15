@@ -2,7 +2,7 @@
 
 namespace PP\Test\User;
 
-class ChangePasswordTest extends \PHPUnit_Framework_TestCase
+class ChangePasswordTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $response;

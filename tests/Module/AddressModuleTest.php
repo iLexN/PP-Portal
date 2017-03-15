@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class AddressModuleTest extends \PHPUnit_Framework_TestCase
+class AddressModuleTest extends \PHPUnit\Framework\TestCase
 {
     protected $addressModule;
 

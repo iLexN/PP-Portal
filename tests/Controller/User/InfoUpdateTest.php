@@ -2,7 +2,7 @@
 
 namespace PP\Test\User;
 
-class InfoUpdateTest extends \PHPUnit_Framework_TestCase
+class InfoUpdateTest extends \PHPUnit\Framework\TestCase
 {
     protected $c;
     protected $action;

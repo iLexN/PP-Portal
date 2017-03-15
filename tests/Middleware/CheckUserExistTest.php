@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class CheckUserExistTest extends \PHPUnit_Framework_TestCase
+class CheckUserExistTest extends \PHPUnit\Framework\TestCase
 {
     protected $c;
     protected $request;

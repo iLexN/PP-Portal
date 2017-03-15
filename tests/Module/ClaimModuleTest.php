@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class ClaimModuleTest extends \PHPUnit_Framework_TestCase
+class ClaimModuleTest extends \PHPUnit\Framework\TestCase
 {
     protected $ClaimModule;
     protected $userPolicy;

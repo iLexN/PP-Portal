@@ -2,7 +2,7 @@
 
 namespace PP\Test\User;
 
-class ForgotPasswordTokenUpdateTest extends \PHPUnit_Framework_TestCase
+class ForgotPasswordTokenUpdateTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $response;

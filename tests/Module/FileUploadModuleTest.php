@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class FileUploadModuleTest extends \PHPUnit_Framework_TestCase
+class FileUploadModuleTest extends \PHPUnit\Framework\TestCase
 {
     public function testConstruct()
     {

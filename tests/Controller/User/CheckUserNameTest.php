@@ -2,7 +2,7 @@
 
 namespace PP\Test\User;
 
-class CheckUserNameTest extends \PHPUnit_Framework_TestCase
+class CheckUserNameTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $response;

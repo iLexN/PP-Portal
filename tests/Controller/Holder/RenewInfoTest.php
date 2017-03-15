@@ -2,7 +2,7 @@
 
 namespace PP\Test\Holder;
 
-class RenewInfoTest extends \PHPUnit_Framework_TestCase
+class RenewInfoTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $response;
