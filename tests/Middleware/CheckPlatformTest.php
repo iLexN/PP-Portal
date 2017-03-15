@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class CheckPlatformTest extends \PHPUnit_Framework_TestCase
+class CheckPlatformTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $request;

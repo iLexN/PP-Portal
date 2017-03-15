@@ -2,7 +2,7 @@
 
 namespace PP\Test\Policy;
 
-class FileDownloadTest extends \PHPUnit_Framework_TestCase
+class FileDownloadTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $response;

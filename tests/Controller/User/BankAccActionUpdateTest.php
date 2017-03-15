@@ -2,7 +2,7 @@
 
 namespace PP\Test\User;
 
-class BankAccActionUpdateTest extends \PHPUnit_Framework_TestCase
+class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $response;

@@ -2,7 +2,7 @@
 
 namespace PP\Test\Policy;
 
-class PeopleTest extends \PHPUnit_Framework_TestCase
+class PeopleTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $response;

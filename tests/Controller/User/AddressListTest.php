@@ -2,7 +2,7 @@
 
 namespace PP\Test\User;
 
-class AddressListTest extends \PHPUnit_Framework_TestCase
+class AddressListTest extends \PHPUnit\Framework\TestCase
 {
     protected $c;
     protected $action;

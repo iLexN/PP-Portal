@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class ViewTest extends \PHPUnit_Framework_TestCase
+class ViewTest extends \PHPUnit\Framework\TestCase
 {
     protected $c;
 
