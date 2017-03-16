@@ -2,7 +2,7 @@
 
 namespace PP\Test\Advisor;
 
-class InfoTest extends \PHPUnit_Framework_TestCase
+class InfoTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $response;

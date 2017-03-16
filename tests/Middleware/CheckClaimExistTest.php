@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class CheckClaimExistTest extends \PHPUnit_Framework_TestCase
+class CheckClaimExistTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $request;

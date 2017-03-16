@@ -2,7 +2,7 @@
 
 namespace PP\Test\General;
 
-class OfficeInfoTest extends \PHPUnit_Framework_TestCase
+class OfficeInfoTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $response;

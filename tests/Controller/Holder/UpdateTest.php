@@ -2,7 +2,7 @@
 
 namespace PP\Test\Holder;
 
-class UpdateTest extends \PHPUnit_Framework_TestCase
+class UpdateTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $response;

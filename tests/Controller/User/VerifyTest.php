@@ -2,7 +2,7 @@
 
 namespace PP\Test\User;
 
-class VerifyTest extends \PHPUnit_Framework_TestCase
+class VerifyTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $response;

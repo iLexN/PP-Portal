@@ -2,7 +2,7 @@
 
 namespace PP\Test\Claim;
 
-class AttachmentDownloadTest extends \PHPUnit_Framework_TestCase
+class AttachmentDownloadTest extends \PHPUnit\Framework\TestCase
 {
     protected $action;
     protected $response;

@@ -2,7 +2,7 @@
 
 namespace PP\Test;
 
-class PasswordModuleTest extends \PHPUnit_Framework_TestCase
+class PasswordModuleTest extends \PHPUnit\Framework\TestCase
 {
     public function testp()
     {
