@@ -21,7 +21,7 @@ class ClaimFileModuleTest extends \PHPUnit\Framework\TestCase
         };
         $c['uploadConfig'] = function () {
             return [
-                'path'          => __DIR__.'/../../cache',
+                'path'          => __DIR__.'/../cache',
                 'client_upload' => '/claim_upload/',
             ];
         };
