@@ -13,7 +13,7 @@ class ClaimModuleTest extends \PHPUnit_Framework_TestCase
 
         $c['pool'] = function ($c) {
             $settings = [
-                'path' => __DIR__.'/../cache/data',
+                'path'          => __DIR__.'/../../cache',
                 'client_upload' => '/claim_upload/',
             ];
             $driver = new \Stash\Driver\FileSystem($settings);
