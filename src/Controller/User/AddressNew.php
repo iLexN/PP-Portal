@@ -18,12 +18,20 @@ class AddressNew extends AbstractContainer
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
         }
 
+
+
+
         $default = [];
         //$default['address_type'] = 'user';
         $default['status'] = 'Active';
         $default['ppmid'] = $this->UserModule->user->ppmid;
 
         $data = array_merge($default, $v->data());
+
+        if ( $this->AddressModule->checkNickName($this->UserModule->user->ppmid, $data['nick_name']) >= 1 ) {
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2626]]);
+        }
+
         $this->AddressModule->save($data, $address);
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $address->toArray()], 2610);

@@ -25,7 +25,13 @@ class AddressUpdate extends AbstractContainer
         //$data = $this->inputData($address->toArray(), $v->data());
         //$new = new \PP\Portal\DbModel\Address();
 
-        $this->AddressModule->save($v->data(), $address);
+        $data = $v->data();
+
+        if ( $this->AddressModule->checkNickName($this->UserModule->user->ppmid, $data['nick_name']) >= 1 ) {
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2626]]);
+        }
+
+        $this->AddressModule->save($data, $address);
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $address->toArray()],
                 $this->getStatusCode());

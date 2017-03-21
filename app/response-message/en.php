@@ -149,6 +149,10 @@ return [
         'code'  => 2625,
         'title' => 'user address deleted',
     ],
+    '2626' => [
+        'code'  => 2626,
+        'title' => 'Nickname used',
+    ],
     '2630' => [
         'code'  => 2630,
         'title' => 'user people list success',
