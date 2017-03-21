@@ -34,7 +34,7 @@ class UserBankAccModule extends AbstractContainer
     public function validBank($data, $fillable)
     {
         $v = new \Valitron\Validator($data, $fillable);
-        $v->rule('required', ['iban', 'bank_swift_code']);
+        $v->rule('required', ['nick_name','iban', 'bank_swift_code']);
 
         return $v;
     }
@@ -78,6 +78,13 @@ class UserBankAccModule extends AbstractContainer
         }
 
         return $info;
+    }
+
+    public function checkNickName($ppmid,$nick_name)
+    {
+        return  UserBankAcc::where('ppmid',$ppmid)
+                ->where('nick_name',$nick_name)
+                ->count();
     }
 
     private function clearCache($id)

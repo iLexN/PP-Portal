@@ -22,7 +22,13 @@ class BankAccActionUpdate extends AbstractContainer
             return $this->ViewHelper->withStatusCode($response, ['errors' => $v->errors()], 1010);
         }
 
-        $this->UserBankAccModule->saveData($acc, $v->data());
+        $data = $v->data();
+
+        if ( $this->UserBankAccModule->checkNickName($this->UserModule->user->ppmid, $data['nick_name']) >= 1 ) {
+            return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[3613]]);
+        }
+
+        $this->UserBankAccModule->saveData($acc, $data );
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $acc->toArray()], $this->getCode($args));
     }

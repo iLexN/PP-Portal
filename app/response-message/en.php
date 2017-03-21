@@ -203,6 +203,10 @@ return [
         'code'  => 3612,
         'title' => 'bank a/c delete',
     ],
+    '3613' => [
+        'code'  => 3613,
+        'title' => 'bank a/c nickname used',
+    ],
     '3620' => [
         'code'  => 3620,
         'title' => 'no bank a/c info',

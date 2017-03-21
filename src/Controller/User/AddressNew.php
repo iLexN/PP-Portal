@@ -18,9 +18,6 @@ class AddressNew extends AbstractContainer
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);
         }
 
-
-
-
         $default = [];
         //$default['address_type'] = 'user';
         $default['status'] = 'Active';
