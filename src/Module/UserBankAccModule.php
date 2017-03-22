@@ -80,6 +80,12 @@ class UserBankAccModule extends AbstractContainer
         return $info;
     }
 
+    /**
+     *
+     * @param int $ppmid
+     * @param string $nick_name
+     * @return int
+     */
     public function checkNickName($ppmid, $nick_name)
     {
         return  UserBankAcc::where('ppmid', $ppmid)
@@ -87,6 +93,9 @@ class UserBankAccModule extends AbstractContainer
                 ->count();
     }
 
+    /**
+     * @param integer $id
+     */
     private function clearCache($id)
     {
         $this->pool->deleteItem('UserBank/'.$id);

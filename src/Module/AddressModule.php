@@ -26,6 +26,12 @@ class AddressModule extends AbstractContainer
         return $this->UserModule->user->address()->find((int) $id);
     }
 
+    /**
+     *
+     * @param int $ppmid
+     * @param string $nick_name
+     * @return int
+     */
     public function checkNickName($ppmid, $nick_name)
     {
         return  Address::where('ppmid', $ppmid)

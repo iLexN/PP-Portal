@@ -5,3 +5,4 @@
 /config/
 /tests/cache/data/
 /my-deploy/
+.php_cs.cache
