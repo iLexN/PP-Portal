@@ -34,7 +34,7 @@ class UserBankAccModule extends AbstractContainer
     public function validBank($data, $fillable)
     {
         $v = new \Valitron\Validator($data, $fillable);
-        $v->rule('required', ['nick_name','iban','bank_swift_code']);
+        $v->rule('required', ['nick_name', 'iban', 'bank_swift_code']);
 
         return $v;
     }

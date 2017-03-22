@@ -1,5 +1,21 @@
 #### [Current]
- * [75752a4](../../commit/75752a4) - __(2017-02-07 09:54:03 +0800)__ cs fix + code improve
+ * [9da2c32](../../commit/9da2c32) - __(2017-03-22 10:16:06 +0800)__ cs fix
+ * [998d648](../../commit/998d648) - __(2017-03-22 10:04:11 +0800)__ email template update
+ * [f2914c1](../../commit/f2914c1) - __(2017-03-21 17:14:17 +0800)__ bacnk nick name used check.
+ * [4f52a2b](../../commit/4f52a2b) - __(2017-03-21 10:48:21 +0800)__ add address nickname used data.status_code === 2626
+ * [6e04acd](../../commit/6e04acd) - __(2017-03-16 10:17:07 +0800)__ fix test
+ * [bd517f5](../../commit/bd517f5) - __(2017-03-16 09:55:51 +0800)__ Merge origin/master
+ * [80cab20](../../commit/80cab20) - __(2017-03-16 09:42:58 +0800)__ cs fix
+ * [7d25fae](../../commit/7d25fae) - __(2017-03-15 13:52:49 +0800)__ Merge pull request  [#3](../../issues/3)0 from iLexN/fixPhpUnite6
+ * [c4fe72e](../../commit/c4fe72e) - __(2017-03-15 12:28:53 +0800)__ fix phpunit
+ * [fe19138](../../commit/fe19138) - __(2017-03-15 12:02:56 +0800)__ fix file path for upload test 2
+ * [bacdd9d](../../commit/bacdd9d) - __(2017-03-15 11:41:55 +0800)__ fix file path for upload test
+ * [c71de94](../../commit/c71de94) - __(2017-03-14 09:18:26 +0800)__ add upload folder config , and change the code use the config folder path
+ * [033e8c6](../../commit/033e8c6) - __(2017-02-28 14:46:11 +0800)__ php package update
+ * [f866075](../../commit/f866075) - __(2017-02-13 18:06:58 +0800)__ league/flysystem (1.0.34 => 1.0.35)
+ * [ac83ce1](../../commit/ac83ce1) - __(2017-02-13 09:52:30 +0800)__ fix test
+ * [977fce3](../../commit/977fce3) - __(2017-02-09 15:09:48 +0800)__ password update fix / forgotpassword update fix
+ * [bc4b525](../../commit/bc4b525) - __(2017-02-07 09:54:34 +0800)__ cs fix + code improve
  * [851d05b](../../commit/851d05b) - __(2017-02-07 09:38:56 +0800)__ verify and login  add user not found status
  * [87545db](../../commit/87545db) - __(2017-02-02 16:53:08 +0800)__ added back address del method
  * [c46ca94](../../commit/c46ca94) - __(2017-02-02 16:21:02 +0800)__ address add required - address_line_2
