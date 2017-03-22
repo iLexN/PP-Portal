@@ -24,11 +24,11 @@ class BankAccActionUpdate extends AbstractContainer
 
         $data = $v->data();
 
-        if ( $this->UserBankAccModule->checkNickName($this->UserModule->user->ppmid, $data['nick_name']) >= 1 ) {
+        if ($this->UserBankAccModule->checkNickName($this->UserModule->user->ppmid, $data['nick_name']) >= 1) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[3613]]);
         }
 
-        $this->UserBankAccModule->saveData($acc, $data );
+        $this->UserBankAccModule->saveData($acc, $data);
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $acc->toArray()], $this->getCode($args));
     }

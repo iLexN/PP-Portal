@@ -51,7 +51,7 @@ class Signup extends AbstractContainer
         $mail = $this->mailer;
         $mail->setFrom($this->c->get('mailConfig')['fromAc'], $this->c->get('mailConfig')['fromName']);
         $mail->addAddress($user->email, $user->first_name.' '.$user->last_name);
-        $mail->Subject = 'Signup success';
+        $mail->Subject = 'Success! your account has been created';
         $mail->msgHTML($this->twigView->fetch('email/signup.twig', [
                 'User' => $user,
             ]));

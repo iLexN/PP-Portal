@@ -45,7 +45,7 @@ class ForgotPassword extends AbstractContainer
         $mail = $this->mailer;
         $mail->setFrom($this->c->get('mailConfig')['fromAc'], $this->c->get('mailConfig')['fromName']);
         $mail->addAddress($user->email, $user->first_name.' '.$user->last_name);
-        $mail->Subject = 'forgotpassword';
+        $mail->Subject = 'Pacific Prime Member Portal password reset';
         $mail->msgHTML($this->twigView->fetch('email/forgot-password.twig', [
                 'User' => $user,
             ]));

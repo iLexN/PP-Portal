@@ -41,7 +41,7 @@ class UserBankAccModuleTest extends \PHPUnit\Framework\TestCase
 
     public function testValidBank()
     {
-        $fillable = ['iban', 'bank_swift_code'];
+        $fillable = ['nick_name','iban', 'bank_swift_code'];
         $data = [
                 'iban' => 123,
             ];
@@ -51,6 +51,7 @@ class UserBankAccModuleTest extends \PHPUnit\Framework\TestCase
         $data = [
                 'iban'            => 123,
                 'bank_swift_code' => 222,
+                'nick_name'       => 'nick',
             ];
         $v = $this->UserBankAccModule->validBank($data, $fillable);
         $this->assertTrue($v->validate());

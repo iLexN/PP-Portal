@@ -27,7 +27,7 @@ class AddressUpdate extends AbstractContainer
 
         $data = $v->data();
 
-        if ( $this->AddressModule->checkNickName($this->UserModule->user->ppmid, $data['nick_name']) >= 1 ) {
+        if ($this->AddressModule->checkNickName($this->UserModule->user->ppmid, $data['nick_name']) >= 1) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2626]]);
         }
 

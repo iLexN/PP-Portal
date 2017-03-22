@@ -24,6 +24,9 @@ class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
                 '3610' => [
                     'code'  => 3610,
                 ],
+                '3613' => [
+                    'code'  => 3613,
+                ],
             ];
         };
         $c['pool'] = function () {
@@ -93,6 +96,7 @@ class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
 
         $_POST['iban'] = 'update';
         $_POST['bank_swift_code'] = 'update';
+        $_POST['nick_name'] = 'nick';
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
             'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -114,6 +118,7 @@ class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
 
         $_POST['iban'] = 'update';
         $_POST['bank_swift_code'] = 'update';
+        $_POST['nick_name'] = 'new nick';
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
             'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
