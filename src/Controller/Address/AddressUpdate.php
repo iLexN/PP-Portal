@@ -27,7 +27,7 @@ class AddressUpdate extends AbstractContainer
 
         $data = $v->data();
 
-        if ($this->AddressModule->checkNickName($this->UserModule->user->ppmid, $data['nick_name']) >= 2) {
+        if ($this->AddressModule->checkNickName($this->UserModule->user->ppmid, $data['nick_name']) >= $this->checkNickName($data, $address)) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2626]]);
         }
 
@@ -35,6 +35,15 @@ class AddressUpdate extends AbstractContainer
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $address->toArray()],
                 $this->getStatusCode());
+    }
+
+    private function checkNickName($data,$address)
+    {
+        if ( $data['nick_name'] == $address->nick_name ) {
+            return 2;
+        }
+
+        return 1;
     }
 
     /*
