@@ -33,18 +33,13 @@ class People extends AbstractContainer
 
     private function getPolicyList($id)
     {
-        $policylist = UserPolicy::with('policy')
+        $policylist = UserPolicy::with(['policy' => function ($query) {
+                    $query->where('status','Active');
+                }])
                 ->where('ppmid', $id)
                 ->where('relationship', 'Policy Holder')
                 ->get();
-        $ar = $policylist->filter(function (UserPolicy $item) {
-            $policy = $item->policy->status;
-            if ($policy === 'Active') {
-                return true;
-            }
-
-            return false;
-        })->map(function (UserPolicy $item) {
+        $ar = $policylist->map(function (UserPolicy $item) {
             return $item->policy_id;
         });
 
