@@ -29,7 +29,7 @@ class AddressModule extends AbstractContainer
     /**
      * @param int    $ppmid
      * @param string $nick_name
-     * 
+     *
      * @return int
      */
     public function checkNickName($ppmid, $nick_name)
