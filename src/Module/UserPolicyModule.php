@@ -56,7 +56,7 @@ class UserPolicyModule extends AbstractContainer
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
             $policy = $user->userPolicy()->withPivot('premium_paid')
                     //->with('advisor')->with('plan')->with('planfile')->with('policyfile')
-                    ->with('advisor','plan','planfile','policyfile','policyuser')
+                    ->with('advisor', 'plan', 'planfile', 'policyfile', 'policyuser')
                     ->get();
             $this->pool->save($item->set($policy));
         }

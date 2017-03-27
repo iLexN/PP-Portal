@@ -37,9 +37,9 @@ class AddressUpdate extends AbstractContainer
                 $this->getStatusCode());
     }
 
-    private function checkNickName($data,$address)
+    private function checkNickName($data, $address)
     {
-        if ( $data['nick_name'] == $address->nick_name ) {
+        if ($data['nick_name'] == $address->nick_name) {
             return 2;
         }
 

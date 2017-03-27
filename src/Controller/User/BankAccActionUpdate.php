@@ -33,9 +33,9 @@ class BankAccActionUpdate extends AbstractContainer
         return $this->ViewHelper->withStatusCode($response, ['data' => $acc->toArray()], $this->getCode($args));
     }
 
-    private function checkNickName($args, $data , $acc)
+    private function checkNickName($args, $data, $acc)
     {
-        if ( $args['mode'] === 'create' || $data['nick_name'] != $acc->nick_name ) {
+        if ($args['mode'] === 'create' || $data['nick_name'] != $acc->nick_name) {
             return 1;
         }
 
