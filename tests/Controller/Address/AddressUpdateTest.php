@@ -22,6 +22,9 @@ class AddressUpdateTest extends \PHPUnit\Framework\TestCase
                 '2620' => [
                     'code'  => 2620,
                 ],
+                '2626' => [
+                    'code'  => 2626,
+                ],
             ];
         };
 
@@ -128,17 +131,15 @@ class AddressUpdateTest extends \PHPUnit\Framework\TestCase
         $this->assertArrayHasKey('status', $out['data']);
         $this->assertEquals('Active', $out['data']['status']);
         $this->assertArrayHasKey('old_id', $out['data']);
-        //$this->assertArrayHasKey('created_at', $out['data']);
-        //$this->assertArrayHasKey('updated_at', $out['data']);
         $this->assertArrayHasKey('id', $out['data']);
     }
 
-    /*
-    public function testUserPolicyAddressSuccess()
+    public function testUserAddressNickNameSame()
     {
         $action = $this->action;
 
         $_POST['nick_name'] = 'alex';
+        $_POST['address_line_2'] = 'line4';
         $environment = \Slim\Http\Environment::mock([
                 'REQUEST_METHOD'    => 'POST',
                 'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -148,8 +149,28 @@ class AddressUpdateTest extends \PHPUnit\Framework\TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['id' => 1, 'acid' => '2', 'mode' => 'UserPolicy']);
+        $response = $action($request, $response, ['id' => 2, 'acid' => '1', 'mode' => 'User']);
         $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(5060, $out['status_code']);
-    }*/
+        $this->assertEquals(2620, $out['status_code']);
+    }
+
+    public function testUserAddressNickNameUsed()
+    {
+        $action = $this->action;
+
+        $_POST['nick_name'] = 'test';
+        $_POST['address_line_2'] = 'line4';
+        $environment = \Slim\Http\Environment::mock([
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+            ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = $this->response;
+
+        $response = $action($request, $response, ['id' => 2, 'acid' => '1', 'mode' => 'User']);
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(2626, $out['status_code']);
+    }
 }

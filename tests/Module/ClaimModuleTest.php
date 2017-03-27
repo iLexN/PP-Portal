@@ -64,8 +64,9 @@ class ClaimModuleTest extends \PHPUnit\Framework\TestCase
     {
         $this->ClaimModule->newClaim(1);
         $data = [
-            'currency' => 'USD',
-            'amount'   => '123',
+            'currency'       => 'USD',
+            'amount'         => '123',
+            'payment_method' => 'a',
         ];
         $this->ClaimModule->saveClaim($data);
         $this->expectOutputString('foo');

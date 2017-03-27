@@ -19,6 +19,9 @@ class AddressNewTest extends \PHPUnit\Framework\TestCase
                 '2610' => [
                     'code'  => 2610,
                 ],
+                '2626' => [
+                    'code'  => 2626,
+                ],
             ];
         };
         $c['pool'] = function () {
@@ -87,5 +90,28 @@ class AddressNewTest extends \PHPUnit\Framework\TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2610, $out['status_code']);
+    }
+
+    public function testNickNameUsed()
+    {
+        $this->c['UserModule']->isUserExistByID(2);
+        $action = $this->action;
+
+        $_POST = [
+            'nick_name'      => 'a',
+            'address_line_2' => 'line3',
+        ];
+        $environment = \Slim\Http\Environment::mock([
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+            ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = $this->response;
+        $response = $action($request, $response, []);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(2626, $out['status_code']);
     }
 }
