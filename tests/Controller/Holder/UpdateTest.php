@@ -15,6 +15,9 @@ class UpdateTest extends \PHPUnit\Framework\TestCase
                 '2641' => [
                     'code'  => 2641,
                 ],
+                '1020' => [
+                    'code'  => 1020,
+                ],
             ];
         };
         $c['pool'] = function () {
@@ -67,5 +70,24 @@ class UpdateTest extends \PHPUnit\Framework\TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(2641, $out['status_code']);
         $this->assertEquals('Pending', $out['data']['status']);
+    }
+
+    public function testMissInfo()
+    {
+        $action = $this->action;
+
+        $_POST['mail_address_line_2'] = '1111';
+        $environment = \Slim\Http\Environment::mock([
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+            ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = $this->response;
+        $response = $action($request, $response, ['id' => 1]);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(1020, $out['status_code']);
     }
 }

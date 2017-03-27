@@ -19,6 +19,7 @@ class Update extends AbstractContainer
         }
 
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $holderInfo->getFillable());
+        $v->rule('required', ['policy_address_line_2']);
 
         if (!$v->validate()) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[1020]]);

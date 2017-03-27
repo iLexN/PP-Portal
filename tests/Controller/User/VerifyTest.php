@@ -24,6 +24,9 @@ class VerifyTest extends \PHPUnit\Framework\TestCase
                 '2040' => [
                     'code'  => 2040,
                 ],
+                '2010' => [
+                    'code'  => 2010,
+                ],
             ];
         };
         $c['pool'] = function () {
@@ -68,6 +71,27 @@ class VerifyTest extends \PHPUnit\Framework\TestCase
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(1020, $out['status_code']);
+    }
+
+    public function testVerifyUserNotFound()
+    {
+        $action = $this->action;
+
+        $_POST['ppmid'] = '10101010';
+        $_POST['date_of_birth'] = '2010-10-10';
+        $environment = \Slim\Http\Environment::mock([
+                'REQUEST_METHOD'    => 'POST',
+                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+            ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = $this->response;
+
+        $response = $action($request, $response, []);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(2010, $out['status_code']);
     }
 
     public function testVerifyUserFails()

@@ -30,10 +30,6 @@ class Policy extends Model
 
     public function getRenewDateAttribute()
     {
-        if ($this->attributes['end_date'] === null) {
-            return;
-        }
-
         $dateObj = Carbon::createFromFormat('Y-m-d', $this->attributes['end_date']);
         $dateObj->addDay();
 
