@@ -5,6 +5,8 @@ namespace PP\Portal\Module;
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\Policy;
 use PP\Portal\DbModel\UserPolicy;
+use PP\Portal\DbModel\User;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserPolicyModule extends AbstractContainer
 {
@@ -54,16 +56,51 @@ class UserPolicyModule extends AbstractContainer
         if ($item->isMiss()) {
             $item->lock();
             $item->expiresAfter($this->c->get('dataCacheConfig')['expiresAfter']);
-            $policy = $user->userPolicy()->withPivot('premium_paid')
-                    //->with('advisor')->with('plan')->with('planfile')->with('policyfile')
-                    ->with('advisor', 'plan', 'planfile', 'policyfile', 'policyuser')
-                    ->get();
+            $policy = $this->getUserPolicy($user);
             $this->pool->save($item->set($policy));
         }
 
         //return $this->serializing($policy);
         return $policy;
     }
+
+    private function getUserPolicy($user)
+    {
+        $list = $this->getPolicyListDetails($user);
+        $files = UserPolicy::whereIn('id',$this->getUserPolicyID($list))->with('PolicyPlanFile')->get();
+
+        $keyed = $files->keyBy('id');
+        return $this->formatList($list, $keyed->toArray());
+    }
+
+    private function formatList(Collection $list, array $files)
+    {
+        return $list->map(function (Policy $item) use ($files) {
+            $ar = $item->toArray();
+            $ar['planfile'] = $files[$item->pivot->id] ? $files[$item->pivot->id]['policy_plan_file'] : [];
+
+            $people = $item->policyuser->map(function (User $item) {
+                $user = $item->userName();
+                $user['premium_paid'] = $item->pivot->premium_paid;
+                $user['relationship'] = $item->pivot->relationship;
+
+                return $user;
+            });
+            $ar['policyuser'] = $people;
+
+            return $ar;
+        });
+        return;
+    }
+
+    private function getPolicyListDetails($user){
+        return $user->userPolicy()->withPivot('premium_paid')
+                    //->with('advisor')->with('plan')->with('planfile')->with('policyfile')
+                    ->with('advisor', 'plan', 'planfile', 'policyfile', 'policyuser')
+                    //->PolicyPlanFile()
+                    ->get();
+    }
+
 
     /**
      * @param int $policy_id
@@ -83,19 +120,13 @@ class UserPolicyModule extends AbstractContainer
         return $policy;
     }
 
-// seem no use any more
-//    private function serializing(Collection $policy)
-//    {
-//        // can move to db model like policy people
-//        /* @var $item \PP\Portal\DbModel\Policy */
-//        return $policy->map(function (Policy $item) {
-//            return [
-//                'policy_id'         => (int) $item->policy_id,
-//                'insurer'           => $item->insurer,
-//                'plan_name'         => $item->plan_name,
-//                'responsibility_id' => $item->responsibility_id,
-//                'user_policy_id'    => $item->pivot->id,
-//            ];
-//        });
-//    }
+
+    private function getUserPolicyID(Collection $policy)
+    {
+        // can move to db model like policy people
+        /* @var $item \PP\Portal\DbModel\Policy */
+        return $policy->map(function (Policy $item) {
+            return $item->pivot->id;
+        });
+    }
 }

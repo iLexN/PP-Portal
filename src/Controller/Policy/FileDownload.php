@@ -18,10 +18,11 @@ class FileDownload extends AbstractContainer
     {
         $this->fileObj = $this->getFileData($args);
 
-        if (!$this->fileObj || !file_exists($this->getFilePath())) {
+        $path = $this->getFilePath();
+
+        if (!$this->fileObj || !file_exists($path)) {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
-        $path = $this->getFilePath();
 
         $stream = fopen($path, 'r');
 
@@ -37,6 +38,7 @@ class FileDownload extends AbstractContainer
             $this->fileInfo = [
                 'folder' => 'policy_documents',
                 'idKey'  => 'ppib',
+                'rKey' => '',
             ];
 
             return PolicyFile::find($info['id']);
@@ -45,6 +47,7 @@ class FileDownload extends AbstractContainer
             $this->fileInfo = [
                 'folder' => 'plan_documents',
                 'idKey'  => 'plan_id',
+                'rKey' => 'region',
             ];
 
             return PlanFile::find($info['id']);
@@ -53,8 +56,10 @@ class FileDownload extends AbstractContainer
 
     private function getFilePath()
     {
+        $r = !empty($this->fileObj->{$this->fileInfo['rKey']}) ? '/'.$this->fileObj->{$this->fileInfo['rKey']} : '';
+
         return $this->c->get('uploadConfig')['path'].'/'.
-                $this->fileInfo['folder'].'/'.$this->fileObj->{$this->fileInfo['idKey']}.'/'.
+                $this->fileInfo['folder'].'/'.$this->fileObj->{$this->fileInfo['idKey']} .$r.'/'.
                 $this->fileObj['file_type'].'/'.$this->fileObj->file_name;
     }
 }
