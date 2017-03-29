@@ -19,7 +19,6 @@ class ZipFiles extends AbstractContainer
         $plansFiles = $policy->policyPlanFile()->get();
         $policyFiles = $policy->policyFiles()->get();
 
-
         $outFilesArray = $this->getFilesList($policyFiles, $plansFiles);
 
         $archive = (new Archive());
@@ -31,7 +30,6 @@ class ZipFiles extends AbstractContainer
         return  $response->withBody(new Psr7Stream(new ZipReader($archive)))
                 ->withHeader('Content-Type', 'application/zip')
                 ->withHeader('Content-Disposition', 'attachment; filename="Important-Forms.zip"');
-                //->withHeader('Content-Transfer-Encoding', 'binary');
     }
 
     private function getFilesList($policyFiles, $plansFiles)
