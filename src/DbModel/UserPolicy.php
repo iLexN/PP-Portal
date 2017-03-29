@@ -36,6 +36,11 @@ class UserPolicy extends Model
         return $this->belongsTo(__NAMESPACE__.'\User', 'ppmid', 'ppmid');
     }
 
+    public function policyPlanFile()
+    {
+        return $this->belongsToMany(__NAMESPACE__.'\PlanFile', 'member_portal_user_plan_file', 'user_policy_id', 'plan_file_id');
+    }
+
     /*
     public function userBankAcc()
     {
