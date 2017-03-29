@@ -24,4 +24,13 @@ class PlanFile extends Model
     {
         return pathinfo($this->attributes['file_name'], PATHINFO_FILENAME);
     }
+
+    public function getFilePath()
+    {
+        return 'plan_documents/'.
+                $this->attributes['plan_id'].'/'.
+                $this->attributes['region'].'/'.
+                $this->attributes['file_type'].'/'.
+                $this->attributes['file_name'];
+    }
 }

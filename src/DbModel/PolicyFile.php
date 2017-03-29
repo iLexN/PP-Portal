@@ -24,4 +24,12 @@ class PolicyFile extends Model
     {
         return pathinfo($this->attributes['file_name'], PATHINFO_FILENAME);
     }
+
+    public function getFilePath()
+    {
+        return 'policy_documents/'.
+                $this->attributes['ppib'].'/'.
+                $this->attributes['file_type'].'/'.
+                $this->attributes['file_name'];
+    }
 }

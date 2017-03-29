@@ -100,6 +100,9 @@ $app->get('/policy/{name:policy-file|plan-file}/{id:\d+}', 'PP\Portal\Controller
 $app->get('/user-policy/{id:\d+}/policy', 'PP\Portal\Controller\Policy\PolicyInfo')
         ->setName('Policy')
         ->add($checkUsePolicyrExist);
+$app->get('/user-policy/{id:\d+}/zip', 'PP\Portal\Controller\Policy\ZipFiles')
+        ->setName('UserPolicy.ZipFiles')
+        ->add($checkUsePolicyrExist);
 /* seem no use any more, move to holder info
 $app->get('/user-policy/{id:\d+}/address', 'PP\Portal\Controller\Policy\AddressList')
         ->setName('PolicyAddressList.get')
