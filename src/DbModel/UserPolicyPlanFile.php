@@ -6,12 +6,8 @@ use Illuminate\Database\Eloquent\Model as Model;
 
 /**
  * @property int $id
- * @property int $ppmid
- * @property int $policy_id
- * @property float $premium_paid
- * @property string $relationship relationship
- * @property \PP\Portal\DbModel\Policy $policy
- * @property \PP\Portal\DbModel\User $user
+ * @property int $user_policy_id
+ * @property int $plan_file_id
  */
 class UserPolicyPlanFile extends Model
 {
@@ -24,5 +20,4 @@ class UserPolicyPlanFile extends Model
         'user_policy_id' => 'integer',
         'plan_file_id'   => 'integer',
     ];
-
 }

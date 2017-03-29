@@ -3,8 +3,6 @@
 namespace PP\Portal\Controller\Policy;
 
 use PP\Portal\AbstractClass\AbstractContainer;
-use PP\Portal\DbModel\Policy;
-use PP\Portal\DbModel\User;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Response;
 

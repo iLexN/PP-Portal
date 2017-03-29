@@ -38,7 +38,7 @@ class FileDownload extends AbstractContainer
             $this->fileInfo = [
                 'folder' => 'policy_documents',
                 'idKey'  => 'ppib',
-                'rKey' => '',
+                'rKey'   => '',
             ];
 
             return PolicyFile::find($info['id']);
@@ -47,7 +47,7 @@ class FileDownload extends AbstractContainer
             $this->fileInfo = [
                 'folder' => 'plan_documents',
                 'idKey'  => 'plan_id',
-                'rKey' => 'region',
+                'rKey'   => 'region',
             ];
 
             return PlanFile::find($info['id']);
@@ -59,7 +59,7 @@ class FileDownload extends AbstractContainer
         $r = !empty($this->fileObj->{$this->fileInfo['rKey']}) ? '/'.$this->fileObj->{$this->fileInfo['rKey']} : '';
 
         return $this->c->get('uploadConfig')['path'].'/'.
-                $this->fileInfo['folder'].'/'.$this->fileObj->{$this->fileInfo['idKey']} .$r.'/'.
+                $this->fileInfo['folder'].'/'.$this->fileObj->{$this->fileInfo['idKey']}.$r.'/'.
                 $this->fileObj['file_type'].'/'.$this->fileObj->file_name;
     }
 }

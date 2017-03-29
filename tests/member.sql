@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2017 年 03 月 27 日 14:23
+-- 產生時間： 2017 年 03 月 29 日 10:50
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -377,6 +377,7 @@ CREATE TABLE IF NOT EXISTS `member_portal_medical_plan_file_list` (
   `plan_id` int(11) DEFAULT NULL,
   `file_name` varchar(255) DEFAULT NULL,
   `file_type` varchar(255) DEFAULT NULL,
+  `region` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -384,8 +385,8 @@ CREATE TABLE IF NOT EXISTS `member_portal_medical_plan_file_list` (
 -- 資料表的匯出資料 `member_portal_medical_plan_file_list`
 --
 
-INSERT INTO `member_portal_medical_plan_file_list` (`id`, `plan_id`, `file_name`, `file_type`) VALUES
-(1, 25, 'test.pdf', 'Table of Benefits');
+INSERT INTO `member_portal_medical_plan_file_list` (`id`, `plan_id`, `file_name`, `file_type`, `region`) VALUES
+(1, 25, 'test.pdf', 'Table of Benefits', 'HK');
 
 -- --------------------------------------------------------
 
@@ -563,6 +564,27 @@ INSERT INTO `member_portal_user` (`ppmid`, `title`, `first_name`, `middle_name`,
 (135929, 'Mr', 'Paul', 'Andrew', 'Woods', '1985-12-22', NULL, NULL, 'Canadian', NULL, NULL, NULL, NULL, NULL, 1, NULL),
 (173802, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, 'adf2', '2020-07-28 16:12:33', 1, NULL),
 (173803, 'Mr', 'Niall', 'O', 'Brien', '1980-03-04', NULL, NULL, 'Thailand', NULL, NULL, NULL, NULL, NULL, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `member_portal_user_plan_file`
+--
+
+DROP TABLE IF EXISTS `member_portal_user_plan_file`;
+CREATE TABLE IF NOT EXISTS `member_portal_user_plan_file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_policy_id` int(11) DEFAULT NULL,
+  `plan_file_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 資料表的匯出資料 `member_portal_user_plan_file`
+--
+
+INSERT INTO `member_portal_user_plan_file` (`id`, `user_policy_id`, `plan_file_id`) VALUES
+(1, 1, 25);
 
 -- --------------------------------------------------------
 

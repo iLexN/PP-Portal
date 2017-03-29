@@ -2,11 +2,11 @@
 
 namespace PP\Portal\Module;
 
+use Illuminate\Database\Eloquent\Collection;
 use PP\Portal\AbstractClass\AbstractContainer;
 use PP\Portal\DbModel\Policy;
-use PP\Portal\DbModel\UserPolicy;
 use PP\Portal\DbModel\User;
-use Illuminate\Database\Eloquent\Collection;
+use PP\Portal\DbModel\UserPolicy;
 
 class UserPolicyModule extends AbstractContainer
 {
@@ -45,7 +45,7 @@ class UserPolicyModule extends AbstractContainer
     /**
      * PolicyList with cache.
      *
-     * @return \Illuminate\Support\Collection
+     * @return array
      */
     public function getPolicyList()
     {
@@ -64,10 +64,15 @@ class UserPolicyModule extends AbstractContainer
         return $policy;
     }
 
-    private function getUserPolicy($user)
+    /**
+     * @param User $user
+     *
+     * @return array
+     */
+    private function getUserPolicy(User $user)
     {
         $list = $this->getPolicyListDetails($user);
-        $files = UserPolicy::whereIn('id',$this->getUserPolicyID($list))->with('PolicyPlanFile')->get();
+        $files = UserPolicy::whereIn('id', $this->getUserPolicyID($list))->with('policyPlanFile')->get();
 
         $keyed = $files->keyBy('id');
         return $this->formatList($list, $keyed->toArray());
@@ -90,17 +95,21 @@ class UserPolicyModule extends AbstractContainer
 
             return $ar;
         });
-        return;
     }
 
-    private function getPolicyListDetails($user){
+    /**
+     * @param User $user
+     *
+     * @return Collection
+     */
+    private function getPolicyListDetails(User $user)
+    {
         return $user->userPolicy()->withPivot('premium_paid')
                     //->with('advisor')->with('plan')->with('planfile')->with('policyfile')
                     ->with('advisor', 'plan', 'planfile', 'policyfile', 'policyuser')
                     //->PolicyPlanFile()
                     ->get();
     }
-
 
     /**
      * @param int $policy_id
@@ -119,7 +128,6 @@ class UserPolicyModule extends AbstractContainer
 
         return $policy;
     }
-
 
     private function getUserPolicyID(Collection $policy)
     {
