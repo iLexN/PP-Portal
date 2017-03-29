@@ -18,12 +18,11 @@ class FileDownload extends AbstractContainer
     {
         $this->fileObj = $this->getFileData($args);
 
-        $path = $this->getFilePath();
-
-        if (!$this->fileObj || !file_exists($path)) {
+        if (!$this->fileObj || !file_exists($this->getFilePath())) {
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
+        $path = $this->getFilePath();
         $stream = fopen($path, 'r');
 
         return $response

@@ -75,6 +75,7 @@ class UserPolicyModule extends AbstractContainer
         $files = UserPolicy::whereIn('id', $this->getUserPolicyID($list))->with('policyPlanFile')->get();
 
         $keyed = $files->keyBy('id');
+
         return $this->formatList($list, $keyed->toArray());
     }
 
