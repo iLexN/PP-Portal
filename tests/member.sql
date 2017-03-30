@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2017 年 03 月 30 日 10:22
+-- 產生時間： 2017 年 03 月 30 日 11:30
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -608,7 +608,7 @@ CREATE TABLE IF NOT EXISTS `member_portal_user_policy` (
 
 INSERT INTO `member_portal_user_policy` (`id`, `ppmid`, `policy_id`, `premium_paid`, `relationship`) VALUES
 (1, 2, 1, '0.00', NULL),
-(2, 9677, 1, '0.00', 'PolicyHolder'),
+(2, 9677, 1, '0.00', 'Policy Holder'),
 (3, 135928, 1, '0.00', NULL),
 (4, 135929, 1, '0.00', NULL),
 (5, 173802, 1, '0.00', NULL),
