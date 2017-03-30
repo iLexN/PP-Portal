@@ -38,10 +38,6 @@ class Policy extends Model
 
     public function getIsEndAttribute()
     {
-        if ($this->attributes['end_date'] === null) {
-            return true;
-        }
-
         $endDateObj = Carbon::createFromFormat('Y-m-d', $this->attributes['end_date']);
         $todayDateObj = new Carbon();
 

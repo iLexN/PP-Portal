@@ -18,7 +18,7 @@ class PlanFile extends Model
         'plan_id' => 'integer',
     ];
 
-    protected $hidden = array('pivot');
+    protected $hidden = ['pivot'];
 
     protected $appends = ['display_name'];
 

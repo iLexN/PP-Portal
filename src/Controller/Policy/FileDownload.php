@@ -10,8 +10,6 @@ use Slim\Http\Response;
 
 class FileDownload extends AbstractContainer
 {
-    private $fileInfo = [];
-
     private $fileObj;
 
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
