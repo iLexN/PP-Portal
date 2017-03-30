@@ -41,14 +41,13 @@ class UserPolicy extends Model
         return $this->belongsToMany(__NAMESPACE__.'\PlanFile', 'member_portal_user_plan_file', 'user_policy_id', 'plan_file_id');
     }
 
-    /*
-    public function userBankAcc()
+    public function policyFiles()
     {
         return $this->hasManyThrough(
-            __NAMESPACE__.'\UserBankAcc', __NAMESPACE__.'\User',
-            'ppmid', 'ppmid', 'ppmid'
+            __NAMESPACE__.'\PolicyFile', __NAMESPACE__.'\Policy',
+            'policy_id', 'ppib', 'policy_id'
         );
-    }*/
+    }
 
     public function policy()
     {

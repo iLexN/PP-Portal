@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fa559b155a1e8bdf91fa899b98e0fde",
+    "content-hash": "310fecc496e319fd97c2328abc29152b",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -103,6 +103,53 @@
                 "string"
             ],
             "time": "2015-11-06T14:35:42+00:00"
+        },
+        {
+            "name": "genkgo/archive-stream",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/genkgo/archive-stream.git",
+                "reference": "3931855dbe4d345ee8ff5e980417599ed88306fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/genkgo/archive-stream/zipball/3931855dbe4d345ee8ff5e980417599ed88306fc",
+                "reference": "3931855dbe4d345ee8ff5e980417599ed88306fc",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gmp": "*",
+                "php": ">=5.6.0",
+                "psr/http-message": "~1.0.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0.0"
+            },
+            "require-dev": {
+                "ext-zip": "*",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Genkgo\\ArchiveStream\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Stream a ZIP file (memory efficient) as a PSR-7 message",
+            "homepage": "https://github.com/genkgo/archive-stream",
+            "keywords": [
+                "archive",
+                "php",
+                "psr-7",
+                "stream",
+                "zip"
+            ],
+            "time": "2016-06-22T11:55:40+00:00"
         },
         {
             "name": "hassankhan/config",
