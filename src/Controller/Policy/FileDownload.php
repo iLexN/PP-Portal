@@ -34,31 +34,15 @@ class FileDownload extends AbstractContainer
     private function getFileData($info)
     {
         if ($info['name'] == 'policy-file') {
-            $this->fileInfo = [
-                'folder' => 'policy_documents',
-                'idKey'  => 'ppib',
-                'rKey'   => '',
-            ];
-
             return PolicyFile::find($info['id']);
-        } else {
-            //plan-file
-            $this->fileInfo = [
-                'folder' => 'plan_documents',
-                'idKey'  => 'plan_id',
-                'rKey'   => 'region',
-            ];
-
-            return PlanFile::find($info['id']);
         }
+
+        return PlanFile::find($info['id']);
     }
 
     private function getFilePath()
     {
-        $r = !empty($this->fileObj->{$this->fileInfo['rKey']}) ? '/'.$this->fileObj->{$this->fileInfo['rKey']} : '';
-
         return $this->c->get('uploadConfig')['path'].'/'.
-                $this->fileInfo['folder'].'/'.$this->fileObj->{$this->fileInfo['idKey']}.$r.'/'.
-                $this->fileObj['file_type'].'/'.$this->fileObj->file_name;
+                $this->fileObj->getFilePath();
     }
 }
