@@ -1,5 +1,23 @@
 #### [Current]
- * [9da2c32](../../commit/9da2c32) - __(2017-03-22 10:16:06 +0800)__ cs fix
+ * [6a5eef3](../../commit/6a5eef3) - __(2017-03-30 10:42:45 +0800)__ add zip file api - Merge pull request  [#3](../../issues/3)2 from iLexN/zipAllFiles
+ * [526a62b](../../commit/526a62b) - __(2017-03-30 10:23:28 +0800)__ fix db for test
+ * [17abfdd](../../commit/17abfdd) - __(2017-03-29 17:39:20 +0800)__ add test
+ * [f8aeea2](../../commit/f8aeea2) - __(2017-03-29 17:20:36 +0800)__ ci & cs fix
+ * [7b90ac9](../../commit/7b90ac9) - __(2017-03-29 17:11:28 +0800)__ add zip file api
+ * [6d722ea](../../commit/6d722ea) - __(2017-03-29 11:38:39 +0800)__ Merge pull request  [#3](../../issues/3)1 from iLexN/planFileStructureChange
+ * [7c6bf1c](../../commit/7c6bf1c) - __(2017-03-29 11:23:39 +0800)__ fix for travis-ci with global phpunit
+ * [15d22b3](../../commit/15d22b3) - __(2017-03-29 11:14:31 +0800)__ test fix 2
+ * [fd7aeca](../../commit/fd7aeca) - __(2017-03-29 11:06:18 +0800)__ ci & cs fix , test fix
+ * [244821a](../../commit/244821a) - __(2017-03-28 18:01:19 +0800)__ plan files structure changed, db and path
+ * [e24124d](../../commit/e24124d) - __(2017-03-27 16:07:38 +0800)__ composer package update
+ * [9e00cb7](../../commit/9e00cb7) - __(2017-03-27 15:37:13 +0800)__ cs fix
+ * [31a1410](../../commit/31a1410) - __(2017-03-27 15:31:23 +0800)__ add test
+ * [08eeb19](../../commit/08eeb19) - __(2017-03-27 14:36:51 +0800)__ add test
+ * [54b56ee](../../commit/54b56ee) - __(2017-03-27 12:06:38 +0800)__ cs fix
+ * [a3bf169](../../commit/a3bf169) - __(2017-03-24 17:09:48 +0800)__ code improve
+ * [cc89430](../../commit/cc89430) - __(2017-03-23 15:25:40 +0800)__ fix nick name used , self update bug
+ * [a1b81e4](../../commit/a1b81e4) - __(2017-03-22 11:41:22 +0800)__ claim , policy , contact us , follow comments update
+ * [f47c979](../../commit/f47c979) - __(2017-03-22 10:16:48 +0800)__ cs fix
  * [998d648](../../commit/998d648) - __(2017-03-22 10:04:11 +0800)__ email template update
  * [f2914c1](../../commit/f2914c1) - __(2017-03-21 17:14:17 +0800)__ bacnk nick name used check.
  * [4f52a2b](../../commit/4f52a2b) - __(2017-03-21 10:48:21 +0800)__ add address nickname used data.status_code === 2626
