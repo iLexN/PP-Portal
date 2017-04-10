@@ -13,7 +13,8 @@ $container['logger'] = function (\Slim\Container $c) {
 
     $slackConfig = $c->get('slackConfig');
     $slackHandler = new \Monolog\Handler\SlackHandler($slackConfig['token'], $slackConfig['chanel'], $slackConfig['name'], true, null, 400, true, false, true);
-    
+    $logger->pushHandler($slackHandler);
+
     return $logger;
 };
 
