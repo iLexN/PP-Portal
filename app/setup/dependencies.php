@@ -10,7 +10,10 @@ $container['logger'] = function (\Slim\Container $c) {
     if (!$c['settings']['displayErrorDetails']) {
         $logger->pushHandler(new Monolog\Handler\NativeMailerHandler($settings['mailTo'], $settings['mailSubject'], $settings['mailFrom']));
     }
-    //$logger->pushHandler(new \Monolog\Handler\BrowserConsoleHandler());
+
+    $slackConfig = $c->get('slackConfig');
+    $slackHandler = new \Monolog\Handler\SlackHandler($slackConfig['token'], $slackConfig['chanel'], $slackConfig['name'], true, null, 400, true, false, true);
+    
     return $logger;
 };
 
