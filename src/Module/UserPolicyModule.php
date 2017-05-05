@@ -72,6 +72,7 @@ class UserPolicyModule extends AbstractContainer
     private function getUserPolicy(User $user)
     {
         $list = $this->getPolicyListDetails($user);
+
         $files = UserPolicy::whereIn('id', $this->getUserPolicyID($list))->with('policyPlanFile')->get();
 
         $keyed = $files->keyBy('id');
@@ -83,7 +84,7 @@ class UserPolicyModule extends AbstractContainer
     {
         return $list->map(function (Policy $item) use ($files) {
             $ar = $item->toArray();
-            $ar['planfile'] = $files[$item->pivot->id] ? $files[$item->pivot->id]['policy_plan_file'] : [];
+            //$ar['planfile'] = $files[$item->pivot->id] ? $files[$item->pivot->id]['policy_plan_file'] : [];
 
             $people = $item->policyuser->map(function (User $item) {
                 $user = $item->userName();
