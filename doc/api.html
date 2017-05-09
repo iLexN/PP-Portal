@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>api</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            *{box-sizing: border-box}
+            .spacer{ height: 0.5rem;clear:both}
+            
+            .url{overflow: hidden}
+            .url *{padding:0.3rem 0.3rem 0.3rem}
+            .url_title{font-weight: bold;text-decoration: underline}
+            .url_method{float:left;width:3rem;margin-right: 1rem}
+            .url_pattern{float:left}
+            
+            .fields{overflow:hidden;}
+            .fields *{padding:0.3rem 0.3rem 0.3rem}
+            .field_name,.field_note{border:1px solid #333;float:left}
+            .field_name{width:10rem; border-right:0px none;}
+            .field_note{width:calc(95% - 10rem)}
+        </style>
+    </head>
+    <body>
+        <h2>General</h2>
+        
+        <h4>OfficeInfo</h4>
+        <div class="url">
+            <div class="url_method url_title">Method</div>
+            <div class="url_pattern url_title">Url Pattern</div>
+        </div>
+        <div class="url">
+            <div class="url_method">GET</div>
+            <div class="url_pattern">/office-info</div>
+        </div>
+        
+        <pre>
+[
+    {
+      "contact_details_id": 1,
+      "region": "HK",
+      "region_full": "Hong Kong",
+      "tel_1": "852 3113 2112 (Chinese)",
+      "tel_2": "852 3113 1331 (English)",
+      "fax_1": "852 3113 2332",
+      "fax_2": "852 2915 7770",
+      "fax_3": "852 2915 6603",
+      "address_1": "Unit 1-11",
+      "address_2": "35th Floor",
+      "address_3": "One Hung To Road",
+      "address_4": "Kwun Tong",
+      "address_5": "Hong Kong",
+      "gmap_lat": "22.3148666",
+      "gmap_lng": "114.2189591",
+      "gmap_keyword": "Pacific Prime"
+    },
+    {
+      "contact_details_id": 2,
+      "region": "SH",
+      "region_full": "Shanghai",
+      "tel_1": "86 21 2426 6400",
+      "tel_2": "86 21 6445 4592",
+      "fax_1": "86 21 6467 0328",
+      "fax_2": null,
+      "fax_3": null,
+      "address_1": "19th Floor, 1329",
+      "address_2": "Huaihai Zhong (Middle) Road",
+      "address_3": "Xuhui District",
+      "address_4": "Shanghai",
+      "address_5": "China",
+      "gmap_lat": "31.211694",
+      "gmap_lng": "121.4491918",
+      "gmap_keyword": "1329 Huaihai Zhong (Middle) Road"
+    },...
+        </pre>
+       
+        <h2>User</h2>
+        <h4>UserVerify</h4>
+        <div>
+            before setup a/c username and password, need verify user is existing client.
+        </div>
+        <div class="spacer"></div>
+        <div class="url">
+            <div class="url_method url_title">Method</div>
+            <div class="url_pattern url_title">Url Pattern</div>
+        </div>
+        <div class="url">
+            <div class="url_method">POST</div>
+            <div class="url_pattern">/verify</div>
+        </div>
+        <div class="spacer"></div>
+        <div class="fields">
+            <div class="field_name">Fields</div>
+            <div class="field_note">Note</div>
+        </div>
+        <div class="fields">
+            <div class="field_name">ppmid</div>
+            <div class="field_note">required, integer</div>
+        </div>
+        <div class="fields">
+            <div class="field_name">date_of_birth</div>
+            <div class="field_note">required, date (YYYY-MM-DD)</div>
+        </div>
+        <div class="spacer"></div>
+        <b>API status_code</b>
+        <div class="fields">
+            <div class="field_name">Error</div>
+            <div class="field_note">1020 , 2010 , 2051</div>
+            <div class="field_name">Success</div>
+            <div class="field_note">2050, 2040</div>
+        </div>
+        
+        <h4>UserSignUp</h4>
+        <div>
+            after verify, user create password and username<br/>
+            success will send signup email.
+        </div>
+        <div class="spacer"></div>
+        <div class="url">
+            <div class="url_method url_title">Method</div>
+            <div class="url_pattern url_title">Url Pattern</div>
+        </div>
+        <div class="url">
+            <div class="url_method">POST</div>
+            <div class="url_pattern">/user/{id:\d+}/signup</div>
+        </div>
+        <div class="spacer"></div>
+        <div class="fields">
+            <div class="field_name">Fields</div>
+            <div class="field_note">Note</div>
+        </div>
+        <div class="fields">
+            <div class="field_name">user_name</div>
+            <div class="field_note">required</div>
+        </div>
+        <div class="fields">
+            <div class="field_name">password</div>
+            <div class="field_note">required, length>8, 1 lowercase , 1 uppercase, 1 number</div>
+        </div>
+        <div class="spacer"></div>
+        <b>API status_code</b>
+        <div class="fields">
+            <div class="field_name">Error</div>
+            <div class="field_note">2040 , 1010 , 2510, 2070</div>
+            <div class="field_name">Success</div>
+            <div class="field_note">2030</div>
+        </div>
+        
+        
+        <h4>UserLogin</h4>
+        <div>
+            login with username and password
+        </div>
+        <div class="spacer"></div>
+        <div class="url">
+            <div class="url_method url_title">Method</div>
+            <div class="url_pattern url_title">Url Pattern</div>
+        </div>
+        <div class="url">
+            <div class="url_method">POST</div>
+            <div class="url_pattern">/login</div>
+        </div>
+        <div class="spacer"></div>
+        <div class="fields">
+            <div class="field_name">Fields</div>
+            <div class="field_note">Note</div>
+        </div>
+        <div class="fields">
+            <div class="field_name">user_name</div>
+            <div class="field_note">required</div>
+        </div>
+        <div class="fields">
+            <div class="field_name">password</div>
+            <div class="field_note">required</div>
+        </div>
+        
+        <div class="spacer"></div>
+        <b>API status_code</b>
+        <div class="fields">
+            <div class="field_name">Error</div>
+            <div class="field_note">1010 , 2010 , 2080</div>
+            <div class="field_name">Success</div>
+            <div class="field_note">2081</div>
+        </div>
+        <pre>
+{
+  "data": {
+    "id": 2
+  },
+  "status_code": 2081
+}</pre>
+        
+        
+        <h4>ForgotPassword</h4>
+        <div>
+            success will send email with token url, than set new password
+        </div>
+        <div class="spacer"></div>
+        <div class="url">
+            <div class="url_method url_title">Method</div>
+            <div class="url_pattern url_title">Url Pattern</div>
+        </div>
+        <div class="url">
+            <div class="url_method">POST</div>
+            <div class="url_pattern">/forgot-passowrd</div>
+        </div>
+        <div class="spacer"></div>
+        <div class="fields">
+            <div class="field_name">Fields</div>
+            <div class="field_note">Note</div>
+        </div>
+        <div class="fields">
+            <div class="field_name">user_name</div>
+            <div class="field_note">required</div>
+        </div>
+        
+        <div class="spacer"></div>
+        <b>API status_code</b>
+        <div class="fields">
+            <div class="field_name">Error</div>
+            <div class="field_note">1010, 2010</div>
+            <div class="field_name">Success</div>
+            <div class="field_note">2540</div>
+        </div>
+        <pre>
+{
+  "data": {
+    "code": 2540,
+    "title": "Forgot password mail sent"
+  },
+  "status_code": 2540
+}</pre>
+        
+        <h4>ForgotPassword.Token</h4>
+        <div>
+            check token
+        </div>
+        <div class="spacer"></div>
+        <div class="url">
+            <div class="url_method url_title">Method</div>
+            <div class="url_pattern url_title">Url Pattern</div>
+        </div>
+        <div class="url">
+            <div class="url_method">GET</div>
+            <div class="url_pattern">/forgot-passowrd/{token}</div>
+        </div>
+        <h4>ForgotPassword.Token</h4>
+        <div>
+            updated new password
+        </div>
+        <div class="spacer"></div>
+        <div class="url">
+            <div class="url_method url_title">Method</div>
+            <div class="url_pattern url_title">Url Pattern</div>
+        </div>
+        <div class="url">
+            <div class="url_method">POST</div>
+            <div class="url_pattern">/forgot-passowrd/{token}</div>
+        </div>
+        <div class="spacer"></div>
+        <div class="fields">
+            <div class="field_name">Fields</div>
+            <div class="field_note">Note</div>
+        </div>
+        <div class="fields">
+            <div class="field_name">new_password</div>
+            <div class="field_note">required</div>
+        </div>
+        <div class="spacer"></div>
+        
+        <b>API status_code</b>
+        <div class="fields">
+            <div class="field_name">Error</div>
+            <div class="field_note">1010, 2510</div>
+            <div class="field_name">Success</div>
+            <div class="field_note">2570</div>
+        </div>
+        <pre>
+{
+  "data": {
+    "ppmid": 2,
+    "title": "Dr",
+    "first_name": "www",
+    "middle_name": "eee",
+    "last_name": "rrr",
+    "date_of_birth": "1990-03-01",
+    "nationality": "China",
+    "email": "dsfdsf@dsfds.com",
+    "phone_1": "3333",
+    "phone_2": "",
+    "holder_id": 1
+  },
+  "status_code": 2570
+}</pre>
+        
+        <h4>ForgotUsername</h4>
+        <div>
+            check width email and phone, <br/>
+            if fails will log to db (Table: member_portal_forgot_username)<br/>
+            if success will send email with username
+        </div>
+        <div class="spacer"></div>
+        <div class="url">
+            <div class="url_method url_title">Method</div>
+            <div class="url_pattern url_title">Url Pattern</div>
+        </div>
+        <div class="url">
+            <div class="url_method">POST</div>
+            <div class="url_pattern">/forgot-username</div>
+        </div>
+        <div class="spacer"></div>
+        <div class="fields">
+            <div class="field_name">Fields</div>
+            <div class="field_note">Note</div>
+        </div>
+        <div class="fields">
+            <div class="field_name">name</div>
+            <div class="field_note">required, but not check match with db</div>
+            <div class="field_name">email</div>
+            <div class="field_note">required, email format</div>
+            <div class="field_name">phone</div>
+            <div class="field_note">required</div>
+        </div>
+        <div class="spacer"></div>
+        
+        <b>API status_code</b>
+        <div class="fields">
+            <div class="field_name">Error</div>
+            <div class="field_note">1020, 2010</div>
+            <div class="field_name">Success</div>
+            <div class="field_note">2550</div>
+        </div>
+        <pre>
+{
+  "data": {
+    "code": 2550,
+    "title": "Forgot username success"
+  },
+  "status_code": 2550
+}</pre>
+        
+        <h4>UserInfo</h4>
+        <div class="spacer"></div>
+        <div class="url">
+            <div class="url_method url_title">Method</div>
+            <div class="url_pattern url_title">Url Pattern</div>
+        </div>
+        <div class="url">
+            <div class="url_method">GET</div>
+            <div class="url_pattern">/user/{id:\d+}</div>
+        </div>
+        <div class="spacer"></div>
+        
+        <b>API status_code</b>
+        <div class="fields">
+            <div class="field_name">Error</div>
+            <div class="field_note">2010</div>
+            <div class="field_name">Success</div>
+            <div class="field_note">2021</div>
+        </div>
+        <pre>
+{
+  "data": {
+    "ppmid": 2,
+    "title": "Dr",
+    "first_name": "www",
+    "middle_name": "eee",
+    "last_name": "rrr",
+    "date_of_birth": "1990-03-01",
+    "nationality": "China",
+    "email": "dsfdsf@dsfds.com",
+    "phone_1": "3333",
+    "phone_2": "",
+    "holder_id": 1
+  },
+  "status_code": 2021
+}</pre>
+        <h4>UserInfo.Post</h4>
+        <div>
+            update user info, not real time upate, save in renewinfo table, need staff approve and update.
+        </div>
+        <div class="spacer"></div>
+        <div class="url">
+            <div class="url_method url_title">Method</div>
+            <div class="url_pattern url_title">Url Pattern</div>
+        </div>
+        <div class="url">
+            <div class="url_method">POST</div>
+            <div class="url_pattern">/user/{id:\d+}</div>
+        </div>
+        <div class="spacer"></div>
+        <div class="fields">
+            <div class="field_name">Fields</div>
+            <div class="field_note">Note</div>
+        </div>
+        <div class="fields">
+            <div class="field_name">date_of_birth</div>
+            <div class="field_note">optional , Y-m-d</div>
+            <div class="field_name">email</div>
+            <div class="field_note">optional,email format</div>
+            <div class="field_name">phone_1</div>
+            <div class="field_note">optional</div>
+            <div class="field_name">phone_2</div>
+            <div class="field_note">optional</div>
+        </div>
+        <div class="spacer"></div>
+        
+        <b>API status_code</b>
+        <div class="fields">
+            <div class="field_name">Error</div>
+            <div class="field_note">1020</div>
+            <div class="field_name">Success</div>
+            <div class="field_note">2020</div>
+        </div>
+        <pre>
+{
+  "data": {
+  },
+  "status_code": 2020
+}</pre>
+        
+        <h4>UserInfo</h4>
+        <div>
+            Get the last renew info which have not approve yet.
+        </div>
+        <div class="spacer"></div>
+        <div class="url">
+            <div class="url_method url_title">Method</div>
+            <div class="url_pattern url_title">Url Pattern</div>
+        </div>
+        <div class="url">
+            <div class="url_method">GET</div>
+            <div class="url_pattern">/user/{id:\d+}/renew</div>
+        </div>
+        <div class="spacer"></div>
+        
+        <b>API status_code</b>
+        <div class="fields">
+            <div class="field_name">Success</div>
+            <div class="field_note">2023 , 2022</div>
+        </div>
+        <pre>
+{
+  "data": {
+    "renew_id": 70,
+    "ppmid": 2,
+    "title": "Dr",
+    "middle_name": "eee",
+    "first_name": "www",
+    "last_name": "rrr",
+    "date_of_birth": null,
+    "nationality": null,
+    "email": "dsfdsf@dsfds.com",
+    "phone_1": "2222222",
+    "phone_2": "",
+    "status": "Pending",
+    "created_at": "2017-05-09 11:27:28",
+    "updated_at": "2017-05-09 11:27:28"
+  },
+  "status_code": 2022
+}</pre>
+        
+        
+        <h4>UserInfo.People</h4>
+        <div>
+            user relation people list
+        </div>
+        <div class="spacer"></div>
+        <div class="url">
+            <div class="url_method url_title">Method</div>
+            <div class="url_pattern url_title">Url Pattern</div>
+        </div>
+        <div class="url">
+            <div class="url_method">GET</div>
+            <div class="url_pattern">/user/{id:\d+}/people</div>
+        </div>
+        <div class="spacer"></div>
+        
+        <b>API status_code</b>
+        <div class="fields">
+            <div class="field_name">Success</div>
+            <div class="field_note">2630</div>
+        </div>
+        <pre>
+{
+  "data": [
+    {
+      "ppmid": 2,
+      "title": "Dr",
+      "first_name": "www",
+      "middle_name": "eee",
+      "last_name": "rrr",
+      "date_of_birth": "1990-03-01",
+      "nationality": "China",
+      "email": "dsfdsf@dsfds.com",
+      "phone_1": "3333",
+      "phone_2": "",
+      "holder_id": 1,
+      "relationship": "Daughter"
+    },
+    {
+      "ppmid": 9677,
+      "title": null,
+      "first_name": "dsds",
+      "middle_name": "sds",
+      "last_name": "dsd",
+      "date_of_birth": "1990-03-01",
+      "nationality": null,
+      "email": "aaaa@3333.com",
+      "phone_1": "12334",
+      "phone_2": "8765",
+      "holder_id": 1,
+      "relationship": "Policy Holder"
+    },
+    ...
+  ],
+  "status_code": 2630
+}</pre>
+    </body>
+</html>
