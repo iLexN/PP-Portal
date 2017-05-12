@@ -22,7 +22,7 @@ class Policy extends Model
 
     public $timestamps = false;
 
-    protected $appends = ['renew_date', 'is_end'];
+    protected $appends = ['renew_date', 'is_end','region_email'];
 
     protected $casts = [
         'responsibility_id' => 'integer',
@@ -34,6 +34,33 @@ class Policy extends Model
         $dateObj->addDay();
 
         return $dateObj->toDateString();
+    }
+
+    public function getRegionEmailAttribute()
+    {
+        switch ($this->attributes['region']) {
+            case 'CN':
+                $email = 'claims.cn@pacificprime.com';
+                break;
+            case 'ROW':
+                $email = 'claims@pacificprime.com';
+                break;
+            case 'UAE':
+                $email = 'sgclientservices@pacificprime.com';
+                break;
+            case 'SG':
+                $email = 'sgclientservices@pacificprime.com';
+                break;
+            case 'HK':
+                $email = 'claims.hk@pacificprime.com';
+                break;
+
+            default:
+                $email = 'claims@pacificprime.com';
+                break;
+        }
+
+        return $email;
     }
 
     public function getIsEndAttribute()
