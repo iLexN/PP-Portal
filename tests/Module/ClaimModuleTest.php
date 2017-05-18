@@ -132,18 +132,7 @@ class ClaimModuleTest extends \PHPUnit\Framework\TestCase
         return $this->ClaimModule;
     }
 
-    /**
-     * @depends testNewBankAcc
-     * @depends testGetBankAcc
-     */
-    public function testValidateExtraClaimInfo($ClaimModule, $ClaimModule2)
-    {
-        $this->assertTrue($ClaimModule->validateClaimInfo('All'));
-        $this->assertTrue($ClaimModule->validateClaimInfo('Save'));
-        $this->assertFalse($ClaimModule2->validateClaimInfo('Submit'));
-
-        return $ClaimModule;
-    }
+    
 
     /**
      * @depends testNewBankAcc

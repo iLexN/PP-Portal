@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2017 年 03 月 30 日 11:30
+-- 產生時間： 2017 年 05 月 18 日 11:25
 -- 伺服器版本: 5.6.15-log
 -- PHP 版本： 5.6.4
 
@@ -432,6 +432,7 @@ CREATE TABLE IF NOT EXISTS `member_portal_policy` (
   `responsibility_id` int(11) DEFAULT NULL,
   `status` varchar(64) DEFAULT NULL,
   `Policy_Number` varchar(100) DEFAULT NULL,
+  `region` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`policy_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -439,9 +440,9 @@ CREATE TABLE IF NOT EXISTS `member_portal_policy` (
 -- 資料表的匯出資料 `member_portal_policy`
 --
 
-INSERT INTO `member_portal_policy` (`policy_id`, `insurer`, `plan_id`, `deductible`, `cover`, `options`, `medical_currency`, `payment_frequency`, `payment_method`, `start_date`, `end_date`, `responsibility_id`, `status`, `Policy_Number`) VALUES
-(1, 'Best Doctors', 25, '85', '', '', '', '', '', '2015-01-30', '2020-02-17', 19, 'Active', NULL),
-(2, 'AIA', 25, '85', '', '', '', '', '', '2015-02-17', '2020-02-17', 19, 'Active', NULL);
+INSERT INTO `member_portal_policy` (`policy_id`, `insurer`, `plan_id`, `deductible`, `cover`, `options`, `medical_currency`, `payment_frequency`, `payment_method`, `start_date`, `end_date`, `responsibility_id`, `status`, `Policy_Number`, `region`) VALUES
+(1, 'Best Doctors', 25, '85', '', '', '', '', '', '2015-01-30', '2020-02-17', 19, 'Active', NULL, 'HK'),
+(2, 'AIA', 25, '85', '', '', '', '', '', '2015-02-17', '2020-02-17', 19, 'Active', NULL, 'ROW');
 
 -- --------------------------------------------------------
 

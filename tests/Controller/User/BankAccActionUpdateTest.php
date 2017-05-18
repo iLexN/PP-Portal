@@ -94,9 +94,12 @@ class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
     {
         $action = $this->action;
 
-        $_POST['iban'] = 'update';
-        $_POST['bank_swift_code'] = 'update';
-        $_POST['nick_name'] = 'nick';
+        $_POST['nick_name'] = 'update';
+        $_POST['account_user_name'] = 'update';
+        $_POST['currency'] = 'USD';
+        $_POST['account_number'] = 'nick';
+        $_POST['bank_name'] = 'nick';
+
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
             'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -116,9 +119,13 @@ class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
     {
         $action = $this->action;
 
-        $_POST['iban'] = 'update';
-        $_POST['bank_swift_code'] = 'update';
-        $_POST['nick_name'] = 'new nick';
+        $_POST['nick_name'] = 'update11';
+        $_POST['account_user_name'] = 'update';
+        $_POST['currency'] = 'USD';
+        $_POST['account_number'] = 'nick';
+        $_POST['bank_name'] = 'nick';
+
+
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
             'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -140,7 +147,12 @@ class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
 
         $_POST['iban'] = 'update';
         $_POST['bank_swift_code'] = 'update';
-        $_POST['nick_name'] = 'new nick';
+        $_POST['account_user_name'] = 'update';
+        $_POST['currency'] = 'USD';
+        $_POST['account_number'] = 'update';
+        $_POST['bank_name'] = 'update';
+        $_POST['nick_name'] = 'update';
+
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
             'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -162,6 +174,10 @@ class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
 
         $_POST['iban'] = 'update';
         $_POST['bank_swift_code'] = 'update';
+        $_POST['account_user_name'] = 'update';
+        $_POST['currency'] = 'USD';
+        $_POST['account_number'] = 'update';
+        $_POST['bank_name'] = 'update';
         $_POST['nick_name'] = 'new nick';
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
