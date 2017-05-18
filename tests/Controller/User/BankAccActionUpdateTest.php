@@ -204,7 +204,7 @@ class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
         $_POST['currency'] = 'USD';
         $_POST['account_number'] = 'update';
         $_POST['bank_name'] = 'update';
-        $_POST['nick_name'] = 'update111';
+        $_POST['nick_name'] = 'update';
 
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
@@ -215,7 +215,7 @@ class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
 
         $response = $this->response;
 
-        $response = $action($request, $response, ['acid' => 3, 'mode' => 'update']);
+        $response = $action($request, $response, ['acid' => 2, 'mode' => 'update']);
 
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(3611, $out['status_code']);
