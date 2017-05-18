@@ -99,8 +99,10 @@ class ClaimModuleTest extends \PHPUnit\Framework\TestCase
     public function testNewBankAcc()
     {
         $data = [
-            'iban'            => 'sdfdsfdsf',
-            'bank_swift_code' => 'dsfdsfdsf',
+            'account_user_name'            => 'sdfdsfdsf',
+            'currency' => 'dsfdsfdsf',
+            'account_number' => 'USD',
+            'bank_name' => 'dsfdsfdsf',
         ];
         $this->ClaimModule->newBankAcc($data);
         $this->assertInstanceOf(\PP\Portal\DbModel\ClaimBankAcc::class, $this->ClaimModule->bank);
@@ -132,12 +134,17 @@ class ClaimModuleTest extends \PHPUnit\Framework\TestCase
         return $this->ClaimModule;
     }
 
-    
-
     /**
      * @depends testNewBankAcc
+     * @depends testGetBankAcc
+     */
+    public function testValidateExtraClaimInfo($ClaimModule, $ClaimModule2)
+    {
+        $this->assertTrue($ClaimModule->validateClaimInfo());
+        $this->assertFalse($ClaimModule2->validateClaimInfo());
 
-     }*/
+        return $ClaimModule;
+    }
 
     /**
      * @depends testGetInfoById
