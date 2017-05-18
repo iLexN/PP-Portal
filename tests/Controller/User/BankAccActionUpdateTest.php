@@ -193,4 +193,32 @@ class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(3611, $out['status_code']);
     }
+
+    public function testNickNameUsedUpdate2()
+    {
+        $action = $this->action;
+
+        $_POST['iban'] = 'update';
+        $_POST['bank_swift_code'] = 'update';
+        $_POST['account_user_name'] = 'update';
+        $_POST['currency'] = 'USD';
+        $_POST['account_number'] = 'update';
+        $_POST['bank_name'] = 'update';
+        $_POST['nick_name'] = 'update';
+
+        $environment = \Slim\Http\Environment::mock([
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
+        $request = \Slim\Http\Request::createFromEnvironment($environment);
+        unset($_POST);
+
+        $response = $this->response;
+
+        $response = $action($request, $response, ['acid' => 3, 'mode' => 'update']);
+
+        $out = json_decode((string) $response->getBody(), true);
+        $this->assertEquals(3613, $out['status_code']);
+    }
+
 }
