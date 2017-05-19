@@ -80,7 +80,7 @@ class ClaimUpdateTest extends \PHPUnit\Framework\TestCase
 
         $_POST['status'] = 'Submit';
         $_POST['claimiant_ppmid'] = 2;
-        $_POST['bank'] = ['account_user_name' => '123', 'currency' => 'USD' , 'account_number'=> '112','bank_name'=>'123'];
+        $_POST['bank'] = ['account_user_name' => '123', 'currency' => 'USD', 'account_number'=> '112', 'bank_name'=>'123'];
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
             'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -101,7 +101,7 @@ class ClaimUpdateTest extends \PHPUnit\Framework\TestCase
         $action = $this->action;
 
         $_POST['status'] = 'Save';
-        $_POST['bank'] = ['account_user_name' => '123', 'currency' => 'USD' , 'account_number'=> '112','bankname'=>123];
+        $_POST['bank'] = ['account_user_name' => '123', 'currency' => 'USD', 'account_number'=> '112', 'bankname'=>123];
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
             'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -123,7 +123,7 @@ class ClaimUpdateTest extends \PHPUnit\Framework\TestCase
 
         $_POST['status'] = 'Submit';
         $_POST['claimiant_ppmid'] = 2;
-        $_POST['bank'] = ['account_user_name' => '123', 'currency' => 'USD' , 'account_number'=> '112','bank_name'=>'11'];
+        $_POST['bank'] = ['account_user_name' => '123', 'currency' => 'USD', 'account_number'=> '112', 'bank_name'=>'11'];
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
             'HTTP_CONTENT_TYPE' => 'multipart/form-data;',

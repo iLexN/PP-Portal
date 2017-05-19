@@ -150,7 +150,7 @@ class ClaimModule extends AbstractContainer
     private function validateBankInfo($data)
     {
         $vb = new \Valitron\Validator($data, $this->bank->getFillable());
-        $vb->rule('required', ['account_user_name', 'currency','account_number','bank_name']);
+        $vb->rule('required', ['account_user_name', 'currency', 'account_number', 'bank_name']);
         $this->claimExtraData['bank'] = $vb;
     }
 
