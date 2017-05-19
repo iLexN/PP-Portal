@@ -22,7 +22,7 @@ class Policy extends Model
 
     public $timestamps = false;
 
-    protected $appends = ['renew_date', 'is_end','region_email'];
+    protected $appends = ['renew_date', 'is_end', 'region_email'];
 
     protected $casts = [
         'responsibility_id' => 'integer',

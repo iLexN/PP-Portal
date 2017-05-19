@@ -41,20 +41,20 @@ class UserBankAccModuleTest extends \PHPUnit\Framework\TestCase
 
     public function testValidBank()
     {
-        $fillable = ['nick_name','account_user_name', 'currency', 'account_number','bank_name'];
+        $fillable = ['nick_name', 'account_user_name', 'currency', 'account_number', 'bank_name'];
         $data = [
-                'nick_name' => 123,
+                'nick_name'         => 123,
                 'account_user_name' => '123',
             ];
         $v = $this->UserBankAccModule->validBank($data, $fillable);
         $this->assertFalse($v->validate());
 
         $data = [
-                'nick_name' => 123,
+                'nick_name'         => 123,
                 'account_user_name' => '123',
-                'currency' => 'USD',
-                'account_number' => '123',
-                'bank_name' => '123',
+                'currency'          => 'USD',
+                'account_number'    => '123',
+                'bank_name'         => '123',
             ];
         $v = $this->UserBankAccModule->validBank($data, $fillable);
         $this->assertTrue($v->validate());

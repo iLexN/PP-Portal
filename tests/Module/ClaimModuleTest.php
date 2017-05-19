@@ -100,9 +100,9 @@ class ClaimModuleTest extends \PHPUnit\Framework\TestCase
     {
         $data = [
             'account_user_name'            => 'sdfdsfdsf',
-            'currency' => 'dsfdsfdsf',
-            'account_number' => 'USD',
-            'bank_name' => 'dsfdsfdsf',
+            'currency'                     => 'dsfdsfdsf',
+            'account_number'               => 'USD',
+            'bank_name'                    => 'dsfdsfdsf',
         ];
         $this->ClaimModule->newBankAcc($data);
         $this->assertInstanceOf(\PP\Portal\DbModel\ClaimBankAcc::class, $this->ClaimModule->bank);
