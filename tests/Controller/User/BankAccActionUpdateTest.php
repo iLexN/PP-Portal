@@ -125,7 +125,6 @@ class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
         $_POST['account_number'] = 'nick';
         $_POST['bank_name'] = 'nick';
 
-
         $environment = \Slim\Http\Environment::mock([
             'REQUEST_METHOD'    => 'POST',
             'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
@@ -220,5 +219,4 @@ class BankAccActionUpdateTest extends \PHPUnit\Framework\TestCase
         $out = json_decode((string) $response->getBody(), true);
         $this->assertEquals(3611, $out['status_code']);
     }
-
 }
