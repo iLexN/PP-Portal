@@ -11,10 +11,6 @@ $container['logger'] = function (\Slim\Container $c) {
         $logger->pushHandler(new Monolog\Handler\NativeMailerHandler($settings['mailTo'], $settings['mailSubject'], $settings['mailFrom']));
     }
 
-    $slackConfig = $c->get('slackConfig');
-    $slackHandler = new \Monolog\Handler\SlackHandler($slackConfig['token'], $slackConfig['chanel'], $slackConfig['name'], true, null, 400, true, false, true);
-    $logger->pushHandler($slackHandler);
-
     return $logger;
 };
 

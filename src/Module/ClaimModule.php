@@ -59,6 +59,7 @@ class ClaimModule extends AbstractContainer
         $v->rule('integer', ['claimiant_ppmid']);
         $v->rule('dateFormat', ['date_of_treatment'], 'Y-m-d');
         $v->rule('in', ['status'], ['Save', 'Submit']);
+        $v->rule('between', ['amount'], [0, 99999999999999999]);
 
         return $v;
     }
