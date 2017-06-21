@@ -13,6 +13,8 @@ class CheckPlatform extends AbstractContainer
 {
     public function __invoke(ServerRequestInterface $request, Response $response, $next)
     {
+        $platform = false;
+
         if ($request->hasHeader('PP-Portal-Platform')) {
             $platform = $request->getHeaderLine('PP-Portal-Platform');
             $result = $this->checkPlatformValue($platform);
@@ -48,6 +50,7 @@ class CheckPlatform extends AbstractContainer
         $routelog = new \PP\Portal\DbModel\RouteLog();
         $routelog->platform = $platform;
         $routelog->name = $route->getName();
+        $routelog->url = $request->getUri();
         $routelog->post_data = json_encode($request->getParsedBody());
         $routelog->methods = json_encode($route->getMethods());
         $routelog->arguments = json_encode($route->getArguments());
