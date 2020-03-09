@@ -29,8 +29,11 @@ class Update extends AbstractContainer
         $new = $this->saveData($inArray);
         $this->pool->deleteItem('Holder/'.$args['id']);
 
-        return $this->ViewHelper->withStatusCode($response, ['data' => $new->toArray()],
-                2641);
+        return $this->ViewHelper->withStatusCode(
+            $response,
+            ['data' => $new->toArray()],
+            2641
+        );
     }
 
     private function processData($ar, $id)

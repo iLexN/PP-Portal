@@ -12,8 +12,8 @@ class People extends AbstractContainer
     public function __invoke(ServerRequestInterface $request, Response $response, array $args)
     {
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $this->getResult($args),
-                        ], 2630);
+            'data' => $this->getResult($args),
+        ], 2630);
     }
 
     private function getResult($args)

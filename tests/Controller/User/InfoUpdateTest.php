@@ -51,9 +51,9 @@ class InfoUpdateTest extends \PHPUnit\Framework\TestCase
         $_POST['email'] = 'alex';
         $_POST['date_of_birth'] = '123Psadfs';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 
@@ -72,9 +72,9 @@ class InfoUpdateTest extends \PHPUnit\Framework\TestCase
         $_POST['email'] = 'check@check.com';
         $_POST['date_of_birth'] = '2010-10-10';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 

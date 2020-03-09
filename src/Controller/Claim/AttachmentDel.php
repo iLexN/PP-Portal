@@ -23,7 +23,7 @@ class AttachmentDel extends AbstractContainer
         $this->ClaimFileModule->deleteFile();
 
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $this->msgCode[1850],
-                ], 1850);
+            'data' => $this->msgCode[1850],
+        ], 1850);
     }
 }

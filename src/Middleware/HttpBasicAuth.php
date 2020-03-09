@@ -43,7 +43,7 @@ class HttpBasicAuth extends AbstractContainer
             return $next($request, $response);
         } else {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[4020],
-                    ])->withHeader('WWW-Authenticate', sprintf('Basic realm="%s"', $this->realm))
+            ])->withHeader('WWW-Authenticate', sprintf('Basic realm="%s"', $this->realm))
                     ->withStatus(401);
         }
     }

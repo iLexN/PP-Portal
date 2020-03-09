@@ -33,8 +33,11 @@ class AddressUpdate extends AbstractContainer
 
         $this->AddressModule->save($data, $address);
 
-        return $this->ViewHelper->withStatusCode($response, ['data' => $address->toArray()],
-                $this->getStatusCode());
+        return $this->ViewHelper->withStatusCode(
+            $response,
+            ['data' => $address->toArray()],
+            $this->getStatusCode()
+        );
     }
 
     private function checkNickName($data, $address)

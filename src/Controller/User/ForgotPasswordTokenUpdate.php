@@ -25,9 +25,11 @@ class ForgotPasswordTokenUpdate extends AbstractContainer
         if ($this->UserModule->isUserExistByForgotToken($args['token'])) {
             $this->UserModule->savePassword($this->PasswordModule->passwordHash($data['new_password']));
 
-            return $this->ViewHelper->withStatusCode($response,
-                    ['data' => $this->UserModule->user->toArray()],
-                    2570);
+            return $this->ViewHelper->withStatusCode(
+                $response,
+                ['data' => $this->UserModule->user->toArray()],
+                2570
+            );
         }
 
         return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010]]);

@@ -22,8 +22,8 @@ class ClaimAttachment extends AbstractContainer
 
         if (empty($files['newfile'])) {
             return $this->ViewHelper->toJson($response, [
-                    'errors' => $this->msgCode['1810'],
-                ]);
+                'errors' => $this->msgCode['1810'],
+            ]);
         }
 
         $newfile = $this->handerFile($files['newfile']);
@@ -43,8 +43,8 @@ class ClaimAttachment extends AbstractContainer
         $file = $this->ClaimFileModule->newClaimFile($newfile, $v->data());
 
         return $this->ViewHelper->withStatusCode($response, [
-                'data' => $file->toArray(),
-            ], 1840);
+            'data' => $file->toArray(),
+        ], 1840);
     }
 
     /**

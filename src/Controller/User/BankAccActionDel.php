@@ -19,6 +19,6 @@ class BankAccActionDel extends AbstractContainer
         $this->UserBankAccModule->delBank($acc);
 
         return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[3612],
-            ]);
+        ]);
     }
 }

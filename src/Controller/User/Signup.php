@@ -53,8 +53,8 @@ class Signup extends AbstractContainer
         $mail->addAddress($user->email, $user->first_name.' '.$user->last_name);
         $mail->Subject = 'Success! your account has been created';
         $mail->msgHTML($this->twigView->fetch('email/signup.twig', [
-                'User' => $user,
-            ]));
+            'User' => $user,
+        ]));
         if (!$mail->send()) {
             $this->c->logger->error('forgot password mail send fail'.$mail->ErrorInfo);
         }

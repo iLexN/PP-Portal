@@ -58,9 +58,9 @@ class UpdateTest extends \PHPUnit\Framework\TestCase
         $_POST['mail_address_line_2'] = '1111';
         $_POST['policy_address_line_2'] = '2222';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 
@@ -78,9 +78,9 @@ class UpdateTest extends \PHPUnit\Framework\TestCase
 
         $_POST['mail_address_line_2'] = '1111';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 

@@ -28,6 +28,6 @@ class Info extends AbstractContainer
         }
 
         return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[3510],
-            ]);
+        ]);
     }
 }

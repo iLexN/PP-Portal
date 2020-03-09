@@ -68,9 +68,9 @@ class ForgotPasswordTest extends \PHPUnit\Framework\TestCase
 
         $_POST['name'] = 'alex';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 
@@ -88,9 +88,9 @@ class ForgotPasswordTest extends \PHPUnit\Framework\TestCase
 
         $_POST['user_name'] = 'peter';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 
@@ -108,9 +108,9 @@ class ForgotPasswordTest extends \PHPUnit\Framework\TestCase
 
         $_POST['user_name'] = 'alddex';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 

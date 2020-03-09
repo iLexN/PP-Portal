@@ -24,7 +24,7 @@ class CheckPlatform extends AbstractContainer
 
         if (!$result) {
             return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[4010],
-                    ])->withStatus(403);
+            ])->withStatus(403);
         }
 
         $this->log($platform, $request);

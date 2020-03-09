@@ -27,16 +27,16 @@ class UserInfoReNew extends Model
     //public $timestamps = false;
 
     protected $fillable = [
-            'title',
-            'middle_name',
-            'first_name',
-            'last_name',
-            'date_of_birth',
-            'nationality',
-            'email',
-            'phone_1',
-            'phone_2',
-        ];
+        'title',
+        'middle_name',
+        'first_name',
+        'last_name',
+        'date_of_birth',
+        'nationality',
+        'email',
+        'phone_1',
+        'phone_2',
+    ];
 
     protected $casts = [
         'ppmid' => 'integer',

@@ -47,8 +47,8 @@ class Login extends AbstractContainer
         $user = $this->UserModule->user;
 
         return ['data' => [
-                'id' => $user->ppmid,
-                ]];
+            'id' => $user->ppmid,
+        ]];
     }
 
     private function checkNeedRehash($data)

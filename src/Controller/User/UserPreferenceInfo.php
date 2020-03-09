@@ -17,6 +17,6 @@ class UserPreferenceInfo extends AbstractContainer
         }
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $info->toArray(),
-            ], 3640);
+        ], 3640);
     }
 }

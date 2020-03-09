@@ -3,7 +3,7 @@
 // 2016-07-15
 
 return [
-     // general 1xxx
+    // general 1xxx
     '1010' => [
         'code'  => 1010,
         'title' => 'Missing field(s)',

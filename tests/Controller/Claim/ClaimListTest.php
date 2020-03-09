@@ -62,21 +62,21 @@ class ClaimListTest extends \PHPUnit\Framework\TestCase
         $this->assertArrayHasKey('Submit', $out['data']);
     }
 
-/*
-    public function testSuccessWithStatus()
-    {
-        $action = $this->action;
+    /*
+        public function testSuccessWithStatus()
+        {
+            $action = $this->action;
 
-        $_POST['bank'] = [];
-        $environment = \Slim\Http\Environment::mock([
-            'QUERY_STRING'=>'status=Save'
-        ]);
-        $request = \Slim\Http\Request::createFromEnvironment($environment);
+            $_POST['bank'] = [];
+            $environment = \Slim\Http\Environment::mock([
+                'QUERY_STRING'=>'status=Save'
+            ]);
+            $request = \Slim\Http\Request::createFromEnvironment($environment);
 
-        $response = $this->response;
-        $response = $action($request, $response, []);
+            $response = $this->response;
+            $response = $action($request, $response, []);
 
-        $out = json_decode((string) $response->getBody(), true);
-        $this->assertEquals(5030, $out['status_code']);
-    }*/
+            $out = json_decode((string) $response->getBody(), true);
+            $this->assertEquals(5030, $out['status_code']);
+        }*/
 }

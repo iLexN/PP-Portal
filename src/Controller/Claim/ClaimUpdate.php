@@ -32,9 +32,9 @@ class ClaimUpdate extends AbstractContainer
         $this->ClaimModule->saveAllInfo($this->v->data());
 
         return $this->ViewHelper->withStatusCode($response, [
-                    //'data' => $this->msgCode[$this->getStatusCode($status)],
-                    'data' => ['id' => $this->ClaimModule->claim->claim_id],
-                ], $this->getStatusCode($status, $mode));
+            //'data' => $this->msgCode[$this->getStatusCode($status)],
+            'data' => ['id' => $this->ClaimModule->claim->claim_id],
+        ], $this->getStatusCode($status, $mode));
     }
 
     private function validate($status)

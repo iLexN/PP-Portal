@@ -22,15 +22,15 @@ $dbSetting = $settings['dbConfig'];
 //ORM::configure('create_cache_key', [$dbCache, 'genKey']);
 
 $db = [
-        'driver'    => 'mysql',
-        'host'      => $dbSetting['host'],
-        'database'  => $dbSetting['database'],
-        'username'  => $dbSetting['user'],
-        'password'  => $dbSetting['password'],
-        'charset'   => 'utf8',
-        'collation' => 'utf8_general_ci',
-        'prefix'    => '',
-    ];
+    'driver'    => 'mysql',
+    'host'      => $dbSetting['host'],
+    'database'  => $dbSetting['database'],
+    'username'  => $dbSetting['user'],
+    'password'  => $dbSetting['password'],
+    'charset'   => 'utf8',
+    'collation' => 'utf8_general_ci',
+    'prefix'    => '',
+];
 $capsule = new \Illuminate\Database\Capsule\Manager();
 $capsule->addConnection($db);
 $capsule->setAsGlobal();

@@ -15,6 +15,6 @@ class ForgotPasswordToken extends AbstractContainer
         }
 
         return $this->ViewHelper->toJson($response, ['errors' => $this->msgCode[2010],
-            ]);
+        ]);
     }
 }

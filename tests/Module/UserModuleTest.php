@@ -109,8 +109,8 @@ class UserModuleTest extends \PHPUnit\Framework\TestCase
         $this->userModule->isUserExistByID(173803);
         $newInfo = $this->userModule->newInfoReNew();
         $ar = [
-           'email'   => 'aaa',
-           'phone_1' => '123',
+            'email'   => 'aaa',
+            'phone_1' => '123',
         ];
         $this->userModule->saveInfoReNew($newInfo, $ar);
         $this->expectOutputString('foo');

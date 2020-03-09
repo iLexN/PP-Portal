@@ -20,7 +20,7 @@ class ClaimList extends AbstractContainer
         ];
 
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $out,
-                ], 5030);
+            'data' => $out,
+        ], 5030);
     }
 }

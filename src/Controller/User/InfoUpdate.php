@@ -14,7 +14,7 @@ class InfoUpdate extends AbstractContainer
         //$newInfo = $this->UserModule->user->reNewInfo()->where('status', 'Pending')->first();
 
         //if (!$newInfo) {
-            $newInfo = $this->UserModule->newInfoReNew();
+        $newInfo = $this->UserModule->newInfoReNew();
         //}
 
         $v = new \Valitron\Validator((array) $request->getParsedBody(), $newInfo->getFillable());

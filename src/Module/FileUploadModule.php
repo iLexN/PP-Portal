@@ -33,8 +33,8 @@ class FileUploadModule
     public function setAllowMimetype($array)
     {
         $this->validationRule['in'] = [
-                ['type', $array],
-            ];
+            ['type', $array],
+        ];
     }
 
     /**
@@ -45,8 +45,8 @@ class FileUploadModule
     public function setAllowFilesize($size)
     {
         $this->validationRule['max'] = [
-                ['size', $this->humanReadableToBytes($size)],
-            ];
+            ['size', $this->humanReadableToBytes($size)],
+        ];
     }
 
     public function getError()
@@ -81,9 +81,9 @@ class FileUploadModule
     public function isValid()
     {
         $v = new Validator([
-               'size' => $this->file->getSize(),
-               'type' => $this->file->getClientMediaType(),
-           ]);
+            'size' => $this->file->getSize(),
+            'type' => $this->file->getClientMediaType(),
+        ]);
         $v->rules($this->validationRule);
 
         if ($v->validate()) {
