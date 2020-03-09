@@ -16,8 +16,10 @@ class RenewInfo extends AbstractContainer
             return $this->ViewHelper->withStatusCode($response, ['data' => $user->toArray()], 2022);
         }
 
-        return $this->ViewHelper->withStatusCode($response,
-                ['data' => []],
-                2023);
+        return $this->ViewHelper->withStatusCode(
+            $response,
+            ['data' => []],
+            2023
+        );
     }
 }

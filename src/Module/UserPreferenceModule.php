@@ -19,9 +19,9 @@ class UserPreferenceModule extends AbstractContainer
     public function newPreference()
     {
         $info = $this->UserModule->user->userPreference()->create([
-                'currency'         => 'USD',
-                'currency_receive' => 'USD',
-            ]);
+            'currency'         => 'USD',
+            'currency_receive' => 'USD',
+        ]);
         $this->clearCache();
 
         return $info;

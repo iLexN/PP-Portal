@@ -102,9 +102,9 @@ class SignupTest extends \PHPUnit\Framework\TestCase
         $_POST['user_name'] = '';
         $_POST['password'] = '';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
@@ -124,9 +124,9 @@ class SignupTest extends \PHPUnit\Framework\TestCase
         $_POST['user_name'] = 'ssss';
         $_POST['password'] = 'a';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
@@ -146,9 +146,9 @@ class SignupTest extends \PHPUnit\Framework\TestCase
         $_POST['user_name'] = 'alex';
         $_POST['password'] = 'P123Aaa3ss';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;
@@ -168,9 +168,9 @@ class SignupTest extends \PHPUnit\Framework\TestCase
         $_POST['user_name'] = 'alex11';
         $_POST['password'] = 'P123Aaa3ss';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
 
         $response = $this->response;

@@ -23,6 +23,6 @@ class CheckUserName extends AbstractContainer
         }
 
         return $this->ViewHelper->toJson($response, ['data' => $this->msgCode[2070],
-            ]);
+        ]);
     }
 }

@@ -48,6 +48,6 @@ class Address extends Model
     public function scopeUserAddress(Builder $query)
     {
         return $query->where('status', 'active');
-                //->where('address_type', 'user');
+        //->where('address_type', 'user');
     }
 }

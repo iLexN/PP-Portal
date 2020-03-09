@@ -59,9 +59,9 @@ class VerifyTest extends \PHPUnit\Framework\TestCase
         $_POST['ppmid'] = '2';
         $_POST['date_of_birth'] = '198401010';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 
@@ -80,9 +80,9 @@ class VerifyTest extends \PHPUnit\Framework\TestCase
         $_POST['ppmid'] = '10101010';
         $_POST['date_of_birth'] = '2010-10-10';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 
@@ -101,9 +101,9 @@ class VerifyTest extends \PHPUnit\Framework\TestCase
         $_POST['ppmid'] = '2';
         $_POST['date_of_birth'] = '2010-10-10';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 
@@ -122,9 +122,9 @@ class VerifyTest extends \PHPUnit\Framework\TestCase
         $_POST['ppmid'] = '173802';
         $_POST['date_of_birth'] = '1980-03-04';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 
@@ -143,9 +143,9 @@ class VerifyTest extends \PHPUnit\Framework\TestCase
         $_POST['ppmid'] = '2';
         $_POST['date_of_birth'] = '1980-10-10';
         $environment = \Slim\Http\Environment::mock([
-                'REQUEST_METHOD'    => 'POST',
-                'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
-            ]);
+            'REQUEST_METHOD'    => 'POST',
+            'HTTP_CONTENT_TYPE' => 'multipart/form-data;',
+        ]);
         $request = \Slim\Http\Request::createFromEnvironment($environment);
         unset($_POST);
 

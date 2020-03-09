@@ -26,6 +26,6 @@ class UserPreferenceUpdate extends AbstractContainer
         $this->UserPreferenceModule->update($v->data());
 
         return $this->ViewHelper->withStatusCode($response, ['data' => $info->toArray(),
-            ], 3650);
+        ], 3650);
     }
 }

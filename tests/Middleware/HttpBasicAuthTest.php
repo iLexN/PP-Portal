@@ -22,9 +22,9 @@ class HttpBasicAuthTest extends \PHPUnit\Framework\TestCase
             return new \PP\Portal\Module\Helper\View($c);
         };
         $c['firewallConfig'] = [
-                'username' => 'user',
-                'password' => 'pass',
-            ];
+            'username' => 'user',
+            'password' => 'pass',
+        ];
 
         $this->action = new \PP\Portal\Middleware\HttpBasicAuth($c);
         $this->response = new \Slim\Http\Response();

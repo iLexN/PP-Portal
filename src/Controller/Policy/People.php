@@ -15,10 +15,10 @@ class People extends AbstractContainer
 
         /* @var $item \PP\Portal\DbModel\UserPolicy */
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $policyPeople->map(function (UserPolicy $item) {
-                        return $item->user->userName();
-                    }),
-                        ], 3040);
+            'data' => $policyPeople->map(function (UserPolicy $item) {
+                return $item->user->userName();
+            }),
+        ], 3040);
     }
 
     private function findPeople($id)

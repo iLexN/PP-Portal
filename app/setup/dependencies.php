@@ -37,7 +37,7 @@ $container['twigView'] = function (\Slim\Container $c) {
 
 // rount handloer
 $container['notFoundHandler'] = function (\Slim\Container $c) {
-    return function (\Slim\Http\Request $request, \Slim\Http\Response  $response) use ($c) {
+    return function (\Slim\Http\Request $request, \Slim\Http\Response $response) use ($c) {
         $logInfo = [
             'method' => $request->getMethod(),
             'uri'    => (string) $request->getUri(),
@@ -45,7 +45,7 @@ $container['notFoundHandler'] = function (\Slim\Container $c) {
         $c->logger->info('404', $logInfo);
 
         return $c['ViewHelper']->toJson($response, ['errors' => $c['msgCode'][1510],
-                ])->withStatus(404);
+        ])->withStatus(404);
     };
 };
 
@@ -55,7 +55,7 @@ if (!$container['settings']['displayErrorDetails']) {
             $c['logger']->error('e', (array) $exception);
 
             return $c['ViewHelper']->toJson($response, ['errors' => $c['msgCode'][1520],
-                ])->withStatus(500);
+            ])->withStatus(500);
         };
     };
 }

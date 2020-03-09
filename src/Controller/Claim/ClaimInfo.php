@@ -17,8 +17,8 @@ class ClaimInfo extends AbstractContainer
         $out = $this->getInfo();
 
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $out,
-                ], 6030);
+            'data' => $out,
+        ], 6030);
     }
 
     private function getInfo()

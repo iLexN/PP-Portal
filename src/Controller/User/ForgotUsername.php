@@ -58,8 +58,8 @@ class ForgotUsername extends AbstractContainer
         $mail->addAddress($user->email, $user->first_name.' '.$user->last_name);
         $mail->Subject = 'Pacific Prime Member Portal username';
         $mail->msgHTML($this->twigView->fetch('email/forgot-username.twig', [
-                'User' => $user,
-            ]));
+            'User' => $user,
+        ]));
         if (!$mail->send()) {
             $this->c->logger->error('forgot password mail send fail'.$mail->ErrorInfo);
         }

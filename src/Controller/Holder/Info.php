@@ -17,8 +17,11 @@ class Info extends AbstractContainer
             throw new \Slim\Exception\NotFoundException($request, $response);
         }
 
-        return $this->ViewHelper->withStatusCode($response, ['data' => $holderInfo->toArray()],
-                2640);
+        return $this->ViewHelper->withStatusCode(
+            $response,
+            ['data' => $holderInfo->toArray()],
+            2640
+        );
     }
 
     private function getHolderInfo($id)

@@ -44,8 +44,11 @@ class UserPolicy extends Model
     public function policyFiles()
     {
         return $this->hasManyThrough(
-            __NAMESPACE__.'\PolicyFile', __NAMESPACE__.'\Policy',
-            'policy_id', 'ppib', 'policy_id'
+            __NAMESPACE__.'\PolicyFile',
+            __NAMESPACE__.'\Policy',
+            'policy_id',
+            'ppib',
+            'policy_id'
         );
     }
 

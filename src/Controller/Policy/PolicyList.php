@@ -13,7 +13,7 @@ class PolicyList extends AbstractContainer
         $collection = $this->UserPolicyModule->getPolicyList();
 
         return $this->ViewHelper->withStatusCode($response, [
-                    'data' => $collection,
-                ], 3020);
+            'data' => $collection,
+        ], 3020);
     }
 }

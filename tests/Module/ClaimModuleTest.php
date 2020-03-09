@@ -148,8 +148,8 @@ class ClaimModuleTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @depends testGetInfoById
-
-     }*/
+     *
+     * }*/
     public function testSaveExtraClaimInfoloop()
     {
         $this->ClaimModule->newClaim(1);
